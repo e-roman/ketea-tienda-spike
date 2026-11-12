@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react"
 import { usePathname, useRouter } from "next/navigation"
 import { ShoppingCart, Menu, X, User } from "lucide-react"
 import { toast } from "sonner"
-import { useCart, MINIMUM_PACKS } from "@/lib/cart-context"
+import { useCart } from "@/lib/cart-context"
 import { searchProducts } from "@/lib/products"
 import AuthModal from "@/components/auth-modal"
 import { Badge } from "@/components/ui/badge"
@@ -45,13 +45,7 @@ export default function Nav() {
     setAddingId(product.id)
     setTimeout(() => {
       add(product)
-      const newTotal = totalItems + 1
-      const remaining = Math.max(MINIMUM_PACKS - newTotal, 0)
-      toast.success(
-        remaining === 0
-          ? `${product.shortName} agregado · Mínimo cumplido`
-          : `${product.shortName} agregado · ${remaining} pack${remaining !== 1 ? "s" : ""} para el mínimo`
-      )
+      toast.success(`${product.shortName} agregado al carrito`)
       setAddingId(null)
     }, 500)
   }

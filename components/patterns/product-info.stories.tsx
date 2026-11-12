@@ -7,7 +7,7 @@ const meta = {
   title: 'Patterns/Product info',
   component: ProductInfo,
   tags: ['autodocs'],
-  args: { product: sampleProduct, onViewSpecs: fn() },
+  args: { product: sampleProduct },
   decorators: [(Story) => <div style={{ maxWidth: 480 }}><Story /></div>],
 } satisfies Meta<typeof ProductInfo>
 export default meta

@@ -18,8 +18,6 @@ interface OrderSummaryProps {
   totalItems: number
   subtotal: number
   total: number
-  minimumMet: boolean
-  remainingForMinimum: number
   loading?: boolean
   onCheckout: () => void
   className?: string
@@ -27,14 +25,14 @@ interface OrderSummaryProps {
 
 /** Resumen del pedido — clases de styles/patterns/order-summary.css. Envío gratis en CABA. */
 export function OrderSummary({
-  totalItems, subtotal, total, minimumMet, remainingForMinimum, loading, onCheckout, className,
+  totalItems, subtotal, total, loading, onCheckout, className,
 }: OrderSummaryProps) {
   return (
     <div className={cn("order-summary", className)}>
       <h2 className="order-summary__title">Resumen del pedido</h2>
       <div className="order-summary__rows">
         <div className="order-summary__row">
-          <span>Subtotal ({totalItems} pack{totalItems !== 1 ? "s" : ""})</span>
+          <span>Subtotal ({totalItems} producto{totalItems !== 1 ? "s" : ""})</span>
           <span className="order-summary__value">{formatPrice(subtotal)}</span>
         </div>
         <div className="order-summary__row">
@@ -47,13 +45,7 @@ export function OrderSummary({
         </div>
       </div>
 
-      <CheckoutCta
-        minimumMet={minimumMet}
-        remainingForMinimum={remainingForMinimum}
-        loading={loading}
-        onClick={onCheckout}
-        className="order-summary__cta"
-      />
+      <CheckoutCta loading={loading} onClick={onCheckout} className="order-summary__cta" />
 
       <CouponField className="order-summary__coupon" />
 

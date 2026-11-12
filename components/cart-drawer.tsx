@@ -11,12 +11,10 @@ import { CartItem } from "@/components/patterns/cart-item"
 import { Drawer } from "@/components/patterns/drawer"
 import { EmptyState } from "@/components/patterns/empty-state"
 import { DrawerFooter } from "@/components/patterns/drawer-footer"
-import { MinOrderProgress } from "@/components/patterns/min-order-progress"
 
 export default function CartDrawer() {
   const {
-    items, increment, decrement, remove, subtotal, totalItems,
-    remainingForMinimum, minimumMet, isOpen, closeCart,
+    items, increment, decrement, remove, subtotal, totalItems, isOpen, closeCart,
   } = useCart()
   const router = useRouter()
 
@@ -58,7 +56,8 @@ export default function CartDrawer() {
         open={isOpen}
         onClose={closeCart}
         title="Carrito"
-        count={totalItems > 0 ? `${totalItems} pack${totalItems !== 1 ? "s" : ""}` : undefined}
+        count={totalItems > 0 ? `${totalItems} producto${totalItems !== 1 ? "s" : ""}` : undefined}
+        wide
         closeLabel="Cerrar carrito"
       >
         {items.length === 0 ? (
@@ -74,8 +73,6 @@ export default function CartDrawer() {
           </EmptyState>
         ) : (
           <>
-            <MinOrderProgress variant="compact" className="min-order--drawer" />
-
             <div className="drawer__body">
               {items.map(({ product, quantity }) => (
                 <CartItem
@@ -94,8 +91,6 @@ export default function CartDrawer() {
 
             <DrawerFooter
               subtotal={subtotal}
-              minimumMet={minimumMet}
-              remainingForMinimum={remainingForMinimum}
               loading={goingCheckout}
               onCheckout={handleGoCheckout}
               onNavigate={closeCart}

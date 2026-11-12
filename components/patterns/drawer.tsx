@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 
 // Mapa literal: Tailwind purga las clases de @layer components que no encuentra escritas.
 const STATE = { true: "drawer drawer--open", false: "drawer" } as const
+const WIDTH = { true: " drawer--wide", false: "" } as const
 
 interface DrawerProps {
   open: boolean
@@ -16,11 +17,13 @@ interface DrawerProps {
   /** Texto del contador junto al título (p. ej. «3 packs»). */
   count?: string
   closeLabel?: string
+  /** Panel más ancho (carrito). */
+  wide?: boolean
   children: ReactNode
 }
 
 /** Drawer lateral derecho — clases de styles/patterns/modal.css. Bloquea el scroll y cierra con Escape. */
-export function Drawer({ open, onClose, title, count, closeLabel = "Cerrar", children }: DrawerProps) {
+export function Drawer({ open, onClose, title, count, closeLabel = "Cerrar", wide = false, children }: DrawerProps) {
   useEffect(() => {
     if (!open) return
     const prev = document.body.style.overflow
@@ -36,7 +39,7 @@ export function Drawer({ open, onClose, title, count, closeLabel = "Cerrar", chi
   }, [open, onClose])
 
   return (
-    <div className={STATE[String(open) as "true" | "false"]}>
+    <div className={STATE[String(open) as "true" | "false"] + WIDTH[String(wide) as "true" | "false"]}>
       <div className="drawer__scrim" onClick={onClose} aria-hidden="true" />
       <div role="dialog" aria-modal="true" aria-label={title} className="drawer__panel">
         <div className="drawer__bar">

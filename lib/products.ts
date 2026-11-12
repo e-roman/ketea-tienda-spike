@@ -58,6 +58,8 @@ export interface Product {
   keySpecs: NutritionRow[]
   pickupToday?: boolean
   freeShipping?: boolean
+  /** Llega hoy o mañana con Envío Express. */
+  arrivesFast?: boolean
   /** Código/SKU que se muestra en la ficha. */
   sku: string
   warrantyMonths?: number
@@ -143,6 +145,7 @@ function adapt(p: RawProduct): Product {
     keySpecs,
     pickupToday: p.retiroInmediato,
     freeShipping: p.envioGratis,
+    arrivesFast: p.llegaHoy || p.llegaManana,
     sku: d?.sku ?? p.code ?? "",
     warrantyMonths: d?.warrantyMonths,
     installmentsShort: p.installmentsLabel || undefined,

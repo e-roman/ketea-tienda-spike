@@ -3,14 +3,9 @@
 import { createContext, useContext, useReducer, useCallback, useState, ReactNode } from "react"
 import type { Product } from "./products"
 
-// Pedido mínimo: cantidad de packs (x3) que debe alcanzar el carrito para
-// poder finalizar la compra. Reemplaza la lógica anterior de envío gratis
-// por monto.
-export const MINIMUM_PACKS = 1 // spike: Ketea no tiene pedido mínimo; se deja en 1 para no tocar la lógica
-
 export interface CartItem {
   product: Product
-  quantity: number  // quantity of 3-packs
+  quantity: number
 }
 
 interface CartState {
@@ -69,8 +64,6 @@ interface CartContextValue {
   clear: () => void
   totalItems: number
   subtotal: number
-  remainingForMinimum: number
-  minimumMet: boolean
   isOpen: boolean
   openCart: () => void
   closeCart: () => void
@@ -95,13 +88,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const totalItems = state.items.reduce((s, i) => s + i.quantity, 0)
   const subtotal   = state.items.reduce((s, i) => s + i.product.priceX3 * i.quantity, 0)
-  const remainingForMinimum = Math.max(MINIMUM_PACKS - totalItems, 0)
-  const minimumMet = totalItems >= MINIMUM_PACKS
 
   return (
     <CartContext.Provider value={{
       items: state.items, add, remove, increment, decrement, clear, totalItems, subtotal,
-      remainingForMinimum, minimumMet,
       isOpen, openCart, closeCart, toggleCart,
     }}>
       {children}

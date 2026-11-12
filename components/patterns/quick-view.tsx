@@ -22,7 +22,7 @@ import { ProductTags } from "@/components/patterns/product-tags"
 function QuickViewGallery({ product }: { product: Product }) {
   const trackRef = useRef<HTMLDivElement>(null)
   const [index, setIndex] = useState(0)
-  const images = product.images
+  const images = product.images.slice(0, 5)
   const multiple = images.length > 1
 
   function slideStep() {

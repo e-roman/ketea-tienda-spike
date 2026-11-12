@@ -11,7 +11,14 @@
     border-radius: var(--radius-md);
     background-color: var(--color-surface-default);
   }
-  .cart-item--drawer { gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-lg); }
+  /* Drawer: sin tarjeta, sin borde ni padding */
+  .cart-item--drawer { gap: var(--space-3); padding: 0; border: 0; border-radius: 0; }
+  /* Página: la leyenda de envío ocupa todo el ancho, debajo de una línea */
+  .cart-item { flex-wrap: wrap; }
+  .cart-item__unit-price { margin-bottom: var(--space-2); }
+  .cart-item__body .product-tags { margin-bottom: var(--space-3); }
+  .cart-item__note { flex-basis: 100%; margin-top: var(--space-1); padding-top: var(--space-4); border-top: var(--border-width-sm) solid var(--color-border-default); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-primary); }
+  .cart-item__note > strong { font-weight: var(--font-weight-bold); }
   .cart-item__body { flex: 1 1 0%; min-width: 0; }
   .cart-item__head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-2); margin-bottom: var(--space-1); }
   .cart-item__head--bare { display: block; }

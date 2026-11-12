@@ -22,7 +22,6 @@
 @import "../styles/components/icon.css";
 @import "../styles/components/logo.css";
 @import "../styles/components/progress.css";
-@import "../styles/patterns/min-order-progress.css";
 @import "../styles/patterns/cart-item.css";
 @import "../styles/components/callout.css";
 @import "../styles/patterns/header.css";
@@ -41,7 +40,6 @@
 @import "../styles/patterns/service-blocks.css";
 @import "../styles/patterns/quick-view.css";
 @import "../styles/patterns/footer.css";
-@import "../styles/patterns/floating-bar.css";
 @import "../styles/patterns/newsletter.css";
 @import "../styles/patterns/empty-state.css";
 @import "../styles/patterns/product-detail.css";

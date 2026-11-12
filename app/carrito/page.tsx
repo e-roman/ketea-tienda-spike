@@ -9,7 +9,6 @@ import { useState } from "react"
 import ConfirmDeleteModal from "@/components/confirm-delete-modal"
 import { buttonClasses } from "@/components/ui/button"
 import { CartItem } from "@/components/patterns/cart-item"
-import { MinOrderProgress } from "@/components/patterns/min-order-progress"
 import { OrderSummary } from "@/components/patterns/order-summary"
 import { EmptyState } from "@/components/patterns/empty-state"
 import { Heading } from "@/components/ui/text"
@@ -19,7 +18,6 @@ import { Row } from "@/components/ui/layout"
 export default function CartPage() {
   const {
     items, increment, decrement, remove, subtotal, totalItems,
-    remainingForMinimum, minimumMet,
   } = useCart()
   const router = useRouter()
   const [pendingRemove, setPendingRemove] = useState<{ id: string; name: string } | null>(null)
@@ -77,14 +75,12 @@ export default function CartPage() {
     <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">
       <Row align="center" gap={3} className="mb-8">
         <Heading as="h1" size="page">Tu carrito</Heading>
-        <Badge variant="outline">{totalItems} pack{totalItems !== 1 ? "s" : ""}</Badge>
+        <Badge variant="outline">{totalItems} producto{totalItems !== 1 ? "s" : ""}</Badge>
       </Row>
 
       <div className="grid md:grid-cols-3 gap-8">
         {/* Items */}
         <div className="md:col-span-2 space-y-4">
-          <MinOrderProgress />
-
           {items.map(({ product, quantity }) => (
             <CartItem
               key={product.id}
@@ -112,8 +108,6 @@ export default function CartPage() {
             totalItems={totalItems}
             subtotal={subtotal}
             total={total}
-            minimumMet={minimumMet}
-            remainingForMinimum={remainingForMinimum}
             loading={goingCheckout}
             onCheckout={handleGoCheckout}
           />

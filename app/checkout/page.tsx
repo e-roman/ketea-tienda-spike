@@ -26,7 +26,7 @@ const STEPS: StepItem<Step>[] = [
 ]
 
 export default function CheckoutPage() {
-  const { items, subtotal, clear, minimumMet } = useCart()
+  const { items, subtotal, clear } = useCart()
 
   const [step, setStep] = useState<Step>("cuenta")
 
@@ -88,20 +88,6 @@ export default function CheckoutPage() {
             Ver productos
           </Link>
         </EmptyState>
-      </div>
-    )
-  }
-
-  if (!minimumMet && step !== "confirmacion") {
-    return (
-      <div className="page page--subtle">
-        <div className="max-w-lg mx-auto px-4 py-24 text-center-block">
-          <Heading as="h1" size="title" className="mb-4">Todavía no llegás al pedido mínimo</Heading>
-          <Text size="sm" tone="secondary" className="mb-8">Volvé al carrito para agregar algunos packs más antes de finalizar la compra.</Text>
-          <Link href="/carrito" className={buttonClasses()}>
-            Ver carrito
-          </Link>
-        </div>
       </div>
     )
   }

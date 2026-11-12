@@ -11,7 +11,6 @@ import { QuickViewDrawer } from "@/components/patterns/quick-view"
 import Nav from "@/components/nav"
 import Footer from "@/components/footer"
 import CartDrawer from "@/components/cart-drawer"
-import MinimumProgressBar from "@/components/minimum-progress-bar"
 import RouteProgressBar from "@/components/route-progress-bar"
 
 export const metadata: Metadata = {
@@ -46,7 +45,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Footer />
               <CartDrawer />
               <QuickViewDrawer />
-              <MinimumProgressBar />
               <Toaster />
             </QuickViewProvider>
           </FavoritesProvider>

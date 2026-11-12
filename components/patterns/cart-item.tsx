@@ -7,6 +7,7 @@ import { Stepper } from "@/components/ui/stepper"
 import { Price } from "@/components/ui/price"
 import { iconButtonClasses } from "@/components/ui/icon-button"
 import { formatPrice, getDiscountPercent, type Product } from "@/lib/products"
+import { ProductTags } from "@/components/patterns/product-tags"
 import { cn } from "@/lib/utils"
 
 // Mapas literales: Tailwind purga las clases de @layer components que no encuentra escritas.
@@ -73,10 +74,19 @@ export function CartItem({
         ) : (
           <div className="cart-item__head cart-item__head--bare">{title}</div>
         )}
-        <p className="cart-item__meta">
-          {product.packInfo}
-          {variant === "page" && <> · {formatPrice(product.priceUnit)} c/u</>}
-        </p>
+        <p className="cart-item__meta">{product.packInfo}</p>
+        {variant === "page" && (
+          <>
+            <Price
+              size="md"
+              current={product.priceX3}
+              previous={discount > 0 ? product.originalPriceX3 : undefined}
+              discountPercent={discount}
+              className="cart-item__unit-price"
+            />
+            <ProductTags product={product} />
+          </>
+        )}
         <div className="cart-item__foot">
           {variant === "drawer" ? (
             <>
@@ -96,6 +106,10 @@ export function CartItem({
           )}
         </div>
       </div>
+
+      {variant === "page" && product.arrivesFast && (
+        <p className="cart-item__note">Llega en 1 día hábil seleccionando <strong>Envío Express</strong> al comprar</p>
+      )}
     </div>
   )
 }

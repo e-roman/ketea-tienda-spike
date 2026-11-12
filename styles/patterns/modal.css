@@ -72,6 +72,7 @@
     transition-duration: var(--duration-base);
     transition-timing-function: var(--easing-standard);
   }
+  .drawer--wide .drawer__panel { max-width: calc(var(--space-64) * 2); }
   .drawer--open .drawer__panel { transform: translateX(0); box-shadow: var(--elevation-overlay); }
   .drawer__bar { display: flex; flex-shrink: 0; align-items: center; justify-content: space-between; height: var(--space-16); padding-inline: var(--space-5); border-bottom: var(--border-width-sm) solid var(--color-border-default); }
   .drawer__title { display: flex; align-items: center; gap: var(--space-2); font-size: var(--font-size-lg); line-height: var(--font-line-height-lg); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
