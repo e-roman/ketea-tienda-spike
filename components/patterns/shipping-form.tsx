@@ -25,7 +25,7 @@ export const EMPTY_SHIPPING: ShippingData = {
   nombre: "", apellido: "", direccion: "", piso: "", localidad: "", cp: "", telefono: "", recibe: "", instrucciones: "",
 }
 
-const WHATSAPP_URL = "https://api.whatsapp.com/send?phone=5491130656942"
+const WHATSAPP_URL = "https://api.whatsapp.com/send?phone=5491130655787"
 
 /** Aviso de zona de entrega según barrio y CP (Figma: Forms / Checkout / Shipping). Clases de callout.css. */
 export function DeliveryZoneNotice({ localidad, cp }: { localidad: string; cp: string }) {

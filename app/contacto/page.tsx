@@ -17,14 +17,14 @@ export default function ContactoPage() {
       </PageHeader>
 
       <div className="space-y-4 mb-14">
-        <FeatureRow variant="card" href="https://api.whatsapp.com/send?phone=5491130656942" icon={<Phone className="icon-md" aria-hidden="true" />} title="WhatsApp">
-          (+54) 911 3065-6942
+        <FeatureRow variant="card" href="https://api.whatsapp.com/send?phone=5491130655787" icon={<Phone className="icon-md" aria-hidden="true" />} title="WhatsApp">
+          (+54) 911 3065-5787
         </FeatureRow>
         <FeatureRow variant="card" icon={<Clock className="icon-md" aria-hidden="true" />} title="Horario de atención">
           Lunes a viernes de 9 a 18 hs
         </FeatureRow>
         <FeatureRow variant="card" icon={<MapPin className="icon-md" aria-hidden="true" />} title="Zona de entrega">
-          Envío gratis en CABA · GBA: consultanos al (+54) 911 3065-6942
+          Envío gratis en CABA · GBA: consultanos al (+54) 911 3065-5787
         </FeatureRow>
       </div>
 

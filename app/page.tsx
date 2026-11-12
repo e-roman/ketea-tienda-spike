@@ -1,7 +1,6 @@
 import { Truck, ShieldCheck, CreditCard, Headset } from "lucide-react"
 import ProductCard from "@/components/patterns/product-card"
 import Hero from "@/components/hero"
-import NewsletterBanner from "@/components/newsletter-banner"
 import { TrustStrip, type TrustItem } from "@/components/patterns/trust-strip"
 import { PromoBanner } from "@/components/patterns/promo-banner"
 import { SectionHeader } from "@/components/patterns/section-header"
@@ -55,7 +54,6 @@ export default function HomePage() {
         </section>
       )}
 
-      <NewsletterBanner />
     </div>
   )
 }

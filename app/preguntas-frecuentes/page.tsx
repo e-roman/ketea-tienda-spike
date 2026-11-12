@@ -6,7 +6,7 @@ import Link from "next/link"
 import { ChevronDown } from "lucide-react"
 import { PageHeader } from "@/components/patterns/page-header"
 
-const WHATSAPP = "https://api.whatsapp.com/send?phone=5491130656942"
+const WHATSAPP = "https://api.whatsapp.com/send?phone=5491130655787"
 
 const FAQS: { q: string; a: ReactNode }[] = [
   {
@@ -27,11 +27,11 @@ const FAQS: { q: string; a: ReactNode }[] = [
   },
   {
     q: "¿En qué zonas entregan?",
-    a: <>Entregamos en CABA y cada barrio tiene un día fijo. Al cargar tu dirección en el checkout te mostramos qué día te toca.<br />Para GBA, contactanos al <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={linkClasses()}>(+54) 911 3065-6942</a>.</>,
+    a: <>Entregamos en CABA y cada barrio tiene un día fijo. Al cargar tu dirección en el checkout te mostramos qué día te toca.<br />Para GBA, contactanos al <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={linkClasses()}>(+54) 911 3065-5787</a>.</>,
   },
   {
     q: "¿Cuánto cuesta el envío?",
-    a: <>Envío en CABA: lo recibís gratis en el día que corresponde a tu barrio.<br />Para envíos en GBA, contactanos al <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={linkClasses()}>(+54) 911 3065-6942</a>.</>,
+    a: <>Envío en CABA: lo recibís gratis en el día que corresponde a tu barrio.<br />Para envíos en GBA, contactanos al <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={linkClasses()}>(+54) 911 3065-5787</a>.</>,
   },
   {
     q: "¿Puede recibir otra persona mi pedido?",
@@ -71,7 +71,7 @@ const FAQS: { q: string; a: ReactNode }[] = [
   },
   {
     q: "Tengo otra pregunta",
-    a: <>Contactanos de lunes a viernes de 9 a 18 h al <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={linkClasses()}>(+54) 911 3065-6942</a>.</>,
+    a: <>Contactanos de lunes a viernes de 9 a 18 h al <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={linkClasses()}>(+54) 911 3065-5787</a>.</>,
   },
 ]
 
@@ -83,7 +83,7 @@ export default function PreguntasFrecuentesPage() {
       <PageHeader eyebrow="Ayuda" title="Preguntas frecuentes">
         Si no encontrás lo que buscás acá, escribinos por{" "}
         <a
-          href="https://api.whatsapp.com/send?phone=5491130656942"
+          href="https://api.whatsapp.com/send?phone=5491130655787"
           target="_blank"
           rel="noopener noreferrer"
           className={linkClasses()}

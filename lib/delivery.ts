@@ -2,7 +2,7 @@
 // Para mover un barrio de día, cambialo de lista acá — el checkout lo toma solo.
 
 export const DELIVERY_HOURS = "de 9 a 15 h"
-export const SUPPORT_PHONE = "(+54) 911 3065-6942"
+export const SUPPORT_PHONE = "(+54) 911 3065-5787"
 
 type Dia = "lunes" | "martes" | "miércoles" | "jueves" | "viernes"
 

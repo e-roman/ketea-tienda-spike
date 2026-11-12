@@ -17,5 +17,5 @@ export const TAPAS_ITEMS: NavSubItem[] = [
   { key: "mantenimiento-accesorios", label: "Accesorios" },
 ]
 
-export const WHATSAPP_URL = "https://api.whatsapp.com/send?phone=5491130656942"
-export const WHATSAPP_LABEL = "(+54) 911 3065-6942"
+export const WHATSAPP_URL = "https://api.whatsapp.com/send?phone=5491130655787"
+export const WHATSAPP_LABEL = "(+54) 911 3065-5787"
