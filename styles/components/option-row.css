@@ -1,0 +1,20 @@
+/* Fila de opción en listas de selección única (p. ej. "Ordenar por" en el bottom sheet).
+   Estado con aria-pressed. Alto táctil 44px. */
+@layer components {
+  .option-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    width: 100%;
+    min-height: var(--size-control-lg);
+    padding-block: var(--space-3);
+    text-align: left;
+    font-size: var(--font-size-sm);
+    line-height: var(--font-line-height-sm);
+    color: var(--color-text-primary);
+  }
+  .option-row:focus-visible { outline: var(--border-width-focus) solid var(--color-border-focus); outline-offset: calc(-1 * var(--border-width-focus)); }
+  .option-row[aria-pressed="true"] { font-weight: var(--font-weight-semibold); }
+  .option-row__check { flex-shrink: 0; width: var(--space-4); height: var(--space-4); color: var(--color-text-brand); }
+}

@@ -1,0 +1,23 @@
+/* Banner promocional sobre foto (Línea Verde, Sin TACC). Alto 288px; el hover agranda la foto. */
+@layer components {
+  .promo-banner { position: relative; height: calc(var(--space-64) + var(--space-8)); overflow: hidden; border-radius: var(--radius-xl); }
+  .promo-banner__image { object-fit: cover; transition: transform var(--duration-slow) var(--easing-standard); }
+  .promo-banner:hover .promo-banner__image { transform: scale(1.05); }
+  /* Degradado vertical: neutral-900 a 85 / 60 / 25 %. Los alfas no tienen token todavía. */
+  .promo-banner__scrim {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+      to top,
+      rgb(var(--color-neutral-900-rgb) / 0.85),
+      rgb(var(--color-neutral-900-rgb) / 0.6),
+      rgb(var(--color-neutral-900-rgb) / 0.25)
+    );
+  }
+  .promo-banner__content { position: relative; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; padding: var(--space-7); }
+  .promo-banner__icon { margin-bottom: var(--space-3); }
+  .promo-banner__title { margin-bottom: var(--space-2); font-size: var(--font-size-3xl); line-height: var(--font-line-height-3xl); font-weight: var(--font-weight-bold); color: var(--color-text-inverse); }
+  @media (min-width: 768px) { .promo-banner__title { font-size: var(--font-size-4xl); line-height: var(--font-line-height-4xl); } }
+  .promo-banner__cta { width: fit-content; }
+  .promo-banner__text { max-width: calc(var(--space-40) * 2); margin-bottom: var(--space-5); font-size: var(--font-size-md); line-height: var(--font-line-height-md); color: var(--color-alpha-white-90); }
+}

@@ -1,0 +1,28 @@
+/* Link de texto. El tamaño de letra se hereda del contexto.
+   .link        → acción en color de link (text.link), subraya en hover
+   .link--subtle → navegación secundaria (volver, ver más): secondary → primary
+   .link--underline → siempre subrayado
+   .link--inherit → hereda color del contexto (dentro de avisos) */
+@layer components {
+  .link {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-link);
+    text-underline-offset: var(--space-0-5);
+    transition-property: color, text-decoration-color;
+    transition-duration: var(--duration-fast);
+    transition-timing-function: var(--easing-standard);
+  }
+  .link:hover { color: var(--color-text-link-hover); text-decoration-line: underline; }
+  .link:focus-visible { outline: var(--button-focus-width) solid var(--button-focus-ring); outline-offset: var(--button-focus-offset); border-radius: var(--radius-sm); }
+  .link--subtle { color: var(--color-text-secondary); }
+  .link--subtle:hover { color: var(--color-text-primary); text-decoration-line: none; }
+  /* hereda el color del contexto (avisos de color); siempre subrayado */
+  .link--inherit,
+  .link--inherit:hover { color: inherit; font-weight: var(--font-weight-semibold); text-decoration-line: underline; }
+  .link--xs { font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); }
+  .link--sm { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); }
+  .link--icon { display: inline-flex; align-items: center; gap: var(--space-1-5); }
+  .link--hover-underline:hover { text-decoration-line: underline; }
+  .link--underline,
+  .link--underline:hover { text-decoration-line: underline; }
+}

@@ -1,0 +1,50 @@
+/* Stepper: tokens stepper.*. Comparte radius y altura con Button add-to-cart. */
+@layer components {
+  .stepper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--stepper-h);
+    border: var(--stepper-border-width) solid var(--stepper-border);
+    border-radius: var(--stepper-radius);
+    background-color: var(--stepper-bg);
+    color: var(--stepper-fg);
+    font-size: var(--font-size-sm);
+    line-height: var(--font-line-height-sm);
+    font-weight: var(--stepper-font-weight);
+  }
+  .stepper--sm { --stepper-h: var(--stepper-height-sm); --stepper-btn-w: var(--stepper-hit-area-sm); }
+  .stepper--md { --stepper-h: var(--stepper-height); --stepper-btn-w: var(--stepper-hit-area); }
+  .stepper--lg { --stepper-h: var(--stepper-height-lg); --stepper-btn-w: var(--stepper-hit-area); }
+
+  .stepper__btn {
+    position: relative;
+    display: flex;
+    height: 100%;
+    width: var(--stepper-btn-w);
+    align-items: center;
+    justify-content: center;
+    color: var(--stepper-icon);
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-duration: var(--duration-fast);
+    transition-timing-function: var(--easing-standard);
+  }
+  /* El contenedor no recorta (overflow visible para el área táctil): el fondo toma el radio interior */
+  .stepper__btn:first-child { border-radius: calc(var(--stepper-radius) - var(--stepper-border-width)) 0 0 calc(var(--stepper-radius) - var(--stepper-border-width)); }
+  .stepper__btn:last-child { border-radius: 0 calc(var(--stepper-radius) - var(--stepper-border-width)) calc(var(--stepper-radius) - var(--stepper-border-width)) 0; }
+  .stepper__btn:hover { background-color: var(--stepper-bg-hover); }
+  .stepper__btn:focus-visible { outline: none; background-color: var(--stepper-bg-focus); }
+  .stepper__btn:disabled { cursor: not-allowed; color: var(--button-disabled-fg); background-color: transparent; }
+  /* Área táctil de 44px (size.control.lg) */
+  .stepper__btn::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: max(100%, var(--size-control-lg));
+    height: max(100%, var(--size-control-lg));
+    transform: translate(-50%, -50%);
+  }
+  .stepper__icon { width: var(--space-4); height: var(--space-4); } /* 16px en los tres tamaños (Figma) */
+  .stepper__value { min-width: 2ch; text-align: center; font-variant-numeric: tabular-nums; }
+}

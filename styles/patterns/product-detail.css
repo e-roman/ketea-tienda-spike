@@ -1,0 +1,36 @@
+/* Layout de la ficha de producto (Figma: Product Detail / Product / Gallery y Buy box).
+   .product-gallery → caja de la imagen; .product-info → columna con badges, título, buy box y zona.
+   La grilla de dos columnas (6fr/4fr) queda en Tailwind en la página. */
+@layer components {
+  .product-gallery {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: var(--border-width-sm) solid var(--color-border-default);
+    border-radius: var(--radius-xl);
+    background-color: var(--color-surface-default);
+  }
+  @media (min-width: 768px) { .product-gallery { aspect-ratio: auto; height: 100%; } }
+  .product-gallery__image { object-fit: contain; padding: var(--space-8); }
+
+  /* Skeleton de la ficha: mismas alturas que la página real (desktop, ficha con freezer) para que al cargar no se corra nada */
+  .pdp-skeleton__breadcrumb { height: var(--space-5); }
+  .pdp-skeleton__badges { height: calc(var(--space-5) + var(--space-0-5)); }
+  .pdp-skeleton__title { height: calc(var(--space-24) + var(--space-6)); }
+  /* Mobile: el buy box mide 370 (el stepper baja) y la descripción ocupa más líneas (164) */
+  .pdp-skeleton__buybox { height: calc(var(--space-64) + var(--space-24) + var(--space-4) + var(--space-0-5)); }
+  .pdp-skeleton__shipping { height: calc(var(--space-24) + var(--space-3) + var(--space-0-5)); }
+  .pdp-skeleton__panel { min-height: calc(var(--space-40) + var(--space-1)); }
+  @media (min-width: 768px) {
+    .pdp-skeleton__buybox { height: calc(var(--space-64) + var(--space-24) + var(--space-0-5)); }
+    .pdp-skeleton__panel { min-height: calc(var(--space-24) - var(--space-1)); }
+  }
+
+  .product-info { display: flex; flex-direction: column; gap: var(--space-5); }
+  .product-info__badges { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .product-info__title { margin-bottom: var(--space-2); font: var(--typography-heading-lg); color: var(--color-text-primary); }
+  .product-info__description { font-size: var(--font-size-sm); line-height: var(--font-line-height-md); color: var(--color-text-secondary); }
+}

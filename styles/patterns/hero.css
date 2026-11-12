@@ -1,0 +1,35 @@
+/* Hero con carrusel de fotos (Figma: Hero Carousel / Carousel image). Alturas y layout del contenido
+   quedan en Tailwind en el componente; acá van capas, degradado, tipografía y estados.
+   .hero__slide--active hace el fundido entre fotos. */
+@layer components {
+  /* Alto: 480px (space-64 + space-56 + ... ) en mobile, 600px desde md */
+  .hero, .hero-height { height: calc(var(--space-64) + var(--space-56)); }
+  @media (min-width: 768px) { .hero, .hero-height { height: calc(var(--space-64) * 2 + var(--space-20) + var(--space-8)); } }
+  .hero { position: relative; overflow: hidden; }
+  .hero__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity var(--duration-slower) var(--easing-standard);
+  }
+  .hero__slide--active { opacity: 1; }
+  .hero__image { object-fit: cover; }
+  /* Degradado para legibilidad del texto: neutral-900 a 75 / 45 / 5 %. Los alfas no tienen token todavía. */
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+      to right,
+      rgb(var(--color-neutral-900-rgb) / 0.75),
+      rgb(var(--color-neutral-900-rgb) / 0.45),
+      rgb(var(--color-neutral-900-rgb) / 0.05)
+    );
+  }
+  /* Sin token de letter-spacing: el uppercase espaciado queda como valor local */
+  .hero__eyebrow { display: inline-block; margin-bottom: var(--space-4); font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); font-weight: var(--font-weight-semibold); text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-inverse-muted); }
+  .hero__title { margin-bottom: var(--space-5); font: var(--typography-heading-xl); color: var(--color-text-inverse); }
+  .hero__text { max-width: calc(var(--space-56) * 2); margin-bottom: var(--space-8); font-size: var(--font-size-md); line-height: var(--font-line-height-lg); color: var(--color-alpha-white-90); }
+  @media (min-width: 768px) { .hero__text { font-size: var(--font-size-lg); } }
+  @media (min-width: 1024px) { .hero__title { font: var(--typography-display); } }
+  .hero__dots { position: absolute; bottom: var(--space-6); left: 50%; display: flex; transform: translateX(-50%); }
+}

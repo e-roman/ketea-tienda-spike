@@ -1,0 +1,122 @@
+From fbe31954f25d266629407fbc89342d312b7cb90f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Emiliano=20Rom=C3=A1n?= <emiliano.roman@gmail.com>
+Date: Sun, 11 Oct 2026 00:50:14 +0000
+Subject: [PATCH] fix: v2.0.1 dietary and counter badges at 12px
+ (font.size.xs), as in Figma
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Mu7nf2NpN51A9X5JtHMzhC
+---
+ CHANGELOG.md          | 5 +++++
+ dist/tokens.css       | 4 ++--
+ dist/tokens.json      | 4 ++--
+ package-lock.json     | 4 ++--
+ package.json          | 2 +-
+ tokens/component.json | 4 ++--
+ 6 files changed, 14 insertions(+), 9 deletions(-)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 041b380..6f19fc7 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -1,5 +1,10 @@
+ # Changelog
+ 
++## 2.0.1
++
++Changed
++- `badge.dietary.font-size` and `badge.counter.font-size`: `font.size.2xs` (11px) → `font.size.xs` (12px), as defined in Figma
++
+ ## 2.0.0
+ 
+ Design system rebuilt from the Figma file. Breaking for consumers: class and variable names change, rendered values don't (site migration verified pixel-identical).
+diff --git a/dist/tokens.css b/dist/tokens.css
+index f3e6f41..a5f8980 100644
+--- a/dist/tokens.css
++++ b/dist/tokens.css
+@@ -330,9 +330,9 @@
+   --badge-discount-font-size: var(--font-size-xs);
+   --badge-discount-font-weight: var(--font-weight-bold);
+   --badge-dietary-radius: var(--radius-sm);
+-  --badge-dietary-font-size: var(--font-size-2xs);
++  --badge-dietary-font-size: var(--font-size-xs);
+   --badge-counter-radius: var(--radius-full);
+-  --badge-counter-font-size: var(--font-size-2xs);
++  --badge-counter-font-size: var(--font-size-xs);
+   --card-product-radius: var(--radius-md);
+   --card-product-gap: var(--space-3);
+   --card-content-radius: var(--radius-xl);
+diff --git a/dist/tokens.json b/dist/tokens.json
+index afd2879..e869820 100644
+--- a/dist/tokens.json
++++ b/dist/tokens.json
+@@ -374,11 +374,11 @@
+   "BadgeDietaryBg": "#15803d",
+   "BadgeDietaryFg": "#ffffff",
+   "BadgeDietaryRadius": "4px",
+-  "BadgeDietaryFontSize": "11px",
++  "BadgeDietaryFontSize": "12px",
+   "BadgeCounterBg": "#e30613",
+   "BadgeCounterFg": "#ffffff",
+   "BadgeCounterRadius": "9999px",
+-  "BadgeCounterFontSize": "11px",
++  "BadgeCounterFontSize": "12px",
+   "BadgeCounterMinSize": "16px",
+   "CardProductBg": "#ffffff",
+   "CardProductBorder": "#e4e4e4",
+diff --git a/package-lock.json b/package-lock.json
+index ffbe31d..770baeb 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -1,12 +1,12 @@
+ {
+   "name": "@orali/design-tokens",
+-  "version": "2.0.0",
++  "version": "2.0.1",
+   "lockfileVersion": 3,
+   "requires": true,
+   "packages": {
+     "": {
+       "name": "@orali/design-tokens",
+-      "version": "2.0.0",
++      "version": "2.0.1",
+       "license": "MIT",
+       "devDependencies": {
+         "style-dictionary": "^4.4.0"
+diff --git a/package.json b/package.json
+index 51b818d..e8406da 100644
+--- a/package.json
++++ b/package.json
+@@ -1,6 +1,6 @@
+ {
+   "name": "@orali/design-tokens",
+-  "version": "2.0.0",
++  "version": "2.0.1",
+   "description": "Design tokens for Tienda Orali: single source of truth for color, typography, spacing, radius, motion and component decisions.",
+   "author": "Emiliano Román",
+   "license": "MIT",
+diff --git a/tokens/component.json b/tokens/component.json
+index 671f961..478c90f 100644
+--- a/tokens/component.json
++++ b/tokens/component.json
+@@ -411,7 +411,7 @@
+       },
+       "font-size": {
+         "$type": "dimension",
+-        "$value": "{font.size.2xs}"
++        "$value": "{font.size.xs}"
+       }
+     },
+     "counter": {
+@@ -429,7 +429,7 @@
+       },
+       "font-size": {
+         "$type": "dimension",
+-        "$value": "{font.size.2xs}"
++        "$value": "{font.size.xs}"
+       },
+       "min-size": {
+         "$type": "dimension",
+-- 
+2.43.0
+

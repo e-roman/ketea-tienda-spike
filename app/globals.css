@@ -1,0 +1,137 @@
+/* ============================================================
+   TIENDA ORALI
+   Los valores de diseño vienen de @orali/design-tokens
+   (importado en app/layout.tsx). No definir colores acá.
+   ============================================================ */
+@import "../styles/components/button.css";
+@import "../styles/components/input.css";
+@import "../styles/components/field.css";
+@import "../styles/components/form-parts.css";
+@import "../styles/components/stepper.css";
+@import "../styles/components/badge.css";
+@import "../styles/components/chip.css";
+@import "../styles/components/icon-button.css";
+@import "../styles/components/link.css";
+@import "../styles/components/tabs.css";
+@import "../styles/components/nav.css";
+@import "../styles/components/typography.css";
+@import "../styles/components/surfaces.css";
+@import "../styles/components/layout.css";
+@import "../styles/components/price.css";
+@import "../styles/components/toast.css";
+@import "../styles/components/icon.css";
+@import "../styles/components/logo.css";
+@import "../styles/components/progress.css";
+@import "../styles/patterns/min-order-progress.css";
+@import "../styles/patterns/cart-item.css";
+@import "../styles/components/callout.css";
+@import "../styles/patterns/header.css";
+@import "../styles/patterns/header-layout.css";
+@import "../styles/patterns/page-parts.css";
+@import "../styles/patterns/product-card.css";
+@import "../styles/patterns/buy-box.css";
+@import "../styles/patterns/product-specs.css";
+@import "../styles/patterns/order-review.css";
+@import "../styles/patterns/modal.css";
+@import "../styles/patterns/hero.css";
+@import "../styles/patterns/order-confirmation.css";
+@import "../styles/patterns/how-it-works.css";
+@import "../styles/patterns/promo-banner.css";
+@import "../styles/patterns/footer.css";
+@import "../styles/patterns/floating-bar.css";
+@import "../styles/patterns/newsletter.css";
+@import "../styles/patterns/empty-state.css";
+@import "../styles/patterns/product-detail.css";
+@import "../styles/patterns/order-summary.css";
+@import "../styles/components/option-row.css";
+@import "../styles/components/product-thumb.css";
+@import "../styles/components/step-indicator.css";
+@import "../styles/components/carousel-dots.css";
+@import "../styles/components/category-card.css";
+@import "../styles/components/accordion.css";
+@import "../styles/components/rating-scale.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--color-surface-default);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans);
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-default);
+  border-radius: 3px;
+}
+
+/* Oculta la scrollbar en carruseles horizontales (mobile) */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Focus visible general (links, botones): 2px por fuera */
+:focus-visible {
+  outline: var(--border-width-lg) solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Campos: el focus reemplaza el color del borde (border-width.focus = 1px), sin línea extra */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+  border-color: var(--color-form-border-focus);
+  /* border-width.focus (2px): el borde de 1px + 1px inset, sin mover el layout */
+  box-shadow: inset 0 0 0 calc(var(--border-width-focus) - var(--border-width-sm)) var(--color-form-border-focus);
+  background-color: var(--color-surface-default);
+}
+
+/* Transitions — motion.transition.fast */
+a, button {
+  transition-property: opacity, background-color, color, border-color;
+  transition-duration: var(--duration-fast);
+  transition-timing-function: var(--easing-standard);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Focus sobre superficies oscuras, verdes, rojas o fotos */
+.bg-accent :focus-visible,
+.bg-brand :focus-visible,
+.bg-inverse :focus-visible,
+[data-surface="photo"] :focus-visible {
+  outline-color: var(--color-focus-ring-inverse);
+}
+
+/* Button define su propio color de foco */
+[data-surface="photo"],
+[data-surface="brand"] {
+  --button-focus-ring: var(--color-focus-ring-inverse);
+}

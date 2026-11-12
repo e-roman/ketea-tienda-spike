@@ -1,0 +1,9 @@
+/* Banner de newsletter (home). La grilla de dos columnas queda en Tailwind. */
+@layer components {
+  .newsletter { padding: var(--space-8); border-radius: var(--radius-3xl); background-color: var(--color-surface-subtle); }
+  @media (min-width: 768px) { .newsletter { padding: var(--space-12); } }
+  .newsletter__eyebrow { display: block; margin-bottom: var(--space-3); font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); color: var(--color-text-accent); }
+  .newsletter__title { font-size: var(--font-size-2xl); line-height: var(--font-line-height-2xl); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+  @media (min-width: 768px) { .newsletter__title { font-size: var(--font-size-4xl); line-height: var(--font-line-height-4xl); } }
+  .newsletter__note { margin-top: var(--space-3); font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); color: var(--color-text-secondary); }
+}

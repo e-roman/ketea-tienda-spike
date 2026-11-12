@@ -1,0 +1,47 @@
+/* Chip de filtro: tokens chip.*. Siempre pill. Estado con aria-pressed. */
+@layer components {
+  .chip {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    height: var(--chip-height);
+    padding-inline: var(--chip-padding-x);
+    gap: var(--chip-gap);
+    border-radius: var(--chip-radius);
+    font-size: var(--chip-font-size);
+    font-weight: var(--chip-font-weight);
+    border: var(--chip-border-width) solid var(--chip-border);
+    background-color: var(--chip-bg);
+    color: var(--chip-fg);
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-duration: var(--duration-fast);
+    transition-timing-function: var(--easing-standard);
+  }
+  .chip:hover { background-color: var(--chip-bg-hover); }
+  .chip:focus-visible { outline: var(--chip-focus-width) solid var(--chip-focus-ring); outline-offset: var(--border-width-lg); }
+  .chip--selected { background-color: var(--chip-bg-selected); color: var(--chip-fg-selected); border-color: var(--chip-border-selected); }
+  .chip--selected:hover { background-color: var(--chip-bg-selected-hover); }
+
+  /* "Eliminar filtros": acción de texto al lado de los chips, mismo alto que el chip */
+  .chip-clear {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: var(--space-1);
+    height: var(--chip-height);
+    padding-inline: var(--space-3);
+    font-size: var(--font-size-sm);
+    line-height: var(--font-line-height-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-link);
+    text-underline-offset: var(--space-0-5);
+    transition-property: color, text-decoration-color;
+    transition-duration: var(--duration-fast);
+    transition-timing-function: var(--easing-standard);
+  }
+  .chip-clear:hover { color: var(--color-text-link-hover); text-decoration-line: underline; }
+  .chip-clear:focus-visible { outline: var(--chip-focus-width) solid var(--chip-focus-ring); outline-offset: var(--border-width-lg); }
+  .chip-clear__icon { width: 1em; height: 1em; } /* 14px: sigue al font-size */
+}

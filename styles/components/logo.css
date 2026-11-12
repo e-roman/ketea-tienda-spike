@@ -1,0 +1,10 @@
+/* Logotipo Orali (asset 207×55). Las alturas del logo son medidas de marca, no tokens de espaciado.
+   .logo--sm 40 (header mobile) · --md 55 (footer) · --lg 66 (header desktop) · --checkout 32 → 55 desde md */
+@layer components {
+  .logo { width: auto; object-fit: contain; }
+  .logo--sm { height: var(--space-10); }
+  .logo--md { height: 55px; }
+  .logo--lg { height: 66px; }
+  .logo--checkout { height: var(--space-8); }
+  @media (min-width: 768px) { .logo--checkout { height: 55px; } }
+}

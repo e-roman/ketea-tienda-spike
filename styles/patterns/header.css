@@ -1,0 +1,72 @@
+/* Header (Figma: Header / Desktop, Mobile, Mobile menu, Checkout). Layout (grid/flex/alturas por
+   breakpoint) queda en Tailwind dentro de los componentes; acá van superficies, bordes y capas.
+   Usa dropdown.* para paneles y menús. Capas con --layer-* / --z-index-*. */
+@layer components {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: var(--layer-header);
+    border-bottom: var(--border-width-sm) solid var(--color-border-default);
+    background-color: var(--color-surface-default);
+  }
+  .site-header__subnav {
+    border-top: var(--border-width-sm) solid var(--color-border-default);
+    background-color: var(--color-surface-subtle);
+  }
+  .site-header__subnav-label { padding-inline: var(--space-1) var(--space-2); flex-shrink: 0; font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+
+  .utility-bar { background-color: var(--color-surface-accent); color: var(--color-text-inverse); font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); }
+  @media (min-width: 768px) { .utility-bar { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); } }
+  .utility-bar__message { font-weight: var(--font-weight-medium); }
+
+  /* Dropdown (categorías, resultados de búsqueda) */
+  .dropdown { position: absolute; top: 100%; left: 0; z-index: var(--layer-header); width: var(--space-64); padding-top: var(--space-1); }
+  .dropdown__panel {
+    padding: var(--space-2);
+    border: var(--border-width-sm) solid var(--color-border-default);
+    border-radius: var(--radius-lg);
+    background-color: var(--dropdown-bg);
+    box-shadow: var(--elevation-dropdown);
+  }
+  .dropdown__panel--results { position: absolute; right: 0; left: 0; margin-top: var(--space-2); z-index: var(--layer-header); max-height: calc(var(--space-48) * 2); overflow-y: auto; }
+  .dropdown__footer { margin-top: var(--space-2); padding-top: var(--space-2); border-top: var(--border-width-sm) solid var(--color-border-default); }
+  .dropdown__panel--results .dropdown__footer { margin-top: var(--space-1); padding-top: var(--space-1); }
+
+  /* Resultados de búsqueda */
+  .search-empty { padding: var(--space-4) var(--space-3); text-align: center; font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-secondary); }
+  .search-empty--page { padding-block: var(--space-10); padding-inline: 0; }
+  .search-result__name { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+  .search-result { gap: var(--space-3); padding-block: var(--space-2); }
+  .search-result__body { flex: 1 1 0%; min-width: 0; }
+  .search-row { display: flex; align-items: center; gap: var(--space-3); padding-block: var(--space-3); }
+  .search-row__link { flex: 1 1 0%; min-width: 0; }
+  .search-row__add { width: auto; flex-shrink: 0; padding-inline: var(--space-4); }
+  .search-panel__inner { padding: var(--space-4); }
+  .search-panel__see-all { margin-top: var(--space-4); }
+  .search-result__meta { display: block; margin-bottom: var(--space-1); font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); color: var(--color-text-secondary); }
+  .search-result__meta--loose { margin-bottom: var(--space-1-5); }
+  .search-result__price { display: block; font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); font-weight: var(--font-weight-semibold); color: var(--color-text-secondary); }
+  .dropdown__panel--results .search-result__name { font-size: var(--font-size-md); line-height: var(--font-line-height-md); }
+  .search-panel {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    /* Alto del header mobile: fila de íconos 56 + búsqueda 44 + padding 12 + borde 1 */
+    top: calc(var(--space-14) + var(--size-control-lg) + var(--space-3) + var(--border-width-sm));
+    z-index: var(--layer-sticky);
+    overflow-y: auto;
+    background-color: var(--color-surface-default);
+  }
+  .search-panel__title { margin-bottom: var(--space-3); font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); font-weight: var(--font-weight-semibold); text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-secondary); }
+
+  /* Menú mobile */
+  .mobile-menu { position: fixed; inset: 0; z-index: var(--layer-mobile-menu); display: flex; flex-direction: column; background-color: var(--color-surface-default); }
+  .mobile-menu__bar { display: flex; flex-shrink: 0; align-items: center; height: var(--space-14); padding-inline: var(--space-4); border-bottom: var(--border-width-sm) solid var(--color-border-default); }
+  .mobile-menu__back { min-height: var(--size-control-lg); }
+  .mobile-menu__body { flex: 1 1 0%; overflow-y: auto; padding: var(--space-2) var(--space-4) var(--space-4); }
+  .menu-section { padding: var(--space-5) var(--space-1) var(--space-1); font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); color: var(--color-text-secondary); }
+
+  /* Barra de progreso de navegación (arriba de todo). El ancho y la transición los fija el componente. */
+  .route-progress { position: fixed; top: 0; right: 0; left: 0; z-index: var(--z-index-progress); height: var(--border-width-lg); pointer-events: none; }
+  .route-progress__bar { height: 100%; background-color: var(--color-surface-brand); }
+}

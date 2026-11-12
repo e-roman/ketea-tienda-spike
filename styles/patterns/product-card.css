@@ -1,0 +1,54 @@
+/* Card de producto (Figma: Product Card / Card Product): imagen con badges, nombre, pack, precio y
+   acción (Agregar o Stepper). Layout de la grilla queda en Tailwind en quien la usa. */
+@layer components {
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border: var(--border-width-sm) solid var(--color-border-default);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface-default);
+    transition: box-shadow var(--duration-base) var(--easing-standard);
+  }
+  .product-card:hover { box-shadow: var(--elevation-card-hover); }
+  .product-card__media { position: relative; display: block; aspect-ratio: 5 / 4; overflow: hidden; background-color: var(--color-surface-default); }
+  .product-card__image {
+    /* cover recorta el borde blanco de las fotos; el aire con el texto lo da el padding de .product-card__info */
+    object-fit: cover;
+    /* Las fotos traen margen blanco abajo: se alinean arriba y el recorte cae sobre ese margen */
+    object-position: center top;
+    transition: transform var(--duration-base) var(--easing-standard);
+  }
+  .product-card:hover .product-card__image { transform: scale(1.05); }
+  .product-card__badge { position: absolute; top: var(--space-2); left: var(--space-2); }
+  .product-card__seal > img { object-fit: contain; }
+  .product-card__seal { position: absolute; top: var(--space-2); right: var(--space-2); width: var(--space-12); height: var(--space-12); }
+  .product-card__info { display: flex; flex: 1 1 0%; flex-direction: column; padding: var(--space-4); }
+  .product-card__title {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    margin-bottom: var(--space-1);
+    font-size: var(--font-size-md);
+    line-height: var(--font-line-height-md);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    transition: color var(--duration-fast) var(--easing-standard);
+  }
+  a:hover > .product-card__title { color: var(--color-text-brand); }
+  .product-card__meta { margin-bottom: var(--space-3); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-secondary); }
+  .product-card__actions { display: flex; flex-direction: column; gap: var(--space-3); margin-top: auto; }
+
+  .product-card--skeleton { overflow: hidden; }
+  .product-card--skeleton .skeleton-media { aspect-ratio: 5 / 4; border-radius: 0; }
+  .skeleton__spaced { margin-top: var(--space-4); }
+  /* Alturas de la card real: título 48 (2 líneas), pack 20, precio 52, botón 40; padding 16 en los cuatro lados */
+  .product-card--skeleton .skeleton-body { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-4); }
+  /* Título de dos líneas (48): las filas toman la altura de su card más alta, y casi siempre hay una con título largo */
+  .skeleton-body__title { display: flex; flex-direction: column; gap: var(--space-2); }
+  .skeleton-body__meta { margin-top: calc(-1 * var(--space-2)); }
+  /* Precio (32) + por unidad (20) = 52: dos bloques separados, como el texto real */
+  .skeleton-body__price { display: flex; flex-direction: column; justify-content: space-between; height: calc(var(--space-12) + var(--space-1)); }
+}

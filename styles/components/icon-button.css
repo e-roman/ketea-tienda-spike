@@ -1,0 +1,58 @@
+/* Icon button: botón solo con ícono (Figma "Icon button": sm 36 · md 40 · lg 44 · xl 48).
+   Siempre redondo y con área táctil de 44px. El tamaño del ícono lo da el hijo.
+   Sin tokens de componente todavía: usa semánticos (pendiente icon-button.* en el repo de tokens). */
+@layer components {
+  .icon-btn {
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    background-color: var(--icon-btn-bg, transparent);
+    color: var(--icon-btn-fg);
+    transition-property: color, background-color, border-color;
+    transition-duration: var(--duration-fast);
+    transition-timing-function: var(--easing-standard);
+  }
+  .icon-btn:hover { background-color: var(--icon-btn-bg-h, var(--icon-btn-bg, transparent)); color: var(--icon-btn-fg-h, var(--icon-btn-fg)); }
+  .icon-btn:focus-visible { outline: var(--button-focus-width) solid var(--button-focus-ring); outline-offset: var(--button-focus-offset); }
+  .icon-btn:disabled { cursor: not-allowed; color: var(--button-disabled-fg); background-color: transparent; }
+  .icon-btn::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: max(100%, var(--size-control-lg));
+    height: max(100%, var(--size-control-lg));
+    transform: translate(-50%, -50%);
+  }
+
+  /* Tamaño. Sin clase de tamaño = se ajusta al ícono (variante plain) */
+  .icon-btn--sm { width: var(--size-control-sm); height: var(--size-control-sm); }
+  .icon-btn--md { width: var(--size-control-md); height: var(--size-control-md); }
+  .icon-btn--lg { width: var(--size-control-lg); height: var(--size-control-lg); }
+  .icon-btn--xl { width: var(--size-control-xl); height: var(--size-control-xl); }
+
+  /* Ícono + texto corto: mismo alto que el tamaño, ancho según el texto */
+  .icon-btn--label {
+    width: auto;
+    gap: var(--space-1-5);
+    padding-inline: var(--space-3);
+    font-size: var(--font-size-sm);
+    line-height: var(--font-line-height-sm);
+    font-weight: var(--font-weight-medium);
+  }
+
+  /* Variante */
+  .icon-btn--ghost   { --icon-btn-fg: var(--color-text-primary); --icon-btn-bg-h: var(--color-surface-muted); }
+  .icon-btn--subtle  { --icon-btn-fg: var(--color-text-primary); --icon-btn-bg: var(--color-surface-muted); --icon-btn-bg-h: var(--color-surface-subtle); }
+  .icon-btn--primary { --icon-btn-fg: var(--color-action-primary-fg); --icon-btn-bg: var(--color-action-primary-bg); --icon-btn-bg-h: var(--color-action-primary-bg-hover); }
+  .icon-btn--success { --icon-btn-fg: var(--color-feedback-success-text); --icon-btn-bg: var(--color-feedback-success-bg); }
+  /* Acción secundaria dentro de una card (eliminar, editar): sin fondo */
+  .icon-btn--plain   { --icon-btn-fg: var(--color-text-secondary); --icon-btn-fg-h: var(--color-text-primary); }
+  .icon-btn--flush-start { margin-left: calc(-1 * var(--space-2)); }
+  .icon-btn--flush-end { margin-right: calc(-1 * var(--space-2)); }
+  /* Contador sobre el botón */
+  .icon-btn__badge { position: absolute; top: var(--space-0-5); right: var(--space-0-5); }
+}

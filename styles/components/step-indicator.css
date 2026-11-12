@@ -1,0 +1,44 @@
+/* Indicador de pasos del checkout. El tamaño del marcador y la visibilidad de la etiqueta
+   por breakpoint quedan en Tailwind (layout); acá van estados y color.
+   Alto táctil 44px en el botón. */
+@layer components {
+  .step-indicator__button {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-width: 0;
+    min-height: var(--size-control-lg);
+    border-radius: var(--radius-md);
+  }
+  .step-indicator__button:enabled { cursor: pointer; }
+  .step-indicator__button:disabled { cursor: default; }
+  .step-indicator__button:focus-visible { outline: var(--border-width-focus) solid var(--color-border-focus); outline-offset: var(--border-width-lg); }
+  .step-indicator__marker {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: var(--space-8);
+    height: var(--space-8);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    line-height: var(--font-line-height-xs);
+    font-weight: var(--font-weight-semibold);
+    background-color: var(--color-surface-muted);
+    color: var(--color-text-secondary);
+    transition-property: color, background-color, box-shadow;
+    transition-duration: var(--duration-fast);
+    transition-timing-function: var(--easing-standard);
+  }
+  .step-indicator__marker--past,
+  .step-indicator__marker--current { background-color: var(--color-surface-brand); color: var(--color-text-on-brand); }
+  .step-indicator__marker--current { box-shadow: 0 0 0 calc(var(--border-width-lg) * 2) var(--color-border-brand-subtle); }
+  @media (min-width: 640px) {
+    .step-indicator__marker { width: var(--size-control-sm); height: var(--size-control-sm); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); }
+  }
+  .step-indicator__label { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); font-weight: var(--font-weight-medium); white-space: nowrap; color: var(--color-text-secondary); }
+  .step-indicator__label--current { color: var(--color-text-primary); }
+  .step-indicator__connector { flex: 1 1 0%; height: var(--border-width-lg); border-radius: var(--radius-full); background-color: var(--color-surface-muted); }
+  .step-indicator__connector--past { background-color: var(--color-surface-brand); }
+}

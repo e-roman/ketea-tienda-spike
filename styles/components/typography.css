@@ -1,0 +1,54 @@
+/* Tipografía: <Text> y <Heading>. Tamaño → font-size + line-height del mismo escalón de tokens.
+   .text--{size}    xs sm md lg xl 2xl 3xl 4xl
+   .text--{tone}    primary (por defecto) secondary tertiary brand accent success error inverse inverse-muted
+   .text--{weight}  regular (por defecto) medium semibold bold
+   .text--flush     interlineado 1 (numerales grandes)
+   .text--relaxed   interlineado holgado para lectura (sm→24px, md→28px)
+   .heading--{p}    presets de títulos con tokens typography.*: display, xl, lg, md, sm
+   .heading--section  título de sección: 2xl en mobile, 3xl desde md
+   .heading--page     título de página: heading lg en mobile, xl desde md */
+@layer components {
+  .text { color: var(--color-text-primary); }
+  .text--xs { font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); }
+  .text--sm { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); }
+  .text--md { font-size: var(--font-size-md); line-height: var(--font-line-height-md); }
+  .text--lg { font-size: var(--font-size-lg); line-height: var(--font-line-height-lg); }
+  .text--xl { font-size: var(--font-size-xl); line-height: var(--font-line-height-xl); }
+  .text--2xl { font-size: var(--font-size-2xl); line-height: var(--font-line-height-2xl); }
+  .text--3xl { font-size: var(--font-size-3xl); line-height: var(--font-line-height-3xl); }
+  .text--4xl { font-size: var(--font-size-4xl); line-height: var(--font-line-height-4xl); }
+
+  .text--primary { color: var(--color-text-primary); }
+  .text--secondary { color: var(--color-text-secondary); }
+  .text--tertiary { color: var(--color-text-tertiary); }
+  .text--brand { color: var(--color-text-brand); }
+  .text--accent { color: var(--color-text-accent); }
+  .text--success { color: var(--color-feedback-success-text); }
+  .text--error { color: var(--color-feedback-error-text); }
+  .text--shipping-free { color: var(--color-commerce-shipping-free-fg); }
+  .text--inverse { color: var(--color-text-inverse); }
+  .text--inverse-muted { color: var(--color-text-inverse-muted); }
+
+  .text--medium { font-weight: var(--font-weight-medium); }
+  .text--semibold { font-weight: var(--font-weight-semibold); }
+  .text--bold { font-weight: var(--font-weight-bold); }
+  .text--flush { line-height: 1; }
+  /* Interlineado holgado para lectura: sube un escalón de line-height */
+  .text--sm.text--relaxed { line-height: var(--font-line-height-md); }
+  .text--md.text--relaxed { line-height: var(--font-line-height-lg); }
+  /* Sin token de letter-spacing: el uppercase espaciado queda como valor local */
+  .text--eyebrow { text-transform: uppercase; letter-spacing: 0.1em; font-weight: var(--font-weight-semibold); }
+
+  .heading { color: var(--color-text-primary); }
+  .heading--display { font: var(--typography-display); }
+  .heading--xl { font: var(--typography-heading-xl); }
+  .heading--lg { font: var(--typography-heading-lg); }
+  .heading--md { font: var(--typography-heading-md); }
+  .heading--sm { font: var(--typography-heading-sm); }
+  .heading--page { font: var(--typography-heading-lg); }
+  .heading--section { font-size: var(--font-size-2xl); line-height: var(--font-line-height-2xl); }
+  @media (min-width: 768px) {
+    .heading--section { font-size: var(--font-size-3xl); line-height: var(--font-line-height-3xl); }
+    .heading--page { font: var(--typography-heading-xl); }
+  }
+}

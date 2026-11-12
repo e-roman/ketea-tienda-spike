@@ -1,0 +1,108 @@
+/* Superficies y piezas base.
+   .card            → tarjeta con borde y radio md; --subtle / --brand / --muted cambian el fondo,
+                      --xl y --lg el radio; --pad-sm/md/lg el relleno (16/20/24px); --shadow la eleva
+   .icon-badge      → círculo con ícono; tamaños --sm 32 / --md 40 / --lg 56 / --xl 64 / --xxl 80;
+                      tonos --subtle / --brand / --brand-subtle / --muted / --soft-brand / --success
+   .skeleton        → bloque de carga con pulso
+   .spinner         → gira cualquier ícono (Loader2)
+   .page / .page--subtle → fondo de página */
+@layer components {
+  .card {
+    border: var(--border-width-sm) solid var(--color-border-default);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface-default);
+  }
+  .card--subtle { background-color: var(--color-surface-subtle); }
+  .card--muted { background-color: var(--color-surface-muted); }
+  .card--brand { border-color: var(--color-border-brand-subtle); background-color: var(--color-surface-brand-subtle); box-shadow: var(--elevation-subtle); }
+  .card--borderless { border-color: transparent; }
+  .card--lg { border-radius: var(--radius-lg); }
+  .card--xl { border-radius: var(--radius-xl); }
+  .card--pad-sm { padding: var(--space-4); }
+  .card--pad-md { padding: var(--space-5); }
+  .card--pad-lg { padding: var(--space-6); }
+  .card--interactive { transition: background-color var(--duration-fast) var(--easing-standard); }
+  .card--interactive:hover { background-color: var(--color-surface-muted); }
+  .card--panel { padding: var(--space-6); }
+  @media (min-width: 1024px) { .card--panel { padding: var(--space-8); } }
+  /* Secciones dentro de una tarjeta (encabezado, cuerpo, pie) separadas por línea */
+  .card-section { padding: var(--space-4) var(--space-6); }
+  .card-section--body { padding-block: var(--space-5); }
+  .card > .card-section + .card-section { border-top: var(--border-width-sm) solid var(--color-border-default); }
+  .card--shadow { box-shadow: var(--elevation-subtle); }
+
+  .icon-badge {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    border: var(--border-width-sm) solid var(--color-border-default);
+    background-color: var(--color-surface-default);
+    color: var(--color-text-primary);
+  }
+  .icon-badge--sm { width: var(--space-8); height: var(--space-8); }
+  .icon-badge--md { width: var(--space-10); height: var(--space-10); }
+  .icon-badge--lg { width: var(--space-14); height: var(--space-14); }
+  .icon-badge--xl { width: var(--space-16); height: var(--space-16); }
+  .icon-badge--xxl { width: var(--space-20); height: var(--space-20); }
+  .icon-badge--tile { width: var(--space-12); height: var(--space-12); border-radius: var(--radius-xl); }
+  .icon-badge--control { width: var(--size-control-lg); height: var(--size-control-lg); }
+  .icon-badge--subtle { background-color: var(--color-surface-subtle); }
+  .icon-badge--brand { border-color: transparent; background-color: var(--color-surface-brand); color: var(--color-text-on-brand); box-shadow: var(--elevation-subtle); }
+  .icon-badge--brand-subtle { border-color: var(--color-border-brand-subtle); background-color: var(--color-surface-brand-subtle); color: var(--color-icon-subtle); }
+  .icon-badge--square { border-radius: var(--radius-md); }
+  .icon-badge--plain { border-color: transparent; }
+  .icon-badge--muted { border-color: transparent; background-color: var(--color-surface-muted); color: var(--color-icon-subtle); }
+  .icon-badge--soft-brand { border-color: transparent; background-color: var(--color-surface-brand-subtle); color: var(--color-icon-brand); }
+  /* Sobre fotos: vidrio claro con borde blanco. El desenfoque de 4px no tiene token. */
+  .icon-badge--glass { border-color: var(--color-border-inverse); background-color: var(--color-alpha-white-15); color: var(--color-text-inverse); backdrop-filter: blur(4px); }
+  .icon-badge--rounded { border-radius: var(--radius-lg); }
+  .icon-badge--success { border-color: transparent; background-color: var(--color-feedback-success-solid); color: var(--color-text-inverse); }
+
+  .skeleton { border-radius: var(--radius-md); background-color: var(--color-surface-muted); animation: skeleton-pulse 2s var(--easing-standard) infinite; }
+  .skeleton--sm { border-radius: var(--radius-sm); }
+  .skeleton--lg { border-radius: var(--radius-lg); }
+  .skeleton--xl { border-radius: var(--radius-xl); }
+  .skeleton--pill { border-radius: var(--radius-full); }
+  .skeleton--soft { background-color: var(--color-surface-subtle); }
+  @keyframes skeleton-pulse { 50% { opacity: 0.5; } }
+
+  .spinner { animation: spinner-rotate 1s linear infinite; }
+  @keyframes spinner-rotate { to { transform: rotate(360deg); } }
+
+  /* Lista con divisores entre hijos */
+  .divided > * + * { border-top: var(--border-width-sm) solid var(--color-border-default); }
+
+  .page { min-height: 100vh; }
+  .page--subtle { background-color: var(--color-surface-subtle); }
+  /* Tamaños de skeleton: alto (h) y ancho (w) por token */
+  .skeleton--h-1 { height: var(--space-1); }
+  .skeleton--h-3 { height: var(--space-3); }
+  .skeleton--h-4 { height: var(--space-4); }
+  .skeleton--h-5 { height: var(--space-5); }
+  .skeleton--h-6 { height: var(--space-6); }
+  .skeleton--h-7 { height: var(--space-7); }
+  .skeleton--h-8 { height: var(--space-8); }
+  .skeleton--h-10 { height: var(--space-10); }
+  .skeleton--h-11 { height: var(--size-control-lg); }
+  .skeleton--h-20 { height: var(--space-20); }
+  .skeleton--h-24 { height: var(--space-24); }
+  .skeleton--h-40 { height: var(--space-40); }
+  .skeleton--h-64 { height: var(--space-64); }
+  .skeleton--w-16 { width: var(--space-16); }
+  .skeleton--w-20 { width: var(--space-20); }
+  .skeleton--w-24 { width: var(--space-24); }
+  .skeleton--w-32 { width: var(--space-32); }
+  .skeleton--w-40 { width: var(--space-40); }
+  .skeleton--w-48 { width: var(--space-48); }
+  .skeleton--w-56 { width: var(--space-56); }
+  .skeleton--w-64 { width: var(--space-64); }
+  .skeleton--w-1-3 { width: 33.333%; }
+  .skeleton--w-1-2 { width: 50%; }
+  .skeleton--w-3-4 { width: 75%; }
+  .skeleton--w-full { width: 100%; }
+  .skeleton--w-80 { width: calc(var(--space-64) + var(--space-16)); }
+  .skeleton--gallery { aspect-ratio: 1 / 1; }
+  @media (min-width: 768px) { .skeleton--gallery { aspect-ratio: auto; height: 100%; } }
+}

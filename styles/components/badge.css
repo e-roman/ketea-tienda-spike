@@ -1,0 +1,44 @@
+/* Badge: tokens badge.discount.*, badge.dietary.*, badge.counter.* */
+@layer components {
+  .badge { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-1); }
+  .badge--discount {
+    border: var(--border-width-sm) solid var(--badge-discount-border);
+    background-color: var(--badge-discount-bg);
+    color: var(--badge-discount-fg);
+    border-radius: var(--badge-discount-radius);
+    padding: var(--badge-discount-padding-y) var(--badge-discount-padding-x);
+    font-size: var(--badge-discount-font-size);
+    font-weight: var(--badge-discount-font-weight);
+    line-height: 1;
+  }
+  .badge--dietary {
+    background-color: var(--badge-dietary-bg);
+    color: var(--badge-dietary-fg);
+    border-radius: var(--badge-dietary-radius);
+    padding: var(--space-0-5) var(--space-2);
+    font-size: var(--badge-dietary-font-size);
+    font-weight: var(--font-weight-medium);
+  }
+  /* Contador de packs en títulos (carrito, drawer) */
+  .badge--outline {
+    border: var(--border-width-sm) solid var(--color-border-brand);
+    background-color: var(--color-surface-default);
+    color: var(--color-text-brand);
+    border-radius: var(--radius-full);
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--font-size-xs);
+    line-height: var(--font-line-height-xs);
+    font-weight: var(--font-weight-medium);
+  }
+  .badge--counter {
+    background-color: var(--badge-counter-bg);
+    color: var(--badge-counter-fg);
+    border-radius: var(--badge-counter-radius);
+    min-width: var(--badge-counter-min-size);
+    height: var(--badge-counter-min-size);
+    padding-inline: var(--space-1);
+    font-size: var(--badge-counter-font-size);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+  }
+}

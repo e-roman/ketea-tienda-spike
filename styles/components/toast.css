@@ -1,0 +1,50 @@
+/* Toast (sonner en modo unstyled). Estructura: [ícono] [texto] [X]. Tokens semánticos.
+   .toast__icon--success verde · --error rojo (errores y «eliminado») · --info · --warning */
+@layer components {
+  /* Ícono y X alineados arriba: con dos líneas de texto quedan a la altura de la primera */
+  .toast {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    width: var(--width);
+    padding: var(--space-3) var(--space-4);
+    border: var(--border-width-sm) solid var(--color-border-default);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-surface-default);
+    box-shadow: var(--elevation-dropdown);
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-sm);
+    line-height: var(--font-line-height-sm);
+    color: var(--color-text-primary);
+  }
+  .toast__icon { display: flex; flex-shrink: 0; align-items: flex-start; order: 1; }
+  .toast__content { flex: 1 1 0%; min-width: 0; order: 2; }
+  .toast__title { font-weight: var(--font-weight-medium); }
+  .toast__description { color: var(--color-text-secondary); }
+  .toast__close {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    order: 3;
+    margin-block: calc(-1 * var(--space-0-5));
+    width: var(--space-6);
+    height: var(--space-6);
+    border: 0;
+    border-radius: var(--radius-full);
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition-property: color, background-color;
+    transition-duration: var(--duration-fast);
+    transition-timing-function: var(--easing-standard);
+  }
+  .toast__close:hover { background-color: var(--color-surface-subtle); color: var(--color-text-primary); }
+  .toast__close:focus-visible { outline: var(--border-width-focus) solid var(--color-border-focus); outline-offset: var(--border-width-lg); }
+  .toast__close svg { width: var(--space-4); height: var(--space-4); }
+
+  .toast__icon--success { color: var(--color-feedback-success-solid); }
+  .toast__icon--error { color: var(--color-feedback-error-solid); }
+  .toast__icon--info { color: var(--color-feedback-info-solid); }
+  .toast__icon--warning { color: var(--color-feedback-warning-solid); }
+}

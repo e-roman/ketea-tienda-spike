@@ -1,0 +1,11 @@
+/* Precio del pack: anterior tachado, actual (sm/md/lg), descuento y precio por unidad.
+   Tokens color.commerce.price.*. */
+@layer components {
+  .price__previous { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-commerce-price-previous); text-decoration-line: line-through; }
+  .price__row { display: flex; align-items: center; gap: var(--space-2); }
+  .price__current { font-weight: var(--font-weight-semibold); color: var(--color-commerce-price-current); }
+  .price__current--sm { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); }
+  .price__current--md { font-size: var(--font-size-xl); line-height: var(--font-line-height-xl); }
+  .price__current--lg { font-size: var(--font-size-3xl); line-height: var(--font-line-height-3xl); }
+  .price__unit { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-commerce-price-unit); }
+}

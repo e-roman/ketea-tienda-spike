@@ -1,0 +1,24 @@
+/* Field: label + control + hint/error. Label = typography.label + color.form.label (Figma "Input field"). */
+@layer components {
+  .field { display: block; }
+  .field__label {
+    display: block;
+    margin-bottom: var(--space-1);
+    font-size: var(--font-size-sm);
+    line-height: var(--font-line-height-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-form-label);
+  }
+  /* "(opcional)", "(si no sos vos)": mismo peso que el label */
+  .field__note { color: var(--color-form-helper); }
+  .field__hint,
+  .field__error {
+    display: block;
+    margin-top: var(--space-1);
+    font-size: var(--font-size-xs);
+    line-height: var(--font-line-height-xs);
+    font-weight: var(--font-weight-regular);
+  }
+  .field__hint { color: var(--color-form-helper); }
+  .field__error { color: var(--color-feedback-error-text); }
+}

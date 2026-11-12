@@ -1,0 +1,26 @@
+/* Tabs: lista con borde inferior; la pestaña activa lleva subrayado de marca.
+   Usa tokens semánticos (no hay tokens tabs.* todavía). Alto táctil 44px. */
+@layer components {
+  .tabs {
+    display: flex;
+    gap: var(--space-8);
+    border-bottom: var(--border-width-sm) solid var(--color-border-default);
+  }
+  .tabs__tab {
+    min-height: var(--size-control-lg);
+    padding-inline: var(--space-1);
+    margin-bottom: calc(-1 * var(--border-width-sm));
+    border-bottom: var(--border-width-md) solid transparent;
+    font-size: var(--font-size-sm);
+    line-height: var(--font-line-height-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    transition-property: color, border-color;
+    transition-duration: var(--duration-fast);
+    transition-timing-function: var(--easing-standard);
+  }
+  .tabs__tab:hover { color: var(--color-text-primary); }
+  .tabs__tab:focus-visible { outline: var(--border-width-focus) solid var(--color-border-focus); outline-offset: calc(-1 * var(--border-width-focus)); }
+  .tabs__tab--active,
+  .tabs__tab--active:hover { color: var(--color-text-primary); border-bottom-color: var(--color-border-brand); }
+}

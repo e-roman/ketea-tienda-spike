@@ -1,0 +1,51 @@
+/* Acordeón: lo usan las FAQ y el menú mobile. El estado vive en aria-expanded
+   del trigger; el chevron gira solo por CSS. Tokens semánticos (no hay accordion.* todavía).
+   .accordion            → lista con divisores (opcional; el menú mobile trae su propio divide-y)
+   .accordion__trigger   → botón de ancho completo, alto táctil 44px
+   .accordion__trigger--compact → variante de menú (menos padding, texto sm)
+   .accordion__panel     → contenido; --nested lo sangra bajo el ícono de la fila */
+@layer components {
+  .accordion {
+    border-block: var(--border-width-sm) solid var(--color-border-default);
+  }
+  .accordion__item + .accordion__item {
+    border-top: var(--border-width-sm) solid var(--color-border-default);
+  }
+  .accordion__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    width: 100%;
+    min-height: var(--size-control-lg);
+    padding-block: var(--space-5);
+    text-align: left;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+  }
+  .accordion__trigger:focus-visible { outline: var(--border-width-focus) solid var(--color-border-focus); outline-offset: calc(-1 * var(--border-width-focus)); }
+  .accordion__trigger--compact { padding-block: var(--space-4); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); }
+  .accordion__chevron {
+    flex-shrink: 0;
+    width: var(--space-4);
+    height: var(--space-4);
+    color: var(--color-text-secondary);
+    transition-property: transform;
+    transition-duration: var(--duration-fast);
+    transition-timing-function: var(--easing-standard);
+  }
+  .accordion__trigger[aria-expanded="true"] > .accordion__chevron { transform: rotate(180deg); }
+  .accordion__panel {
+    padding-bottom: var(--space-5);
+    padding-right: var(--space-8);
+    font-size: var(--font-size-sm);
+    line-height: var(--font-line-height-md);
+    color: var(--color-text-secondary);
+  }
+  .accordion__panel--list { display: flex; flex-direction: column; gap: var(--space-1); }
+  .accordion__panel--nested {
+    padding-bottom: var(--space-3);
+    padding-left: calc(var(--space-8) + var(--space-3));
+    padding-right: 0;
+  }
+}

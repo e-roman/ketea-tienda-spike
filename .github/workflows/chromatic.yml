@@ -1,0 +1,25 @@
+name: Chromatic
+
+# Publica el Storybook en Chromatic en cada push (el estado se ve también en el PR).
+# Solo `push`: con `pull_request` además se duplicaban los builds y las capturas.
+# Requiere el secret CHROMATIC_PROJECT_TOKEN (Settings → Secrets and variables → Actions).
+on:
+  push:
+
+jobs:
+  chromatic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # Chromatic necesita el historial completo para comparar builds
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          onlyChanged: true # TurboSnap: solo recaptura las stories afectadas por el cambio
+          exitOnceUploaded: true # no falla el CI por cambios visuales; se revisan en Chromatic

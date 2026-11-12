@@ -1,0 +1,27 @@
+/* Pantalla de pedido confirmado: encabezado, resumen, encuesta NPS, recomendados y accesos.
+   El ancho (max-w-*, mx-auto, px-4) y las grillas quedan en Tailwind en el componente. */
+@layer components {
+  .confirmation__main { padding-top: var(--space-12); padding-bottom: var(--space-8); }
+  .confirmation__header { margin-bottom: var(--space-10); text-align: center; }
+  .confirmation__icon { margin: 0 auto var(--space-5); }
+  .confirmation__title { margin-bottom: var(--space-2); }
+  .confirmation__extra { margin-top: var(--space-1); }
+
+  .confirmation__summary { margin-bottom: var(--space-6); overflow: hidden; }
+  .confirmation__lines { display: flex; flex-direction: column; gap: var(--space-3); }
+  .confirmation__line { display: flex; justify-content: space-between; gap: var(--space-2); }
+  .confirmation__line-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .confirmation__line-price { flex-shrink: 0; }
+  .confirmation__totals { display: flex; flex-direction: column; gap: var(--space-2); }
+  .confirmation__total-row { display: flex; justify-content: space-between; }
+
+  .confirmation__survey { margin-bottom: var(--space-8); }
+  .confirmation__question { margin-bottom: var(--space-4); }
+  .confirmation__scale { margin-bottom: var(--space-2); }
+  .confirmation__labels { display: flex; justify-content: space-between; margin-bottom: var(--space-4); }
+  .confirmation__thanks { padding-block: var(--space-2); text-align: center; }
+
+  .confirmation__more { padding-bottom: var(--space-8); }
+  .confirmation__more-title { margin-bottom: var(--space-4); }
+  .confirmation__actions { padding-bottom: var(--space-12); }
+}

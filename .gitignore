@@ -1,0 +1,27 @@
+# Next.js
+/.next/
+/out/
+
+# Dependencies
+/node_modules/
+
+# Build
+*.tsbuildinfo
+next-env.d.ts
+
+# Env
+.env
+.env*.local
+
+# Misc
+.DS_Store
+*.log
+npm-debug.log*
+
+# Archivos locales / auditoría
+.claude/
+docs/
+outputs/
+
+*storybook.log
+storybook-static

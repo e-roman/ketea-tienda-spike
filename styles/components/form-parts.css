@@ -1,0 +1,16 @@
+/* Piezas de formulario: encabezado, separador con texto, nota al pie.
+   .form-header → título (xl) + bajada opcional; deja 24px debajo
+   .form-divider → línea con texto centrado («o ingresá con tu email»)
+   .form-footnote → texto centrado pequeño bajo el formulario («¿Ya tenés una cuenta?») */
+@layer components {
+  .form-header { margin-bottom: var(--space-6); }
+  .form-header__title { font-size: var(--font-size-xl); line-height: var(--font-line-height-xl); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+  .form-header__subtitle { margin-top: var(--space-1); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); font-weight: var(--font-weight-medium); color: var(--color-text-secondary); }
+
+  .form-divider { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-6); font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); font-weight: var(--font-weight-medium); color: var(--color-text-secondary); }
+  .form-divider::before,
+  .form-divider::after { content: ""; flex: 1 1 0%; border-top: var(--border-width-sm) solid var(--color-border-default); }
+
+  .form-block { margin-bottom: var(--space-6); }
+  .form-footnote { margin-top: var(--space-6); text-align: center; font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-secondary); }
+}

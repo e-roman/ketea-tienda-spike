@@ -1,0 +1,13 @@
+/* Estado vacío (carrito, favoritos, cuenta, 404, sin resultados): ícono, título, texto y acción.
+   .empty-state        → centrado; el espacio exterior (py, max-w) lo pone quien lo usa con Tailwind
+   .empty-state--page  → título de página (heading lg) y más aire
+   .empty-state--panel → panel o drawer: título md */
+@layer components {
+  .empty-state { display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .empty-state > .icon-badge { margin-bottom: var(--space-4); }
+  .empty-state__title { margin-bottom: var(--space-1); font: var(--typography-heading-md); color: var(--color-text-primary); }
+  .empty-state__text { margin-bottom: var(--space-6); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-secondary); }
+  .empty-state--page > .icon-badge { margin-bottom: var(--space-5); }
+  .empty-state--page .empty-state__title { margin-bottom: var(--space-2); font: var(--typography-heading-lg); }
+  .empty-state--page .empty-state__text { margin-bottom: var(--space-8); }
+}

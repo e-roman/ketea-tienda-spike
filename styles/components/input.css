@@ -1,0 +1,44 @@
+/* Input / Select: tokens input.form.* (formularios) e input.pill.* (búsqueda, newsletter).
+   Foco: el borde pasa a color.form.border-focus; el grosor de 2px lo suma el box-shadow de globals.css. */
+@layer components {
+  .input {
+    width: 100%;
+    height: var(--input-h);
+    padding-inline: var(--input-px);
+    border: var(--border-width-sm) solid var(--input-bd);
+    border-radius: var(--input-r);
+    color: var(--input-fg);
+    font-size: var(--font-size-sm);
+    line-height: var(--font-line-height-sm);
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-duration: var(--duration-fast);
+    transition-timing-function: var(--easing-standard);
+  }
+  .input::placeholder { color: var(--color-form-placeholder); }
+  .input:focus { background-color: var(--color-surface-default); border-color: var(--color-form-border-focus); }
+  /* Después de :focus: el borde de error se mantiene con foco */
+  .input[aria-invalid="true"] { border-color: var(--color-form-border-error); }
+  .input-icon { color: var(--color-text-secondary); pointer-events: none; }
+  .select--auto { width: auto; cursor: pointer; }
+  .input--upper { text-transform: uppercase; }
+  .input--strong { font-weight: var(--font-weight-medium); }
+  .input--strong::placeholder { font-weight: var(--font-weight-regular); }
+  /* Validado (p. ej. CP de CABA) */
+  .input[data-valid="true"] { border-color: var(--color-feedback-success-border); }
+  .input-status { position: absolute; top: 50%; right: var(--space-2); transform: translateY(-50%); font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); color: var(--color-text-secondary); }
+  .input-status--ok { font-weight: var(--font-weight-medium); color: var(--color-feedback-success-text); }
+  .input:disabled {
+    cursor: not-allowed;
+    background-color: var(--color-form-bg-disabled);
+    color: var(--color-form-text-disabled);
+    border-color: var(--button-disabled-border);
+  }
+
+  .input--form { --input-h: var(--input-form-height); --input-px: var(--input-form-padding-x); --input-r: var(--input-form-radius); --input-fg: var(--input-form-fg); --input-bd: var(--input-form-border); }
+  .input--pill { --input-h: var(--input-pill-height); --input-px: var(--input-pill-padding-x); --input-r: var(--input-pill-radius); --input-fg: var(--input-pill-fg); --input-bd: var(--input-pill-border); background-color: var(--input-pill-bg); }
+
+  /* Select: después de .input--* para que el alto del tamaño gane */
+  .select { appearance: none; padding-right: var(--space-8); }
+  .select--md { --input-h: var(--select-size-md-height); }
+  .select--lg { --input-h: var(--select-size-lg-height); }
+}

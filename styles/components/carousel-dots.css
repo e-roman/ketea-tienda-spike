@@ -1,0 +1,27 @@
+/* Dots de carrusel sobre foto. Botón de 44px (--size-control-lg), marca interna visual.
+   Activo con aria-current. Inactivo: carousel-dot.inactive (blanco 50 %, v4.1.0). */
+@layer components {
+  .carousel-dot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--size-control-lg);
+    height: var(--size-control-lg);
+    border-radius: var(--radius-full);
+  }
+  .carousel-dot:focus-visible { outline: var(--border-width-focus) solid var(--color-border-focus); outline-offset: calc(-1 * var(--border-width-focus)); }
+  .carousel-dot__mark {
+    width: var(--space-2);
+    height: var(--space-2);
+    border-radius: var(--radius-full);
+    background-color: var(--carousel-dot-inactive);
+    transition-property: width, background-color;
+    transition-duration: var(--duration-base);
+    transition-timing-function: var(--easing-standard);
+  }
+  .carousel-dot:hover .carousel-dot__mark { background-color: var(--color-text-inverse); }
+  .carousel-dot[aria-current="true"] .carousel-dot__mark {
+    width: var(--space-6);
+    background-color: var(--color-surface-default);
+  }
+}

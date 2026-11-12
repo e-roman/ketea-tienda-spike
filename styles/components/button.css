@@ -1,0 +1,106 @@
+/* Button: tokens button.*. Nombres = token = prop de Figma (variant, size, shape).
+   Cada variante solo define variables; las reglas viven en .btn. */
+@layer components {
+  .btn {
+    --btn-fg-h: var(--btn-fg);
+    --btn-fg-a: var(--btn-fg);
+    --btn-bw: 0px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    min-height: var(--btn-h);
+    /* El borde se descuenta del padding: los botones con borde miden lo mismo que el resto (44, no 46) */
+    padding: calc(var(--btn-py) - var(--btn-bw)) var(--btn-px);
+    gap: var(--btn-gap);
+    font-size: var(--btn-fs);
+    line-height: var(--btn-lh);
+    font-weight: var(--btn-fw);
+    border: var(--btn-bw) solid var(--btn-bd, transparent);
+    border-radius: var(--btn-r);
+    background-color: var(--btn-bg);
+    color: var(--btn-fg);
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-duration: var(--duration-fast);
+    transition-timing-function: var(--easing-standard);
+  }
+  .btn:hover { background-color: var(--btn-bg-h); color: var(--btn-fg-h); }
+  .btn:active { background-color: var(--btn-bg-a); color: var(--btn-fg-a); }
+  .btn:focus-visible {
+    outline: var(--button-focus-width) solid var(--button-focus-ring);
+    outline-offset: var(--button-focus-offset);
+  }
+  .btn:disabled,
+  .btn[aria-disabled="true"] {
+    pointer-events: none;
+    background-color: var(--button-disabled-bg);
+    color: var(--button-disabled-fg);
+    border-color: var(--button-disabled-border);
+  }
+
+  /* Jerarquía */
+  .btn--primary {
+    --btn-bg: var(--button-primary-bg); --btn-bg-h: var(--button-primary-bg-hover); --btn-bg-a: var(--button-primary-bg-active);
+    --btn-fg: var(--button-primary-fg); --btn-r: var(--button-primary-radius); --btn-fw: var(--button-primary-font-weight);
+  }
+  .btn--add-to-cart {
+    --btn-bg: var(--button-add-to-cart-bg); --btn-bg-h: var(--button-add-to-cart-bg-hover); --btn-bg-a: var(--button-add-to-cart-bg-active);
+    --btn-fg: var(--button-add-to-cart-fg); --btn-r: var(--button-add-to-cart-radius); --btn-fw: var(--button-add-to-cart-font-weight);
+    width: 100%;
+  }
+  .btn--secondary {
+    --btn-bg: var(--button-secondary-bg); --btn-bg-h: var(--button-secondary-bg-hover); --btn-bg-a: var(--button-secondary-bg-active);
+    --btn-fg: var(--button-secondary-fg); --btn-r: var(--button-secondary-radius); --btn-fw: var(--button-secondary-font-weight);
+  }
+  .btn--outline {
+    --btn-bw: var(--border-width-sm); --btn-bd: var(--button-outline-border);
+    --btn-bg: var(--button-outline-bg); --btn-bg-h: var(--button-outline-bg-hover); --btn-bg-a: var(--button-outline-bg-active);
+    --btn-fg: var(--button-outline-fg); --btn-fg-h: var(--button-outline-fg-hover); --btn-fg-a: var(--button-outline-fg-active);
+    --btn-r: var(--button-outline-radius); --btn-fw: var(--button-outline-font-weight);
+  }
+  .btn--neutral {
+    --btn-bw: var(--border-width-sm); --btn-bd: var(--button-neutral-border);
+    --btn-bg: var(--button-neutral-bg); --btn-bg-h: var(--button-neutral-bg-hover); --btn-bg-a: var(--button-neutral-bg-active);
+    --btn-fg: var(--button-neutral-fg); --btn-r: var(--button-neutral-radius); --btn-fw: var(--button-neutral-font-weight);
+  }
+  /* Outline sobre foto: tokens button.outline-inverse.* (v4.1.0) */
+  .btn--outline-inverse {
+    --btn-bw: var(--border-width-sm); --btn-bd: var(--button-outline-inverse-border);
+    --btn-bg: transparent; --btn-bg-h: var(--button-outline-inverse-bg-hover); --btn-bg-a: var(--button-outline-inverse-bg-active);
+    --btn-fg: var(--button-outline-inverse-fg);
+    --btn-r: var(--button-outline-inverse-radius); --btn-fw: var(--button-outline-inverse-font-weight);
+  }
+  .btn--inverse {
+    --btn-bg: var(--button-inverse-bg); --btn-bg-h: var(--button-inverse-bg-hover); --btn-bg-a: var(--button-inverse-bg-active);
+    --btn-fg: var(--button-inverse-fg); --btn-r: var(--button-inverse-radius); --btn-fw: var(--button-inverse-font-weight);
+  }
+
+  /* Tamaño */
+  .btn--sm { --btn-h: var(--button-size-sm-height); --btn-py: var(--button-size-sm-padding-y); --btn-px: var(--button-size-sm-padding-x); --btn-gap: var(--button-size-sm-gap); --btn-fs: var(--button-size-sm-font-size); --btn-lh: var(--button-size-sm-line-height); }
+  .btn--md { --btn-h: var(--button-size-md-height); --btn-py: var(--button-size-md-padding-y); --btn-px: var(--button-size-md-padding-x); --btn-gap: var(--button-size-md-gap); --btn-fs: var(--button-size-md-font-size); --btn-lh: var(--button-size-md-line-height); }
+  .btn--lg { --btn-h: var(--button-size-lg-height); --btn-py: var(--button-size-lg-padding-y); --btn-px: var(--button-size-lg-padding-x); --btn-gap: var(--button-size-lg-gap); --btn-fs: var(--button-size-lg-font-size); --btn-lh: var(--button-size-lg-line-height); }
+  .btn--xl { --btn-h: var(--button-size-xl-height); --btn-py: var(--button-size-xl-padding-y); --btn-px: var(--button-size-xl-padding-x); --btn-gap: var(--button-size-xl-gap); --btn-fs: var(--button-size-xl-font-size); --btn-lh: var(--button-size-xl-line-height); }
+
+  /* Link: después de los tamaños para que su padding-x gane */
+  .btn--link {
+    --btn-bg: transparent; --btn-bg-h: transparent; --btn-bg-a: transparent;
+    --btn-fg: var(--button-link-fg); --btn-fg-h: var(--button-link-fg-hover); --btn-fg-a: var(--button-link-fg-active);
+    --btn-px: var(--button-link-padding-x); --btn-fw: var(--button-link-font-weight);
+    text-decoration: var(--button-link-text-decoration);
+    text-underline-offset: var(--space-1);
+  }
+  .btn--link:hover { text-decoration: var(--button-link-text-decoration-hover); }
+  .btn--link:disabled,
+  .btn--link[aria-disabled="true"] { background-color: transparent; color: var(--button-disabled-link-fg); }
+
+  /* Estado «agregado»: mismo botón en color de acento, también en hover y active */
+  .btn--added {
+    --btn-bg: var(--color-action-accent-bg); --btn-bg-h: var(--color-action-accent-bg); --btn-bg-a: var(--color-action-accent-bg);
+    --btn-fg: var(--color-action-accent-fg);
+  }
+
+  /* Forma y ancho */
+  .btn--pill { --btn-r: var(--button-shape-pill); }
+  .btn--full { width: 100%; }
+
+}

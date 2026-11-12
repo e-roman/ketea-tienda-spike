@@ -1,0 +1,30 @@
+/* Aviso con ícono. Color por variante vía variables: --info / --success / --warning.
+   .callout        → en línea: una fila, texto xs (p. ej. aviso de freezer)
+   .callout--rich  → con borde, título y texto (p. ej. zona de entrega en el checkout) */
+@layer components {
+  .callout {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    background-color: var(--callout-bg);
+    color: var(--callout-fg);
+    font-size: var(--font-size-xs);
+    line-height: var(--font-line-height-xs);
+  }
+  .callout > svg { flex-shrink: 0; width: var(--space-4); height: var(--space-4); }
+  .callout--info { --callout-bg: var(--color-feedback-info-bg); --callout-fg: var(--color-feedback-info-text); --callout-border: var(--color-feedback-info-border); }
+  .callout--success { --callout-bg: var(--color-feedback-success-bg); --callout-fg: var(--color-feedback-success-text); --callout-border: var(--color-feedback-success-border); }
+  .callout--warning { --callout-bg: var(--color-feedback-warning-bg); --callout-fg: var(--color-feedback-warning-text); --callout-border: var(--color-feedback-warning-border); }
+
+  .callout--rich {
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border: var(--border-width-sm) solid var(--callout-border);
+  }
+  .callout--rich > svg { width: var(--space-5); height: var(--space-5); margin-top: var(--space-0-5); }
+  .callout__title { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+  .callout__text { margin-top: var(--space-0-5); }
+}

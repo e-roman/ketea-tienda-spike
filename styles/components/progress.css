@@ -1,0 +1,23 @@
+/* Barra de progreso. Estado por modificador: --success / --error (pista suave, relleno sólido).
+   El ancho del relleno es un dato (style width), no un valor de diseño. */
+@layer components {
+  .progress {
+    flex: 1 1 0%;
+    height: var(--space-2-5);
+    overflow: hidden;
+    border-radius: var(--radius-full);
+    background-color: var(--color-surface-muted);
+  }
+  .progress--sm { height: var(--space-1-5); }
+  .progress__fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    background-color: var(--color-feedback-error-solid);
+    transition-property: width;
+    transition-duration: var(--duration-base);
+    transition-timing-function: var(--easing-standard);
+  }
+  .progress--success { background-color: var(--color-feedback-success-bg); }
+  .progress--success .progress__fill { background-color: var(--color-feedback-success-solid); }
+  .progress--error { background-color: var(--color-feedback-error-bg); }
+}

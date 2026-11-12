@@ -1,0 +1,30 @@
+/* Distribución del header: filas mobile y desktop, acciones, buscador y barra de categorías.
+   La grilla exterior (grid-cols-3 en mobile) y el contenedor (max-w, mx-auto, px) quedan en Tailwind. */
+@layer components {
+  .header-row-mobile { height: var(--space-14); }
+  .header-actions { display: flex; align-items: center; gap: var(--space-1); }
+  .header-actions--wide { gap: var(--space-4); flex-shrink: 0; }
+  .header-logo { display: flex; align-items: center; flex-shrink: 0; }
+
+  .header-row-desktop { display: none; align-items: center; gap: var(--space-10); height: var(--space-20); }
+  @media (min-width: 768px) { .header-row-desktop { display: flex; } }
+
+  .header-search-mobile { padding-bottom: var(--space-3); }
+
+  .header-subnav-row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); height: var(--space-12); }
+  .header-subnav-group { display: flex; align-items: center; gap: var(--space-1); }
+  .header-subnav-group--end { flex-shrink: 0; }
+
+  /* Buscador: input con acciones superpuestas. --mobile: limpiar a 44px y buscar a 4px; --desktop: una sola acción a 6px */
+  .search-field { position: relative; }
+  .search-field--desktop { flex: 1 1 0%; }
+  .search-field__input-wrap { position: relative; }
+  .search-field--mobile .input { padding-right: var(--space-12); }
+  .search-field--mobile.search-field--query .input { padding-right: var(--space-20); }
+  .search-field--desktop .input { padding-right: calc(var(--space-12) + var(--space-2)); }
+  .search-field__action { position: absolute; top: 50%; transform: translateY(-50%); }
+  .search-field--mobile .search-field__submit { right: var(--space-1); }
+  .search-field--mobile .search-field__clear { right: calc(var(--space-10) + var(--space-1)); }
+  .search-field--desktop .search-field__submit,
+  .search-field--desktop .search-field__clear { right: var(--space-1-5); }
+}
