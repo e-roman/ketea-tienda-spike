@@ -2,10 +2,18 @@
    Cuatro columnas (cuenta, información, contacto, newsletter) y barra inferior con medios de pago y redes. */
 @layer components {
   .footer { border-top: var(--border-width-sm) solid var(--color-border-default); background-color: var(--color-surface-default); color: var(--color-text-primary); }
-  .footer--spaced { margin-top: var(--space-20); }
-  .footer__grid { padding-block: var(--space-14); }
+  .footer--spaced { margin-top: var(--space-12); }
+  /* Columnas: 1 en mobile, 2 en tablet; en desktop tres de 2/12 y el newsletter de 5/12, repartidas a lo ancho. */
+  .footer__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-8); padding-block: var(--space-10) var(--space-12); }
+  @media (min-width: 640px) { .footer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1024px) {
+    .footer__grid { display: flex; justify-content: space-between; gap: var(--space-6); }
+    .footer__col { flex: 0 0 calc(100% / 6); }
+    .footer__col--wide { flex-basis: calc(100% * 5 / 12); }
+  }
+  .footer__col { min-width: 0; }
 
-  .footer__heading { margin-bottom: var(--space-5); font-size: var(--font-size-md); line-height: var(--font-line-height-md); font-weight: var(--font-weight-bold); color: var(--color-text-primary); }
+  .footer__heading { margin-bottom: var(--space-4); font-size: var(--font-size-md); line-height: var(--font-line-height-md); font-weight: var(--font-weight-bold); color: var(--color-text-primary); }
   .footer__heading--tight { margin-bottom: var(--space-1); }
   .footer__list { display: flex; flex-direction: column; gap: var(--space-3); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); }
   .footer__text { color: var(--color-text-secondary); }

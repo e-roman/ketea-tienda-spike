@@ -1,0 +1,13 @@
+/* Bloques de servicio (Figma: Service blocks). Tarjeta con borde; cada ítem lleva una ilustración de 80px a la izquierda. */
+@layer components {
+  .service-blocks { padding-block: var(--space-8); }
+  .service-blocks__card {
+    padding: var(--space-6);
+    border: var(--border-width-sm) solid var(--color-border-default);
+    border-radius: var(--radius-xl);
+    background-color: var(--color-surface-default);
+  }
+  .service-block { display: flex; align-items: center; gap: var(--space-4); }
+  .service-block__image { flex-shrink: 0; width: var(--space-20); height: var(--space-20); }
+  .service-block__title { margin-bottom: var(--space-1); font-weight: var(--font-weight-medium); }
+}

@@ -1,16 +1,14 @@
-import { Truck, ShieldCheck, CreditCard, Headset } from "lucide-react"
 import ProductCard from "@/components/patterns/product-card"
 import Hero from "@/components/hero"
-import { TrustStrip, type TrustItem } from "@/components/patterns/trust-strip"
+import { ServiceBlocks, type ServiceBlock } from "@/components/patterns/service-blocks"
 import { PromoBanner } from "@/components/patterns/promo-banner"
 import { SectionHeader } from "@/components/patterns/section-header"
 import { getFeatured, getProductsByCategory } from "@/lib/products"
 
-const TRUST_ITEMS: TrustItem[] = [
-  { icon: <ShieldCheck className="icon-md" />, title: "Compra segura",        desc: "Tus datos, protegidos" },
-  { icon: <CreditCard className="icon-md" />,  title: "Hasta 12 cuotas",     desc: "Sin interés con tarjeta" },
-  { icon: <Truck className="icon-md" />,       title: "Envío gratis", desc: "En productos seleccionados" },
-  { icon: <Headset className="icon-md" />,     title: "Te ayudamos",          desc: "WhatsApp, 9 a 18 h" },
+const SERVICES: ServiceBlock[] = [
+  { image: "/assets/svg/icons/icon1.svg", title: "Soporte 24/7", desc: "Contáctanos las 24 horas, los 7 días de la semana." },
+  { image: "/assets/svg/icons/icon2.svg", title: "30 días de devolución", desc: "Reembolso completo dentro de los 30 días posteriores a la compra." },
+  { image: "/assets/svg/icons/icon3.svg", title: "Envío gratuito", desc: "Recibe automáticamente envío estándar gratuito en cada pedido." },
 ]
 
 export default function HomePage() {
@@ -21,7 +19,7 @@ export default function HomePage() {
     <div>
       <Hero />
 
-      <TrustStrip items={TRUST_ITEMS} />
+      <ServiceBlocks items={SERVICES} />
 
       <section className="max-w-7xl mx-auto px-4 md:px-6 py-14">
         <SectionHeader title="Productos destacados" href="/productos" />

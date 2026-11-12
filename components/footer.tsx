@@ -29,7 +29,7 @@ const CARDS = ["visa", "mastercard", "amex", "argencard", "naranja", "cencosud",
 
 function FooterLinks({ title, links }: { title: string; links: string[][] }) {
   return (
-    <div>
+    <div className="footer__col">
       <h2 className="footer__heading">{title}</h2>
       <ul className="footer__list">
         {links.map(([label, href]) => (
@@ -56,11 +56,11 @@ export default function Footer() {
 
   return (
     <footer className={cn("footer", !flush && "footer--spaced")}>
-      <div className="footer__grid max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="footer__grid max-w-7xl mx-auto px-4 md:px-6">
         <FooterLinks title="Mi Cuenta" links={ACCOUNT_LINKS} />
         <FooterLinks title="Información" links={INFO_LINKS} />
 
-        <div>
+        <div className="footer__col">
           <h2 className="footer__heading">Contacto</h2>
           <ul className="footer__list">
             <li><Link href="/contacto" className="footer__link">Dónde encontrarnos</Link></li>
@@ -69,7 +69,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div>
+        <div className="footer__col footer__col--wide">
           <h2 className="footer__heading footer__heading--tight">Subscribite al Newsletter</h2>
           <p className="footer__lead">Recibe nuestras ofertas semanales y promociones.</p>
           <form onSubmit={handleSubmit} className="footer__newsletter">
