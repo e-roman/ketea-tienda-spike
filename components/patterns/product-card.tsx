@@ -92,7 +92,7 @@ export default function ProductCard({ product, titleAs: Title = "h3" }: { produc
         <Link href={`/productos/${product.slug}`}>
           <Title className="product-card__title">{product.name}</Title>
         </Link>
-        <p className="product-card__meta">{product.packInfo} · pack x3</p>
+        <p className="product-card__meta">{product.packInfo}</p>
 
         <div className="product-card__actions">
           <Price

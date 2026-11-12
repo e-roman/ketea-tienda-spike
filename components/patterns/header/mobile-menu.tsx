@@ -102,8 +102,8 @@ export function MobileMenu({ onClose, onOpenAuth }: { onClose: () => void; onOpe
 
       <div className="mobile-menu__body">
         <div className="divided">
-          <AccordionRow label="Pastas" icon={<Utensils className={icon} />} items={PASTAS_ITEMS} verTodosKey="pastas-todos" onNavigate={onClose} />
-          <AccordionRow label="Tapas" icon={<Sandwich className={icon} />} items={TAPAS_ITEMS} verTodosKey="tapas-todos" onNavigate={onClose} />
+          <AccordionRow label="Equipamiento" icon={<Utensils className={icon} />} items={PASTAS_ITEMS} verTodosKey="piscinas-todos" onNavigate={onClose} />
+          <AccordionRow label="Mantenimiento" icon={<Sandwich className={icon} />} items={TAPAS_ITEMS} verTodosKey="mantenimiento-todos" onNavigate={onClose} />
           <LinkRow href="/productos?nav=empanadas-rellenas" icon={<ChefHat className={icon} />} onNavigate={onClose}>
             Empanadas rellenas
           </LinkRow>

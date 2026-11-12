@@ -9,10 +9,10 @@ import { cn } from "@/lib/utils"
 import { Logo } from "@/components/ui/logo"
 
 const PRODUCT_LINKS = [
-  ["Pastas", "/productos?nav=pastas-todos"],
-  ["Tapas", "/productos?nav=tapas-todos"],
-  ["Empanadas rellenas", "/productos?nav=empanadas-rellenas"],
-  ["Especiales", "/productos?nav=especiales"],
+  ["Equipamiento", "/productos?nav=piscinas-todos"],
+  ["Mantenimiento", "/productos?nav=mantenimiento-todos"],
+  ["Robots limpiafondos", "/productos?nav=piscinas-robots"],
+  ["Ofertas", "/productos?nav=ofertas"],
 ]
 
 const INFO_LINKS = [
@@ -48,16 +48,16 @@ export default function Footer() {
             <Logo size="md" />
           </Link>
           <p className="footer__text max-w-sm">
-            Empresa familiar con más de 50 años de experiencia. Pastas frescas, tapas y empanadas artesanales, de la fábrica directo a tu domicilio.
+            Equipamiento y productos para tu pileta: robots, bombas de calor, filtros y químicos, con envío a todo el país.
           </p>
           <div className="footer__socials">
-            <a href="https://www.instagram.com/orali.argentina/" target="_blank" rel="noopener noreferrer"
-               aria-label="Orali en Instagram"
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"
+               aria-label="Ketea en Instagram"
                className={iconButtonClasses({ variant: "subtle", size: "sm" })}>
               <Instagram className="icon-sm" aria-hidden="true" />
             </a>
-            <a href="https://www.facebook.com/pastasorali" target="_blank" rel="noopener noreferrer"
-               aria-label="Orali en Facebook"
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"
+               aria-label="Ketea en Facebook"
                className={iconButtonClasses({ variant: "subtle", size: "sm" })}>
               <Facebook className="icon-sm" aria-hidden="true" />
             </a>
@@ -70,7 +70,7 @@ export default function Footer() {
 
       <div className="footer__legal">
         <div className="footer__legal-row max-w-7xl mx-auto px-4 md:px-6">
-          <span>© {new Date().getFullYear()} Orali SIPA SRL · Todos los derechos reservados</span>
+          <span>© {new Date().getFullYear()} Ketea · Todos los derechos reservados</span>
           <div className="footer__legal-group">
             <span className="footer__legal-item">
               <ShieldCheck aria-hidden="true" /> Sitio seguro

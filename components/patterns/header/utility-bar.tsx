@@ -13,7 +13,7 @@ export function UtilityBar({ hiddenOnMobile = false }: { hiddenOnMobile?: boolea
     <section aria-label="Envíos y contacto" className={cn("utility-bar", hiddenOnMobile && "hidden md:block")}>
       <div className="utility-bar__inner max-w-7xl mx-auto px-4 md:px-6">
         <p className="utility-bar__message">
-          Envío gratis en CABA <span className="utility-bar__sep">·</span> GBA: consultanos al {WHATSAPP_LABEL}
+          Hasta 12 cuotas sin interés <span className="utility-bar__sep">·</span> Consultas al {WHATSAPP_LABEL}
         </p>
         <div className="utility-bar__links">
           <Link href="/contacto" className="utility-link">

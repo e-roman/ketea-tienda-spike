@@ -1,0 +1,526 @@
+/* ============================================================
+   KETEA THEME — capa de compatibilidad (spike)
+   Define los nombres de variable que espera la tienda de Orali
+   apuntando SIEMPRE a tokens de @ketea/tokens (v3.0.0).
+   No hay hex ni px nuevos. Lo que Ketea no tiene está marcado
+   en el comentario ("falta" / "tipo distinto" / "valor distinto")
+   y se resolvió con el token más cercano.
+   Generado a partir de la tabla de cobertura (ver INFORME.md).
+   ============================================================ */
+:root {
+  --badge-counter-bg: var(--color-surface-brand);
+  --badge-counter-fg: var(--color-text-inverse);
+  --badge-counter-font-size: var(--font-size-2xs);
+  --badge-counter-min-size: var(--size-icon-sm); /* Orali: 16px literal */
+  --badge-counter-radius: var(--radius-full);
+  --badge-dietary-bg: var(--color-commerce-badge-dietary-bg);
+  --badge-dietary-fg: var(--color-commerce-badge-dietary-fg);
+  --badge-dietary-font-size: var(--font-size-xs);
+  --badge-dietary-radius: var(--radius-sm);
+  --badge-discount-bg: var(--color-commerce-discount-bg);
+  --badge-discount-border: var(--color-commerce-discount-border);
+  --badge-discount-fg: var(--color-commerce-discount-fg);
+  --badge-discount-font-size: var(--font-size-xs);
+  --badge-discount-font-weight: var(--font-weight-bold);
+  --badge-discount-padding-x: var(--space-1-5);
+  --badge-discount-padding-y: var(--space-1-5);
+  --badge-discount-radius: var(--radius-sm);
+  --button-add-to-cart-bg: var(--color-action-primary-bg);
+  --button-add-to-cart-bg-active: var(--color-action-primary-bg-active);
+  --button-add-to-cart-bg-hover: var(--color-action-primary-bg-hover);
+  --button-add-to-cart-fg: var(--color-action-primary-fg);
+  --button-add-to-cart-font-weight: var(--font-weight-medium);
+  --button-add-to-cart-radius: var(--button-shape-default);
+  --button-disabled-bg: var(--color-action-disabled-bg);
+  --button-disabled-border: var(--color-action-disabled-border);
+  --button-disabled-fg: var(--color-action-disabled-fg);
+  --button-disabled-link-fg: var(--color-action-disabled-fg);
+  --button-focus-offset: var(--border-width-lg);
+  --button-focus-ring: var(--color-focus-ring);
+  --button-focus-width: var(--border-width-lg);
+  --button-inverse-bg: var(--color-surface-default);
+  --button-inverse-bg-active: var(--color-surface-muted);
+  --button-inverse-bg-hover: var(--color-surface-subtle);
+  --button-inverse-fg: var(--color-text-primary);
+  --button-inverse-font-weight: var(--font-weight-medium);
+  --button-inverse-radius: var(--button-shape-pill);
+  --button-link-fg: var(--color-action-link-fg);
+  --button-link-fg-active: var(--color-action-link-fg-active);
+  --button-link-fg-hover: var(--color-action-link-fg-hover);
+  --button-link-font-weight: var(--font-weight-medium);
+  --button-link-padding-x: var(--space-0);
+  --button-link-text-decoration: none;
+  --button-link-text-decoration-hover: underline;
+  --button-neutral-bg: var(--color-action-neutral-bg);
+  --button-neutral-bg-active: var(--color-action-neutral-bg-active);
+  --button-neutral-bg-hover: var(--color-action-neutral-bg-hover);
+  --button-neutral-border: var(--color-action-neutral-border);
+  --button-neutral-fg: var(--color-action-neutral-fg);
+  --button-neutral-font-weight: var(--font-weight-medium);
+  --button-neutral-radius: var(--button-shape-default);
+  --button-outline-bg: var(--color-action-outline-bg);
+  --button-outline-bg-active: var(--color-action-outline-bg-active);
+  --button-outline-bg-hover: var(--color-action-outline-bg-hover);
+  --button-outline-border: var(--color-border-brand);
+  --button-outline-fg: var(--color-text-brand);
+  --button-outline-fg-active: var(--color-action-outline-fg-active);
+  --button-outline-fg-hover: var(--color-action-outline-fg-hover);
+  --button-outline-font-weight: var(--font-weight-medium);
+  --button-outline-inverse-bg-active: var(--color-alpha-white-15);
+  --button-outline-inverse-bg-hover: var(--color-alpha-white-10);
+  --button-outline-inverse-border: var(--color-alpha-white-50);
+  --button-outline-inverse-fg: var(--color-text-inverse);
+  --button-outline-inverse-font-weight: var(--font-weight-medium);
+  --button-outline-inverse-radius: var(--button-shape-pill);
+  --button-outline-radius: var(--button-shape-default);
+  --button-primary-bg: var(--color-action-primary-bg);
+  --button-primary-bg-active: var(--color-action-primary-bg-active);
+  --button-primary-bg-hover: var(--color-action-primary-bg-hover);
+  --button-primary-fg: var(--color-action-primary-fg);
+  --button-primary-font-weight: var(--font-weight-semibold);
+  --button-primary-radius: var(--button-shape-default);
+  --button-secondary-bg: var(--color-action-secondary-bg);
+  --button-secondary-bg-active: var(--color-action-secondary-bg-active);
+  --button-secondary-bg-hover: var(--color-action-secondary-bg-hover);
+  --button-secondary-fg: var(--color-action-secondary-fg);
+  --button-secondary-font-weight: var(--font-weight-medium);
+  --button-secondary-radius: var(--button-shape-default);
+  --button-shape-pill: var(--radius-full);
+  --button-size-lg-font-size: var(--font-size-sm);
+  --button-size-lg-gap: var(--space-2);
+  --button-size-lg-height: var(--size-control-lg);
+  --button-size-lg-line-height: var(--font-line-height-sm);
+  --button-size-lg-padding-x: var(--space-5);
+  --button-size-lg-padding-y: var(--space-3);
+  --button-size-md-font-size: var(--font-size-sm);
+  --button-size-md-gap: var(--space-2);
+  --button-size-md-height: var(--size-control-md);
+  --button-size-md-line-height: var(--font-line-height-sm);
+  --button-size-md-padding-x: var(--space-4);
+  --button-size-md-padding-y: var(--space-2-5);
+  --button-size-sm-font-size: var(--font-size-sm);
+  --button-size-sm-gap: var(--space-1-5);
+  --button-size-sm-height: var(--size-control-sm);
+  --button-size-sm-line-height: var(--font-line-height-sm);
+  --button-size-sm-padding-x: var(--space-3);
+  --button-size-sm-padding-y: var(--space-2);
+  --button-size-xl-font-size: var(--font-size-md);
+  --button-size-xl-gap: var(--space-2);
+  --button-size-xl-height: var(--size-control-xl);
+  --button-size-xl-line-height: var(--font-line-height-md);
+  --button-size-xl-padding-x: var(--space-6);
+  --button-size-xl-padding-y: var(--space-3);
+  --carousel-dot-inactive: var(--color-alpha-white-50);
+  --chip-bg: var(--color-surface-default);
+  --chip-bg-hover: var(--color-surface-subtle);
+  --chip-bg-selected: var(--color-action-primary-bg);
+  --chip-bg-selected-hover: var(--color-action-primary-bg-hover);
+  --chip-border: var(--color-form-border);
+  --chip-border-selected: var(--color-action-primary-bg);
+  --chip-border-width: var(--border-width-sm);
+  --chip-fg: var(--color-text-primary);
+  --chip-fg-selected: var(--color-action-primary-fg);
+  --chip-focus-ring: var(--color-focus-ring);
+  --chip-focus-width: var(--border-width-lg);
+  --chip-font-size: var(--font-size-sm);
+  --chip-font-weight: var(--font-weight-medium);
+  --chip-gap: var(--space-1-5);
+  --chip-height: var(--size-control-sm);
+  --chip-padding-x: var(--space-4);
+  --chip-radius: var(--button-shape-pill);
+  --color-action-accent-bg: var(--color-brand-hover); /* Ketea no tiene color de acento */
+  --color-action-accent-fg: var(--color-semantic-text-on-brand);
+  --color-action-primary-bg: var(--color-brand-default);
+  --color-action-primary-bg-hover: var(--color-brand-hover);
+  --color-action-primary-fg: var(--color-semantic-text-on-brand);
+  --color-alpha-white-15: var(--color-white); /* Ketea no tiene transparencias de blanco */
+  --color-alpha-white-90: var(--color-white); /* Ketea no tiene transparencias de blanco */
+  --color-border-brand: var(--color-brand-default);
+  --color-border-brand-subtle: var(--color-brand-200);
+  --color-border-default: var(--color-semantic-border-default);
+  --color-border-focus: var(--color-semantic-border-focus);
+  --color-border-inverse: var(--color-semantic-border-strong); /* Ketea no tiene borde inverso translúcido */
+  --color-border-strong: var(--color-semantic-border-strong);
+  --color-commerce-price-current: var(--color-semantic-text-primary);
+  --color-commerce-price-previous: var(--color-semantic-text-secondary);
+  --color-commerce-price-unit: var(--color-semantic-text-secondary);
+  --color-commerce-shipping-free-fg: var(--color-semantic-feedback-success-text);
+  --color-feedback-error-bg: var(--color-red-50);
+  --color-feedback-error-border: var(--color-semantic-feedback-error-border); /* valor distinto: Orali usa red-600, Ketea red-500 */
+  --color-feedback-error-solid: var(--color-semantic-feedback-error-text); /* Ketea no tiene color 'solid' de feedback */
+  --color-feedback-error-text: var(--color-red-700);
+  --color-feedback-info-bg: var(--color-blue-50);
+  --color-feedback-info-border: var(--color-blue-300);
+  --color-feedback-info-solid: var(--color-semantic-feedback-info-text); /* Ketea no tiene color 'solid' de feedback */
+  --color-feedback-info-text: var(--color-blue-700);
+  --color-feedback-success-bg: var(--color-green-50);
+  --color-feedback-success-border: var(--color-semantic-feedback-success-border); /* valor distinto: Orali usa green-600, Ketea green-300 */
+  --color-feedback-success-solid: var(--color-semantic-feedback-success-text); /* Ketea no tiene color 'solid' de feedback */
+  --color-feedback-success-text: var(--color-green-700);
+  --color-feedback-warning-bg: var(--color-yellow-50);
+  --color-feedback-warning-border: var(--color-yellow-300);
+  --color-feedback-warning-solid: var(--color-semantic-feedback-warning-text); /* Ketea no tiene color 'solid' de feedback */
+  --color-feedback-warning-text: var(--color-yellow-700);
+  --color-focus-ring: var(--color-semantic-border-focus);
+  --color-focus-ring-inverse: var(--color-white);
+  --color-form-bg-disabled: var(--color-semantic-forms-bg-disabled);
+  --color-form-border-error: var(--color-semantic-forms-border-error);
+  --color-form-border-focus: var(--color-semantic-forms-border-focus);
+  --color-form-helper: var(--color-semantic-text-secondary);
+  --color-form-label: var(--color-semantic-text-primary);
+  --color-form-placeholder: var(--color-semantic-forms-text-placeholder);
+  --color-form-text-disabled: var(--color-semantic-forms-text-disabled);
+  --color-icon-brand: var(--color-semantic-icon-brand);
+  --color-icon-subtle: var(--color-semantic-icon-subtle);
+  --color-surface-accent: var(--color-brand-hover); /* Ketea no tiene color de acento (Orali usa sage) */
+  --color-surface-brand: var(--color-brand-default);
+  --color-surface-brand-subtle: var(--color-brand-subtle);
+  --color-surface-default: var(--color-semantic-surface-default);
+  --color-surface-inverse: var(--color-semantic-surface-inverse);
+  --color-surface-muted: var(--color-semantic-surface-muted);
+  --color-surface-overlay: var(--color-semantic-surface-overlay);
+  --color-surface-overlay-strong: var(--color-semantic-surface-overlay); /* Ketea tiene un solo overlay (45%); Orali usa 50% y 60% */
+  --color-surface-subtle: var(--color-semantic-surface-subtle);
+  --color-text-accent: var(--color-brand-hover); /* Ketea no tiene color de acento */
+  --color-text-brand: var(--color-brand-default);
+  --color-text-inverse: var(--color-semantic-text-inverse);
+  --color-text-inverse-muted: var(--color-semantic-text-inverse); /* Ketea no tiene texto inverso atenuado (Orali usa blanco 80%) */
+  --color-text-link: var(--color-semantic-text-link);
+  --color-text-link-hover: var(--color-semantic-text-link-hover);
+  --color-text-on-brand: var(--color-semantic-text-on-brand);
+  --color-text-primary: var(--color-semantic-text-primary);
+  --color-text-secondary: var(--color-semantic-text-secondary);
+  --color-text-tertiary: var(--color-semantic-text-tertiary);
+  --dropdown-bg: var(--color-base-white);
+  --dropdown-item-bg-hover: var(--color-surface-subtle);
+  --dropdown-item-fg: var(--color-text-primary);
+  --dropdown-item-radius: var(--radius-md);
+  --dropdown-link-fg: var(--color-text-link);
+  --elevation-card-hover: var(--shadow-lg);
+  --elevation-dropdown: var(--shadow-xl);
+  --elevation-overlay: var(--shadow-xl); /* Ketea no tiene shadow-2xl */
+  --elevation-subtle: var(--shadow-sm);
+  --font-line-height-2xl: var(--font-line-height-tight); /* tipo distinto: Orali usa px, Ketea usa proporción */
+  --font-line-height-3xl: var(--font-line-height-tight); /* tipo distinto: Orali usa px, Ketea usa proporción */
+  --font-line-height-4xl: var(--font-line-height-tight); /* tipo distinto: Orali usa px, Ketea usa proporción */
+  --font-line-height-lg: var(--font-line-height-snug); /* tipo distinto: Orali usa px, Ketea usa proporción */
+  --font-line-height-md: var(--font-line-height-normal); /* tipo distinto: Orali usa px, Ketea usa proporción */
+  --font-line-height-sm: var(--font-line-height-normal); /* tipo distinto: Orali usa px, Ketea usa proporción */
+  --font-line-height-xl: var(--font-line-height-snug); /* tipo distinto: Orali usa px, Ketea usa proporción */
+  --font-line-height-xs: var(--font-line-height-tight); /* tipo distinto: Orali usa px, Ketea usa proporción */
+  --input-form-border: var(--color-form-border);
+  --input-form-fg: var(--color-text-primary);
+  --input-form-height: var(--size-control-lg);
+  --input-form-padding-x: var(--space-3);
+  --input-form-radius: var(--radius-md);
+  --input-pill-bg: var(--color-form-bg);
+  --input-pill-border: var(--color-form-border);
+  --input-pill-fg: var(--color-text-primary);
+  --input-pill-height: var(--size-control-lg);
+  --input-pill-padding-x: var(--space-4);
+  --input-pill-radius: var(--radius-full);
+  --layer-header: var(--z-index-header);
+  --layer-mobile-menu: var(--z-index-mobile-menu);
+  --layer-sticky: var(--z-index-sticky);
+  --select-size-lg-height: var(--size-control-lg);
+  --select-size-md-height: var(--size-control-md);
+  --size-control-lg: var(--size-touch-min); /* Ketea no tiene tamaños de control (Orali 44px = size-touch-min) */
+  --size-control-md: var(--spacing-10); /* Ketea no tiene tamaños de control (40px) */
+  --size-control-sm: var(--spacing-8); /* Ketea no tiene tamaños de control (Orali: 36px; queda 32px) */
+  --size-control-xl: var(--spacing-12); /* Ketea no tiene tamaños de control (48px) */
+  --space-0-5: var(--spacing-1); /* falta escala de 2px */
+  --space-1: var(--spacing-1);
+  --space-1-5: var(--spacing-2); /* falta escala de 6px */
+  --space-10: var(--spacing-10);
+  --space-12: var(--spacing-12);
+  --space-14: var(--spacing-16); /* falta escala de 56px */
+  --space-16: var(--spacing-16);
+  --space-2: var(--spacing-2);
+  --space-2-5: var(--spacing-3); /* falta escala de 10px */
+  --space-20: var(--spacing-20);
+  --space-24: var(--spacing-24);
+  --space-3: var(--spacing-3);
+  --space-32: var(--spacing-32);
+  --space-4: var(--spacing-4);
+  --space-40: var(--spacing-40);
+  --space-48: var(--spacing-48);
+  --space-5: var(--spacing-5);
+  --space-56: var(--spacing-56);
+  --space-6: var(--spacing-6);
+  --space-64: var(--spacing-64);
+  --space-7: var(--spacing-8); /* falta escala de 28px */
+  --space-8: var(--spacing-8);
+  --stepper-bg: var(--color-surface-default);
+  --stepper-bg-focus: var(--color-action-outline-bg-focus);
+  --stepper-bg-hover: var(--color-action-outline-bg-hover);
+  --stepper-border: var(--color-border-brand);
+  --stepper-border-width: var(--border-width-sm);
+  --stepper-fg: var(--color-text-primary);
+  --stepper-font-weight: var(--font-weight-medium);
+  --stepper-height: var(--button-size-md-height);
+  --stepper-height-lg: var(--size-control-lg);
+  --stepper-height-sm: var(--size-control-xs);
+  --stepper-hit-area: var(--size-control-md);
+  --stepper-hit-area-sm: var(--size-control-xs);
+  --stepper-icon: var(--color-icon-brand);
+  --stepper-radius: var(--button-add-to-cart-radius);
+  --typography-display: var(--font-weight-semibold) var(--font-size-6xl)/var(--font-line-height-6xl) var(--font-family-sans);
+  --typography-heading-lg: var(--font-weight-semibold) var(--font-size-3xl)/var(--font-line-height-2xl) var(--font-family-sans);
+  --typography-heading-md: var(--font-weight-semibold) var(--font-size-xl)/var(--font-line-height-lg) var(--font-family-sans);
+  --typography-heading-sm: var(--font-weight-semibold) var(--font-size-sm)/var(--font-line-height-sm) var(--font-family-sans);
+  --typography-heading-xl: var(--font-weight-semibold) var(--font-size-4xl)/var(--font-line-height-4xl) var(--font-family-sans);
+  --z-index-drawer: 70; /* falta en Ketea: valor copiado de Orali, hay que crear el token */
+  --z-index-modal: 100; /* falta en Ketea: valor copiado de Orali, hay que crear el token */
+  --z-index-modal-top: 110; /* falta en Ketea: valor copiado de Orali, hay que crear el token */
+  --z-index-progress: 200; /* falta en Ketea: valor copiado de Orali, hay que crear el token */
+  --z-index-sticky: 40; /* falta en Ketea: valor copiado de Orali, hay que crear el token */
+  --elevation-card: var(--shadow-md);
+  --layer-overlay: var(--z-index-overlay);
+  --layer-drawer: var(--z-index-drawer);
+  --layer-modal: var(--z-index-modal);
+  --layer-modal-top: var(--z-index-modal-top);
+  --layer-progress: var(--z-index-progress);
+  --color-tomato-50: var(--color-brand-50); /* tomato de Orali → brand de Ketea */
+  --color-tomato-100: var(--color-brand-100); /* tomato de Orali → brand de Ketea */
+  --color-tomato-200: var(--color-brand-200); /* tomato de Orali → brand de Ketea */
+  --color-tomato-300: var(--color-brand-300); /* tomato de Orali → brand de Ketea */
+  --color-tomato-400: var(--color-brand-400); /* tomato de Orali → brand de Ketea */
+  --color-tomato-500: var(--color-brand-500); /* tomato de Orali → brand de Ketea */
+  --color-tomato-600: var(--color-brand-600); /* tomato de Orali → brand de Ketea */
+  --color-tomato-700: var(--color-brand-700); /* tomato de Orali → brand de Ketea */
+  --color-tomato-800: var(--color-brand-800); /* tomato de Orali → brand de Ketea */
+  --color-tomato-900: var(--color-brand-900); /* tomato de Orali → brand de Ketea */
+  --color-tomato-950: var(--color-brand-950); /* tomato de Orali → brand de Ketea */
+  --color-sage-50: var(--color-brand-hover); /* Ketea no tiene color de acento (Orali usa sage) */
+  --color-sage-100: var(--color-brand-hover); /* Ketea no tiene color de acento (Orali usa sage) */
+  --color-sage-200: var(--color-brand-hover); /* Ketea no tiene color de acento (Orali usa sage) */
+  --color-sage-300: var(--color-brand-hover); /* Ketea no tiene color de acento (Orali usa sage) */
+  --color-sage-400: var(--color-brand-hover); /* Ketea no tiene color de acento (Orali usa sage) */
+  --color-sage-500: var(--color-brand-hover); /* Ketea no tiene color de acento (Orali usa sage) */
+  --color-sage-600: var(--color-brand-hover); /* Ketea no tiene color de acento (Orali usa sage) */
+  --color-sage-700: var(--color-brand-hover); /* Ketea no tiene color de acento (Orali usa sage) */
+  --color-sage-800: var(--color-brand-hover); /* Ketea no tiene color de acento (Orali usa sage) */
+  --color-sage-900: var(--color-brand-hover); /* Ketea no tiene color de acento (Orali usa sage) */
+  --color-sage-950: var(--color-brand-hover); /* Ketea no tiene color de acento (Orali usa sage) */
+  --color-green-200: #bbf7d0;
+  --color-green-400: #4ade80;
+  --color-green-600: #16a34a;
+  --color-green-800: #166534;
+  --color-green-950: #052e16;
+  --color-yellow-200: #fef08a;
+  --color-yellow-400: #facc15;
+  --color-yellow-600: #ca8a04;
+  --color-yellow-800: #854d0e;
+  --color-yellow-950: #422006;
+  --color-red-200: #fecaca;
+  --color-red-400: #f87171;
+  --color-red-600: #dc2626;
+  --color-red-800: #991b1b;
+  --color-red-950: #450a0a;
+  --color-blue-200: #bfdbfe;
+  --color-blue-400: #60a5fa;
+  --color-blue-600: #2563eb;
+  --color-blue-800: #1e40af;
+  --color-blue-950: #172554;
+  --color-base-white: var(--color-white);
+  --color-base-black: var(--color-black);
+  --color-base-transparent: rgba(255, 255, 255, 0);
+  --color-surface-page: var(--color-neutral-50);
+  --color-form-bg: var(--color-semantic-forms-bg);
+  --color-form-bg-error: var(--color-red-50);
+  --color-action-primary-bg-active: var(--color-brand-900);
+  --color-action-secondary-bg: var(--color-neutral-900);
+  --color-action-secondary-bg-hover: var(--color-neutral-500);
+  --color-action-secondary-bg-active: var(--color-neutral-700);
+  --color-action-outline-bg-hover: var(--color-tomato-50);
+  --color-action-outline-bg-active: var(--color-tomato-100);
+  --color-action-outline-bg-focus: var(--color-tomato-100);
+  --color-action-outline-bg: var(--color-base-white);
+  --color-action-accent-bg-hover: var(--color-sage-700);
+  --color-action-destructive-bg: var(--color-red-600);
+  --color-action-destructive-bg-hover: var(--color-red-700);
+  --color-action-destructive-bg-active: var(--color-red-800);
+  --color-action-neutral-bg: var(--color-neutral-50);
+  --color-action-neutral-bg-hover: var(--color-neutral-100);
+  --color-action-neutral-bg-active: var(--color-neutral-200);
+  --color-action-disabled-bg: var(--color-neutral-100);
+  --color-commerce-discount-bg: var(--color-base-white);
+  --color-commerce-badge-dietary-bg: var(--color-sage-600);
+  --color-text-disabled: var(--color-neutral-300);
+  --color-icon-default: var(--color-neutral-600);
+  --color-icon-inverse: var(--color-base-white);
+  --color-form-control-off: var(--color-neutral-400);
+  --color-form-control-off-hover: var(--color-neutral-500);
+  --color-form-label-disabled: var(--color-form-text-disabled);
+  --color-form-text: var(--color-text-primary);
+  --color-form-control-on: var(--color-brand-default);
+  --color-form-control-on-hover: var(--color-brand-hover);
+  --color-form-control-on-subtle: var(--color-tomato-50);
+  --color-action-secondary-fg: var(--color-base-white);
+  --color-action-destructive-fg: var(--color-base-white);
+  --color-action-neutral-fg: var(--color-text-primary);
+  --color-action-link-fg: var(--color-text-link);
+  --color-action-disabled-fg: var(--color-neutral-300);
+  --color-commerce-discount-fg: var(--color-tomato-500);
+  --color-commerce-badge-dietary-fg: var(--color-base-white);
+  --color-border-accent: var(--color-sage-600);
+  --color-form-border: var(--color-semantic-forms-border);
+  --color-form-border-hover: var(--color-neutral-600);
+  --color-form-border-disabled: var(--color-action-disabled-border);
+  --color-commerce-discount-border: var(--color-tomato-500);
+  --font-line-height-6xl: var(--font-line-height-none); /* tipo distinto: Orali usa px, Ketea usa proporción */
+  --size-container: 1280px;
+  --font-size-2xs: var(--font-size-xs); /* falta font-size-2xs (Orali: 10px) */
+  --button-shape-default: var(--radius-md);
+  --color-action-disabled-border: var(--color-neutral-300);
+  --color-action-link-fg-active: var(--color-brand-active);
+  --color-action-link-fg-hover: var(--color-text-link-hover);
+  --space-0: var(--radius-none); /* no hay spacing-0; se usa 0 de radius-none */
+  --color-action-neutral-border: var(--color-border-default);
+  --color-action-outline-fg-active: var(--color-brand-active);
+  --color-action-outline-fg-hover: var(--color-brand-hover);
+  --color-alpha-white-10: var(--color-white); /* Ketea no tiene transparencias de blanco */
+  --color-alpha-white-50: var(--color-white); /* Ketea no tiene transparencias de blanco */
+  --z-index-header: 50; /* falta en Ketea: valor copiado de Orali, hay que crear el token */
+  --z-index-mobile-menu: 65; /* falta en Ketea: valor copiado de Orali, hay que crear el token */
+  --size-control-xs: var(--spacing-8); /* Ketea no tiene tamaños de control (Orali: 32px) */
+  --z-index-overlay: 60;
+  --color-brand-active: var(--color-brand-900); /* Ketea no tiene brand-active; se usa brand-900 */
+
+  /* canales rgb para las utilidades de Tailwind (bg-surface-default, text-brand…) */
+  --color-action-accent-bg-rgb: var(--color-brand-hover-rgb);
+  --color-action-accent-bg-hover-rgb: var(--color-brand-hover-rgb);
+  --color-action-accent-fg-rgb: var(--color-semantic-text-on-brand-rgb);
+  --color-action-destructive-bg-hover-rgb: var(--color-red-700-rgb);
+  --color-action-destructive-fg-rgb: var(--color-white-rgb);
+  --color-action-disabled-bg-rgb: var(--color-neutral-100-rgb);
+  --color-action-disabled-border-rgb: var(--color-neutral-300-rgb);
+  --color-action-disabled-fg-rgb: var(--color-neutral-300-rgb);
+  --color-action-link-fg-rgb: var(--color-semantic-text-link-rgb);
+  --color-action-link-fg-active-rgb: var(--color-brand-900-rgb);
+  --color-action-link-fg-hover-rgb: var(--color-semantic-text-link-hover-rgb);
+  --color-action-neutral-bg-rgb: var(--color-neutral-50-rgb);
+  --color-action-neutral-bg-active-rgb: var(--color-neutral-200-rgb);
+  --color-action-neutral-bg-hover-rgb: var(--color-neutral-100-rgb);
+  --color-action-neutral-border-rgb: var(--color-semantic-border-default-rgb);
+  --color-action-neutral-fg-rgb: var(--color-semantic-text-primary-rgb);
+  --color-action-outline-bg-rgb: var(--color-white-rgb);
+  --color-action-outline-bg-active-rgb: var(--color-brand-100-rgb);
+  --color-action-outline-bg-focus-rgb: var(--color-brand-100-rgb);
+  --color-action-outline-bg-hover-rgb: var(--color-brand-50-rgb);
+  --color-action-outline-fg-active-rgb: var(--color-brand-900-rgb);
+  --color-action-outline-fg-hover-rgb: var(--color-brand-hover-rgb);
+  --color-action-primary-bg-rgb: var(--color-brand-default-rgb);
+  --color-action-primary-bg-active-rgb: var(--color-brand-900-rgb);
+  --color-action-primary-bg-hover-rgb: var(--color-brand-hover-rgb);
+  --color-action-primary-fg-rgb: var(--color-semantic-text-on-brand-rgb);
+  --color-action-secondary-bg-rgb: var(--color-neutral-900-rgb);
+  --color-action-secondary-bg-active-rgb: var(--color-neutral-700-rgb);
+  --color-action-secondary-bg-hover-rgb: var(--color-neutral-500-rgb);
+  --color-action-secondary-fg-rgb: var(--color-white-rgb);
+  --color-alpha-white-10-rgb: var(--color-white-rgb);
+  --color-alpha-white-15-rgb: var(--color-white-rgb);
+  --color-alpha-white-50-rgb: var(--color-white-rgb);
+  --color-alpha-white-90-rgb: var(--color-white-rgb);
+  --color-base-black-rgb: var(--color-black-rgb);
+  --color-base-white-rgb: var(--color-white-rgb);
+  --color-border-accent-rgb: var(--color-brand-hover-rgb);
+  --color-border-brand-rgb: var(--color-brand-default-rgb);
+  --color-border-brand-subtle-rgb: var(--color-brand-200-rgb);
+  --color-border-default-rgb: var(--color-semantic-border-default-rgb);
+  --color-border-focus-rgb: var(--color-semantic-border-focus-rgb);
+  --color-border-inverse-rgb: var(--color-semantic-border-strong-rgb);
+  --color-border-strong-rgb: var(--color-semantic-border-strong-rgb);
+  --color-brand-active-rgb: var(--color-brand-900-rgb);
+  --color-commerce-badge-dietary-bg-rgb: var(--color-brand-hover-rgb);
+  --color-commerce-badge-dietary-fg-rgb: var(--color-white-rgb);
+  --color-commerce-discount-bg-rgb: var(--color-white-rgb);
+  --color-commerce-discount-border-rgb: var(--color-brand-500-rgb);
+  --color-commerce-discount-fg-rgb: var(--color-brand-500-rgb);
+  --color-commerce-price-current-rgb: var(--color-semantic-text-primary-rgb);
+  --color-commerce-price-previous-rgb: var(--color-semantic-text-secondary-rgb);
+  --color-commerce-price-unit-rgb: var(--color-semantic-text-secondary-rgb);
+  --color-commerce-shipping-free-fg-rgb: var(--color-semantic-feedback-success-text-rgb);
+  --color-feedback-error-bg-rgb: var(--color-red-50-rgb);
+  --color-feedback-error-border-rgb: var(--color-semantic-feedback-error-border-rgb);
+  --color-feedback-error-solid-rgb: var(--color-semantic-feedback-error-text-rgb);
+  --color-feedback-error-text-rgb: var(--color-red-700-rgb);
+  --color-feedback-info-bg-rgb: var(--color-blue-50-rgb);
+  --color-feedback-info-border-rgb: var(--color-blue-300-rgb);
+  --color-feedback-info-solid-rgb: var(--color-semantic-feedback-info-text-rgb);
+  --color-feedback-info-text-rgb: var(--color-blue-700-rgb);
+  --color-feedback-success-bg-rgb: var(--color-green-50-rgb);
+  --color-feedback-success-border-rgb: var(--color-semantic-feedback-success-border-rgb);
+  --color-feedback-success-solid-rgb: var(--color-semantic-feedback-success-text-rgb);
+  --color-feedback-success-text-rgb: var(--color-green-700-rgb);
+  --color-feedback-warning-bg-rgb: var(--color-yellow-50-rgb);
+  --color-feedback-warning-border-rgb: var(--color-yellow-300-rgb);
+  --color-feedback-warning-solid-rgb: var(--color-semantic-feedback-warning-text-rgb);
+  --color-feedback-warning-text-rgb: var(--color-yellow-700-rgb);
+  --color-focus-ring-rgb: var(--color-semantic-border-focus-rgb);
+  --color-focus-ring-inverse-rgb: var(--color-white-rgb);
+  --color-form-bg-rgb: var(--color-semantic-forms-bg-rgb);
+  --color-form-bg-disabled-rgb: var(--color-semantic-forms-bg-disabled-rgb);
+  --color-form-bg-error-rgb: var(--color-red-50-rgb);
+  --color-form-border-rgb: var(--color-semantic-forms-border-rgb);
+  --color-form-border-disabled-rgb: var(--color-neutral-300-rgb);
+  --color-form-border-error-rgb: var(--color-semantic-forms-border-error-rgb);
+  --color-form-border-focus-rgb: var(--color-semantic-forms-border-focus-rgb);
+  --color-form-border-hover-rgb: var(--color-neutral-600-rgb);
+  --color-form-control-off-rgb: var(--color-neutral-400-rgb);
+  --color-form-control-off-hover-rgb: var(--color-neutral-500-rgb);
+  --color-form-control-on-rgb: var(--color-brand-default-rgb);
+  --color-form-control-on-hover-rgb: var(--color-brand-hover-rgb);
+  --color-form-control-on-subtle-rgb: var(--color-brand-50-rgb);
+  --color-form-helper-rgb: var(--color-semantic-text-secondary-rgb);
+  --color-form-label-rgb: var(--color-semantic-text-primary-rgb);
+  --color-form-label-disabled-rgb: var(--color-semantic-forms-text-disabled-rgb);
+  --color-form-placeholder-rgb: var(--color-semantic-forms-text-placeholder-rgb);
+  --color-form-text-rgb: var(--color-semantic-text-primary-rgb);
+  --color-form-text-disabled-rgb: var(--color-semantic-forms-text-disabled-rgb);
+  --color-icon-brand-rgb: var(--color-semantic-icon-brand-rgb);
+  --color-icon-default-rgb: var(--color-neutral-600-rgb);
+  --color-icon-inverse-rgb: var(--color-white-rgb);
+  --color-icon-subtle-rgb: var(--color-semantic-icon-subtle-rgb);
+  --color-sage-100-rgb: var(--color-brand-hover-rgb);
+  --color-sage-200-rgb: var(--color-brand-hover-rgb);
+  --color-sage-300-rgb: var(--color-brand-hover-rgb);
+  --color-sage-400-rgb: var(--color-brand-hover-rgb);
+  --color-sage-50-rgb: var(--color-brand-hover-rgb);
+  --color-sage-500-rgb: var(--color-brand-hover-rgb);
+  --color-sage-600-rgb: var(--color-brand-hover-rgb);
+  --color-sage-700-rgb: var(--color-brand-hover-rgb);
+  --color-sage-800-rgb: var(--color-brand-hover-rgb);
+  --color-sage-900-rgb: var(--color-brand-hover-rgb);
+  --color-sage-950-rgb: var(--color-brand-hover-rgb);
+  --color-surface-accent-rgb: var(--color-brand-hover-rgb);
+  --color-surface-brand-rgb: var(--color-brand-default-rgb);
+  --color-surface-brand-subtle-rgb: var(--color-brand-subtle-rgb);
+  --color-surface-default-rgb: var(--color-semantic-surface-default-rgb);
+  --color-surface-inverse-rgb: var(--color-semantic-surface-inverse-rgb);
+  --color-surface-muted-rgb: var(--color-semantic-surface-muted-rgb);
+  --color-surface-page-rgb: var(--color-neutral-50-rgb);
+  --color-surface-subtle-rgb: var(--color-semantic-surface-subtle-rgb);
+  --color-text-accent-rgb: var(--color-brand-hover-rgb);
+  --color-text-brand-rgb: var(--color-brand-default-rgb);
+  --color-text-disabled-rgb: var(--color-neutral-300-rgb);
+  --color-text-inverse-rgb: var(--color-semantic-text-inverse-rgb);
+  --color-text-inverse-muted-rgb: var(--color-semantic-text-inverse-rgb);
+  --color-text-link-rgb: var(--color-semantic-text-link-rgb);
+  --color-text-link-hover-rgb: var(--color-semantic-text-link-hover-rgb);
+  --color-text-on-brand-rgb: var(--color-semantic-text-on-brand-rgb);
+  --color-text-primary-rgb: var(--color-semantic-text-primary-rgb);
+  --color-text-secondary-rgb: var(--color-semantic-text-secondary-rgb);
+  --color-text-tertiary-rgb: var(--color-semantic-text-tertiary-rgb);
+  --color-tomato-100-rgb: var(--color-brand-100-rgb);
+  --color-tomato-200-rgb: var(--color-brand-200-rgb);
+  --color-tomato-300-rgb: var(--color-brand-300-rgb);
+  --color-tomato-400-rgb: var(--color-brand-400-rgb);
+  --color-tomato-50-rgb: var(--color-brand-50-rgb);
+  --color-tomato-500-rgb: var(--color-brand-500-rgb);
+  --color-tomato-600-rgb: var(--color-brand-600-rgb);
+  --color-tomato-700-rgb: var(--color-brand-700-rgb);
+  --color-tomato-800-rgb: var(--color-brand-800-rgb);
+  --color-tomato-900-rgb: var(--color-brand-900-rgb);
+  --color-tomato-950-rgb: var(--color-brand-950-rgb);
+}

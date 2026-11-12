@@ -46,7 +46,7 @@ export function ProductDescription({ product }: { product: Product }) {
       <p className="spec-block__text">{product.description}</p>
       {product.ingredients && (
         <div>
-          <p className="spec-block__title">Ingredientes</p>
+          <p className="spec-block__title">Descripción</p>
           <p className="spec-block__text">{product.ingredients}</p>
         </div>
       )}
@@ -72,7 +72,7 @@ export function ProductSpecs({ product, sku }: { product: Product; sku: string }
 
       {product.conservation && (
         <div>
-          <p className="spec-block__title">Conservación</p>
+          <p className="spec-block__title">Garantía</p>
           <p className="spec-block__text">{product.conservation}</p>
         </div>
       )}

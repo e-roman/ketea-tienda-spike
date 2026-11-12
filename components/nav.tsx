@@ -230,13 +230,13 @@ export default function Nav() {
           <div className="max-w-7xl mx-auto px-4 md:px-6 header-subnav-row">
             <div ref={categoriesRowRef} className="header-subnav-group">
               <span className="site-header__subnav-label">Nuestros productos:</span>
-              <MegaMenu label="Pastas" items={PASTAS_ITEMS} verTodosKey="pastas-todos" open={pastasOpen} onToggle={togglePastas} onItemClick={closeMegaMenus} />
-              <MegaMenu label="Tapas" items={TAPAS_ITEMS} verTodosKey="tapas-todos" open={tapasOpen} onToggle={toggleTapas} onItemClick={closeMegaMenus} />
-              <Link href="/productos?nav=empanadas-rellenas" className="nav-link">
-                Empanadas rellenas
+              <MegaMenu label="Equipamiento" items={PASTAS_ITEMS} verTodosKey="piscinas-todos" open={pastasOpen} onToggle={togglePastas} onItemClick={closeMegaMenus} />
+              <MegaMenu label="Mantenimiento" items={TAPAS_ITEMS} verTodosKey="mantenimiento-todos" open={tapasOpen} onToggle={toggleTapas} onItemClick={closeMegaMenus} />
+              <Link href="/productos?nav=ofertas" className="nav-link">
+                Ofertas
               </Link>
-              <Link href="/productos?nav=especiales" className="nav-link">
-                Especiales
+              <Link href="/productos?nav=piscinas-robots" className="nav-link">
+                Robots
               </Link>
               <Link href="/ofertas" className="nav-link nav-link--strong">
                 <Tag className="icon-sm" aria-hidden="true" />

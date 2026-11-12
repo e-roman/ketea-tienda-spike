@@ -74,7 +74,7 @@ export function CartItem({
           <div className="cart-item__head cart-item__head--bare">{title}</div>
         )}
         <p className="cart-item__meta">
-          {product.packInfo} · {quantity * 3} unidades.
+          {product.packInfo}
           {variant === "page" && <> · {formatPrice(product.priceUnit)} c/u</>}
         </p>
         <div className="cart-item__foot">

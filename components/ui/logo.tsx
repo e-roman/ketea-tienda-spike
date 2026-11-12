@@ -7,6 +7,6 @@ const SIZE = { sm: "logo--sm", md: "logo--md", lg: "logo--lg", checkout: "logo--
 /** Logotipo — clases de styles/components/logo.css. */
 export function Logo({ size = "md", className }: { size?: keyof typeof SIZE; className?: string }) {
   return (
-    <Image src="/imagenes/logo-orali.png" alt="Orali" width={207} height={55} priority className={cn("logo", SIZE[size], className)} />
+    <Image src="/assets/img/logo/logo-ketea.svg" alt="Ketea" width={164} height={43} priority className={cn("logo", SIZE[size], className)} />
   )
 }

@@ -29,7 +29,7 @@ export function OrderReview({ items, subtotal, total, className }: OrderReviewPr
                 <p className="order-review__name">{product.name}</p>
                 <span className="order-review__price">{formatPrice(product.priceX3 * quantity)}</span>
               </div>
-              <p className="order-review__meta">{product.packInfo} · pack x3</p>
+              <p className="order-review__meta">{product.packInfo}</p>
               <div className="order-review__row">
                 <span className="order-review__qty">{quantity} × {formatPrice(product.priceX3)}</span>
               </div>

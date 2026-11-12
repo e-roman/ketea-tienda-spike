@@ -9,9 +9,9 @@ import { buttonClasses } from "@/components/ui/button"
 const SLIDE_STATE = { true: "hero__slide hero__slide--active", false: "hero__slide" } as const
 
 const SLIDES = [
-  "https://www.tiendaorali.com/assets/images/slider/slider-1.jpg",
-  "https://www.tiendaorali.com/assets/images/slider/slider-2.jpg",
-  "https://www.tiendaorali.com/assets/images/slider/slider-3.jpg",
+  "/assets/img/banners/hero-1.jpg",
+  "/assets/img/banners/hero-2.jpg",
+  "/assets/img/banners/hero-3.jpg",
 ]
 
 export default function Hero() {
@@ -45,14 +45,14 @@ export default function Hero() {
       <div className="hero__content max-w-7xl mx-auto px-4 md:px-6">
         <div className="max-w-xl">
           <span className="hero__eyebrow">
-            Más de 50 años de tradición
+            Todo para tu pileta
           </span>
           <h1 className="hero__title">
-            Pastas frescas,<br />de la fábrica<br />a tu mesa
+            Tu pileta lista<br />para disfrutar<br />todo el año
           </h1>
           <p className="hero__text">
-            Envíos de lunes a viernes{" "}
-            <span className="nowrap">de 9 a 15 h.</span>
+            Hasta 12 cuotas sin interés{" "}
+            <span className="nowrap">y envío gratis.</span>
           </p>
           <div className="hero__actions">
             <Link href="/productos" className={buttonClasses({ shape: "pill" })}>

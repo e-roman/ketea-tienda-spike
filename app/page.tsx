@@ -11,20 +11,20 @@ import { getFeatured, getProductsByCategory } from "@/lib/products"
 
 const TRUST_ITEMS: TrustItem[] = [
   { icon: <ShieldCheck className="icon-md" />, title: "Compra segura",        desc: "Tus datos, protegidos" },
-  { icon: <CreditCard className="icon-md" />,  title: "Pagá con tarjeta",     desc: "A través de Mercado Pago" },
-  { icon: <Truck className="icon-md" />,       title: "Envío gratis en CABA", desc: "Lunes a viernes, 9 a 15 h" },
+  { icon: <CreditCard className="icon-md" />,  title: "Hasta 12 cuotas",     desc: "Sin interés con tarjeta" },
+  { icon: <Truck className="icon-md" />,       title: "Envío gratis", desc: "En productos seleccionados" },
   { icon: <Headset className="icon-md" />,     title: "Te ayudamos",          desc: "WhatsApp, 9 a 18 h" },
 ]
 
 const HOW_STEPS: HowStep[] = [
-  { number: "01", icon: <ShoppingBag className="icon-md" />, title: "Elegí tus productos", text: "Explorá el catálogo y combiná tus sabores favoritos." },
-  { number: "02", icon: <ListChecks className="icon-md" />, title: "Completá 4 packs", text: "Podés combinar los productos que quieras. La barra te muestra cuánto te falta.", featured: true, progress: { current: 3, total: 4 } },
-  { number: "03", icon: <Truck className="icon-md" />, title: "Recibilas en casa", text: "Elegí el día de entrega y disfrutá tus productos en CABA y GBA." },
+  { number: "01", icon: <ShoppingBag className="icon-md" />, title: "Elegí tus productos", text: "Explorá el catálogo de equipamiento y mantenimiento." },
+  { number: "02", icon: <ListChecks className="icon-md" />, title: "Agregalos al carrito", text: "Combiná robots, filtros y químicos en una misma compra.", featured: true },
+  { number: "03", icon: <Truck className="icon-md" />, title: "Recibilo en casa", text: "Te lo enviamos a donde estés o lo retirás en sucursal." },
 ]
 
 export default function HomePage() {
   const featured = getFeatured().slice(0, 4)
-  const nuevos = getProductsByCategory("alta-cocina").slice(0, 4)
+  const nuevos = getProductsByCategory("Bombas de Calor").slice(0, 4)
 
   return (
     <div>
@@ -43,7 +43,7 @@ export default function HomePage() {
       </section>
 
       <section className="max-w-7xl mx-auto px-4 md:px-6 py-14">
-        <SectionHeader title="Los más pedidos" href="/productos" />
+        <SectionHeader title="Productos destacados" href="/productos" />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
           {featured.map((product) => (
             <ProductCard key={product.id} product={product} />
@@ -54,27 +54,27 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 md:px-6 pb-14">
         <div className="grid md:grid-cols-2 gap-5">
           <PromoBanner
-            image="https://pastasorali.com/images/categorias/9.jpg"
-            imageAlt="Línea Verde"
+            image="/assets/img/banners/banner-ofertas.png"
+            imageAlt="Ofertas"
             icon={<Leaf className="icon-md" aria-hidden="true" />}
-            title="Línea Verde"
-            text="Harina integral orgánica, sal del Himalaya y verduras agroecológicas. 100% vegano."
-            href="/productos?cat=linea-verde"
+            title="Ofertas"
+            text="Descuentos en robots, filtros y bombas de calor, con cuotas sin interés."
+            href="/productos?nav=ofertas"
           />
           <PromoBanner
-            image="https://pastasorali.com/images/categorias/13.jpg"
-            imageAlt="Sin TACC"
+            image="/assets/img/banners/banner-novedades.png"
+            imageAlt="Novedades"
             icon={<Wheat className="icon-md" aria-hidden="true" />}
-            title="Sin TACC"
-            text="Certificados para celíacos. Tapas, rotiseras y ñoquis sin gluten elaborados en ambiente controlado."
-            href="/productos?cat=linea-sin-gluten"
+            title="Robots limpiafondos"
+            text="Dolphin, Aiper, Beatbot y más: tu pileta limpia sin esfuerzo."
+            href="/productos?nav=piscinas-robots"
           />
         </div>
       </section>
 
       {nuevos.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 md:px-6 pb-14">
-          <SectionHeader title="Nuevos · Alta Cocina" href="/productos?cat=alta-cocina" />
+          <SectionHeader title="Bombas de calor" href="/productos?cat=Bombas de Calor" />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
             {nuevos.map((product) => (
               <ProductCard key={product.id} product={product} />

@@ -11,12 +11,12 @@ import { CATEGORIES } from "@/lib/products"
 import { SectionHeader } from "@/components/patterns/section-header"
 
 const CAT_ICONS: Record<string, React.ReactNode> = {
-  "pastas-frescas":       <UtensilsCrossed className="icon-lg" />,
-  "tapas-empanadas":      <Layers className="icon-lg" />,
-  "oralitas":             <Sandwich className="icon-lg" />,
-  "linea-verde":          <Leaf className="icon-lg" />,
-  "linea-sin-gluten":     <Wheat className="icon-lg" />,
-  "linea-sin-sal":        <ShieldCheck className="icon-lg" />,
+  "Robots":       <UtensilsCrossed className="icon-lg" />,
+  "Bombas de Calor":      <Layers className="icon-lg" />,
+  "Filtros":             <Sandwich className="icon-lg" />,
+  "Químicos":          <Leaf className="icon-lg" />,
+  "Accesorios":     <Wheat className="icon-lg" />,
+  "Válvulas":        <ShieldCheck className="icon-lg" />,
   "texturizado-soja":     <Bean className="icon-lg" />,
   "linea-premium":        <Award className="icon-lg" />,
   "alta-cocina":          <ChefHat className="icon-lg" />,

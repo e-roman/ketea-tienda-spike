@@ -2,18 +2,19 @@ import type { NavKey } from "@/lib/products"
 
 export type NavSubItem = { key: NavKey; label: string }
 
+// En la tienda de Orali estos grupos se llamaban PASTAS_ITEMS y TAPAS_ITEMS.
+// Se conservan los nombres de las constantes para no tocar los componentes del menú.
 export const PASTAS_ITEMS: NavSubItem[] = [
-  { key: "pastas-ravioles",              label: "Ravioles" },
-  { key: "pastas-sorrentinos-capeletti", label: "Sorrentinos y Capeletti" },
-  { key: "pastas-noquis",                label: "Ñoquis" },
-  { key: "pastas-fideos",                label: "Fideos" },
+  { key: "piscinas-robots",          label: "Robots limpiafondos" },
+  { key: "piscinas-bombas-de-calor", label: "Bombas de calor" },
+  { key: "piscinas-filtros",         label: "Filtros" },
+  { key: "piscinas-valvulas",        label: "Válvulas" },
 ]
 
 export const TAPAS_ITEMS: NavSubItem[] = [
-  { key: "tapas-empanadas",          label: "Para empanadas" },
-  { key: "tapas-copetin-pastelitos", label: "Para copetín y pastelitos" },
-  { key: "tapas-pascualinas",        label: "Para pascualinas" },
-  { key: "tapas-tortillas",          label: "Tortillas" },
+  { key: "mantenimiento-quimicos",   label: "Químicos" },
+  { key: "mantenimiento-cloro",      label: "Cloro" },
+  { key: "mantenimiento-accesorios", label: "Accesorios" },
 ]
 
 export const WHATSAPP_URL = "https://api.whatsapp.com/send?phone=5491130656942"

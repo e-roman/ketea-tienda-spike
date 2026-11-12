@@ -6,7 +6,7 @@ import type { Product } from "./products"
 // Pedido mínimo: cantidad de packs (x3) que debe alcanzar el carrito para
 // poder finalizar la compra. Reemplaza la lógica anterior de envío gratis
 // por monto.
-export const MINIMUM_PACKS = 4
+export const MINIMUM_PACKS = 1 // spike: Ketea no tiene pedido mínimo; se deja en 1 para no tocar la lógica
 
 export interface CartItem {
   product: Product

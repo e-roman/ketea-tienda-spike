@@ -27,7 +27,7 @@ export function SearchResultsDropdown({ query, results, onSelect, onSeeAll }: Se
               </span>
               <span className="search-result__body">
                 <span className="search-result__name">{p.name}</span>
-                <span className="search-result__meta">{p.packInfo} · pack x3</span>
+                <span className="search-result__meta">{p.packInfo}</span>
                 <span className="search-result__price">{formatPrice(p.priceX3)}</span>
               </span>
             </Link>
@@ -68,7 +68,7 @@ export function MobileSearchResults({ query, results, onSelect, onSeeAll, adding
                     </Link>
                     <Link href={`/productos/${p.slug}`} onClick={onSelect} className="search-row__link">
                       <span className="search-result__name">{p.name}</span>
-                      <span className="search-result__meta search-result__meta--loose">{p.packInfo} · pack x3</span>
+                      <span className="search-result__meta search-result__meta--loose">{p.packInfo}</span>
                       <Price
                         size="sm"
                         current={p.priceX3}

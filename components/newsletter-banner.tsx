@@ -24,7 +24,7 @@ export default function NewsletterBanner() {
               Novedades · Beneficios
             </span>
             <h2 className="newsletter__title">
-              Todo lo bueno de Orali,<br />directo a tu email.
+              Ofertas y novedades de Ketea,<br />directo a tu email.
             </h2>
           </div>
 

@@ -39,17 +39,17 @@ export function BuyBox({ product }: { product: Product }) {
         />
         <div className="price-box__pack">
           <Info aria-hidden="true" />
-          <span><strong>{product.packInfo}</strong> · viene en pack de 3</span>
+          <span><strong>{product.packInfo}</strong></span>
         </div>
       </div>
 
       <div>
-        <p className="buy-box__label">¿Cuántos packs querés?</p>
+        <p className="buy-box__label">¿Cuántas unidades querés?</p>
         <div className="buy-box__quantity">
           <Stepper
             size="lg"
             min={1}
-            unit="pack"
+            unit="unidad"
             value={quantity}
             label={product.name}
             onDecrement={() => setQuantity((q) => Math.max(1, q - 1))}
@@ -57,7 +57,7 @@ export function BuyBox({ product }: { product: Product }) {
             className="buy-box__stepper"
           />
           <span className="buy-box__hint">
-            = {quantity * 3} unidades · {formatPrice(product.priceX3 * quantity)}
+            Total · {formatPrice(product.priceX3 * quantity)}
           </span>
         </div>
       </div>
@@ -66,14 +66,14 @@ export function BuyBox({ product }: { product: Product }) {
         {added ? (
           <><Check className="icon-sm" aria-hidden="true" /> ¡Agregado al carrito!</>
         ) : (
-          <><ShoppingCart className="icon-sm" aria-hidden="true" /> Agregar {quantity} pack{quantity > 1 ? "s" : ""}</>
+          <><ShoppingCart className="icon-sm" aria-hidden="true" /> Agregar {quantity} unidad{quantity > 1 ? "es" : ""}</>
         )}
       </Button>
 
       {product.badges.includes("apto-freezer") && (
         <div className="callout callout--info">
           <Snowflake aria-hidden="true" />
-          <span>Apto freezer hasta 3 meses. Conservá el packaging original.</span>
+          <span>Garantía oficial del fabricante. Conservá la factura de compra.</span>
         </div>
       )}
     </div>
