@@ -11,7 +11,7 @@
 
   .header-search-mobile { padding-bottom: var(--space-3); }
 
-  .header-subnav-row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); height: var(--space-12); }
+  .header-subnav-row { position: relative; display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); height: var(--space-12); }
   .header-subnav-group { display: flex; align-items: center; gap: var(--space-1); }
   .header-subnav-group--end { flex-shrink: 0; }
 

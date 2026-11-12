@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { usePathname, useRouter } from "next/navigation"
-import { ShoppingCart, Menu, X, User, Tag, HelpCircle } from "lucide-react"
+import { ShoppingCart, Menu, X, User } from "lucide-react"
 import { toast } from "sonner"
 import { useCart, MINIMUM_PACKS } from "@/lib/cart-context"
 import { searchProducts } from "@/lib/products"
@@ -12,11 +12,10 @@ import { Badge } from "@/components/ui/badge"
 import { iconButtonClasses } from "@/components/ui/icon-button"
 import { UtilityBar } from "@/components/patterns/header/utility-bar"
 import { CheckoutHeader } from "@/components/patterns/header/checkout-header"
-import { MegaMenu } from "@/components/patterns/header/mega-menu"
+import { CategoriesMenu } from "@/components/patterns/header/categories-menu"
 import { MobileMenu } from "@/components/patterns/header/mobile-menu"
 import { SearchField } from "@/components/patterns/header/search-field"
 import { SearchResultsDropdown, MobileSearchResults } from "@/components/patterns/header/search-results"
-import { PASTAS_ITEMS, TAPAS_ITEMS } from "@/components/patterns/header/nav-items"
 import { Logo } from "@/components/ui/logo"
 
 /**
@@ -30,8 +29,6 @@ export default function Nav() {
   const isCheckout = pathname?.startsWith("/checkout")
 
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [pastasOpen, setPastasOpen] = useState(false)
-  const [tapasOpen, setTapasOpen] = useState(false)
   const [authModalOpen, setAuthModalOpen] = useState(false)
 
   const [query, setQuery] = useState("")
@@ -40,7 +37,6 @@ export default function Nav() {
   const [addingId, setAddingId] = useState<string | null>(null)
   const searchWrapRef = useRef<HTMLDivElement>(null)
   const mobileSearchWrapRef = useRef<HTMLDivElement>(null)
-  const categoriesRowRef = useRef<HTMLDivElement>(null)
 
   const results = searchProducts(query, 6)
 
@@ -60,21 +56,6 @@ export default function Nav() {
     }, 500)
   }
 
-  function togglePastas() {
-    setPastasOpen((v) => !v)
-    setTapasOpen(false)
-  }
-
-  function toggleTapas() {
-    setTapasOpen((v) => !v)
-    setPastasOpen(false)
-  }
-
-  function closeMegaMenus() {
-    setPastasOpen(false)
-    setTapasOpen(false)
-  }
-
   function closeMobileMenu() {
     setMobileOpen(false)
   }
@@ -86,9 +67,6 @@ export default function Nav() {
       }
       if (mobileSearchWrapRef.current && !mobileSearchWrapRef.current.contains(e.target as Node)) {
         setMobileSearchOpen(false)
-      }
-      if (categoriesRowRef.current && !categoriesRowRef.current.contains(e.target as Node)) {
-        closeMegaMenus()
       }
     }
     document.addEventListener("mousedown", onClickOutside)
@@ -228,27 +206,21 @@ export default function Nav() {
         {/* Categories row (desktop) */}
         <div className="site-header__subnav hidden md:block">
           <div className="max-w-7xl mx-auto px-4 md:px-6 header-subnav-row">
-            <div ref={categoriesRowRef} className="header-subnav-group">
-              <span className="site-header__subnav-label">Nuestros productos:</span>
-              <MegaMenu label="Equipamiento" items={PASTAS_ITEMS} verTodosKey="piscinas-todos" open={pastasOpen} onToggle={togglePastas} onItemClick={closeMegaMenus} />
-              <MegaMenu label="Mantenimiento" items={TAPAS_ITEMS} verTodosKey="mantenimiento-todos" open={tapasOpen} onToggle={toggleTapas} onItemClick={closeMegaMenus} />
-              <Link href="/productos?nav=ofertas" className="nav-link">
-                Ofertas
-              </Link>
-              <Link href="/productos?nav=piscinas-robots" className="nav-link">
-                Robots
-              </Link>
-              <Link href="/ofertas" className="nav-link nav-link--strong">
-                <Tag className="icon-sm" aria-hidden="true" />
-                Ofertas de la semana
-              </Link>
+            <div className="header-subnav-group">
+              <CategoriesMenu />
+              <Link href="/" className="nav-link">Home</Link>
+              <Link href="/productos" className="nav-link">Novedades</Link>
+              <Link href="/productos?nav=ofertas" className="nav-link">Ofertas de la semana</Link>
+              <Link href="/productos" className="nav-link">Más vendido</Link>
+              <Link href="/contacto" className="nav-link">Sucursales</Link>
+              <Link href="/contacto" className="nav-link">Contacto</Link>
             </div>
 
             <div className="header-subnav-group header-subnav-group--end">
-              <Link href="/preguntas-frecuentes" className="nav-link nav-link--icon">
-                <HelpCircle className="icon-sm" aria-hidden="true" />
-                Preguntas frecuentes
-              </Link>
+              <button type="button" onClick={() => setAuthModalOpen(true)} className="nav-link nav-link--icon">
+                <User className="icon-sm" aria-hidden="true" />
+                Mi cuenta / Registrarme
+              </button>
             </div>
           </div>
         </div>

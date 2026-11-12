@@ -1,0 +1,79 @@
+/* Menú "Todas las categorías" del header (Figma: Header / Desktop, menú de categorías).
+   Lista a la izquierda; al pasar el mouse por una categoría se abre al lado el panel con sus secciones.
+   El panel se ancla a .header-subnav-row (position: relative). Capas con --layer-*. */
+@layer components {
+  /* Oscurece solo lo que queda debajo de la barra de categorías: arranca en su borde inferior y ocupa todo el ancho. */
+  .categories-menu__backdrop {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    margin-left: -50vw;
+    background-color: var(--color-surface-overlay);
+  }
+
+  .categories-menu__panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: var(--layer-header);
+    display: flex;
+    overflow: hidden;
+    border: var(--border-width-sm) solid var(--color-border-default);
+    border-radius: var(--radius-xl);
+    background-color: var(--dropdown-bg);
+    box-shadow: var(--elevation-dropdown);
+  }
+  .categories-menu__panel--wide { right: 0; }
+
+  .categories-menu__list {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    width: var(--space-64);
+    padding-block: var(--space-4);
+  }
+
+  .categories-menu__cat {
+    display: flex;
+    align-items: center;
+    min-height: var(--size-control-xl);
+    padding-inline: var(--space-5) var(--space-4);
+    border-left: var(--border-width-lg) solid transparent;
+    font-size: var(--font-size-sm);
+    line-height: var(--font-line-height-sm);
+    color: var(--dropdown-item-fg);
+  }
+  .categories-menu__cat--strong { font-weight: var(--font-weight-bold); }
+  .categories-menu__cat--active {
+    border-left-color: var(--color-border-brand);
+    background-color: var(--color-surface-subtle);
+  }
+  .categories-menu__cat:focus-visible { outline: var(--border-width-focus) solid var(--color-border-focus); outline-offset: calc(-1 * var(--border-width-focus)); }
+
+  .categories-menu__sections {
+    flex: 1 1 0%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-content: start;
+    gap: var(--space-8) var(--space-6);
+    padding: var(--space-8);
+    background-color: var(--color-surface-subtle);
+  }
+  .categories-menu__title {
+    margin-bottom: var(--space-3);
+    font-size: var(--font-size-sm);
+    line-height: var(--font-line-height-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+  }
+  .categories-menu__links { display: flex; flex-direction: column; gap: var(--space-2); }
+  .categories-menu__link {
+    font-size: var(--font-size-sm);
+    line-height: var(--font-line-height-sm);
+    color: var(--color-text-secondary);
+  }
+  .categories-menu__link:hover { color: var(--color-text-primary); text-decoration: underline; }
+  .categories-menu__link:focus-visible { outline: var(--border-width-focus) solid var(--color-border-focus); outline-offset: var(--border-width-md); }
+}

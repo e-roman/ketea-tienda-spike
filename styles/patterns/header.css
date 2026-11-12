@@ -11,7 +11,7 @@
   }
   .site-header__subnav {
     border-top: var(--border-width-sm) solid var(--color-border-default);
-    background-color: var(--color-surface-subtle);
+    background-color: var(--color-surface-default);
   }
   .site-header__subnav-label { padding-inline: var(--space-1) var(--space-2); flex-shrink: 0; font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
 
