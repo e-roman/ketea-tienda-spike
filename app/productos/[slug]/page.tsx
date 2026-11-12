@@ -19,14 +19,6 @@ export default function PDPPage({ params }: { params: { slug: string } }) {
 
   const [detailTab, setDetailTab] = useState<"descripcion" | "especificaciones">("descripcion")
 
-  const sku = `ORL-${product.id.toUpperCase()}`
-
-  function handleViewSpecs(e: React.MouseEvent) {
-    e.preventDefault()
-    setDetailTab("especificaciones")
-    document.getElementById("detalles-producto")?.scrollIntoView({ behavior: "smooth", block: "start" })
-  }
-
   const related = getProductsByCategory(product.categories[0])
     .filter((p) => p.id !== product.id)
     .slice(0, 4)
@@ -36,18 +28,20 @@ export default function PDPPage({ params }: { params: { slug: string } }) {
       <Breadcrumb
         className="mb-6"
         items={[
-          { label: "Inicio", href: "/" },
-          { label: "Productos", href: "/productos" },
+          ...product.breadcrumb.map((label, i) => ({
+            label,
+            href: i === 0 ? "/productos" : `/productos?cat=${encodeURIComponent(label)}`,
+          })),
           { label: product.shortName },
         ]}
       />
 
-      <div className="grid md:grid-cols-[6fr_4fr] gap-10 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-10 mb-16">
         <div>
           <ProductGallery product={product} />
         </div>
 
-        <ProductInfo product={product} onViewSpecs={handleViewSpecs} />
+        <ProductInfo product={product} />
       </div>
 
       {/* ── DESCRIPCIÓN / ESPECIFICACIONES ──────────────── */}
@@ -64,12 +58,12 @@ export default function PDPPage({ params }: { params: { slug: string } }) {
         />
 
         {detailTab === "descripcion" && <ProductDescription product={product} />}
-        {detailTab === "especificaciones" && <ProductSpecs product={product} sku={sku} />}
+        {detailTab === "especificaciones" && <ProductSpecs product={product} sku={product.sku} />}
       </section>
 
       {/* ── RELATED ─────────────────────────────────────── */}
       {related.length > 0 && (
-        <section>
+        <section id="productos-similares" className="scroll-mt-28">
           <Heading size="xl" className="mb-5">También te puede gustar</Heading>
           <div className="snap-row">
             {related.map((p) => (

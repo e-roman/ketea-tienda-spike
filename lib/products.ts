@@ -58,10 +58,20 @@ export interface Product {
   keySpecs: NutritionRow[]
   pickupToday?: boolean
   freeShipping?: boolean
+  /** Código/SKU que se muestra en la ficha. */
+  sku: string
+  warrantyMonths?: number
+  /** Cuotas sin el texto "sin interés", ej. "12x $66.625". */
+  installmentsShort?: string
+  /** Fotos de la galería de la ficha: la principal y las de detalle. */
+  gallery: string[]
+  /** Migas de pan sin el inicio: [categoría general, categoría del producto]. */
+  breadcrumb: string[]
 }
 
 type RawProduct = (typeof rawProducts)[number]
 type RawDetail = {
+  sku?: string
   shortDescription?: string
   warrantyMonths?: number
   specs?: { group: string; items: { label: string; value: string }[] }[]
@@ -79,6 +89,15 @@ const CARD_SPEC_BY_CATEGORY: Record<string, { spec: string; short?: string }[]> 
 
 const details = rawDetails as unknown as Record<string, RawDetail>
 const img = (p: string) => encodeURI(p.replace("../assets", "/assets"))
+
+const HIDDEN_CATEGORIES = ["ofertas", "destacados", "premium"]
+
+function breadcrumbOf(p: RawProduct): string[] {
+  const cats = p.categories.filter((c) => !HIDDEN_CATEGORIES.includes(c.toLowerCase()))
+  const detail = p.categoryDetail?.[0]
+  const parent = cats.find((c) => c !== detail)
+  return [parent, detail].filter((c): c is string => !!c)
+}
 
 function adapt(p: RawProduct): Product {
   const d = details[p.slug]
@@ -124,6 +143,11 @@ function adapt(p: RawProduct): Product {
     keySpecs,
     pickupToday: p.retiroInmediato,
     freeShipping: p.envioGratis,
+    sku: d?.sku ?? p.code ?? "",
+    warrantyMonths: d?.warrantyMonths,
+    installmentsShort: p.installmentsLabel || undefined,
+    gallery: Array.from(new Set([img(p.image), ...(p.images ?? []).map(img)])),
+    breadcrumb: breadcrumbOf(p),
   }
 }
 

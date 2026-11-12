@@ -1,27 +1,31 @@
 "use client"
 
+import Link from "next/link"
 import { useState } from "react"
-import { Check, Info, ShoppingCart, Snowflake } from "lucide-react"
+import { Banknote, Check, CreditCard, Store, Truck } from "lucide-react"
 import { useCart } from "@/lib/cart-context"
 import { formatPrice, getDiscountPercent, type Product } from "@/lib/products"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Stepper } from "@/components/ui/stepper"
-import { Price } from "@/components/ui/price"
+import { ProductTags } from "@/components/patterns/product-tags"
 
 // Mapa literal: Tailwind purga las clases de @layer components que no encuentra escritas.
 const CTA_STATE = { true: "btn--added", false: undefined } as const
 
 /**
- * Buy box de la ficha (Figma: Product Detail / Product / Buy box): precio, cantidad de packs,
- * CTA y aviso de freezer. Clases de styles/patterns/buy-box.css y styles/components/callout.css.
+ * Buy box de la ficha (Figma: Product Detail / Product / Buy box): precio con descuento, cuotas, beneficios de pago y entrega,
+ * cantidad y CTA. Clases de styles/patterns/buy-box.css.
  */
 export function BuyBox({ product }: { product: Product }) {
   const { add } = useCart()
   const [quantity, setQuantity] = useState(1)
   const [added, setAdded] = useState(false)
   const discountPercent = getDiscountPercent(product)
+  const inStock = !!product.inStock
 
   function handleAdd() {
+    if (!inStock) return
     for (let i = 0; i < quantity; i++) add(product)
     setAdded(true)
     setTimeout(() => setAdded(false), 2000)
@@ -29,53 +33,54 @@ export function BuyBox({ product }: { product: Product }) {
 
   return (
     <div className="buy-box">
-      <div className="price-box">
-        <Price
-          size="lg"
-          current={product.priceX3}
-          previous={discountPercent > 0 ? product.originalPriceX3 : undefined}
-          discountPercent={discountPercent}
-          unit={product.priceUnit}
-        />
-        <div className="price-box__pack">
-          <Info aria-hidden="true" />
-          <span><strong>{product.packInfo}</strong></span>
-        </div>
-      </div>
+      {!inStock && <ProductTags product={product} />}
 
-      <div>
-        <p className="buy-box__label">¿Cuántas unidades querés?</p>
-        <div className="buy-box__quantity">
-          <Stepper
-            size="lg"
-            min={1}
-            unit="unidad"
-            value={quantity}
-            label={product.name}
-            onDecrement={() => setQuantity((q) => Math.max(1, q - 1))}
-            onIncrement={() => setQuantity((q) => q + 1)}
-            className="buy-box__stepper"
-          />
-          <span className="buy-box__hint">
-            Total · {formatPrice(product.priceX3 * quantity)}
-          </span>
-        </div>
-      </div>
-
-      <Button variant="add-to-cart" size="lg" onClick={handleAdd} className={CTA_STATE[String(added) as "true" | "false"]}>
-        {added ? (
-          <><Check className="icon-sm" aria-hidden="true" /> ¡Agregado al carrito!</>
-        ) : (
-          <><ShoppingCart className="icon-sm" aria-hidden="true" /> Agregar {quantity} unidad{quantity > 1 ? "es" : ""}</>
+      <div className="buy-box__price">
+        {discountPercent > 0 && product.originalPriceX3 !== undefined && (
+          <div className="buy-box__price-old">
+            <del><span className="sr-only">Precio anterior: </span>{formatPrice(product.originalPriceX3)}</del>
+            <Badge variant="discount">- {discountPercent}% OFF</Badge>
+          </div>
         )}
-      </Button>
+        <p className="buy-box__price-current">{formatPrice(product.priceX3)}</p>
+      </div>
 
-      {product.badges.includes("apto-freezer") && (
-        <div className="callout callout--info">
-          <Snowflake aria-hidden="true" />
-          <span>Garantía oficial del fabricante. Conservá la factura de compra.</span>
-        </div>
-      )}
+      <ul className="buy-box__perks">
+        {product.installmentsShort && (
+          <li>
+            <CreditCard aria-hidden="true" />
+            <span><strong>{product.installmentsShort}</strong> <Link href="/como-comprar" className="buy-box__link">Ver tarjetas</Link></span>
+          </li>
+        )}
+        <li>
+          <Banknote aria-hidden="true" />
+          <span><strong>10% de descuento</strong> pagando con transferencia o depósito. <Link href="/como-comprar" className="buy-box__link">Ver más detalles</Link></span>
+        </li>
+        <li>
+          <Truck aria-hidden="true" />
+          <span><strong>Envíos gratis</strong> a partir de $99.000</span>
+        </li>
+        <li>
+          <Store aria-hidden="true" />
+          <span><strong>Retiro Gratis</strong> en sucursal ¡Retiralo YA!</span>
+        </li>
+      </ul>
+
+      <div className="buy-box__quantity">
+        <Stepper
+          size="lg"
+          min={1}
+          unit="unidad"
+          value={quantity}
+          label={product.name}
+          onDecrement={() => setQuantity((q) => Math.max(1, q - 1))}
+          onIncrement={() => setQuantity((q) => q + 1)}
+          className="buy-box__stepper"
+        />
+        <Button variant="primary" size="lg" onClick={handleAdd} disabled={!inStock} className={CTA_STATE[String(added) as "true" | "false"]}>
+          {added ? <><Check className="icon-sm" aria-hidden="true" /> ¡Agregado!</> : inStock ? "Agregar al carrito" : "Sin stock"}
+        </Button>
+      </div>
     </div>
   )
 }

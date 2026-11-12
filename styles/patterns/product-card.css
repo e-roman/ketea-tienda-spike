@@ -2,6 +2,7 @@
    precio con cuotas, etiquetas de entrega y nota de pago. Layout de la grilla queda en Tailwind en quien la usa. */
 @layer components {
   .product-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 100%;
