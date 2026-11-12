@@ -2,7 +2,7 @@
    Tokens color.commerce.price.*. */
 @layer components {
   .price__previous { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-commerce-price-previous); text-decoration-line: line-through; }
-  .price__row { display: flex; align-items: center; gap: var(--space-2); }
+  .price__row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); }
   .price__current { font-weight: var(--font-weight-semibold); color: var(--color-commerce-price-current); }
   .price__current--sm { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); }
   .price__current--md { font-size: var(--font-size-xl); line-height: var(--font-line-height-xl); }

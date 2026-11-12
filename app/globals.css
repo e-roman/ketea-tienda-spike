@@ -4,6 +4,8 @@
    (importado en app/layout.tsx). No definir colores acá.
    ============================================================ */
 @import "../styles/components/button.css";
+@import "../styles/components/switch.css";
+@import "../styles/components/checkbox.css";
 @import "../styles/components/input.css";
 @import "../styles/components/field.css";
 @import "../styles/components/form-parts.css";
@@ -39,6 +41,7 @@
 @import "../styles/patterns/promo-banner.css";
 @import "../styles/patterns/service-blocks.css";
 @import "../styles/patterns/quick-view.css";
+@import "../styles/patterns/filters.css";
 @import "../styles/patterns/footer.css";
 @import "../styles/patterns/newsletter.css";
 @import "../styles/patterns/empty-state.css";

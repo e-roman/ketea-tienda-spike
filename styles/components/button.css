@@ -58,6 +58,11 @@
     --btn-fg: var(--button-outline-fg); --btn-fg-h: var(--button-outline-fg-hover); --btn-fg-a: var(--button-outline-fg-active);
     --btn-r: var(--button-outline-radius); --btn-fw: var(--button-outline-font-weight);
   }
+  /* Acciones destructivas (eliminar, cancelar definitivamente): tokens button.danger.* */
+  .btn--danger {
+    --btn-bg: var(--button-danger-bg); --btn-bg-h: var(--button-danger-bg-hover); --btn-bg-a: var(--button-danger-bg-active);
+    --btn-fg: var(--button-danger-fg); --btn-r: var(--button-danger-radius); --btn-fw: var(--button-danger-font-weight);
+  }
   .btn--neutral {
     --btn-bw: var(--border-width-sm); --btn-bd: var(--button-neutral-border);
     --btn-bg: var(--button-neutral-bg); --btn-bg-h: var(--button-neutral-bg-hover); --btn-bg-a: var(--button-neutral-bg-active);

@@ -60,6 +60,15 @@ export interface Product {
   freeShipping?: boolean
   /** Llega hoy o mañana con Envío Express. */
   arrivesFast?: boolean
+  brand: string
+  /** Accionamiento (eléctrico, a batería…). */
+  drive?: string
+  /** Descuento en %, tal como figura en los datos. */
+  discount: number
+  /** Cantidad de cuotas sin interés (si las tiene). */
+  installmentCount?: number
+  /** Categorías visibles para filtrar (sin ofertas, destacados ni premium). */
+  facetCategories: string[]
   /** Código/SKU que se muestra en la ficha. */
   sku: string
   warrantyMonths?: number
@@ -146,10 +155,15 @@ function adapt(p: RawProduct): Product {
     pickupToday: p.retiroInmediato,
     freeShipping: p.envioGratis,
     arrivesFast: p.llegaHoy || p.llegaManana,
+    brand: p.Marca,
+    drive: p.accionamiento || undefined,
+    discount: p.discount || 0,
+    installmentCount: p.cuotasSinInteres ? p.cuotas : undefined,
+    facetCategories: p.categories.filter((c) => !HIDDEN_CATEGORIES.includes(c.toLowerCase())),
     sku: d?.sku ?? p.code ?? "",
     warrantyMonths: d?.warrantyMonths,
     installmentsShort: p.installmentsLabel || undefined,
-    gallery: Array.from(new Set([img(p.image), ...(p.images ?? []).map(img)])),
+    gallery: Array.from(new Set([img(p.image), ...(p.images ?? []).map(img)])).slice(0, 5),
     breadcrumb: breadcrumbOf(p),
   }
 }

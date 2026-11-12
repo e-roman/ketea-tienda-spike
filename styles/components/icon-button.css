@@ -51,6 +51,8 @@
   .icon-btn--success { --icon-btn-fg: var(--color-feedback-success-text); --icon-btn-bg: var(--color-feedback-success-bg); }
   /* Acción secundaria dentro de una card (eliminar, editar): sin fondo */
   .icon-btn--plain   { --icon-btn-fg: var(--color-text-secondary); --icon-btn-fg-h: var(--color-text-primary); }
+  /* Eliminar: gris que pasa a rojo al hover */
+  .icon-btn--danger  { --icon-btn-fg: var(--color-text-secondary); --icon-btn-fg-h: var(--color-feedback-error-text); --icon-btn-bg-h: var(--color-feedback-error-bg); }
   .icon-btn--flush-start { margin-left: calc(-1 * var(--space-2)); }
   .icon-btn--flush-end { margin-right: calc(-1 * var(--space-2)); }
   /* Contador sobre el botón */

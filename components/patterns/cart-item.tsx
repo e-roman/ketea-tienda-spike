@@ -49,7 +49,7 @@ export function CartItem({
     <button
       type="button"
       onClick={onRemove}
-      className={cn(iconButtonClasses({ variant: "plain" }), variant === "drawer" && "cart-item__remove")}
+      className={cn(iconButtonClasses({ variant: "danger" }), variant === "drawer" && "cart-item__remove")}
       aria-label="Eliminar"
     >
       <Trash2 className="icon-sm" aria-hidden="true" />

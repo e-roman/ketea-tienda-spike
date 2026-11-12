@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
  * Forma: 8px por defecto (acciones de compra y de UI). `shape="pill"` solo en marketing:
  * CTAs de hero, banners y newsletter. La variante `inverse` ya es pill.
  */
-export type ButtonVariant = "primary" | "add-to-cart" | "secondary" | "outline" | "neutral" | "inverse" | "outline-inverse" | "link"
+export type ButtonVariant = "primary" | "add-to-cart" | "secondary" | "outline" | "neutral" | "inverse" | "outline-inverse" | "link" | "danger"
 export type ButtonSize = "sm" | "md" | "lg" | "xl"
 export type ButtonShape = "default" | "pill"
 
@@ -24,6 +24,7 @@ const variantClass: Record<ButtonVariant, string> = {
   inverse: "btn--inverse",
   "outline-inverse": "btn--outline-inverse",
   link: "btn--link",
+  danger: "btn--danger",
 }
 const sizeClass: Record<ButtonSize, string> = { sm: "btn--sm", md: "btn--md", lg: "btn--lg", xl: "btn--xl" }
 
@@ -37,6 +38,7 @@ const defaultSize: Record<ButtonVariant, ButtonSize> = {
   inverse: "md",
   "outline-inverse": "lg",
   link: "md",
+  danger: "lg",
 }
 
 export function buttonClasses({

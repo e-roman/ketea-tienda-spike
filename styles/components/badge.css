@@ -1,6 +1,6 @@
 /* Badge: tokens badge.discount.*, badge.dietary.*, badge.counter.* */
 @layer components {
-  .badge { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-1); }
+  .badge { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-1); white-space: nowrap; }
   .badge--discount {
     border: var(--border-width-sm) solid var(--badge-discount-border);
     background-color: var(--badge-discount-bg);

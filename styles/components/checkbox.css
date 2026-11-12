@@ -1,0 +1,25 @@
+/* Checkbox con etiqueta. El input real queda invisible; el recuadro se dibuja con .checkbox__box y reacciona a :checked y :focus-visible. */
+@layer components {
+  .checkbox { position: relative; display: flex; align-items: center; gap: var(--space-2-5); min-height: var(--size-control-sm); cursor: pointer; }
+  .checkbox__input { position: absolute; width: var(--space-5); height: var(--space-5); margin: 0; opacity: 0; cursor: pointer; }
+  .checkbox__box {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: var(--space-5);
+    height: var(--space-5);
+    border: var(--border-width-md) solid var(--color-form-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-form-bg);
+    transition-property: background-color, border-color;
+    transition-duration: var(--duration-fast);
+    transition-timing-function: var(--easing-standard);
+  }
+  .checkbox__tick { width: var(--space-4); height: var(--space-4); color: var(--color-text-on-brand); opacity: 0; }
+  .checkbox__input:checked ~ .checkbox__box { border-color: var(--color-action-primary-bg); background-color: var(--color-action-primary-bg); }
+  .checkbox__input:checked ~ .checkbox__box .checkbox__tick { opacity: 1; }
+  .checkbox__input:focus-visible ~ .checkbox__box { outline: var(--border-width-focus) solid var(--color-border-focus); outline-offset: var(--border-width-sm); }
+  .checkbox:hover .checkbox__box { border-color: var(--color-semantic-forms-border-hover); }
+  .checkbox__label { font-size: var(--font-size-md); line-height: var(--font-line-height-md); color: var(--color-text-primary); }
+}

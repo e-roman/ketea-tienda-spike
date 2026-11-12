@@ -73,6 +73,13 @@
   --button-outline-inverse-font-weight: var(--font-weight-medium);
   --button-outline-inverse-radius: var(--button-shape-pill);
   --button-outline-radius: var(--button-shape-default);
+  /* Botón danger: NUEVO, no existe en Ketea ni en Orali. Usa la escala red de Ketea (hover/active: red-900, no hay red-800). */
+  --button-danger-bg: var(--color-red-700);
+  --button-danger-bg-hover: var(--color-red-900);
+  --button-danger-bg-active: var(--color-red-900);
+  --button-danger-fg: var(--color-white);
+  --button-danger-radius: var(--radius-md);
+  --button-danger-font-weight: var(--font-weight-semibold);
   --button-primary-bg: var(--color-action-primary-bg);
   --button-primary-bg-active: var(--color-action-primary-bg-active);
   --button-primary-bg-hover: var(--color-action-primary-bg-hover);

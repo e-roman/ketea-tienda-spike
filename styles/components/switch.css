@@ -1,0 +1,31 @@
+/* Switch (interruptor) con etiqueta a la izquierda. El input real queda invisible encima del riel para que reciba foco y teclado. */
+@layer components {
+  .switch { position: relative; display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); min-height: var(--size-control-lg); cursor: pointer; }
+  .switch__label { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-primary); }
+  .switch__input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+  .switch__track {
+    position: relative;
+    flex-shrink: 0;
+    width: var(--space-10);
+    height: var(--space-6);
+    border-radius: var(--radius-full);
+    background-color: var(--color-brand-100);
+    transition: background-color var(--duration-fast) var(--easing-standard);
+  }
+  .switch__track::after {
+    content: "";
+    position: absolute;
+    top: var(--space-1);
+    left: var(--space-1);
+    width: var(--space-4);
+    height: var(--space-4);
+    border-radius: var(--radius-full);
+    background-color: var(--color-surface-default);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--duration-fast) var(--easing-standard);
+  }
+  .switch__input:checked ~ .switch__track { background-color: var(--color-action-primary-bg); }
+  .switch__input:checked ~ .switch__track::after { transform: translateX(var(--space-4)); }
+  .switch__input:focus-visible ~ .switch__track { outline: var(--border-width-focus) solid var(--color-border-focus); outline-offset: var(--border-width-sm); }
+  .switch__input:disabled ~ .switch__track { opacity: var(--opacity-disabled); }
+}

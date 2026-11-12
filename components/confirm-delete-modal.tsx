@@ -39,7 +39,7 @@ export default function ConfirmDeleteModal({
         <Button variant="neutral" fullWidth onClick={onCancel} disabled={loading}>
           Cancelar
         </Button>
-        <Button fullWidth onClick={handleConfirm} loading={loading} loadingText="Eliminando…">
+        <Button variant="danger" fullWidth onClick={handleConfirm} loading={loading} loadingText="Eliminando…">
           Eliminar
         </Button>
       </div>
