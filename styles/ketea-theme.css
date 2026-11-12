@@ -344,7 +344,7 @@
   --color-action-neutral-bg-hover: var(--color-neutral-100);
   --color-action-neutral-bg-active: var(--color-neutral-200);
   --color-action-disabled-bg: var(--color-neutral-100);
-  --color-commerce-discount-bg: var(--color-base-white);
+  --color-commerce-discount-bg: var(--color-yellow-100);
   --color-commerce-badge-dietary-bg: var(--color-sage-600);
   --color-text-disabled: var(--color-neutral-300);
   --color-icon-default: var(--color-neutral-600);
@@ -361,13 +361,13 @@
   --color-action-neutral-fg: var(--color-text-primary);
   --color-action-link-fg: var(--color-text-link);
   --color-action-disabled-fg: var(--color-neutral-300);
-  --color-commerce-discount-fg: var(--color-tomato-500);
+  --color-commerce-discount-fg: var(--color-semantic-text-primary);
   --color-commerce-badge-dietary-fg: var(--color-base-white);
   --color-border-accent: var(--color-sage-600);
   --color-form-border: var(--color-semantic-forms-border);
   --color-form-border-hover: var(--color-neutral-600);
   --color-form-border-disabled: var(--color-action-disabled-border);
-  --color-commerce-discount-border: var(--color-tomato-500);
+  --color-commerce-discount-border: var(--color-yellow-100);
   --font-line-height-6xl: var(--font-line-height-none); /* tipo distinto: Orali usa px, Ketea usa proporción */
   --size-container: 1280px;
   --font-size-2xs: var(--font-size-xs); /* falta font-size-2xs (Orali: 10px) */
@@ -434,9 +434,9 @@
   --color-brand-active-rgb: var(--color-brand-900-rgb);
   --color-commerce-badge-dietary-bg-rgb: var(--color-brand-hover-rgb);
   --color-commerce-badge-dietary-fg-rgb: var(--color-white-rgb);
-  --color-commerce-discount-bg-rgb: var(--color-white-rgb);
-  --color-commerce-discount-border-rgb: var(--color-brand-500-rgb);
-  --color-commerce-discount-fg-rgb: var(--color-brand-500-rgb);
+  --color-commerce-discount-bg-rgb: var(--color-yellow-100-rgb);
+  --color-commerce-discount-border-rgb: var(--color-yellow-100-rgb);
+  --color-commerce-discount-fg-rgb: var(--color-semantic-text-primary-rgb);
   --color-commerce-price-current-rgb: var(--color-semantic-text-primary-rgb);
   --color-commerce-price-previous-rgb: var(--color-semantic-text-secondary-rgb);
   --color-commerce-price-unit-rgb: var(--color-semantic-text-secondary-rgb);

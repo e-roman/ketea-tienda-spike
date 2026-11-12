@@ -5,6 +5,9 @@ import "@ketea/tokens/tokens.css"
 import "../styles/ketea-theme.css"
 import "./globals.css"
 import { CartProvider } from "@/lib/cart-context"
+import { FavoritesProvider } from "@/lib/favorites-context"
+import { QuickViewProvider } from "@/lib/quick-view-context"
+import { QuickViewDrawer } from "@/components/patterns/quick-view"
 import Nav from "@/components/nav"
 import Footer from "@/components/footer"
 import CartDrawer from "@/components/cart-drawer"
@@ -36,12 +39,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <RouteProgressBar />
         </Suspense>
         <CartProvider>
-          <Nav />
-          <main>{children}</main>
-          <Footer />
-          <CartDrawer />
-          <MinimumProgressBar />
-          <Toaster />
+          <FavoritesProvider>
+            <QuickViewProvider>
+              <Nav />
+              <main>{children}</main>
+              <Footer />
+              <CartDrawer />
+              <QuickViewDrawer />
+              <MinimumProgressBar />
+              <Toaster />
+            </QuickViewProvider>
+          </FavoritesProvider>
         </CartProvider>
       </body>
     </html>

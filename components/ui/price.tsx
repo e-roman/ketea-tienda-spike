@@ -33,7 +33,7 @@ export function Price({ current, previous, discountPercent, unit, size = "md", c
       )}
       <div className="price__row">
         <span className={sizes[size]}>{formatPrice(current)}</span>
-        {!!discountPercent && discountPercent > 0 && <Badge variant="discount">-{discountPercent}%</Badge>}
+        {!!discountPercent && discountPercent > 0 && <Badge variant="discount">-{discountPercent}% OFF</Badge>}
       </div>
       {unit !== undefined && <div className="price__unit">{formatPrice(unit)} por unidad</div>}
     </div>

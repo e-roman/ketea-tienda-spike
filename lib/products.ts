@@ -7,6 +7,7 @@
 // ============================================================
 import rawProducts from "./data/products.json"
 import rawDetails from "./data/productDetails.json"
+import { getProductImages } from "./data/product-photos"
 
 export type Category = string
 
@@ -47,7 +48,16 @@ export interface Product {
     rows: NutritionRow[]
   }
   legalWarnings?: string[]
+  /** Cuotas, ej. "3x $509.973 sin interés". */
   installments?: string
+  /** Fotos para la vista rápida (la principal va primero). */
+  images: string[]
+  /** Dato técnico destacado bajo el título, ej. "Ciclo: 2,5 horas". */
+  highlight?: string
+  /** Datos clave para la vista rápida (hasta 5). */
+  keySpecs: NutritionRow[]
+  pickupToday?: boolean
+  freeShipping?: boolean
 }
 
 type RawProduct = (typeof rawProducts)[number]
@@ -55,6 +65,16 @@ type RawDetail = {
   shortDescription?: string
   warrantyMonths?: number
   specs?: { group: string; items: { label: string; value: string }[] }[]
+}
+
+// Dato técnico destacado en la card, por categoría (misma regla que la tienda actual de Ketea).
+const CARD_SPEC_BY_CATEGORY: Record<string, { spec: string; short?: string }[]> = {
+  Robots: [{ spec: "Tiempo de ciclo", short: "Ciclo" }, { spec: "Superficie de corte", short: "Superficie" }, { spec: "Alimentación" }],
+  "Bombas de Calor": [{ spec: "Volumen de piscina", short: "Piscinas" }],
+  Filtros: [{ spec: "Caudal" }],
+  Químicos: [{ spec: "Presentación" }],
+  Válvulas: [{ spec: "Conexión" }, { spec: "Volumen de piscina", short: "Piscinas" }],
+  Accesorios: [{ spec: "Largo" }, { spec: "Ancho" }, { spec: "Capacidad" }, { spec: "Contenido" }],
 }
 
 const details = rawDetails as unknown as Record<string, RawDetail>
@@ -67,6 +87,18 @@ function adapt(p: RawProduct): Product {
   if (p.cuotasSinInteres) badges.push("cuotas")
   if (p.llegaHoy) badges.push("llega-hoy")
   const rows = d?.specs?.flatMap((g) => g.items.map((i) => ({ label: i.label, value: i.value }))) ?? []
+  const category = p.categoryDetail?.[0] ?? ""
+  let highlight: string | undefined
+  for (const { spec, short } of CARD_SPEC_BY_CATEGORY[category] ?? []) {
+    const found = rows.find((r) => r.label === spec)
+    if (found) { highlight = `${short ?? spec}: ${found.value}`; break }
+  }
+  const keySpecs = [
+    ...rows.filter((r) => r.label !== "Código"),
+    { label: "Marca", value: p.Marca },
+    { label: "Categoría", value: category },
+    ...(p.accionamiento ? [{ label: "Accionamiento", value: p.accionamiento }] : []),
+  ].filter((r) => r.value).slice(0, 5)
   return {
     id: String(p.id),
     slug: p.slug,
@@ -86,7 +118,12 @@ function adapt(p: RawProduct): Product {
     ingredients: d?.shortDescription,
     conservation: d?.warrantyMonths ? `Garantía oficial de ${d.warrantyMonths} meses.` : undefined,
     nutritionTable: rows.length ? { portion: "Especificaciones técnicas", rows } : undefined,
-    installments: p.installmentsLabel,
+    installments: p.installmentsLabel ? `${p.installmentsLabel} sin interés` : undefined,
+    images: getProductImages(String(p.id), img(p.image)),
+    highlight,
+    keySpecs,
+    pickupToday: p.retiroInmediato,
+    freeShipping: p.envioGratis,
   }
 }
 

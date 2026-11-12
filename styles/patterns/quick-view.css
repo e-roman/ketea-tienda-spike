@@ -1,0 +1,52 @@
+/* Vista rápida (Figma: Quick view): contenido del drawer lateral. El panel, la barra y el fondo son de modal.css (.drawer*).
+   Galería con scroll-snap: la foto siguiente asoma a la derecha. */
+@layer components {
+  .quick-view__body { gap: var(--space-3); padding: var(--space-5); }
+
+  .quick-view__gallery { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-2); }
+  .quick-view__track { display: flex; gap: var(--space-3); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .quick-view__track::-webkit-scrollbar { display: none; }
+  .quick-view__slide {
+    position: relative;
+    flex: 0 0 calc(100% / 1.3);
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border: var(--border-width-sm) solid var(--color-border-default);
+    border-radius: var(--radius-lg);
+    scroll-snap-align: start;
+  }
+  .quick-view__photo { object-fit: contain; padding: var(--space-4); }
+  .quick-view__pager { display: flex; align-items: center; justify-content: center; gap: var(--space-3); }
+
+  .quick-view__title { font-size: var(--font-size-xl); line-height: var(--font-line-height-lg); font-weight: var(--font-weight-bold); }
+
+  .quick-view__specs { margin-block: var(--space-2); }
+  .quick-view__spec {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-block: var(--space-2-5);
+    border-bottom: var(--border-width-sm) solid var(--color-border-default);
+    font-size: var(--font-size-sm);
+    line-height: var(--font-line-height-sm);
+  }
+  .quick-view__spec:first-child { border-top: var(--border-width-sm) solid var(--color-border-default); }
+  .quick-view__spec > dt { color: var(--color-text-secondary); }
+  .quick-view__spec > dd { text-align: right; color: var(--color-text-primary); }
+
+  .quick-view__buy { display: flex; gap: var(--space-3); margin-top: var(--space-2); }
+  .quick-view__add { flex: 1 1 0%; }
+
+  .quick-view__details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: var(--space-4);
+    border-top: var(--border-width-sm) solid var(--color-border-default);
+    font-size: var(--font-size-md);
+    line-height: var(--font-line-height-md);
+    color: var(--color-text-primary);
+  }
+  .quick-view__details:hover { color: var(--color-text-link); }
+}

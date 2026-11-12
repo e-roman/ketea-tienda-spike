@@ -2,132 +2,82 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
-import { toast } from "sonner"
-import { useCart, MINIMUM_PACKS } from "@/lib/cart-context"
+import { Eye, Heart } from "lucide-react"
+import { useFavorites } from "@/lib/favorites-context"
+import { useQuickView } from "@/lib/quick-view-context"
 import type { Product } from "@/lib/products"
-import { getDiscountPercent, BADGE_STYLES } from "@/lib/products"
-import { Button } from "@/components/ui/button"
-import { Stepper } from "@/components/ui/stepper"
+import { getDiscountPercent } from "@/lib/products"
+import { iconButtonClasses } from "@/components/ui/icon-button"
 import { Price } from "@/components/ui/price"
-import { Badge } from "@/components/ui/badge"
 import { Skeleton } from "@/components/ui/skeleton"
+import { Text } from "@/components/ui/text"
+import { ProductTags } from "@/components/patterns/product-tags"
 
-/** Card de producto — clases de styles/patterns/product-card.css. Agregar o Stepper según esté en el carrito. */
-/** `titleAs`: h3 bajo un h2 de sección (home, relacionados); h2 en listados cuyo único título previo es el h1. */
+/**
+ * Card de producto — clases de styles/patterns/product-card.css.
+ * Foto con favorito y "Vista rápida" al pasar el mouse, título, dato técnico, precio con cuotas y etiquetas de entrega.
+ * `titleAs`: h3 bajo un h2 de sección (home, relacionados); h2 en listados cuyo único título previo es el h1.
+ */
 export default function ProductCard({ product, titleAs: Title = "h3" }: { product: Product; titleAs?: "h2" | "h3" }) {
-  const { items, add, increment, decrement, totalItems } = useCart()
-  const cartItem = items.find((i) => i.product.id === product.id)
-  const [adding, setAdding] = useState(false)
-  const [qtyLoading, setQtyLoading] = useState<null | "inc" | "dec">(null)
-
-  function handleAdd() {
-    if (adding) return
-    setAdding(true)
-    setTimeout(() => {
-      add(product)
-      const newTotal = totalItems + 1
-      const remaining = Math.max(MINIMUM_PACKS - newTotal, 0)
-      toast.success(
-        remaining === 0
-          ? `${product.shortName} agregado · Mínimo cumplido`
-          : `${product.shortName} agregado · ${remaining} pack${remaining !== 1 ? "s" : ""} para el mínimo`
-      )
-      setAdding(false)
-    }, 500)
-  }
-
-  function handleIncrement() {
-    if (qtyLoading) return
-    setQtyLoading("inc")
-    setTimeout(() => {
-      increment(product.id)
-      setQtyLoading(null)
-    }, 350)
-  }
-
-  function handleDecrement() {
-    if (qtyLoading) return
-    setQtyLoading("dec")
-    setTimeout(() => {
-      decrement(product.id)
-      setQtyLoading(null)
-    }, 350)
-  }
-
-  // Omit "apto-freezer" y "congelado" en el listado — no aportan señal de decisión de compra.
-  // "sin-tacc" tiene su propio badge gráfico (ver más abajo), no se muestra como pill de texto.
-  const primaryBadge = product.badges.find((b) => b !== "apto-freezer" && b !== "sin-tacc" && b !== "congelado") ?? null
-  const isSinTacc = product.badges.includes("sin-tacc")
+  const { isFavorite, toggle } = useFavorites()
+  const { openQuickView } = useQuickView()
+  const favorite = isFavorite(product.id)
   const discountPercent = getDiscountPercent(product)
+  const href = `/productos/${product.slug}`
 
   return (
     <div className="product-card">
-      <Link href={`/productos/${product.slug}`} className="product-card__media">
-        <Image
-          src={product.image}
-          alt={product.name}
-          fill
-          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-          className="product-card__image"
-          onError={(e) => {
-            // fallback to placeholder on error
-            const t = e.target as HTMLImageElement
-            t.style.opacity = "0"
-          }}
-        />
-        {primaryBadge && (
-          <div className="product-card__badge">
-            <Badge variant="dietary">{BADGE_STYLES[primaryBadge]?.label}</Badge>
-          </div>
-        )}
-        {isSinTacc && (
-          <div className="product-card__seal">
-            <Image src="/imagenes/badge-sin-tacc.webp" alt="Sin TACC" fill />
-          </div>
-        )}
-      </Link>
+      <div className="product-card__media">
+        <Link href={href} className="product-card__photo-link" aria-label={product.name}>
+          <Image
+            src={product.image}
+            alt=""
+            fill
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            className="product-card__image"
+          />
+        </Link>
+
+        <button
+          type="button"
+          onClick={() => toggle(product.id)}
+          aria-pressed={favorite}
+          aria-label={favorite ? "Quitar de favoritos" : "Agregar a favoritos"}
+          className={iconButtonClasses({ variant: "subtle", size: "sm", className: "product-card__fav" })}
+        >
+          <Heart className="icon-md" aria-hidden="true" />
+        </button>
+
+        <button type="button" onClick={() => openQuickView(product)} className="product-card__quick">
+          <Eye className="icon-md" aria-hidden="true" />
+          Vista rápida
+        </button>
+      </div>
 
       <div className="product-card__info">
-        <Link href={`/productos/${product.slug}`}>
+        <Link href={href}>
           <Title className="product-card__title">{product.name}</Title>
         </Link>
-        <p className="product-card__meta">{product.packInfo}</p>
+        {product.highlight && <Text size="md" tone="secondary" className="product-card__spec">{product.highlight}</Text>}
 
-        <div className="product-card__actions">
+        <div className="product-card__price">
           <Price
             current={product.priceX3}
             previous={discountPercent > 0 ? product.originalPriceX3 : undefined}
             discountPercent={discountPercent}
-            unit={product.priceUnit}
           />
-
-          {cartItem ? (
-            <Stepper
-              value={cartItem.quantity}
-              label={product.name}
-              loading={qtyLoading}
-              onDecrement={handleDecrement}
-              onIncrement={handleIncrement}
-            />
-          ) : (
-            <Button
-              variant="add-to-cart"
-              onClick={handleAdd}
-              loading={adding}
-              loadingText="Agregando…"
-              aria-label={`Agregar ${product.name} al carrito`}
-            >
-              Agregar
-            </Button>
-          )}
+          {product.installments && <Text size="sm" weight="medium">{product.installments}</Text>}
         </div>
+
+        <ProductTags product={product} />
+
+        <Text size="sm" tone="tertiary" className="product-card__note">Pagá fácil y rápido con Mercado Pago o MODO</Text>
       </div>
     </div>
   )
 }
 
-/** Misma geometría que la card real (media 1:1, título, pack, precio y botón) para que al cargar no se corra nada. */
+/** Misma geometría que la card real (foto, título, dato, precio, cuotas y nota) para que al cargar no se corra nada. */
 export function ProductCardSkeleton() {
   return (
     <div className="product-card product-card--skeleton" aria-hidden="true">
@@ -142,7 +92,7 @@ export function ProductCardSkeleton() {
           <Skeleton radius="sm" h={7} w="1/2" />
           <Skeleton radius="sm" h={5} w="1/3" />
         </div>
-        <Skeleton radius="lg" h={10} />
+        <Skeleton radius="sm" h={5} w="full" />
       </div>
     </div>
   )
