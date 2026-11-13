@@ -126,10 +126,10 @@ export default function Footer() {
 
           <div className="footer__socials">
             <span>Seguinos en:</span>
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Ketea en Facebook" className="footer__social">
+            <a href="https://www.facebook.com/keteaSA/" target="_blank" rel="noopener noreferrer" aria-label="Ketea en Facebook" className="footer__social">
               <Facebook className="icon-md" aria-hidden="true" />
             </a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Ketea en Instagram" className="footer__social">
+            <a href="https://www.instagram.com/keteapiscinas/" target="_blank" rel="noopener noreferrer" aria-label="Ketea en Instagram" className="footer__social">
               <Instagram className="icon-md" aria-hidden="true" />
             </a>
           </div>

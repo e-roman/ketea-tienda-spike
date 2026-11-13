@@ -30,7 +30,7 @@ export default function ContactoPage() {
 
       <div className="actions-row">
         <a
-          href="https://www.instagram.com/"
+          href="https://www.instagram.com/keteapiscinas/"
           target="_blank"
           rel="noopener noreferrer"
           className={iconButtonClasses({ variant: "subtle", size: "lg" })}
@@ -39,7 +39,7 @@ export default function ContactoPage() {
           <Instagram className="icon-md" />
         </a>
         <a
-          href="https://www.facebook.com/"
+          href="https://www.facebook.com/keteaSA/"
           target="_blank"
           rel="noopener noreferrer"
           className={iconButtonClasses({ variant: "subtle", size: "lg" })}

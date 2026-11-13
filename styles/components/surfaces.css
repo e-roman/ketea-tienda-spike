@@ -76,6 +76,7 @@
 
   .page { min-height: 100vh; }
   .page--subtle { background-color: var(--color-surface-subtle); }
+  .page--surface { background-color: var(--color-surface-page); }
   /* Tamaños de skeleton: alto (h) y ancho (w) por token */
   .skeleton--h-1 { height: var(--space-1); }
   .skeleton--h-3 { height: var(--space-3); }

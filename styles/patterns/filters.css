@@ -24,7 +24,6 @@
     border-radius: var(--radius-md);
     border: var(--border-width-sm) solid var(--color-border-default);
     background-color: var(--color-surface-default);
-    box-shadow: var(--shadow-xs);
   }
 
   .filters__link { align-self: flex-start; font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-link); }

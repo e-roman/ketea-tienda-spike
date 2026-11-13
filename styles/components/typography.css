@@ -49,6 +49,6 @@
   .heading--section { font-size: var(--font-size-2xl); line-height: var(--font-line-height-2xl); }
   @media (min-width: 768px) {
     .heading--section { font-size: var(--font-size-2xl); line-height: var(--font-line-height-3xl); }
-    .heading--page { font: var(--typography-heading-xl); }
+    .heading--page { font: var(--typography-heading-lg); }
   }
 }

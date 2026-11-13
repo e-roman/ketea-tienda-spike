@@ -89,7 +89,8 @@ function CatalogContent() {
   const showBreadcrumbs = !activeQuery.trim() && (activeNav || activeCategory)
 
   return (
-    <div className="max-w-7xl mx-auto px-4 md:px-6 pt-6 pb-10">
+    <div className="page--surface">
+    <div className="max-w-7xl mx-auto px-4 md:px-6 py-10">
       {showBreadcrumbs && (
         <Breadcrumb
           className="mb-6"
@@ -174,6 +175,7 @@ function CatalogContent() {
           ))}
         </div>
       </BottomSheet>
+    </div>
     </div>
   )
 }
