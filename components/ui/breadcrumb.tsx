@@ -9,7 +9,7 @@ export interface BreadcrumbItem {
   href?: string
 }
 
-/** Breadcrumb — clases `.breadcrumb*` de styles/patterns/product-specs.css. El último ítem es la página actual. */
+/** Breadcrumb — clases `.breadcrumb*` de styles/components/breadcrumb.css. El último ítem es la página actual. */
 export function Breadcrumb({ items, className }: { items: BreadcrumbItem[]; className?: string }) {
   return (
     <nav aria-label="Breadcrumb" className={className}>

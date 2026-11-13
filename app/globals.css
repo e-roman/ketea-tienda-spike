@@ -57,6 +57,7 @@
 @import "../styles/components/step-indicator.css";
 @import "../styles/components/carousel-dots.css";
 @import "../styles/components/accordion.css";
+@import "../styles/components/breadcrumb.css";
 
 @tailwind base;
 @tailwind components;

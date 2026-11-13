@@ -1,0 +1,7 @@
+/* Breadcrumb: lista en fila con separador (chevron). El último ítem es la página actual. */
+@layer components {
+  .breadcrumb { display: flex; align-items: center; gap: var(--space-1-5); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-secondary); }
+  .breadcrumb__link:hover { color: var(--color-text-primary); }
+  .breadcrumb__sep { flex-shrink: 0; width: var(--font-size-sm); height: var(--font-size-sm); }
+  .breadcrumb__current { color: var(--color-text-primary); }
+}
