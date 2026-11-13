@@ -20,15 +20,21 @@ const CTA_STATE = { true: "btn--added", false: undefined } as const
 export function BuyBox({ product }: { product: Product }) {
   const { add } = useCart()
   const [quantity, setQuantity] = useState(1)
+  const [adding, setAdding] = useState(false)
   const [added, setAdded] = useState(false)
   const discountPercent = getDiscountPercent(product)
   const inStock = !!product.inStock
 
+  // Mismo comportamiento que la card y la vista rápida: loader mientras "agrega", luego confirma
   function handleAdd() {
-    if (!inStock) return
-    for (let i = 0; i < quantity; i++) add(product)
-    setAdded(true)
-    setTimeout(() => setAdded(false), 2000)
+    if (!inStock || adding) return
+    setAdding(true)
+    setTimeout(() => {
+      for (let i = 0; i < quantity; i++) add(product)
+      setAdding(false)
+      setAdded(true)
+      setTimeout(() => setAdded(false), 2000)
+    }, 600)
   }
 
   return (
@@ -77,7 +83,7 @@ export function BuyBox({ product }: { product: Product }) {
           onIncrement={() => setQuantity((q) => q + 1)}
           className="buy-box__stepper"
         />
-        <Button variant="primary" size="lg" onClick={handleAdd} disabled={!inStock} className={CTA_STATE[String(added) as "true" | "false"]}>
+        <Button variant="primary" size="lg" onClick={handleAdd} disabled={!inStock} loading={adding} loadingText="Agregando…" className={CTA_STATE[String(added) as "true" | "false"]}>
           {added ? <><Check className="icon-sm" aria-hidden="true" /> ¡Agregado!</> : inStock ? "Agregar al carrito" : "Sin stock"}
         </Button>
       </div>
