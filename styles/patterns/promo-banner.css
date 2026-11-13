@@ -44,5 +44,5 @@
   }
 
   /* Fondo de la sección de banners en la portada */
-  .promo-section { padding-block: var(--space-8); }
+  .promo-section { padding-block: var(--space-4); }
 }

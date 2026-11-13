@@ -21,7 +21,7 @@ export default function HomePage() {
 
       <ServiceBlocks items={SERVICES} />
 
-      <section className="max-w-7xl mx-auto px-4 md:px-6 py-14">
+      <section className="max-w-7xl mx-auto px-4 md:px-6 py-6">
         <SectionHeader title="Productos destacados" href="/productos" />
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2">
           {featured.map((product) => (
@@ -40,7 +40,7 @@ export default function HomePage() {
       </section>
 
       {nuevos.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 md:px-6 pb-14">
+        <section className="max-w-7xl mx-auto px-4 md:px-6 pb-6">
           <SectionHeader title="Bombas de calor" href="/productos?cat=Bombas de Calor" />
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2">
             {nuevos.map((product) => (

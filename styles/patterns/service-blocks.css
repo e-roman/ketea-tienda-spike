@@ -1,6 +1,6 @@
 /* Bloques de servicio (Figma: Service blocks). Tarjeta con borde; cada ítem lleva una ilustración de 80px a la izquierda. */
 @layer components {
-  .service-blocks { padding-block: var(--space-8); }
+  .service-blocks { padding-block: var(--space-6); }
   .service-blocks__card {
     padding: var(--space-6);
     border: var(--border-width-sm) solid var(--color-border-default);

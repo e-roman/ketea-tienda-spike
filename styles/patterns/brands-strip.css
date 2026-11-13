@@ -9,8 +9,10 @@
   .brands__logo { width: auto; height: var(--space-12); opacity: .5; filter: grayscale(1); transition-property: filter, opacity; transition-duration: var(--duration-fast); transition-timing-function: var(--easing-standard); }
   .brands__item:hover .brands__logo { opacity: 1; filter: none; }
 
-  .brands__arrow { display: none; position: absolute; top: calc(50% - var(--space-4)); z-index: 1; transform: translateY(-50%); box-shadow: var(--shadow-sm); }
-  .brands__arrow--prev { left: var(--space-2); }
-  .brands__arrow--next { right: var(--space-2); }
+  .brands__arrow { display: none; position: absolute; top: calc(50% - var(--space-4)); z-index: 1; transform: translateY(-50%); }
+  /* Botón redondo de 40px, blanco y con sombra (más específico que la variante subtle del icon-btn) */
+  .brands__arrow.icon-btn { --icon-btn-bg: var(--color-surface-default); --icon-btn-bg-h: var(--color-surface-subtle); width: var(--space-10); height: var(--space-10); box-shadow: var(--shadow-md); }
+  .brands__arrow--prev { left: var(--space-0); }
+  .brands__arrow--next { right: var(--space-0); }
   @media (min-width: 768px) { .brands__arrow { display: inline-flex; } }
 }

@@ -45,7 +45,7 @@ export default function ProductCard({ product, titleAs: Title = "h3" }: { produc
           aria-label={favorite ? "Quitar de favoritos" : "Agregar a favoritos"}
           className={iconButtonClasses({ variant: "subtle", size: "sm", className: "product-card__fav" })}
         >
-          <Heart className="icon-md" aria-hidden="true" />
+          <Heart className="icon-md" strokeWidth={1} aria-hidden="true" />
         </button>
 
         <button type="button" onClick={() => openQuickView(product)} className="product-card__quick">
