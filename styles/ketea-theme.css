@@ -22,8 +22,8 @@
   --badge-discount-fg: var(--color-commerce-discount-fg);
   --badge-discount-font-size: var(--font-size-xs);
   --badge-discount-font-weight: var(--font-weight-bold);
-  --badge-discount-padding-x: var(--space-1-5);
-  --badge-discount-padding-y: var(--space-1-5);
+  --badge-discount-padding-x: var(--space-1);
+  --badge-discount-padding-y: var(--space-1);
   --badge-discount-radius: var(--radius-sm);
   --button-add-to-cart-bg: var(--color-action-primary-bg);
   --button-add-to-cart-bg-active: var(--color-action-primary-bg-active);

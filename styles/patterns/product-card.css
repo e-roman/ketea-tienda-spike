@@ -8,13 +8,13 @@
     height: 100%;
     overflow: hidden;
     border: var(--border-width-sm) solid var(--color-border-default);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md);
     background-color: var(--color-surface-default);
     transition: box-shadow var(--duration-base) var(--easing-standard);
   }
   .product-card:hover { box-shadow: var(--elevation-card-hover); }
 
-  .product-card__media { position: relative; aspect-ratio: 1 / 1; padding: var(--space-4); }
+  .product-card__media { position: relative; aspect-ratio: 4 / 3; padding: var(--space-4); }
   .product-card__photo-link { position: absolute; inset: var(--space-4); display: block; }
   .product-card__image { object-fit: contain; }
   .product-card__fav { position: absolute; top: var(--space-3); right: var(--space-3); }
@@ -65,12 +65,12 @@
 
   /* Etiquetas de stock y entrega (también en la vista rápida) */
   .product-tags { display: flex; flex-wrap: wrap; gap: var(--space-2); }
-  .product-tag { padding: var(--space-1) var(--space-2-5); border-radius: var(--radius-sm); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); font-weight: var(--font-weight-medium); }
+  .product-tag { padding: var(--space-1) var(--space-1); border-radius: var(--radius-sm); font-size: var(--font-size-xs); line-height: var(--font-line-height-sm); font-weight: var(--font-weight-medium); }
   .product-tag--success { background-color: var(--color-feedback-success-bg); color: var(--color-feedback-success-text); }
   .product-tag--danger { background-color: var(--color-feedback-error-solid); color: var(--color-text-inverse); }
 
   .product-card--skeleton { overflow: hidden; }
-  .product-card--skeleton .skeleton-media { aspect-ratio: 1 / 1; border-radius: 0; }
+  .product-card--skeleton .skeleton-media { aspect-ratio: 4 / 3; border-radius: 0; }
   .skeleton__spaced { margin-top: var(--space-4); }
   .product-card--skeleton .skeleton-body { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-4); }
   .skeleton-body__title { display: flex; flex-direction: column; gap: var(--space-2); }
