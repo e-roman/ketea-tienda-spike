@@ -8,6 +8,7 @@ import { Instagram, Facebook } from "lucide-react"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { BrandsStrip } from "@/components/patterns/brands-strip"
 import { WHATSAPP_LABEL } from "@/components/patterns/header/nav-items"
 
 const ACCOUNT_LINKS = [
@@ -56,6 +57,7 @@ export default function Footer() {
 
   return (
     <footer className={cn("footer", !flush && "footer--spaced")}>
+      <BrandsStrip />
       <div className="footer__grid max-w-7xl mx-auto px-4 md:px-6">
         <FooterLinks title="Mi Cuenta" links={ACCOUNT_LINKS} />
         <FooterLinks title="Información" links={INFO_LINKS} />

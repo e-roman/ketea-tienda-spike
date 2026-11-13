@@ -6,7 +6,7 @@
   .order-summary {
     padding: var(--space-5);
     border: var(--border-width-sm) solid var(--color-border-default);
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-md);
     background-color: var(--color-surface-default);
   }
   .order-summary__title { margin-bottom: var(--space-5); font-size: var(--font-size-lg); line-height: var(--font-line-height-lg); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }

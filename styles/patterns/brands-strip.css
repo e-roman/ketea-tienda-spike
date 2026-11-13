@@ -1,14 +1,15 @@
 /* Marcas (Figma: Brands strip): logos en gris en una fila que se desliza. Las flechas solo se ven desde 768 px. */
 @layer components {
-  .brands { padding-block: var(--space-8); border-top: var(--border-width-sm) solid var(--color-border-default); }
+  .brands { padding-block: var(--space-8); }
+  .brands__wrap { padding-bottom: var(--space-8); border-bottom: var(--border-width-sm) solid var(--color-border-default); }
   .brands__wrap { position: relative; }
   .brands__track { display: flex; align-items: center; gap: var(--space-8); overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; }
   .brands__track::-webkit-scrollbar { display: none; }
   .brands__item { flex-shrink: 0; scroll-snap-align: start; }
-  .brands__logo { width: auto; height: var(--space-12); filter: grayscale(1); transition: filter var(--duration-fast) var(--easing-standard); }
-  .brands__item:hover .brands__logo { filter: none; }
+  .brands__logo { width: auto; height: var(--space-12); opacity: .5; filter: grayscale(1); transition-property: filter, opacity; transition-duration: var(--duration-fast); transition-timing-function: var(--easing-standard); }
+  .brands__item:hover .brands__logo { opacity: 1; filter: none; }
 
-  .brands__arrow { display: none; position: absolute; top: 50%; z-index: 1; transform: translateY(-50%); box-shadow: var(--shadow-sm); }
+  .brands__arrow { display: none; position: absolute; top: calc(50% - var(--space-4)); z-index: 1; transform: translateY(-50%); box-shadow: var(--shadow-sm); }
   .brands__arrow--prev { left: var(--space-2); }
   .brands__arrow--next { right: var(--space-2); }
   @media (min-width: 768px) { .brands__arrow { display: inline-flex; } }

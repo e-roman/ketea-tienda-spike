@@ -1,7 +1,9 @@
 /* Estructura interna de patterns y páginas que antes llevaba flex/márgenes/tamaños en el TSX.
    Una sección por componente. La grilla (grid, grid-cols, gap) sigue en Tailwind. */
 @layer components {
-  .section-header { margin-bottom: var(--space-7); }
+  .section-header { margin-bottom: var(--space-5); }
+  /* Portada: fondo de página detrás de todas las secciones */
+  .home { background-color: var(--color-surface-page); }
 
   /* ── Utility bar ── */
   .utility-bar__inner { display: flex; align-items: center; justify-content: center; gap: var(--space-4); padding-block: var(--space-2); }

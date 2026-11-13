@@ -23,7 +23,7 @@
   .card--pad-lg { padding: var(--space-6); }
   .card--interactive { transition: background-color var(--duration-fast) var(--easing-standard); }
   .card--interactive:hover { background-color: var(--color-surface-muted); }
-  .card--panel { padding: var(--space-6); }
+  .card--panel { padding: var(--space-6); border: 0; }
   @media (min-width: 1024px) { .card--panel { padding: var(--space-8); } }
   /* Secciones dentro de una tarjeta (encabezado, cuerpo, pie) separadas por línea */
   .card-section { padding: var(--space-4) var(--space-6); }
