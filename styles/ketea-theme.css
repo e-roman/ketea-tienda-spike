@@ -7,6 +7,8 @@
    y se resolvió con el token más cercano.
    ============================================================ */
 :root {
+  /* El borde de foco de @ketea/tokens es de 3px y queda muy grueso en los campos y botones: acá se usa el de 2px (border-width-lg). */
+  --border-width-focus: var(--border-width-lg);
   --badge-counter-bg: var(--color-surface-brand);
   --badge-counter-fg: var(--color-text-inverse);
   --badge-counter-font-size: var(--font-size-2xs);
