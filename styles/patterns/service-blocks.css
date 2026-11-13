@@ -8,6 +8,6 @@
     background-color: var(--color-surface-default);
   }
   .service-block { display: flex; align-items: center; gap: var(--space-4); }
-  .service-block__image { flex-shrink: 0; width: var(--space-20); height: var(--space-20); }
+  .service-block__image { flex-shrink: 0; width: var(--space-16); height: var(--space-16); }
   .service-block__title { margin-bottom: var(--space-1); font-weight: var(--font-weight-medium); }
 }

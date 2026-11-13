@@ -15,7 +15,7 @@
   }
   .site-header__subnav-label { padding-inline: var(--space-1) var(--space-2); flex-shrink: 0; font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
 
-  .utility-bar { background-color: var(--color-surface-accent); color: var(--color-text-inverse); font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); }
+  .utility-bar { background-color: var(--color-action-primary-bg); color: var(--color-text-inverse); font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); }
   @media (min-width: 768px) { .utility-bar { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); } }
   .utility-bar__message { font-weight: var(--font-weight-medium); }
 

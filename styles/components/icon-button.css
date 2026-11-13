@@ -55,6 +55,8 @@
   .icon-btn--danger  { --icon-btn-fg: var(--color-text-secondary); --icon-btn-fg-h: var(--color-feedback-error-text); --icon-btn-bg-h: var(--color-feedback-error-bg); }
   .icon-btn--flush-start { margin-left: calc(-1 * var(--space-2)); }
   .icon-btn--flush-end { margin-right: calc(-1 * var(--space-2)); }
+  /* Punto de aviso (notificaciones sin leer) */
+  .icon-btn__dot { position: absolute; top: var(--space-1-5); right: var(--space-2); width: var(--space-2); height: var(--space-2); border-radius: var(--radius-full); background-color: var(--color-feedback-error-solid); }
   /* Contador sobre el botón */
   .icon-btn__badge { position: absolute; top: var(--space-0-5); right: var(--space-0-5); }
 }

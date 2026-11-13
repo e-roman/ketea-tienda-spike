@@ -13,7 +13,7 @@
     min-height: var(--size-control-lg);
     padding-inline: var(--space-3);
     border-radius: var(--radius-md);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-md);
     line-height: var(--font-line-height-sm);
     font-weight: var(--font-weight-medium);
     color: var(--color-text-primary);

@@ -5,7 +5,7 @@
    .text--flush     interlineado 1 (numerales grandes)
    .text--relaxed   interlineado holgado para lectura (sm→24px, md→28px)
    .heading--{p}    presets de títulos con tokens typography.*: display, xl, lg, md, sm
-   .heading--section  título de sección: 2xl en mobile, 3xl desde md
+   .heading--section  título de sección: 2xl en todos los tamaños
    .heading--page     título de página: heading lg en mobile, xl desde md */
 @layer components {
   .text { color: var(--color-text-primary); }
@@ -48,7 +48,7 @@
   .heading--page { font: var(--typography-heading-lg); }
   .heading--section { font-size: var(--font-size-2xl); line-height: var(--font-line-height-2xl); }
   @media (min-width: 768px) {
-    .heading--section { font-size: var(--font-size-3xl); line-height: var(--font-line-height-3xl); }
+    .heading--section { font-size: var(--font-size-2xl); line-height: var(--font-line-height-3xl); }
     .heading--page { font: var(--typography-heading-xl); }
   }
 }

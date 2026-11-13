@@ -3,9 +3,10 @@
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { usePathname, useRouter } from "next/navigation"
-import { ShoppingCart, Menu, User } from "lucide-react"
+import { Bell, Heart, ShoppingCart, Menu, User } from "lucide-react"
 import { toast } from "sonner"
 import { useCart } from "@/lib/cart-context"
+import { useFavorites } from "@/lib/favorites-context"
 import { searchProducts } from "@/lib/products"
 import AuthModal from "@/components/auth-modal"
 import { Badge } from "@/components/ui/badge"
@@ -26,6 +27,7 @@ import { Logo } from "@/components/ui/logo"
  */
 export default function Nav() {
   const { totalItems, openCart, add } = useCart()
+  const { ids: favoriteIds } = useFavorites()
   const router = useRouter()
   const pathname = usePathname()
   const isCheckout = pathname?.startsWith("/checkout")
@@ -191,10 +193,14 @@ export default function Nav() {
             </SearchField>
 
             <div className="header-actions header-actions--wide">
-              <button onClick={() => setAuthModalOpen(true)} className={iconButtonClasses({ size: "sm", label: true })}>
-                <User className="icon-md" aria-hidden="true" />
-                Ingresar
-              </button>
+              <Link href="/favoritos" aria-label={favoriteIds.length > 0 ? `Favoritos (${favoriteIds.length})` : "Favoritos"} className={iconButtonClasses({ size: "sm" })}>
+                <Heart className="icon-md" aria-hidden="true" />
+                {favoriteIds.length > 0 && <Badge variant="counter" className="icon-btn__badge">{favoriteIds.length}</Badge>}
+              </Link>
+              <Link href="/cuenta" aria-label="Notificaciones" className={iconButtonClasses({ size: "sm" })}>
+                <Bell className="icon-md" aria-hidden="true" />
+                <span className="icon-btn__dot" aria-hidden="true" />
+              </Link>
               {cartButton()}
             </div>
           </div>
