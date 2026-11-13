@@ -40,7 +40,7 @@ export default function HomePage() {
       </section>
 
       {nuevos.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 md:px-6 pb-6">
+        <section className="max-w-7xl mx-auto px-4 md:px-6 py-6">
           <SectionHeader title="Bombas de calor" href="/productos?cat=Bombas de Calor" />
           <div className="snap-row">
             {nuevos.map((product) => (

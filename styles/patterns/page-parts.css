@@ -3,7 +3,7 @@
 @layer components {
   .section-header { margin-bottom: var(--space-5); }
   /* Portada: fondo de página detrás de todas las secciones */
-  .home { background-color: var(--color-surface-page); }
+  .home { background-color: var(--color-surface-page); padding-bottom: var(--space-10); }
 
   /* ── Utility bar ── */
   .utility-bar__inner { display: flex; align-items: center; justify-content: center; gap: var(--space-4); padding-block: var(--space-2); }
