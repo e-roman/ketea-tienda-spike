@@ -20,7 +20,7 @@ export default function PDPPage({ params }: { params: { slug: string } }) {
     .slice(0, 5)
 
   return (
-    <div className="max-w-7xl mx-auto px-4 md:px-6 py-6">
+    <div className="max-w-7xl mx-auto px-4 md:px-6 pt-6 pb-10">
       <Breadcrumb
         className="mb-6"
         items={[

@@ -1,0 +1,95 @@
+/* Botón flotante de ayuda por WhatsApp (réplica del SupportChat de la tienda actual de Ketea).
+   Etiqueta + botón verde; al abrirlo aparece el cuadro para escribir la consulta (escala y fundido).
+   Como en Ketea, no se muestra en pantallas de hasta 768 px. */
+@layer components {
+  .support-chat {
+    position: fixed;
+    right: var(--space-4);
+    bottom: var(--space-8);
+    z-index: var(--layer-sticky);
+    display: none;
+    align-items: center;
+  }
+  @media (min-width: 769px) { .support-chat { display: flex; } }
+
+  .support-chat__label {
+    margin-inline: var(--space-3);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-brand-950);
+    color: var(--color-text-inverse);
+    font-size: var(--font-size-xs);
+    line-height: var(--font-line-height-xs);
+    cursor: pointer;
+    transition: all var(--duration-base) var(--easing-standard);
+  }
+  .support-chat--open .support-chat__label { opacity: 0; visibility: hidden; transform: translateX(var(--space-2-5)); }
+
+  .support-chat__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: var(--space-12);
+    height: var(--space-12);
+    margin-right: var(--space-1);
+    border-radius: var(--radius-full);
+    background-color: var(--color-green-500);
+    color: var(--color-text-inverse);
+    box-shadow: var(--shadow-xs);
+    cursor: pointer;
+  }
+  .support-chat__button > svg { width: var(--space-6); height: var(--space-6); }
+  .support-chat__button:focus-visible,
+  .support-chat__label:focus-visible,
+  .support-chat__close:focus-visible,
+  .support-chat__send:focus-visible { outline: var(--border-width-focus) solid var(--color-border-focus); outline-offset: var(--border-width-lg); }
+
+  .support-chat__popup {
+    position: absolute;
+    right: 0;
+    bottom: 100%;
+    width: calc(var(--space-64) + var(--space-12));
+    max-width: calc(100vw - var(--space-16));
+    margin-bottom: var(--space-5);
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0.7);
+    transform-origin: bottom right;
+    transition: all var(--duration-base);
+  }
+  .support-chat--open .support-chat__popup { visibility: visible; opacity: 1; transform: scale(1); }
+
+  .support-chat__close { position: absolute; top: var(--space-2); right: var(--space-3); color: var(--color-text-inverse); opacity: 0.8; cursor: pointer; transition: opacity var(--duration-fast) var(--easing-standard); }
+  .support-chat__close:hover { opacity: 1; }
+  .support-chat__close > svg { width: var(--space-5); height: var(--space-5); }
+
+  .support-chat__header {
+    padding: var(--space-5);
+    border-top-left-radius: var(--radius-md);
+    border-top-right-radius: var(--radius-md);
+    background-color: var(--color-green-500);
+    color: var(--color-text-inverse);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+  }
+  .support-chat__header-icon { display: block; width: var(--space-12); height: var(--space-12); margin-inline: auto; }
+  .support-chat__description { margin-top: var(--space-3); font-size: var(--font-size-md); line-height: var(--font-line-height-snug); }
+
+  .support-chat__form {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3);
+    border-bottom-left-radius: var(--radius-md);
+    border-bottom-right-radius: var(--radius-md);
+    background-color: var(--color-surface-default);
+    box-shadow: var(--shadow-md);
+  }
+  .support-chat__input { flex: 1 1 0%; min-width: 0; border: 0; background: transparent; outline: none; color: var(--color-text-secondary); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); }
+  .support-chat__input::placeholder { color: var(--color-text-disabled); }
+  .support-chat__form:focus-within { outline: var(--border-width-focus) solid var(--color-border-focus); outline-offset: calc(-1 * var(--border-width-focus)); }
+  .support-chat__send { flex-shrink: 0; color: var(--color-text-tertiary); cursor: pointer; }
+  .support-chat__send:hover { color: var(--color-text-primary); }
+  .support-chat__send > svg { width: var(--space-5); height: var(--space-5); }
+}

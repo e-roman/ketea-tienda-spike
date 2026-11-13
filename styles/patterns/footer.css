@@ -2,7 +2,7 @@
    Cuatro columnas (cuenta, información, contacto, newsletter) y barra inferior con medios de pago y redes. */
 @layer components {
   .footer { background-color: var(--color-surface-default); color: var(--color-text-primary); }
-  .footer--spaced { margin-top: var(--space-2); border-top: var(--border-width-sm) solid var(--color-border-default); }
+  .footer--spaced { margin-top: 0; border-top: var(--border-width-sm) solid var(--color-border-default); }
   /* Columnas: 1 en mobile, 2 en tablet; en desktop tres de 2/12 y el newsletter de 5/12, repartidas a lo ancho. */
   /* Hasta 1023 px: una columna con las secciones en acordeón y el newsletter debajo */
   .footer__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; padding-block: var(--space-4) var(--space-8); }

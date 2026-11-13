@@ -1,6 +1,8 @@
 /** Número de WhatsApp de Ketea, con código de país y sin signos (ej. 5491100000000). Pendiente: sin número, WhatsApp abre el selector de contacto. */
 export const WHATSAPP_PHONE = ""
-export const WHATSAPP_URL = `https://api.whatsapp.com/send${WHATSAPP_PHONE ? `?phone=${WHATSAPP_PHONE}` : ""}`
+/** Enlace de WhatsApp con el mensaje ya escrito. Sin número cargado, WhatsApp pide elegir el contacto. */
+export const whatsappUrl = (text: string) =>
+  `https://api.whatsapp.com/send?${WHATSAPP_PHONE ? `phone=${WHATSAPP_PHONE}&` : ""}text=${encodeURIComponent(text)}`
 
 export const CONTACT_EMAIL = "info@ketea.com.ar"
 export const CONTACT_URL = `mailto:${CONTACT_EMAIL}`
