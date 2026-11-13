@@ -16,7 +16,7 @@ Primera versión: 2026-11-12. Actualizado: 2026-11-13. Carpeta: `C:\next-project
 ### Base (primera versión)
 
 - Copia de `orali-tienda` sin `node_modules`, `.git` ni `.next`; `npm install --legacy-peer-deps` OK. Stack: Next 14.2.35, React 18, Tailwind 3.4 (sin subir).
-- `package.json`: `@ketea/tokens` como `file:../ketea-design-tokens`. `@orali/design-tokens` queda solo para que el preset de Tailwind siga resolviendo.
+- `package.json`: `@ketea/tokens` desde GitHub (`github:e-roman/ketea-design-tokens#v3.0.0`, antes era `file:../ketea-design-tokens`, que no sirve en un clon limpio). `@orali/design-tokens` queda solo para que el preset de Tailwind siga resolviendo.
 - `app/layout.tsx` importa `@ketea/tokens/tokens.css` y `styles/ketea-theme.css`.
 - Marca: logo de Ketea, Mulish, portada, navbar, footer, newsletter y metadatos. Imágenes de productos, banners y slider copiadas a `public/assets/img`.
 - Datos: `lib/products.ts` es un adaptador de `products.json` y `productDetails.json` (copiados a `lib/data/`) que mantiene la forma de Orali y suma campos de Ketea (galería, cuotas, SKU, garantía, retiro, etc.).
