@@ -85,6 +85,7 @@ function QuickViewContent({ product, onClose }: { product: Product; onClose: () 
   }
 
   return (
+    <>
     <div className="drawer__body quick-view__body">
       <QuickViewGallery product={product} />
 
@@ -112,6 +113,10 @@ function QuickViewContent({ product, onClose }: { product: Product; onClose: () 
         </dl>
       )}
 
+    </div>
+
+    {/* Pie fijo: queda siempre a la vista aunque el contenido necesite scroll (igual que el drawer del carrito) */}
+    <div className="drawer-footer quick-view__footer">
       <div className="quick-view__buy">
         <Stepper
           size="lg"
@@ -132,6 +137,7 @@ function QuickViewContent({ product, onClose }: { product: Product; onClose: () 
         <ChevronRight className="icon-sm" aria-hidden="true" />
       </Link>
     </div>
+    </>
   )
 }
 

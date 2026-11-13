@@ -16,6 +16,7 @@
     box-shadow: var(--shadow-md);
     transition: transform var(--duration-fast) var(--easing-standard);
   }
+  @media (max-width: 767px) { .whatsapp-float--above-bar { bottom: calc(var(--space-32) + var(--space-8)); } }
   .whatsapp-float:hover { transform: scale(1.05); }
   .whatsapp-float:focus-visible { outline: var(--border-width-focus) solid var(--color-border-focus); outline-offset: var(--border-width-lg); }
   .whatsapp-float > svg { width: var(--space-7); height: var(--space-7); }

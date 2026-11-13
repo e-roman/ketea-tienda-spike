@@ -15,6 +15,36 @@
   .buy-box__quantity > .btn { flex: 1 1 0%; }
   .buy-box__stepper { flex-shrink: 0; width: var(--space-32); }
 
+  /* Barra fija inferior (solo mobile): precio, cuotas y acciones siempre visibles */
+  .buy-box__bar { display: none; }
+  @media (max-width: 767px) {
+    .buy-box__quantity > .btn { display: none; }
+    /* Con la barra fija en la ficha, el pie de página deja lugar para que no la tape */
+    body:has(.buy-box__bar) .footer { padding-bottom: var(--space-32); }
+    .buy-box__bar {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: var(--layer-sticky);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      padding: var(--space-4) var(--space-5);
+      border-top: var(--border-width-sm) solid var(--color-border-default);
+      border-top-left-radius: var(--radius-xl);
+      border-top-right-radius: var(--radius-xl);
+      background-color: var(--color-surface-default);
+      box-shadow: var(--shadow-md);
+    }
+    .buy-box__bar-price { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+    .buy-box__bar-current { font-size: var(--font-size-xl); line-height: var(--font-line-height-xl); font-weight: var(--font-weight-bold); color: var(--color-commerce-price-current); }
+    .buy-box__bar-old { font-size: var(--font-size-md); line-height: var(--font-line-height-md); color: var(--color-commerce-price-previous); }
+    .buy-box__bar-installments { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-primary); }
+    .buy-box__bar-actions { display: flex; gap: var(--space-3); }
+    .buy-box__bar-actions > .btn { flex: 1 1 0%; }
+  }
+
   .shipping-check {
     padding: var(--space-4);
     border: var(--border-width-sm) solid var(--color-border-default);

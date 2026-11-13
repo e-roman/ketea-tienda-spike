@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { Banknote, Check, CreditCard, Store, Truck } from "lucide-react"
 import { useCart } from "@/lib/cart-context"
@@ -19,6 +20,7 @@ const CTA_STATE = { true: "btn--added", false: undefined } as const
  */
 export function BuyBox({ product }: { product: Product }) {
   const { add } = useCart()
+  const router = useRouter()
   const [quantity, setQuantity] = useState(1)
   const [adding, setAdding] = useState(false)
   const [added, setAdded] = useState(false)
@@ -35,6 +37,13 @@ export function BuyBox({ product }: { product: Product }) {
       setAdded(true)
       setTimeout(() => setAdded(false), 2000)
     }, 600)
+  }
+
+  // Comprar ahora: suma al carrito y sigue directo al checkout
+  function handleBuyNow() {
+    if (!inStock) return
+    for (let i = 0; i < quantity; i++) add(product)
+    router.push("/checkout")
   }
 
   return (
@@ -86,6 +95,34 @@ export function BuyBox({ product }: { product: Product }) {
         <Button variant="primary" size="lg" onClick={handleAdd} disabled={!inStock} loading={adding} loadingText="Agregando…" className={CTA_STATE[String(added) as "true" | "false"]}>
           {added ? <><Check className="icon-sm" aria-hidden="true" /> ¡Agregado!</> : inStock ? "Agregar al carrito" : "Sin stock"}
         </Button>
+      </div>
+
+      {/* Mobile: barra fija abajo con el precio y las acciones, siempre a la vista. En desktop no se muestra. */}
+      <div className="buy-box__bar">
+        <div className="buy-box__bar-price">
+          <span className="buy-box__bar-current">{formatPrice(product.priceX3)}</span>
+          {discountPercent > 0 && product.originalPriceX3 !== undefined && (
+            <>
+              <del className="buy-box__bar-old"><span className="sr-only">Precio anterior: </span>{formatPrice(product.originalPriceX3)}</del>
+              <Badge variant="discount">- {discountPercent}% OFF</Badge>
+            </>
+          )}
+        </div>
+        {product.installments && <p className="buy-box__bar-installments">{product.installments}</p>}
+        <div className="buy-box__bar-actions">
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={handleAdd}
+            disabled={!inStock}
+            loading={adding}
+            loadingText="Agregando…"
+            className={CTA_STATE[String(added) as "true" | "false"]}
+          >
+            {added ? <><Check className="icon-sm" aria-hidden="true" /> ¡Agregado!</> : inStock ? "Agregar" : "Sin stock"}
+          </Button>
+          {inStock && <Button variant="primary" size="lg" onClick={handleBuyNow}>Comprar</Button>}
+        </div>
       </div>
     </div>
   )
