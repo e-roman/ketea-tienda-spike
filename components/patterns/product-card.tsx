@@ -58,7 +58,7 @@ export default function ProductCard({ product, titleAs: Title = "h3" }: { produc
         <Link href={href}>
           <Title className="product-card__title">{product.name}</Title>
         </Link>
-        {product.highlight && <Text size="md" tone="secondary" className="product-card__spec">{product.highlight}</Text>}
+        {product.highlight && <Text size="xs" tone="secondary" className="product-card__spec">{product.highlight}</Text>}
 
         <div className="product-card__price">
           <Price

@@ -21,7 +21,8 @@
     display: flex;
     flex-direction: column;
     padding: var(--space-2) var(--space-5);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md);
+    border: var(--border-width-sm) solid var(--color-border-default);
     background-color: var(--color-surface-default);
     box-shadow: var(--shadow-xs);
   }
