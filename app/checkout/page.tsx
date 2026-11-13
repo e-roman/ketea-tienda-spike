@@ -5,7 +5,8 @@ import Link from "next/link"
 import { ShoppingCart } from "lucide-react"
 import { useCart } from "@/lib/cart-context"
 import { useDelivery } from "@/lib/delivery-context"
-import { EMPTY_PERSONAL, billingEmailOf, type PersonalData, type PaymentMethod } from "@/lib/checkout"
+import { EMPTY_PERSONAL, billingEmailOf, paymentSummary, type PersonalData, type PaymentMethod, type PaymentSummary } from "@/lib/checkout"
+import type { DeliveryOption } from "@/lib/delivery"
 import { buttonClasses } from "@/components/ui/button"
 import { EmptyState } from "@/components/patterns/empty-state"
 import { OrderConfirmation } from "@/components/patterns/order-confirmation"
@@ -35,8 +36,16 @@ export default function CheckoutPage() {
 
   // — Confirmación —
   const [orderId] = useState(() => String(Math.floor(Math.random() * 90000) + 10000))
-  const [confirmedItems, setConfirmedItems] = useState<typeof items>([])
-  const [confirmedSubtotal, setConfirmedSubtotal] = useState(0)
+  // Foto de la compra al pagar: al vaciar el carrito, el envío elegido y el resumen no deben cambiar
+  const [confirmed, setConfirmed] = useState<{
+    items: typeof items
+    subtotal: number
+    shippingCost: number
+    option: DeliveryOption
+    payment: PaymentSummary
+    personal: PersonalData
+    shipping: ShippingData | null
+  } | null>(null)
 
   // — Estados de carga (simulan la demora de un servidor) —
   const [envioLoading, setEnvioLoading] = useState(false)
@@ -62,12 +71,11 @@ export default function CheckoutPage() {
   }
 
   // Pago simulado: cualquier método confirma la compra
-  function handlePay(_method: PaymentMethod) {
+  function handlePay(method: PaymentMethod, detail?: string) {
     if (payLoading) return
     setPayLoading(true)
     setTimeout(() => {
-      setConfirmedItems(items)
-      setConfirmedSubtotal(subtotal)
+      setConfirmed({ items, subtotal, shippingCost, option, payment: paymentSummary(method, detail), personal, shipping })
       clear()
       setStep("confirmacion")
       setPayLoading(false)
@@ -91,15 +99,21 @@ export default function CheckoutPage() {
     )
   }
 
-  if (step === "confirmacion") {
+  if (step === "confirmacion" && confirmed) {
+    const pickup = confirmed.option.group === "pickup"
+    const s = confirmed.shipping
     return (
       <OrderConfirmation
         orderRef={`ORD-${new Date().getFullYear()}-${orderId}`}
         dateString={new Date().toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}
-        entrega={option.label}
-        items={confirmedItems}
-        subtotal={confirmedSubtotal}
-        total={confirmedSubtotal + shippingCost}
+        customer={{ nombre: confirmed.personal.nombre, email: confirmed.personal.email, telefono: confirmed.personal.telefono }}
+        address={!pickup && s ? { line1: `${s.calle} ${s.numero}${s.piso ? `, ${s.piso}` : ""}`, line2: `${s.ciudad}, ${s.provincia} (${s.cp})` } : undefined}
+        delivery={confirmed.option}
+        shippingCost={confirmed.shippingCost}
+        payment={confirmed.payment}
+        items={confirmed.items}
+        subtotal={confirmed.subtotal}
+        total={confirmed.subtotal + confirmed.shippingCost}
       />
     )
   }

@@ -31,3 +31,24 @@ export const PROVINCES = [
 export const HOME_TYPES = ["Casa", "Departamento", "Oficina", "Otro"]
 
 export const SUPPORT_PHONE = "(+54) 911 3065-5787"
+
+const dayFormat = new Intl.DateTimeFormat("es-AR", { weekday: "long", day: "numeric", month: "long" })
+
+/** Suma días hábiles (lunes a viernes). */
+export function addBusinessDays(from: Date, days: number) {
+  const d = new Date(from)
+  let left = days
+  while (left > 0) {
+    d.setDate(d.getDate() + 1)
+    if (d.getDay() !== 0 && d.getDay() !== 6) left--
+  }
+  return d
+}
+
+/** Texto de llegada según el método elegido (ej. «Llega entre el jueves 20 de noviembre y el lunes 24 de noviembre»). */
+export function estimatedDelivery(method: DeliveryMethod, from: Date = new Date()): string {
+  if (method === "express") return "Llega hoy"
+  if (method === "pickup") return "Te avisamos por email cuando esté listo para retirar"
+  const fmt = (d: Date) => dayFormat.format(d).replace(",", "")
+  return `Llega entre el ${fmt(addBusinessDays(from, 3))} y el ${fmt(addBusinessDays(from, 5))}`
+}

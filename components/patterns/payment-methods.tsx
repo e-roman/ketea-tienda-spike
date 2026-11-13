@@ -32,7 +32,7 @@ interface PaymentMethodsProps {
   total: number
   loading: boolean
   /** Se llama al confirmar el pago, con el método elegido. */
-  onPay: (method: PaymentMethod) => void
+  onPay: (method: PaymentMethod, detail?: string) => void
 }
 
 /**
@@ -53,7 +53,9 @@ export function PaymentMethods({ total, loading, onPay }: PaymentMethodsProps) {
 
   function submitCard(e: React.FormEvent) {
     e.preventDefault()
-    onPay("card")
+    const n = Number(card.installments)
+    const last4 = card.number.replace(/\D/g, "").slice(-4)
+    onPay("card", `Tarjeta terminada en ${last4} · ${n === 1 ? "1 pago" : `${n} cuotas sin interés`}`)
   }
 
   return (
@@ -135,7 +137,7 @@ export function PaymentMethods({ total, loading, onPay }: PaymentMethodsProps) {
                       <option value="pagofacil">Pago Fácil</option>
                     </Select>
                   </Field>
-                  <Button onClick={() => onPay("cash")} disabled={!cashPlace} loading={loading} loadingText="Generando…" className="pay-method__cta">Generar cupón de pago</Button>
+                  <Button onClick={() => onPay("cash", cashPlace === "rapipago" ? "Rapipago" : "Pago Fácil")} disabled={!cashPlace} loading={loading} loadingText="Generando…" className="pay-method__cta">Generar cupón de pago</Button>
                 </div>
               )}
             </div>

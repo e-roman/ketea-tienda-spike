@@ -43,3 +43,22 @@ export function validatePersonal(d: PersonalData): Partial<Record<PersonalField,
 
 export const PAYMENT_METHODS = ["modo", "mercadopago", "card", "cash"] as const
 export type PaymentMethod = (typeof PAYMENT_METHODS)[number]
+
+export interface PaymentSummary {
+  method: PaymentMethod
+  label: string
+  /** Dato visible del pago (ej. «Tarjeta terminada en 3704 · 3 cuotas sin interés»). */
+  detail?: string
+}
+
+const PAYMENT_LABELS: Record<PaymentMethod, string> = {
+  modo: "MODO",
+  mercadopago: "Mercado Pago",
+  card: "Tarjeta de crédito, débito o prepaga",
+  cash: "Efectivo",
+}
+
+export const paymentSummary = (method: PaymentMethod, detail?: string): PaymentSummary => ({ method, label: PAYMENT_LABELS[method], detail })
+
+/** En efectivo el pedido queda pendiente hasta que se paga el cupón; en el resto se acredita al instante. */
+export const isPaymentPending = (p: PaymentSummary) => p.method === "cash"
