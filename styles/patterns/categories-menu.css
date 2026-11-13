@@ -2,6 +2,9 @@
    Lista a la izquierda; al pasar el mouse por una categoría se abre al lado el panel con sus secciones.
    El panel se ancla a .header-subnav-row (position: relative). Capas con --layer-*. */
 @layer components {
+  /* El botón arranca pegado al borde del contenedor, alineado con el logo */
+  .categories-menu > .nav-link { padding-left: var(--space-0); }
+
   /* Oscurece solo lo que queda debajo de la barra de categorías: arranca en su borde inferior y ocupa todo el ancho. */
   .categories-menu__backdrop {
     position: absolute;

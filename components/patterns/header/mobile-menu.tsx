@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { ArrowLeft, ChevronRight, User, X } from "lucide-react"
 import { iconButtonClasses } from "@/components/ui/icon-button"
+import { useAuth } from "@/lib/auth-context"
 import { megaMenuData, type MegaMenuCategory } from "@/lib/data/mega-menu"
 
 // Mapas literales: Tailwind purga las clases de @layer components que no encuentra escritas.
@@ -25,6 +26,7 @@ const MORE_LINKS = [
  * Se monta solo cuando está abierto, así siempre arranca en el primer nivel. Clases de styles/patterns/mobile-menu.css.
  */
 export function MobileMenu({ onClose, onOpenAuth }: { onClose: () => void; onOpenAuth: () => void }) {
+  const { user } = useAuth()
   const [active, setActive] = useState<MegaMenuCategory | null>(null)
 
   return (
@@ -43,13 +45,23 @@ export function MobileMenu({ onClose, onOpenAuth }: { onClose: () => void; onOpe
 
       {!active ? (
         <div className="mobile-menu__body">
-          <button type="button" onClick={() => { onClose(); onOpenAuth() }} className="mobile-welcome">
-            <span className="mobile-welcome__avatar" aria-hidden="true"><User /></span>
-            <span>
-              <span className="mobile-welcome__title">Bienvenido</span>
-              <span className="mobile-welcome__text">Ingresa a tu cuenta para realizar compras</span>
-            </span>
-          </button>
+          {user ? (
+            <Link href="/cuenta" onClick={onClose} className="mobile-welcome">
+              <span className="mobile-welcome__avatar" aria-hidden="true"><User /></span>
+              <span>
+                <span className="mobile-welcome__title">Hola, {user.name}</span>
+                <span className="mobile-welcome__text">Ver mi cuenta y mis pedidos</span>
+              </span>
+            </Link>
+          ) : (
+            <button type="button" onClick={() => { onClose(); onOpenAuth() }} className="mobile-welcome">
+              <span className="mobile-welcome__avatar" aria-hidden="true"><User /></span>
+              <span>
+                <span className="mobile-welcome__title">Bienvenido</span>
+                <span className="mobile-welcome__text">Ingresa a tu cuenta para realizar compras</span>
+              </span>
+            </button>
+          )}
 
           <section aria-labelledby="mobile-cats-title" className="mobile-menu__section">
             <h3 id="mobile-cats-title" className="mobile-menu__section-title">Categorías</h3>

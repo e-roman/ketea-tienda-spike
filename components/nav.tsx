@@ -7,6 +7,7 @@ import { Heart, ShoppingCart, Menu, User } from "lucide-react"
 import { toast } from "sonner"
 import { useCart } from "@/lib/cart-context"
 import { useFavorites } from "@/lib/favorites-context"
+import { useAuth } from "@/lib/auth-context"
 import { searchProducts } from "@/lib/products"
 import AuthModal from "@/components/auth-modal"
 import { Badge } from "@/components/ui/badge"
@@ -29,6 +30,7 @@ import { Logo } from "@/components/ui/logo"
 export default function Nav() {
   const { totalItems, openCart, add } = useCart()
   const { ids: favoriteIds } = useFavorites()
+  const { user } = useAuth()
   const router = useRouter()
   const pathname = usePathname()
   const isCheckout = pathname?.startsWith("/checkout")
@@ -138,13 +140,19 @@ export default function Nav() {
             </Link>
 
             <div className="header-actions justify-self-end">
-              <button
-                onClick={() => setAuthModalOpen(true)}
-                aria-label="Ingresar o registrarse"
-                className={iconButtonClasses({ size: "sm" })}
-              >
-                <User className="icon-md" aria-hidden="true" />
-              </button>
+              {user ? (
+                <Link href="/cuenta" aria-label={`Mi cuenta (${user.name})`} className={iconButtonClasses({ size: "sm" })}>
+                  <User className="icon-md" aria-hidden="true" />
+                </Link>
+              ) : (
+                <button
+                  onClick={() => setAuthModalOpen(true)}
+                  aria-label="Ingresar o registrarse"
+                  className={iconButtonClasses({ size: "sm" })}
+                >
+                  <User className="icon-md" aria-hidden="true" />
+                </button>
+              )}
               <NotificationsMenu />
               {cartButton("end")}
             </div>
@@ -217,10 +225,17 @@ export default function Nav() {
             </div>
 
             <div className="header-subnav-group header-subnav-group--end">
-              <button type="button" onClick={() => setAuthModalOpen(true)} className="nav-link nav-link--icon">
-                <User className="icon-sm" aria-hidden="true" />
-                Mi cuenta / Registrarme
-              </button>
+              {user ? (
+                <Link href="/cuenta" className="nav-link nav-link--icon">
+                  <User className="icon-sm" aria-hidden="true" />
+                  Hola, {user.name}
+                </Link>
+              ) : (
+                <button type="button" onClick={() => setAuthModalOpen(true)} className="nav-link nav-link--icon">
+                  <User className="icon-sm" aria-hidden="true" />
+                  Mi cuenta / Registrarme
+                </button>
+              )}
             </div>
           </div>
         </div>

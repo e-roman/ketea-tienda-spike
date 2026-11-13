@@ -4,13 +4,14 @@ import Link from "next/link"
 import { useState } from "react"
 import { toast } from "sonner"
 import { Heart, LogOut, Package, UserRound } from "lucide-react"
-import { AccountAccessForm, type AccountAccessResult } from "@/components/patterns/account-access-form"
+import { AccountAccessForm } from "@/components/patterns/account-access-form"
 import { PageHeader } from "@/components/patterns/page-header"
 import { EmptyState } from "@/components/patterns/empty-state"
 import { Breadcrumb } from "@/components/ui/breadcrumb"
 import { Button, buttonClasses } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { OrderList } from "@/components/patterns/order-list"
+import { useAuth } from "@/lib/auth-context"
 import { useFavorites } from "@/lib/favorites-context"
 import { useOrders } from "@/lib/orders-context"
 
@@ -24,12 +25,12 @@ const favoritesLinkClasses = buttonClasses({
  * La sesión es simulada y vive solo en memoria hasta que exista un backend de autenticación.
  */
 export default function CuentaPage() {
-  const [session, setSession] = useState<AccountAccessResult | null>(null)
+  const { user, login, logout } = useAuth()
   const { ids } = useFavorites()
   const { orders } = useOrders()
   const [wantsAccess, setWantsAccess] = useState(false)
   // Quien compró como invitado también ve sus pedidos, con el email de la compra.
-  const email = session?.email ?? orders[0]?.email
+  const email = user?.email ?? orders[0]?.email
 
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">
@@ -38,13 +39,13 @@ export default function CuentaPage() {
       {!email || wantsAccess ? (
         <div className="account__access">
           <Card padding="panel" className="account__card">
-            <AccountAccessForm onSuccess={(r) => { setSession(r); setWantsAccess(false); toast.success(r.mode === "register" ? "¡Cuenta creada con éxito!" : "¡Sesión iniciada!") }} />
+            <AccountAccessForm onSuccess={(r) => { login(r.email); setWantsAccess(false); toast.success(r.mode === "register" ? "¡Cuenta creada con éxito!" : "¡Sesión iniciada!") }} />
           </Card>
           <p className="account__note">No hace falta tener cuenta para comprar: podés finalizar tu pedido solo con tu email.</p>
         </div>
       ) : (
         <>
-          <PageHeader title="Mi cuenta" tight>{email}</PageHeader>
+          <PageHeader title={user ? `Hola, ${user.name}` : "Mi cuenta"} tight>{email}</PageHeader>
 
           <div className="account__grid">
             <Card padding="panel" className="account__card">
@@ -73,8 +74,8 @@ export default function CuentaPage() {
                 <p className="account__text">{ids.length === 0 ? "Todavía no guardaste productos." : `${ids.length} ${ids.length === 1 ? "producto guardado" : "productos guardados"}.`}</p>
                 <Link href="/favoritos" className={favoritesLinkClasses}>Ver favoritos</Link>
               </Card>
-              {session ? (
-                <Button variant="neutral" fullWidth onClick={() => { setSession(null); toast.success("Cerraste sesión") }}>
+              {user ? (
+                <Button variant="neutral" fullWidth onClick={() => { logout(); toast.success("Cerraste sesión") }}>
                   <LogOut className="icon-sm" aria-hidden="true" /> Cerrar sesión
                 </Button>
               ) : (

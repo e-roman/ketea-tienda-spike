@@ -4,7 +4,8 @@
    .empty-state--panel → panel o drawer: título md */
 @layer components {
   .empty-state { display: flex; flex-direction: column; align-items: center; text-align: center; }
-  .empty-state > .icon-badge { margin-bottom: var(--space-4); }
+  /* Todos los estados vacíos llevan el ícono en azul de marca, sin importar el tono del badge */
+  .empty-state > .icon-badge { margin-bottom: var(--space-4); border-color: var(--color-border-brand-subtle); background-color: var(--color-surface-brand-subtle); color: var(--color-icon-brand); }
   .empty-state__title { margin-bottom: var(--space-1); font: var(--typography-heading-md); color: var(--color-text-primary); }
   .empty-state__text { margin-bottom: var(--space-6); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-secondary); }
   .empty-state--page > .icon-badge { margin-bottom: var(--space-5); }
