@@ -4,6 +4,8 @@
   .order-review__title { margin-bottom: var(--space-4); padding-bottom: var(--space-2); border-bottom: var(--border-width-sm) solid var(--color-border-default); font-size: var(--font-size-lg); line-height: var(--font-line-height-lg); font-weight: var(--font-weight-medium); color: var(--color-text-primary); }
   .order-review__items { display: flex; flex-direction: column; gap: var(--space-4); margin-bottom: var(--space-4); padding-block: var(--space-3); padding-right: var(--space-1); }
   .order-review__item { display: flex; gap: var(--space-3); }
+  .order-review__thumb { position: relative; flex-shrink: 0; }
+  .order-review__qty-badge { position: absolute; top: calc(-1 * var(--space-2)); right: calc(-1 * var(--space-2)); z-index: 1; }
   .order-review__body { flex: 1 1 0%; min-width: 0; }
   .order-review__row { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-5); margin-top: var(--space-1); }
   .order-review__name {
@@ -29,7 +31,8 @@
 
   .recap-card { padding: var(--space-4); border-radius: var(--radius-md); background-color: var(--color-surface-default); }
   .recap-card__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-2); }
-  .recap-card__title { font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); font-weight: var(--font-weight-semibold); text-transform: uppercase; }
+  .recap-card__title { font-size: var(--font-size-lg); line-height: var(--font-line-height-lg); font-weight: var(--font-weight-medium); color: var(--color-text-primary); }
+  .recap-card__body strong { font-weight: var(--font-weight-bold); }
   .recap-card__body { display: flex; flex-direction: column; gap: var(--space-0-5); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-primary); }
   .recap-card__muted { color: var(--color-text-secondary); }
   .recap-card__small { margin-top: var(--space-1); font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); color: var(--color-text-secondary); }

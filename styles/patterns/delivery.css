@@ -13,5 +13,6 @@
 
   /* Secciones del checkout */
   .form-section__title { margin-bottom: var(--space-5); font-size: var(--font-size-xl); line-height: var(--font-line-height-lg); font-weight: var(--font-weight-bold); color: var(--color-text-primary); }
+  .form-section__divider { margin-block: var(--space-6); border: 0; border-top: var(--border-width-sm) solid var(--color-border-default); }
   .form-section__stack { display: flex; flex-direction: column; gap: var(--space-5); }
 }

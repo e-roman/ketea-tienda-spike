@@ -26,6 +26,11 @@
   /* Validado (p. ej. CP de CABA) */
   .input[data-valid="true"] { border-color: var(--color-feedback-success-border); }
   .input-status { position: absolute; top: 50%; right: var(--space-2); transform: translateY(-50%); font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); color: var(--color-text-secondary); }
+  /* Ícono de estado (check / alerta) al final del campo */
+  .input-status-icon { position: absolute; top: 50%; right: var(--space-3); width: var(--space-5); height: var(--space-5); transform: translateY(-50%); pointer-events: none; }
+  .input-status-icon--ok { color: var(--color-feedback-success-text); }
+  .input-status-icon--error { color: var(--color-feedback-error-solid); }
+  .input--with-status { padding-right: var(--space-10); }
   .input-status--ok { font-weight: var(--font-weight-medium); color: var(--color-feedback-success-text); }
   .input:disabled {
     cursor: not-allowed;
