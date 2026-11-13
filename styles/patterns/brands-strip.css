@@ -1,6 +1,6 @@
 /* Marcas (Figma: Brands strip): logos en gris en una fila que se desliza. Las flechas solo se ven desde 768 px. */
 @layer components {
-  .brands { padding-top: var(--space-8); }
+  .brands { padding-top: var(--space-8); border-top: var(--border-width-sm) solid var(--color-border-default); }
   .brands__wrap { position: relative; padding-bottom: var(--space-8); }
   /* La línea mide lo mismo que el contenido: se dibuja entre los márgenes del contenedor (px-4 / md:px-6), no sobre ellos */
   .brands__wrap::after { content: ""; position: absolute; right: var(--space-4); bottom: 0; left: var(--space-4); border-bottom: var(--border-width-sm) solid var(--color-border-default); }
