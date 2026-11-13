@@ -6,6 +6,7 @@ import { ShoppingCart } from "lucide-react"
 import { useCart } from "@/lib/cart-context"
 import { useDelivery } from "@/lib/delivery-context"
 import { useNotifications } from "@/lib/notifications-context"
+import { useOrders } from "@/lib/orders-context"
 import { EMPTY_PERSONAL, billingEmailOf, paymentSummary, type PersonalData, type PaymentMethod, type PaymentSummary } from "@/lib/checkout"
 import type { DeliveryOption } from "@/lib/delivery"
 import { buttonClasses } from "@/components/ui/button"
@@ -30,6 +31,7 @@ export default function CheckoutPage() {
   const { items, subtotal, clear } = useCart()
   const { option, shippingCost } = useDelivery()
   const { add: addNotification } = useNotifications()
+  const { add: addOrder } = useOrders()
 
   const [step, setStep] = useState<Step>("datos")
   const [personal, setPersonal] = useState<PersonalData>(EMPTY_PERSONAL)
@@ -37,7 +39,7 @@ export default function CheckoutPage() {
   const [shipping, setShipping] = useState<ShippingData | null>(null)
 
   // — Confirmación —
-  const [orderId] = useState(() => String(Math.floor(Math.random() * 90000) + 10000))
+  const [orderRef] = useState(() => `ORD-${new Date().getFullYear()}-${Math.floor(Math.random() * 90000) + 10000}`)
   // Foto de la compra al pagar: al vaciar el carrito, el envío elegido y el resumen no deben cambiar
   const [confirmed, setConfirmed] = useState<{
     items: typeof items
@@ -77,9 +79,17 @@ export default function CheckoutPage() {
     if (payLoading) return
     setPayLoading(true)
     setTimeout(() => {
-      setConfirmed({ items, subtotal, shippingCost, option, payment: paymentSummary(method, detail), personal, shipping })
+      const payment = paymentSummary(method, detail)
+      setConfirmed({ items, subtotal, shippingCost, option, payment, personal, shipping })
+      addOrder({
+        ref: orderRef,
+        email: billingEmailOf(personal),
+        date: new Date().toLocaleDateString("es-AR", { day: "numeric", month: "long", year: "numeric" }),
+        items, subtotal, shippingCost, total: subtotal + shippingCost,
+        deliveryLabel: option.label, paymentLabel: payment.label,
+      })
       clear()
-      addNotification({ type: "order", title: "Pedido confirmado", text: `Tu pedido #ORD-${new Date().getFullYear()}-${orderId} quedó confirmado. Te avisamos cuando avance.` })
+      addNotification({ type: "order", title: "Pedido confirmado", text: `Tu pedido #${orderRef} quedó confirmado. Te avisamos cuando avance.`, href: "/cuenta" })
       setStep("confirmacion")
       setPayLoading(false)
     }, 900)
@@ -107,7 +117,7 @@ export default function CheckoutPage() {
     const s = confirmed.shipping
     return (
       <OrderConfirmation
-        orderRef={`ORD-${new Date().getFullYear()}-${orderId}`}
+        orderRef={orderRef}
         dateString={new Date().toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}
         customer={{ nombre: confirmed.personal.nombre, email: confirmed.personal.email, telefono: confirmed.personal.telefono }}
         address={!pickup && s ? { line1: `${s.calle} ${s.numero}${s.piso ? `, ${s.piso}` : ""}`, line2: `${s.ciudad}, ${s.provincia} (${s.cp})` } : undefined}

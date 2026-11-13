@@ -9,15 +9,15 @@ export default function ComoComprarPage() {
   const steps = [
     { n: "1", title: "Elegí los productos que quieras", desc: "Buscá el producto deseado. Una vez que seleccionaste tu artículo, hacé clic en el botón Agregar al carrito." },
     { n: "2", title: "Mi carrito", desc: "Acá vas a ver el listado de productos que elegiste hasta el momento; también podés seguir comprando. Hacé clic en Finalizar compra para continuar." },
-    { n: "3", title: "Creá tu cuenta o iniciá sesión", desc: "Iniciá sesión con tu correo electrónico y contraseña, o registrate completando tus datos. Después cargá tu dirección: según tu barrio te mostramos qué día llega tu pedido." },
-    { n: "4", title: "Validá tus datos y los productos", desc: "Revisá el resumen de tu compra, hacé clic en Pagar con Mercado Pago y completá los datos que te pida Mercado Pago." },
-    { n: "5", title: "Compra finalizada", desc: "Una vez aprobado el pago, vas a poder consultar el estado de tu pedido desde tu perfil, en Mis pedidos." },
+    { n: "3", title: "Completá tus datos", desc: "No hace falta crear una cuenta: ingresá tu email, tus datos y la dirección de entrega. Elegí Envío Gratis, Envío Express o retiro en sucursal." },
+    { n: "4", title: "Elegí cómo pagar", desc: "Revisá el resumen de tu compra y elegí el medio de pago: MODO, Mercado Pago, tarjeta o efectivo." },
+    { n: "5", title: "Compra finalizada", desc: "Una vez aprobado el pago, te enviamos la confirmación por email y podés ver tu pedido en Mi cuenta, en Mis pedidos." },
   ]
 
   return (
     <div className="max-w-3xl mx-auto px-4 md:px-6 py-14">
-      <PageHeader eyebrow="Guía de compra" title="¿Cómo comprar en Orali?">
-        Pasos para realizar una compra. Envío gratis en CABA, de lunes a viernes de 9 a 15 h.
+      <PageHeader eyebrow="Guía de compra" title="¿Cómo comprar en Ketea?">
+        Pasos para realizar una compra. Envíos gratis a partir de $99.000 y hasta 12 cuotas sin interés.
       </PageHeader>
       <div className="space-y-8 mb-14">
         {steps.map((s) => (
@@ -27,8 +27,8 @@ export default function ComoComprarPage() {
         ))}
       </div>
       <div className="mb-8">
-        <InfoPanel title="El pack de 3 unidades">
-          Todos nuestros productos vienen en packs de 3 unidades — ideal para tener siempre en el freezer. El precio que ves es el del pack completo. El precio por unidad lo mostramos debajo en cada producto.
+        <InfoPanel title="¿Preferís retirar?">
+          Elegí Retiro en sucursal al finalizar la compra. Ketea Ramos Mejía: Cnel. Brandsen 2230, de lunes a viernes de 9 a 18 h. Te avisamos por email cuando tu pedido esté listo.
         </InfoPanel>
       </div>
       <div className="text-center-block">

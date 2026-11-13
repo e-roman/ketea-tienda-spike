@@ -7,6 +7,7 @@ import "./globals.css"
 import { CartProvider } from "@/lib/cart-context"
 import { FavoritesProvider } from "@/lib/favorites-context"
 import { DeliveryProvider } from "@/lib/delivery-context"
+import { OrdersProvider } from "@/lib/orders-context"
 import { NotificationsProvider } from "@/lib/notifications-context"
 import { QuickViewProvider } from "@/lib/quick-view-context"
 import { QuickViewDrawer } from "@/components/patterns/quick-view"
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Suspense>
         <CartProvider>
           <DeliveryProvider>
+          <OrdersProvider>
           <NotificationsProvider>
           <FavoritesProvider>
             <QuickViewProvider>
@@ -53,6 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </QuickViewProvider>
           </FavoritesProvider>
           </NotificationsProvider>
+          </OrdersProvider>
           </DeliveryProvider>
         </CartProvider>
       </body>

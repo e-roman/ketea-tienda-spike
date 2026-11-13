@@ -23,14 +23,14 @@ export default function ContactoPage() {
         <FeatureRow variant="card" icon={<Clock className="icon-md" aria-hidden="true" />} title="Horario de atención">
           Lunes a viernes de 9 a 18 hs
         </FeatureRow>
-        <FeatureRow variant="card" icon={<MapPin className="icon-md" aria-hidden="true" />} title="Zona de entrega">
-          Envío gratis en CABA · GBA: consultanos al (+54) 911 3065-5787
+        <FeatureRow variant="card" icon={<MapPin className="icon-md" aria-hidden="true" />} title="Entrega y retiro">
+          Envíos gratis a partir de $99.000 · Retiro en Ketea Ramos Mejía, Cnel. Brandsen 2230
         </FeatureRow>
       </div>
 
       <div className="actions-row">
         <a
-          href="https://www.instagram.com/orali.argentina/"
+          href="https://www.instagram.com/"
           target="_blank"
           rel="noopener noreferrer"
           className={iconButtonClasses({ variant: "subtle", size: "lg" })}
@@ -39,7 +39,7 @@ export default function ContactoPage() {
           <Instagram className="icon-md" />
         </a>
         <a
-          href="https://www.facebook.com/pastasorali"
+          href="https://www.facebook.com/"
           target="_blank"
           rel="noopener noreferrer"
           className={iconButtonClasses({ variant: "subtle", size: "lg" })}

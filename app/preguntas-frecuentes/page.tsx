@@ -10,64 +10,52 @@ const WHATSAPP = "https://api.whatsapp.com/send?phone=5491130655787"
 
 const FAQS: { q: string; a: ReactNode }[] = [
   {
-    q: "¿Cómo funciona Tienda Orali?",
-    a: "Es una tienda online donde podés comprar toda la variedad de productos de Orali sin moverte de tu casa.",
+    q: "¿Necesito crear una cuenta para comprar?",
+    a: "No. Podés comprar solo con tu email: te pedimos tus datos y la dirección de entrega al finalizar la compra. Si querés, podés crear una cuenta para ver el historial de tus pedidos.",
   },
   {
-    q: "¿En qué formato vienen los productos?",
-    a: "Todos nuestros productos se venden en packs de 3 unidades. El precio que ves en cada producto es el del pack completo, y también mostramos el precio por unidad para que puedas comparar.",
+    q: "¿Cómo funciona Ketea?",
+    a: "Es una tienda online de piscinas y equipamiento: robots limpiafondos, bombas de calor, filtros y químicos. Elegís tus productos, los pagás online y los recibís en tu casa o los retirás en nuestro local.",
   },
   {
-    q: "¿Hay un pedido mínimo?",
-    a: "Sí, el pedido mínimo es de 4 packs (de cualquier combinación de productos). En el carrito vas a ver una barra que te indica cuánto te falta para alcanzarlo.",
-  },
-  {
-    q: "¿Qué días realizan las entregas?",
-    a: <>Realizamos entregas de lunes a viernes, de 9 a 15 h.<br />No entregamos sábados ni domingos.</>,
-  },
-  {
-    q: "¿En qué zonas entregan?",
-    a: <>Entregamos en CABA y cada barrio tiene un día fijo. Al cargar tu dirección en el checkout te mostramos qué día te toca.<br />Para GBA, contactanos al <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={linkClasses()}>(+54) 911 3065-5787</a>.</>,
+    q: "¿Cuánto tarda en llegar mi pedido?",
+    a: <>Con Envío Gratis, tu pedido llega entre 3 y 5 días hábiles. Con Envío Express llega hoy, con un costo adicional de $25.500.<br />Al cargar tu código postal en el carrito vas a ver la fecha estimada de llegada.</>,
   },
   {
     q: "¿Cuánto cuesta el envío?",
-    a: <>Envío en CABA: lo recibís gratis en el día que corresponde a tu barrio.<br />Para envíos en GBA, contactanos al <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={linkClasses()}>(+54) 911 3065-5787</a>.</>,
+    a: "El Envío Gratis aplica a compras desde $99.000. El Envío Express tiene un costo de $25.500 y el retiro en sucursal es gratis.",
   },
   {
-    q: "¿Puede recibir otra persona mi pedido?",
-    a: "Sí. En ese caso, al hacer la compra completá el campo «¿Quién recibe?» con el nombre de la persona que va a recibir el pedido.",
-  },
-  {
-    q: "¿Qué pasa si no estoy en mi domicilio al momento de la entrega acordada?",
-    a: "El pedido vuelve a nuestro depósito y podés solicitar una nueva entrega, coordinando el día, con costo.",
+    q: "¿Puedo retirar mi compra en el local?",
+    a: "Sí. Elegí Retiro en sucursal al finalizar la compra y te avisamos por email cuando esté listo. Ketea Ramos Mejía: Cnel. Brandsen 2230, de lunes a viernes de 9 a 18 h. Algunos productos, como los Automower, solo se retiran por el local.",
   },
   {
     q: "¿Cuáles son los medios de pago?",
-    a: <>Trabajamos con Mercado Pago, aceptando tarjetas de crédito y débito.<br />Tenemos suspendidos momentáneamente los cobros en efectivo en CABA por motivos de seguridad.</>,
+    a: "Aceptás pagar con MODO, Mercado Pago, tarjetas de crédito, débito y prepagas, o en efectivo por Rapipago y Pago Fácil. Hasta en 12 cuotas sin interés en productos seleccionados.",
   },
   {
-    q: "¿Cuál es la política si hay faltantes cuando arman mi pedido?",
-    a: <>Nos comunicamos con vos antes de enviártelo y te damos dos opciones:<br />a) Te hacemos un cupón por un monto mayor al faltante.<br />b) Te devolvemos ese dinero por Mercado Pago.</>,
+    q: "¿Tienen descuento por transferencia?",
+    a: "Sí, en los productos que lo indican tenés un 10% de descuento pagando con transferencia o depósito.",
   },
   {
-    q: "¿Qué beneficios tengo al registrarme en Tienda Orali?",
-    a: "Al registrarte podés comprar tus productos favoritos de Orali de manera online y recibirlos en tu domicilio. Además, vas a encontrar tu historial de pedidos para que volver a comprar sea mucho más rápido. Y lo más importante: vas a formar parte de nuestra comunidad.",
+    q: "¿Los productos tienen garantía?",
+    a: "Sí. Todos los productos cuentan con garantía oficial de la marca. En cada ficha ves los meses que corresponden. Ante cualquier falla, nuestro equipo de soporte gestiona la revisión con el servicio técnico autorizado.",
   },
   {
-    q: "¿Los productos vienen congelados?",
-    a: "Sí, nuestros productos se entregan congelados para que lleguen frescos y los puedas guardar en el freezer hasta el momento de consumirlos.",
+    q: "¿Cómo sé si un robot es adecuado para mi pileta?",
+    a: <>En la ficha de cada producto ves el tamaño de pileta recomendado y el tipo de limpieza. Si tenés dudas, escribinos por <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={linkClasses()}>WhatsApp</a> y te asesoramos.</>,
+  },
+  {
+    q: "¿Puede recibir otra persona mi pedido?",
+    a: "Sí. Avisale a quien reciba que tenga a mano el número de pedido y un documento.",
+  },
+  {
+    q: "¿Puedo arrepentirme de mi compra?",
+    a: "Sí. Tenés 10 días corridos desde que recibís el producto para ejercer el arrepentimiento, desde el botón de arrepentimiento al pie de la página. El producto debe estar sin uso y en su embalaje original.",
   },
   {
     q: "¿Realizan ventas al por mayor?",
-    a: <>Sí. Este canal de venta es solo para consumidores finales. Si tenés un local o querés comprar por mayor, contactanos por correo a <a href="mailto:comercial@pastasorali.com" className={linkClasses()}>comercial@pastasorali.com</a>.</>,
-  },
-  {
-    q: "¿Puedo cambiar o devolver un producto?",
-    a: <>Al tratarse de alimentos, no aceptamos devoluciones ni cambios.<br />Si algún producto no coincide con tu orden, escribinos por WhatsApp al <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={linkClasses()}>+54 9 11 3065-6942</a> y nos pondremos en contacto con vos para solucionarlo a la brevedad.</>,
-  },
-  {
-    q: "¿Se puede retirar en el local?",
-    a: "No, todas nuestras ventas son online. Si necesitás ayuda para hacer tu pedido, contactanos desde el botón de WhatsApp que ves en la pantalla.",
+    a: <>Sí. Si sos profesional o querés comprar por mayor, escribinos a <a href="mailto:info@ketea.com.ar" className={linkClasses()}>info@ketea.com.ar</a>.</>,
   },
   {
     q: "Tengo otra pregunta",

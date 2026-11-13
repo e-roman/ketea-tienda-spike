@@ -145,6 +145,7 @@ export default function Nav() {
               >
                 <User className="icon-md" aria-hidden="true" />
               </button>
+              <NotificationsMenu />
               {cartButton("end")}
             </div>
           </div>

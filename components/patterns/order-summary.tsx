@@ -24,7 +24,7 @@ interface OrderSummaryProps {
   className?: string
 }
 
-/** Resumen del pedido — clases de styles/patterns/order-summary.css. Envío gratis en CABA. */
+/** Resumen del pedido — clases de styles/patterns/order-summary.css. */
 export function OrderSummary({
   totalItems, subtotal, total, loading, onCheckout, className,
 }: OrderSummaryProps) {

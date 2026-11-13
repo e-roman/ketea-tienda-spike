@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 
 /**
  * Verificación de zona por código postal (Figma: _Product / Shipping check).
- * Clases de styles/patterns/buy-box.css. CABA = CP 1000–1499 (heurística simple).
+ * Clases de styles/patterns/buy-box.css. Heurística simple: CP de 4 dígitos.
  */
 export function ShippingCheck({ className }: { className?: string }) {
   const [cp, setCp] = useState("")
@@ -39,12 +39,12 @@ export function ShippingCheck({ className }: { className?: string }) {
       </div>
       {valid === true && (
         <p role="status" className="shipping-check__result shipping-check__result--ok">
-          <Check aria-hidden="true" /> ¡Llegamos a tu zona! Envío gratis en CABA.
+          <Check aria-hidden="true" /> ¡Llegamos a tu zona!
         </p>
       )}
       {valid === false && (
         <p role="status" className="shipping-check__result shipping-check__result--no">
-          Zona no cubierta por el momento. Solo CABA y parte del GBA.
+          Zona no cubierta por el momento. Consultanos por WhatsApp.
         </p>
       )}
     </div>

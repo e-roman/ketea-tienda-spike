@@ -9,4 +9,22 @@
   .account__title { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3); font-size: var(--font-size-lg); line-height: var(--font-line-height-lg); font-weight: var(--font-weight-bold); color: var(--color-text-primary); }
   .account__title > svg { width: var(--space-5); height: var(--space-5); color: var(--color-icon-brand); }
   .account__text { margin-bottom: var(--space-3); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-secondary); }
+
+  /* Pedidos */
+  .order-list { display: flex; flex-direction: column; gap: var(--space-4); }
+  .order-list__item { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-4); border: var(--border-width-sm) solid var(--color-border-default); border-radius: var(--radius-md); }
+  .order-list__head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-3); }
+  .order-list__ref { font-size: var(--font-size-md); line-height: var(--font-line-height-md); font-weight: var(--font-weight-bold); color: var(--color-text-primary); }
+  .order-list__meta { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-secondary); }
+  .order-list__products { display: flex; flex-direction: column; gap: var(--space-2); }
+  .order-list__product { display: flex; align-items: center; gap: var(--space-3); }
+  .order-list__thumb { position: relative; flex-shrink: 0; width: var(--space-12); height: var(--space-12); overflow: hidden; border: var(--border-width-sm) solid var(--color-border-default); border-radius: var(--radius-sm); background-color: var(--color-surface-default); }
+  .order-list__thumb img { object-fit: contain; }
+  .order-list__name { flex: 1 1 0%; min-width: 0; font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-primary); }
+  .order-list__qty { font-size: var(--font-size-sm); color: var(--color-text-secondary); }
+  .order-list__foot { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-3); padding-top: var(--space-3); border-top: var(--border-width-sm) solid var(--color-border-default); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); }
+  .order-list__foot dt { color: var(--color-text-secondary); }
+  .order-list__foot dd { color: var(--color-text-primary); }
+  .order-list__total { font-weight: var(--font-weight-bold); }
+  @media (max-width: 639px) { .order-list__foot { grid-template-columns: minmax(0, 1fr); } }
 }

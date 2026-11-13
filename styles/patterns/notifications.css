@@ -17,6 +17,11 @@
     background-color: var(--dropdown-bg);
     box-shadow: var(--elevation-dropdown);
   }
+  /* Mobile: el panel ocupa el ancho de la pantalla, bajo el header, en lugar de colgar de la campana. */
+  @media (max-width: 767px) {
+    .notifications { position: static; }
+    .notifications__panel { left: var(--space-4); right: var(--space-4); width: auto; margin-top: var(--space-0); }
+  }
   .notifications__head { display: flex; flex-shrink: 0; align-items: center; justify-content: space-between; gap: var(--space-3); padding: var(--space-4); border-bottom: var(--border-width-sm) solid var(--color-border-default); }
   .notifications__title { font-size: var(--font-size-md); line-height: var(--font-line-height-md); font-weight: var(--font-weight-bold); color: var(--color-text-primary); }
   .notifications__link { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-link); }
