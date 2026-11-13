@@ -24,6 +24,13 @@ export interface Faq {
   a: string
 }
 
+export interface Resource {
+  label: string
+  /** Tipo de archivo, ej. "PDF". */
+  type: string
+  url: string
+}
+
 export interface ProductDetails {
   description: string[]
   sections: FeatureSection[]
@@ -33,6 +40,7 @@ export interface ProductDetails {
   featureBlocks: FeatureBlock[]
   specs: SpecGroup[]
   faq: Faq[]
+  resources: Resource[]
   warrantyMonths: number | null
   warrantyText: string
 }
@@ -47,6 +55,7 @@ type Raw = {
   featureBlocks?: FeatureBlock[]
   specs?: SpecGroup[]
   faq?: Faq[]
+  resources?: Resource[]
   warrantyMonths?: number
   warrantyText?: string
 }
@@ -102,6 +111,7 @@ export function getProductDetails(product: Product): ProductDetails {
     featureBlocks: own.featureBlocks ?? [],
     specs: [...(own.specs ?? []), basic],
     faq: [...(own.faq ?? []), ...(defaults?.faq ?? []), ...GENERIC_FAQ],
+    resources: own.resources ?? [],
     warrantyMonths: own.warrantyMonths ?? defaults?.warrantyMonths ?? null,
     warrantyText: own.warrantyText ?? WARRANTY_TEXT,
   }

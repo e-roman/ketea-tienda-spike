@@ -2,13 +2,13 @@
 
 import Image from "next/image"
 import { useState } from "react"
-import { Check, Lightbulb, MessageCircle, Minus, Plus, ShieldCheck, X } from "lucide-react"
+import { Check, Download, FileText, Lightbulb, MessageCircle, Minus, Plus, ShieldCheck, X } from "lucide-react"
 import { Tabs } from "@/components/ui/tabs"
 import { getProductDetails, type Faq, type ProductDetails } from "@/lib/product-details"
 import type { Product } from "@/lib/products"
 import { WHATSAPP_URL } from "@/components/patterns/header/nav-items"
 
-type TabId = "descripcion" | "especificaciones" | "preguntas" | "garantia"
+type TabId = "descripcion" | "especificaciones" | "recursos" | "preguntas" | "garantia"
 
 function Description({ d }: { d: ProductDetails }) {
   return (
@@ -105,6 +105,29 @@ function Specs({ d }: { d: ProductDetails }) {
   )
 }
 
+/** Manuales y fichas descargables. Los datos de Ketea traen "#" como enlace provisorio: en ese caso el enlace no navega. */
+function Resources({ d }: { d: ProductDetails }) {
+  return (
+    <ul className="ptabs__resources">
+      {d.resources.map((r) => (
+        <li key={r.label}>
+          <a
+            href={r.url}
+            onClick={r.url === "#" ? (e) => e.preventDefault() : undefined}
+            {...(r.url !== "#" ? { target: "_blank", rel: "noopener noreferrer", download: true } : {})}
+            className="ptabs__resource"
+          >
+            <FileText className="ptabs__resource-icon" aria-hidden="true" />
+            <span className="ptabs__resource-label">{r.label}</span>
+            <span className="ptabs__resource-type">{r.type}</span>
+            <Download className="ptabs__resource-download" aria-hidden="true" />
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 function FaqList({ faq }: { faq: Faq[] }) {
   const [open, setOpen] = useState<number | null>(null)
   return (
@@ -161,6 +184,7 @@ export function ProductTabs({ product }: { product: Product }) {
   const items = [
     ...(d.description.length > 0 ? [{ id: "descripcion" as const, label: "Descripción" }] : []),
     { id: "especificaciones" as const, label: "Especificaciones" },
+    ...(d.resources.length > 0 ? [{ id: "recursos" as const, label: "Recursos y descargas" }] : []),
     { id: "preguntas" as const, label: "Preguntas frecuentes" },
     { id: "garantia" as const, label: "Garantía y soporte" },
   ]
@@ -172,6 +196,7 @@ export function ProductTabs({ product }: { product: Product }) {
       <div role="tabpanel" id={`panel-${tab}`} aria-labelledby={`tab-${tab}`} className="ptabs__panel">
         {tab === "descripcion" && <Description d={d} />}
         {tab === "especificaciones" && <Specs d={d} />}
+        {tab === "recursos" && <Resources d={d} />}
         {tab === "preguntas" && <FaqList faq={d.faq} />}
         {tab === "garantia" && <Warranty d={d} />}
       </div>
