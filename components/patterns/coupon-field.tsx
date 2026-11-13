@@ -37,7 +37,7 @@ export function CouponField({ className }: { className?: string }) {
   return (
     <Field label="Código de descuento" className={className}>
       <span className="coupon__row">
-        <Input type="text" value={code} onChange={(e) => setCode(e.target.value)} placeholder="ORALI10" className="coupon__input input--upper" />
+        <Input type="text" value={code} onChange={(e) => setCode(e.target.value)} placeholder="Ingresá tu código" className="coupon__input input--upper" />
         <Button variant="secondary" onClick={apply} loading={applying}>
           Aplicar
         </Button>

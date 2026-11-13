@@ -74,10 +74,7 @@ export function PersonalForm({ defaultValues, onSubmit }: PersonalFormProps) {
             <FormInput label="Nombre *" autoComplete="given-name" {...bind("nombre")} />
             <FormInput label="Apellido *" autoComplete="family-name" {...bind("apellido")} />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <FormInput label="Email *" type="email" autoComplete="email" {...bind("billingEmail")} />
-            <FormInput label="Teléfono *" type="tel" autoComplete="tel" {...bind("telefono")} />
-          </div>
+          <FormInput label="Teléfono *" type="tel" autoComplete="tel" {...bind("telefono")} />
           <div className="grid grid-cols-6 gap-4">
             <FormInput label="Calle *" autoComplete="address-line1" className="col-span-6 sm:col-span-4" {...bind("calle")} />
             <FormInput label="Número *" inputMode="numeric" className="col-span-3 sm:col-span-1" {...bind("numero")} />

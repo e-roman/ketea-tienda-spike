@@ -25,7 +25,7 @@
 
   /* ── Indicador de pasos ── */
   .step-indicator { display: flex; align-items: center; margin-bottom: var(--space-12); padding-inline: var(--space-2); }
-  .step-indicator__item { display: flex; flex: 1 1 0%; align-items: center; min-width: 0; }
+  .step-indicator__item { display: flex; flex: 1 1 auto; gap: var(--space-2); align-items: center; min-width: 0; }
   .step-indicator__item:last-child { flex: none; }
   .step-indicator__connector { margin-inline: var(--space-2); }
   @media (min-width: 640px) { .step-indicator__connector { margin-inline: var(--space-4); } }

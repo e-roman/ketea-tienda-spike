@@ -39,6 +39,6 @@
   }
   .step-indicator__label { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); font-weight: var(--font-weight-medium); white-space: nowrap; color: var(--color-text-secondary); }
   .step-indicator__label--current { color: var(--color-text-primary); }
-  .step-indicator__connector { flex: 1 1 0%; height: var(--border-width-lg); border-radius: var(--radius-full); background-color: var(--color-surface-muted); }
+  .step-indicator__connector { flex: 1 1 0%; min-width: var(--space-4); height: var(--border-width-lg); border-radius: var(--radius-full); background-color: var(--color-surface-muted); }
   .step-indicator__connector--past { background-color: var(--color-surface-brand); }
 }
