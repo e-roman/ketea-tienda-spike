@@ -14,6 +14,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
 export const OnSale: Story = { args: { product: saleProduct } }
-export const FreezerFriendly: Story = {
-  args: { product: { ...sampleProduct, badges: [...sampleProduct.badges, 'apto-freezer'] } },
+/** Sin stock: el botón queda deshabilitado y se muestran las etiquetas del producto. */
+export const OutOfStock: Story = {
+  args: { product: { ...sampleProduct, inStock: false } },
 }

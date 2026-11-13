@@ -1,16 +1,35 @@
 import type { Preview } from '@storybook/nextjs-vite'
 import { Toaster } from '../components/ui/toaster'
-import '@orali/design-tokens/tokens.css' // tokens (mismo orden que app/layout.tsx)
-import '../app/globals.css'              // Tailwind + styles/components/*.css
+import '@ketea/tokens/tokens.css'        // tokens de Ketea (mismo orden que app/layout.tsx)
+import '../styles/ketea-theme.css'       // capa de compatibilidad: nombres de Orali apuntando a los tokens de Ketea
+import '../app/globals.css'              // Tailwind + styles/**/*.css
 import { CartProvider } from '../lib/cart-context'
+import { DeliveryProvider } from '../lib/delivery-context'
+import { AuthProvider } from '../lib/auth-context'
+import { OrdersProvider } from '../lib/orders-context'
+import { NotificationsProvider } from '../lib/notifications-context'
+import { FavoritesProvider } from '../lib/favorites-context'
+import { QuickViewProvider } from '../lib/quick-view-context'
 
 const preview: Preview = {
   decorators: [
-    // Los patterns usan useCart() y toast(): mismo contexto que app/layout.tsx.
+    // Los patterns usan los mismos contextos que app/layout.tsx (carrito, entrega, favoritos, etc.) y toast().
     (Story) => (
       <CartProvider>
-        <Story />
-        <Toaster />
+        <DeliveryProvider>
+          <AuthProvider>
+            <OrdersProvider>
+              <NotificationsProvider>
+                <FavoritesProvider>
+                  <QuickViewProvider>
+                    <Story />
+                    <Toaster />
+                  </QuickViewProvider>
+                </FavoritesProvider>
+              </NotificationsProvider>
+            </OrdersProvider>
+          </AuthProvider>
+        </DeliveryProvider>
       </CartProvider>
     ),
   ],
