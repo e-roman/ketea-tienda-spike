@@ -1,0 +1,12 @@
+/* Página Mi cuenta: acceso (ingresar / registrarse) y panel con pedidos, datos y favoritos. */
+@layer components {
+  .account__access { display: flex; flex-direction: column; gap: var(--space-4); max-width: calc(var(--space-64) * 2); margin-inline: auto; padding-block: var(--space-6); }
+  .account__card { border: var(--border-width-sm) solid var(--color-border-default); background-color: var(--color-surface-default); }
+  .account__note { text-align: center; font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-secondary); }
+  .account__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); margin-top: var(--space-6); }
+  @media (min-width: 1024px) { .account__grid { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); } }
+  .account__side { display: flex; flex-direction: column; gap: var(--space-4); }
+  .account__title { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3); font-size: var(--font-size-lg); line-height: var(--font-line-height-lg); font-weight: var(--font-weight-bold); color: var(--color-text-primary); }
+  .account__title > svg { width: var(--space-5); height: var(--space-5); color: var(--color-icon-brand); }
+  .account__text { margin-bottom: var(--space-3); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-secondary); }
+}
