@@ -2,8 +2,9 @@
 
 import { useState, useMemo, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
-import { ChevronDown, Search } from "lucide-react"
+import { Check, ChevronDown, Search } from "lucide-react"
 import ProductCard, { ProductCardSkeleton } from "@/components/patterns/product-card"
+import BottomSheet from "@/components/bottom-sheet"
 import { FilterSidebar } from "@/components/patterns/filter-sidebar"
 import { Button } from "@/components/ui/button"
 import { Select } from "@/components/ui/input"
@@ -33,7 +34,8 @@ function CatalogContent() {
   const [activeNav, setActiveNav] = useState<NavKey | null>(initialNav)
   const [activeQuery, setActiveQuery] = useState<string>(initialQuery)
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS)
-  const [filtersOpen, setFiltersOpen] = useState(false)
+  const [filtersSheetOpen, setFiltersSheetOpen] = useState(false)
+  const [sortSheetOpen, setSortSheetOpen] = useState(false)
   const [sort, setSort] = useState("default")
 
   // Next.js no remonta el componente al navegar de /productos?nav=X a
@@ -106,8 +108,10 @@ function CatalogContent() {
           filters={filters}
           facets={facets}
           onChange={setFilters}
-          open={filtersOpen}
-          onToggle={() => setFiltersOpen((v) => !v)}
+          sheetOpen={filtersSheetOpen}
+          onSheetOpenChange={setFiltersSheetOpen}
+          sortLabel={SORT_OPTIONS.find((o) => o.value === sort)?.label ?? SORT_OPTIONS[0].label}
+          onOpenSort={() => setSortSheetOpen(true)}
         />
 
         <div>
@@ -153,6 +157,23 @@ function CatalogContent() {
           )}
         </div>
       </div>
+
+      <BottomSheet open={sortSheetOpen} title="Ordenar por" onClose={() => setSortSheetOpen(false)}>
+        <div className="space-y-1">
+          {SORT_OPTIONS.map((o) => (
+            <button
+              key={o.value}
+              type="button"
+              onClick={() => { setSort(o.value); setSortSheetOpen(false) }}
+              aria-pressed={sort === o.value}
+              className="option-row"
+            >
+              <span>{o.label}</span>
+              {sort === o.value && <Check className="option-row__check" aria-hidden="true" />}
+            </button>
+          ))}
+        </div>
+      </BottomSheet>
     </div>
   )
 }

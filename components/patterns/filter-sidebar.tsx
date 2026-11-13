@@ -1,6 +1,7 @@
 "use client"
 
-import { SlidersHorizontal, X } from "lucide-react"
+import { ArrowUpDown, SlidersHorizontal, X } from "lucide-react"
+import BottomSheet from "@/components/bottom-sheet"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -14,9 +15,12 @@ interface FilterSidebarProps {
   filters: Filters
   facets: Facets
   onChange: (next: Filters) => void
-  /** Solo mobile y tablet: la columna se pliega detrás de un botón. */
-  open: boolean
-  onToggle: () => void
+  /** Mobile y tablet: los filtros se abren en un bottom sheet. */
+  sheetOpen: boolean
+  onSheetOpenChange: (open: boolean) => void
+  /** Etiqueta del orden vigente y acción para cambiarlo (se abre en otro sheet, del listado). */
+  sortLabel: string
+  onOpenSort: () => void
 }
 
 function FilterGroup<T extends string | number>({ title, options, selected, onToggle }: {
@@ -38,30 +42,20 @@ function FilterGroup<T extends string | number>({ title, options, selected, onTo
   )
 }
 
-/**
- * Columna de filtros del listado (Figma: Listing / Filters): título y cantidad, interruptores de entrega,
- * "Filtros aplicados" con chips que se quitan de a uno, y grupos de checkboxes con precio al final.
- * Clases de styles/patterns/filters.css.
- */
-export function FilterSidebar({ title, resultCount, filters, facets, onChange, open, onToggle }: FilterSidebarProps) {
+/** Contenido de los filtros: se dibuja en la columna (escritorio) y dentro del bottom sheet (mobile y tablet). */
+function FilterBody({ filters, facets, onChange, showClear }: {
+  filters: Filters
+  facets: Facets
+  onChange: (next: Filters) => void
+  /** Link "Borrar filtros" al final; en el sheet el botón vive en el pie. */
+  showClear: boolean
+}) {
   const chips = appliedChips(filters)
   const { switches } = facets
   const showSwitches = switches.freeShipping > 0 || switches.express > 0 || switches.pickup > 0 || filters.freeShipping || filters.express || filters.pickup
 
   return (
-    <aside className={open ? "filters filters--open" : "filters"} aria-label="Filtros">
-      <div className="filters__head">
-        <h1 className="filters__title">{title}</h1>
-        <p className="filters__count"><strong>{resultCount}</strong> resultado{resultCount !== 1 ? "s" : ""}</p>
-      </div>
-
-      <Button variant="neutral" onClick={onToggle} aria-expanded={open} className="filters__toggle">
-        <SlidersHorizontal className="icon-sm" aria-hidden="true" />
-        Filtros
-        {chips.length > 0 && <Badge variant="counter">{chips.length}</Badge>}
-      </Button>
-
-      <div className="filters__body">
+    <>
       {showSwitches && (
         <div className="filters__switches">
           {(switches.freeShipping > 0 || filters.freeShipping) && (
@@ -112,10 +106,61 @@ export function FilterSidebar({ title, resultCount, filters, facets, onChange, o
         </div>
       </fieldset>
 
-      {chips.length > 0 && (
+      {showClear && chips.length > 0 && (
         <button type="button" onClick={() => onChange(EMPTY_FILTERS)} className="filters__link filters__clear">Borrar filtros</button>
       )}
+    </>
+  )
+}
+
+/**
+ * Filtros del listado (Figma: Listing / Filters).
+ * Escritorio: columna con título, cantidad y los filtros. Mobile y tablet: título y cantidad, dos botones del mismo tamaño
+ * ("Filtrar" y el orden) y los filtros en un bottom sheet con pie ("Borrar filtros" y "Ver resultados").
+ * Clases de styles/patterns/filters.css.
+ */
+export function FilterSidebar({ title, resultCount, filters, facets, onChange, sheetOpen, onSheetOpenChange, sortLabel, onOpenSort }: FilterSidebarProps) {
+  const activeCount = appliedChips(filters).length
+
+  return (
+    <aside className="filters" aria-label="Filtros">
+      <div className="filters__head">
+        <h1 className="filters__title">{title}</h1>
+        <p className="filters__count"><strong>{resultCount}</strong> resultado{resultCount !== 1 ? "s" : ""}</p>
       </div>
+
+      <div className="filters__actions">
+        <Button variant="neutral" fullWidth onClick={() => onSheetOpenChange(true)}>
+          <SlidersHorizontal className="icon-sm" aria-hidden="true" />
+          Filtrar
+          {activeCount > 0 && <Badge variant="counter">{activeCount}</Badge>}
+        </Button>
+        <Button variant="neutral" fullWidth onClick={onOpenSort}>
+          <ArrowUpDown className="icon-sm" aria-hidden="true" />
+          {sortLabel}
+        </Button>
+      </div>
+
+      <div className="filters__body">
+        <FilterBody filters={filters} facets={facets} onChange={onChange} showClear />
+      </div>
+
+      <BottomSheet
+        open={sheetOpen}
+        title="Filtros"
+        tall
+        onClose={() => onSheetOpenChange(false)}
+        footer={
+          <>
+            <Button variant="outline" fullWidth onClick={() => onChange(EMPTY_FILTERS)} disabled={activeCount === 0}>Borrar filtros</Button>
+            <Button fullWidth onClick={() => onSheetOpenChange(false)}>Ver resultados ({resultCount})</Button>
+          </>
+        }
+      >
+        <div className="filters__sheet">
+          <FilterBody filters={filters} facets={facets} onChange={onChange} showClear={false} />
+        </div>
+      </BottomSheet>
     </aside>
   )
 }

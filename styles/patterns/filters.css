@@ -6,12 +6,16 @@
   .filters__count { font-size: var(--font-size-lg); line-height: var(--font-line-height-lg); color: var(--color-text-primary); }
   .filters__count > strong { font-weight: var(--font-weight-bold); }
 
-  /* En mobile y tablet el cuerpo se pliega detrás del botón "Filtros"; en escritorio siempre se ve */
-  .filters__toggle { align-self: flex-start; }
-  @media (min-width: 1024px) { .filters__toggle { display: none; } }
+  /* Mobile y tablet: dos botones del mismo tamaño (Filtrar y orden); los filtros van en un bottom sheet.
+     Escritorio: los botones se ocultan y los filtros se ven siempre en la columna. */
+  .filters__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+  .filters__actions > .btn { min-width: 0; }
   .filters__body { display: none; flex-direction: column; gap: var(--space-6); }
-  .filters--open .filters__body { display: flex; }
-  @media (min-width: 1024px) { .filters__body { display: flex; } }
+  @media (min-width: 1024px) {
+    .filters__actions { display: none; }
+    .filters__body { display: flex; }
+  }
+  .filters__sheet { display: flex; flex-direction: column; gap: var(--space-6); }
 
   .filters__switches {
     display: flex;
@@ -56,5 +60,7 @@
   .filter-price > .input { min-width: 0; }
 
   /* Listado: el contenedor de la grilla */
-  .listing__sort { display: flex; align-items: center; justify-content: flex-end; gap: var(--space-2); margin-bottom: var(--space-4); }
+  /* El orden en un select solo se ve en escritorio; en mobile es el segundo botón junto a "Filtrar" */
+  .listing__sort { display: none; align-items: center; justify-content: flex-end; gap: var(--space-2); margin-bottom: var(--space-4); }
+  @media (min-width: 1024px) { .listing__sort { display: flex; } }
 }

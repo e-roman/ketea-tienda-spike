@@ -49,8 +49,10 @@
   }
   .sheet--open .sheet__panel { transform: translateY(0); }
   .sheet__bar { display: flex; flex-shrink: 0; align-items: center; justify-content: space-between; height: var(--space-14); padding-inline: var(--space-5); border-bottom: var(--border-width-sm) solid var(--color-border-default); }
-  .sheet__title { font-size: var(--font-size-md); line-height: var(--font-line-height-md); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
-  .sheet__body { overflow-y: auto; padding: var(--space-4) var(--space-5); }
+  .sheet__panel--tall { height: calc(100vh - var(--space-16)); max-height: none; }
+  .sheet__title { font-size: var(--font-size-xl); line-height: var(--font-line-height-lg); font-weight: var(--font-weight-bold); color: var(--color-text-primary); }
+  .sheet__body { flex: 1 1 0%; min-height: 0; overflow-y: auto; padding: var(--space-4) var(--space-5); }
+  .sheet__footer { display: flex; flex-shrink: 0; flex-direction: column; gap: var(--space-3); padding: var(--space-4) var(--space-5); border-top: var(--border-width-sm) solid var(--color-border-default); background-color: var(--color-surface-default); }
 
   /* Drawer lateral (carrito). El contenedor sube a la capa del drawer; el fondo y el panel se animan por --open */
   .drawer { position: fixed; inset: 0; z-index: var(--z-index-drawer); pointer-events: none; }
