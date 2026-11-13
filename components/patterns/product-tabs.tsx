@@ -20,8 +20,8 @@ function Description({ d }: { d: ProductDetails }) {
         <section key={s.title} className="ptabs__section">
           <h3 className="ptabs__heading">{s.title}</h3>
           <ul className="ptabs__list">
-            {s.items.map((item) => (
-              <li key={item.text}>
+            {s.items.map((item, n) => (
+              <li key={`${n}-${item.label ?? item.text}`}>
                 {item.label && <strong>{item.label}: </strong>}{item.text}
                 {item.subitems && (
                   <ul className="ptabs__sublist">
