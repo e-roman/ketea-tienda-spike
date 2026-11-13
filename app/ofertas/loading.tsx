@@ -11,7 +11,7 @@ export default function OfertasLoading() {
         <Skeleton radius="sm" h={5} w={56} className="mt-1" />
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
         {Array.from({ length: 8 }).map((_, i) => <ProductCardSkeleton key={i} />)}
       </div>
     </div>

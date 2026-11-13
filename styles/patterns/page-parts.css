@@ -91,7 +91,7 @@
   .snap-row__item:last-child { padding-right: var(--space-4); }
   @media (min-width: 640px) { .snap-row__item { flex-basis: 45%; } }
   @media (min-width: 768px) {
-    .snap-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow: visible; }
+    .snap-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-2); overflow: visible; }
     .snap-row__item { flex-basis: auto; padding-right: 0; }
     .snap-row__item:last-child { padding-right: 0; }
   }

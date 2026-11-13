@@ -32,7 +32,7 @@ export default function OfertasPage() {
       </PageHeader>
 
       {isLoading ? (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
           {Array.from({ length: Math.max(products.length, 4) }).map((_, i) => <ProductCardSkeleton key={i} />)}
         </div>
       ) : products.length === 0 ? (
@@ -42,7 +42,7 @@ export default function OfertasPage() {
           text="Volvé a mirar pronto, renovamos las ofertas todas las semanas."
         />
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} titleAs="h2" />
           ))}
