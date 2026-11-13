@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { usePathname, useRouter } from "next/navigation"
-import { Bell, Heart, ShoppingCart, Menu, User } from "lucide-react"
+import { Heart, ShoppingCart, Menu, User } from "lucide-react"
 import { toast } from "sonner"
 import { useCart } from "@/lib/cart-context"
 import { useFavorites } from "@/lib/favorites-context"
@@ -16,6 +16,7 @@ import { CheckoutHeader } from "@/components/patterns/header/checkout-header"
 import { CategoriesMenu } from "@/components/patterns/header/categories-menu"
 import { MobileMenu } from "@/components/patterns/header/mobile-menu"
 import { MobileNav } from "@/components/patterns/header/mobile-nav"
+import { NotificationsMenu } from "@/components/patterns/header/notifications-menu"
 import { SECTION_LINKS } from "@/components/patterns/header/nav-items"
 import { SearchField } from "@/components/patterns/header/search-field"
 import { SearchResultsDropdown, MobileSearchResults } from "@/components/patterns/header/search-results"
@@ -197,10 +198,7 @@ export default function Nav() {
                 <Heart className="icon-md" aria-hidden="true" />
                 {favoriteIds.length > 0 && <Badge variant="counter" className="icon-btn__badge">{favoriteIds.length}</Badge>}
               </Link>
-              <Link href="/cuenta" aria-label="Notificaciones" className={iconButtonClasses({ size: "sm" })}>
-                <Bell className="icon-md" aria-hidden="true" />
-                <span className="icon-btn__dot" aria-hidden="true" />
-              </Link>
+              <NotificationsMenu />
               {cartButton()}
             </div>
           </div>

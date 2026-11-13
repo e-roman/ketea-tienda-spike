@@ -5,6 +5,7 @@ import Link from "next/link"
 import { ShoppingCart } from "lucide-react"
 import { useCart } from "@/lib/cart-context"
 import { useDelivery } from "@/lib/delivery-context"
+import { useNotifications } from "@/lib/notifications-context"
 import { EMPTY_PERSONAL, billingEmailOf, paymentSummary, type PersonalData, type PaymentMethod, type PaymentSummary } from "@/lib/checkout"
 import type { DeliveryOption } from "@/lib/delivery"
 import { buttonClasses } from "@/components/ui/button"
@@ -28,6 +29,7 @@ const STEPS: StepItem<Step>[] = [
 export default function CheckoutPage() {
   const { items, subtotal, clear } = useCart()
   const { option, shippingCost } = useDelivery()
+  const { add: addNotification } = useNotifications()
 
   const [step, setStep] = useState<Step>("datos")
   const [personal, setPersonal] = useState<PersonalData>(EMPTY_PERSONAL)
@@ -77,6 +79,7 @@ export default function CheckoutPage() {
     setTimeout(() => {
       setConfirmed({ items, subtotal, shippingCost, option, payment: paymentSummary(method, detail), personal, shipping })
       clear()
+      addNotification({ type: "order", title: "Pedido confirmado", text: `Tu pedido #ORD-${new Date().getFullYear()}-${orderId} quedó confirmado. Te avisamos cuando avance.` })
       setStep("confirmacion")
       setPayLoading(false)
     }, 900)
