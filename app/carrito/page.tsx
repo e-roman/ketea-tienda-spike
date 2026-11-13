@@ -5,6 +5,7 @@ import { linkClasses } from "@/components/ui/link"
 import { useRouter } from "next/navigation"
 import { ShoppingCart, ArrowLeft } from "lucide-react"
 import { useCart } from "@/lib/cart-context"
+import { useDelivery } from "@/lib/delivery-context"
 import { useState } from "react"
 import ConfirmDeleteModal from "@/components/confirm-delete-modal"
 import { buttonClasses } from "@/components/ui/button"
@@ -24,8 +25,8 @@ export default function CartPage() {
   const [goingCheckout, setGoingCheckout] = useState(false)
   const [qtyLoading, setQtyLoading] = useState<{ id: string; dir: "inc" | "dec" } | null>(null)
 
-  // Envío gratis en CABA
-  const total = subtotal
+  const { shippingCost } = useDelivery()
+  const total = subtotal + shippingCost
 
   function handleIncrement(id: string) {
     if (qtyLoading) return

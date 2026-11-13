@@ -11,12 +11,16 @@ import { CartItem } from "@/components/patterns/cart-item"
 import { Drawer } from "@/components/patterns/drawer"
 import { EmptyState } from "@/components/patterns/empty-state"
 import { DrawerFooter } from "@/components/patterns/drawer-footer"
+import { DeliveryOptions } from "@/components/patterns/delivery-options"
+import { useDelivery } from "@/lib/delivery-context"
+import { formatPrice } from "@/lib/products"
 
 export default function CartDrawer() {
   const {
     items, increment, decrement, remove, subtotal, totalItems, isOpen, closeCart,
   } = useCart()
   const router = useRouter()
+  const { shippingCost } = useDelivery()
 
   const [pendingRemove, setPendingRemove] = useState<{ id: string; name: string } | null>(null)
   const [goingCheckout, setGoingCheckout] = useState(false)
@@ -87,10 +91,17 @@ export default function CartDrawer() {
                   onNavigate={closeCart}
                 />
               ))}
+
+              <div className="drawer-subtotal">
+                <span><strong>Subtotal</strong> <span className="drawer-subtotal__note">(Sin envío)</span>:</span>
+                <strong>{formatPrice(subtotal)}</strong>
+              </div>
+
+              <DeliveryOptions />
             </div>
 
             <DrawerFooter
-              subtotal={subtotal}
+              total={subtotal + shippingCost}
               loading={goingCheckout}
               onCheckout={handleGoCheckout}
               onNavigate={closeCart}

@@ -1,0 +1,57 @@
+/* Radio group con tarjetas (Figma: Radio group / Radio group item). Simple: círculo, título y detalle; la elegida se tiñe de marca. */
+@layer components {
+  .radio-group { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; }
+  .radio-group__legend { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); font-weight: var(--font-weight-medium); color: var(--color-text-primary); }
+  .radio-group__legend > svg { width: var(--space-4); height: var(--space-4); }
+
+  .radio-card {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border: var(--border-width-md) solid var(--color-border-default);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-surface-default);
+    cursor: pointer;
+    transition-property: background-color, border-color;
+    transition-duration: var(--duration-fast);
+    transition-timing-function: var(--easing-standard);
+  }
+  .radio-card:hover { border-color: var(--color-semantic-forms-border-hover); }
+  .radio-card--selected,
+  .radio-card--selected:hover { border-color: var(--color-brand-300); background-color: var(--color-brand-subtle); }
+  .radio-card--disabled { cursor: not-allowed; opacity: var(--opacity-disabled); }
+
+  .radio-card__input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: inherit; }
+  .radio-card:has(.radio-card__input:focus-visible) { outline: var(--border-width-focus) solid var(--color-border-focus); outline-offset: var(--border-width-sm); }
+
+  .radio-card__dot {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: var(--space-5);
+    height: var(--space-5);
+    margin-top: var(--space-0-5);
+    border: var(--border-width-md) solid var(--color-form-border);
+    border-radius: var(--radius-full);
+    background-color: var(--color-form-bg);
+  }
+  .radio-card__dot::after {
+    content: "";
+    width: var(--space-2);
+    height: var(--space-2);
+    border-radius: var(--radius-full);
+    background-color: var(--color-action-primary-bg);
+    transform: scale(0);
+    transition: transform var(--duration-fast) var(--easing-standard);
+  }
+  .radio-card--selected .radio-card__dot { border-color: var(--color-action-primary-bg); }
+  .radio-card--selected .radio-card__dot::after { transform: scale(1); }
+
+  .radio-card__text { display: flex; flex-direction: column; gap: var(--space-0-5); min-width: 0; }
+  .radio-card__title { font-size: var(--font-size-md); line-height: var(--font-line-height-md); font-weight: var(--font-weight-medium); color: var(--color-text-primary); }
+  .radio-card--selected .radio-card__title { color: var(--color-text-brand); }
+  .radio-card__desc { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-secondary); }
+}

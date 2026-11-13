@@ -15,7 +15,7 @@ import { OrderReview, RecapCard } from "@/components/patterns/order-review"
 import { PaymentPanel } from "@/components/patterns/payment-panel"
 import { ShippingForm, type ShippingData } from "@/components/patterns/shipping-form"
 import { StepIndicator, type StepItem } from "@/components/patterns/step-indicator"
-import { getDeliveryZone, DELIVERY_HOURS } from "@/lib/delivery"
+import { useDelivery } from "@/lib/delivery-context"
 
 type Step = "cuenta" | "envio" | "pago" | "confirmacion"
 
@@ -27,6 +27,7 @@ const STEPS: StepItem<Step>[] = [
 
 export default function CheckoutPage() {
   const { items, subtotal, clear } = useCart()
+  const { option, shippingCost } = useDelivery()
 
   const [step, setStep] = useState<Step>("cuenta")
 
@@ -46,12 +47,8 @@ export default function CheckoutPage() {
   const [envioLoading, setEnvioLoading] = useState(false)
   const [payLoading, setPayLoading] = useState(false)
 
-  // Envío gratis en CABA (única zona con checkout online)
-  const shippingFee = 0
-  const total = subtotal + shippingFee
+  const total = subtotal + shippingCost
   const currentStepIndex = STEPS.findIndex((s) => s.id === step)
-  const zona = shipping ? getDeliveryZone(shipping.localidad, shipping.cp) : null
-  const entrega = zona?.kind === "caba" ? `${zona.dia} ${DELIVERY_HOURS}` : ""
 
   function handleEnvioSubmit(data: ShippingData) {
     if (envioLoading) return
@@ -97,10 +94,10 @@ export default function CheckoutPage() {
       <OrderConfirmation
         orderRef={`ORD-${new Date().getFullYear()}-${orderId}`}
         dateString={new Date().toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}
-        entrega={entrega || undefined}
+        entrega={option.label}
         items={confirmedItems}
         subtotal={confirmedSubtotal}
-        total={confirmedSubtotal + shippingFee}
+        total={confirmedSubtotal + shippingCost}
       />
     )
   }
@@ -127,10 +124,7 @@ export default function CheckoutPage() {
             )}
 
             {step === "envio" && (
-              <Card padding="panel">
-                <FormHeader title="¿Cómo recibís tu pedido?" />
-                <ShippingForm defaultValues={shipping ?? undefined} loading={envioLoading} onSubmit={handleEnvioSubmit} />
-              </Card>
+              <ShippingForm defaultValues={shipping ?? undefined} loading={envioLoading} onSubmit={handleEnvioSubmit} />
             )}
 
             {step === "pago" && (
@@ -143,7 +137,7 @@ export default function CheckoutPage() {
 
           {/* ── Columna derecha: resumen sticky ── */}
           <div className="lg:sticky lg:top-36 space-y-4">
-            <OrderReview items={items} subtotal={subtotal} total={total} />
+            <OrderReview items={items} subtotal={subtotal} shippingCost={shippingCost} total={total} />
 
             {/* Código de descuento: oculto por ahora. Para activarlo: <CouponField className="py-4" /> */}
 
@@ -158,11 +152,9 @@ export default function CheckoutPage() {
 
             {currentStepIndex > 1 && shipping && (
               <RecapCard title="Entrega" editLabel="Editar envío" onEdit={() => setStep("envio")}>
-                <p>{shipping.nombre} {shipping.apellido}</p>
-                <p className="recap-card__muted">{shipping.direccion}{shipping.piso ? `, ${shipping.piso}` : ""}</p>
-                <p className="recap-card__muted">{shipping.localidad}{shipping.cp ? ` (${shipping.cp})` : ""}</p>
-                {shipping.recibe && <p className="recap-card__muted">Recibe: {shipping.recibe}</p>}
-                {entrega && <p className="recap-card__small">Entrega: {entrega}</p>}
+                <p>{shipping.calle} {shipping.numero}{shipping.piso ? `, ${shipping.piso}` : ""}</p>
+                <p className="recap-card__muted">{shipping.ciudad}, {shipping.provincia} ({shipping.cp})</p>
+                <p className="recap-card__small">{option.label}</p>
               </RecapCard>
             )}
           </div>

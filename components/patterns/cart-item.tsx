@@ -8,6 +8,7 @@ import { Price } from "@/components/ui/price"
 import { iconButtonClasses } from "@/components/ui/icon-button"
 import { formatPrice, getDiscountPercent, type Product } from "@/lib/products"
 import { ProductTags } from "@/components/patterns/product-tags"
+import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 
 // Mapas literales: Tailwind purga las clases de @layer components que no encuentra escritas.
@@ -74,7 +75,13 @@ export function CartItem({
         ) : (
           <div className="cart-item__head cart-item__head--bare">{title}</div>
         )}
-        <p className="cart-item__meta">{product.packInfo}</p>
+        {variant === "drawer" && (
+          <div className="cart-item__chips">
+            {discount > 0 && <Badge variant="discount">-{discount}% OFF</Badge>}
+            <ProductTags product={product} />
+          </div>
+        )}
+        {variant === "page" && <p className="cart-item__meta">{product.packInfo}</p>}
         {variant === "page" && (
           <>
             <Price
@@ -90,13 +97,11 @@ export function CartItem({
         <div className="cart-item__foot">
           {variant === "drawer" ? (
             <>
-              <Price
-                size="sm"
-                current={product.priceX3 * quantity}
-                previous={discount > 0 && product.originalPriceX3 ? product.originalPriceX3 * quantity : undefined}
-                discountPercent={discount}
-              />
               {stepper}
+              <div className="cart-item__totals">
+                {discount > 0 && product.originalPriceX3 && <del className="cart-item__was">{formatPrice(product.originalPriceX3 * quantity)}</del>}
+                <span className="cart-item__price">{formatPrice(product.priceX3 * quantity)}</span>
+              </div>
             </>
           ) : (
             <>

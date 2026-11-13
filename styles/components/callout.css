@@ -19,6 +19,8 @@
   .callout--warning { --callout-bg: var(--color-feedback-warning-bg); --callout-fg: var(--color-feedback-warning-text); --callout-border: var(--color-feedback-warning-border); }
 
   .callout--rich {
+    font-size: var(--font-size-sm);
+    line-height: var(--font-line-height-sm);
     align-items: flex-start;
     gap: var(--space-3);
     padding: var(--space-4);

@@ -1,63 +1,33 @@
-// Zonas de entrega: cada barrio de CABA tiene un día fijo, siempre de 9 a 15 h.
-// Para mover un barrio de día, cambialo de lista acá — el checkout lo toma solo.
+// Opciones de entrega de Ketea. Las usan el drawer del carrito y el checkout: eligen lo mismo y se pueden cambiar en ambos.
 
-export const DELIVERY_HOURS = "de 9 a 15 h"
+export type DeliveryMethod = "standard" | "express" | "pickup"
+
+export const EXPRESS_COST = 25500
+
+export interface DeliveryOption {
+  id: DeliveryMethod
+  /** home: se envía a domicilio; pickup: se retira en el local. */
+  group: "home" | "pickup"
+  label: string
+  /** Líneas de detalle bajo el título. */
+  detail: string[]
+  cost: number
+}
+
+export const DELIVERY_OPTIONS: Record<DeliveryMethod, DeliveryOption> = {
+  standard: { id: "standard", group: "home", label: "Envío Gratis", detail: ["Llega entre 3 y 5 días hábiles"], cost: 0 },
+  express: { id: "express", group: "home", label: "Envío Express", detail: [`Tiene un costo de $${EXPRESS_COST.toLocaleString("es-AR")} y llega hoy`], cost: EXPRESS_COST },
+  pickup: { id: "pickup", group: "pickup", label: "Ketea Ramos Mejía", detail: ["Cnel. Brandsen 2230, Ramos Mejía", "Lunes a Viernes de 9 a 18hs."], cost: 0 },
+}
+
+export const PICKUP_ONLY_NOTICE = "Los productos Automower se retiran por el local."
+
+export const PROVINCES = [
+  "Buenos Aires", "Ciudad Autónoma de Buenos Aires", "Catamarca", "Chaco", "Chubut", "Córdoba", "Corrientes", "Entre Ríos",
+  "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza", "Misiones", "Neuquén", "Río Negro", "Salta", "San Juan",
+  "San Luis", "Santa Cruz", "Santa Fe", "Santiago del Estero", "Tierra del Fuego", "Tucumán",
+]
+
+export const HOME_TYPES = ["Casa", "Departamento", "Oficina", "Otro"]
+
 export const SUPPORT_PHONE = "(+54) 911 3065-5787"
-
-type Dia = "lunes" | "martes" | "miércoles" | "jueves" | "viernes"
-
-const BARRIOS_POR_DIA: Record<Dia, string[]> = {
-  lunes: [
-    "San Telmo", "La Boca", "Barracas", "Constitución", "Monserrat", "San Nicolás",
-    "Puerto Madero", "Retiro", "Parque Patricios", "Nueva Pompeya",
-  ],
-  martes: [
-    "Palermo", "Recoleta", "Belgrano", "Colegiales", "Núñez", "Saavedra", "Coghlan",
-  ],
-  miércoles: [
-    "Almagro", "Balvanera", "Boedo", "San Cristóbal", "Caballito", "Villa Crespo",
-    "Chacarita", "Parque Chacabuco",
-  ],
-  jueves: [
-    "Villa Urquiza", "Villa Ortúzar", "Agronomía", "Parque Chas", "Villa Pueyrredón",
-    "Villa Devoto", "Villa del Parque", "Villa Santa Rita", "La Paternal", "Villa General Mitre",
-  ],
-  viernes: [
-    "Flores", "Floresta", "Vélez Sársfield", "Villa Luro", "Liniers", "Mataderos",
-    "Parque Avellaneda", "Monte Castro", "Versalles", "Villa Real", "Villa Lugano",
-    "Villa Riachuelo", "Villa Soldati",
-  ],
-}
-
-const normalize = (s: string) =>
-  s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").trim()
-
-// Nombres más largos primero para que "Villa Crespo" no matchee con otro más corto
-const BARRIOS = Object.entries(BARRIOS_POR_DIA)
-  .flatMap(([dia, barrios]) => barrios.map((barrio) => ({ barrio, dia: dia as Dia, key: normalize(barrio).replace(/^la /, "") })))
-  .sort((a, b) => b.key.length - a.key.length)
-
-const CABA_GENERICO = ["caba", "capital federal", "capital", "ciudad autonoma de buenos aires", "ciudad de buenos aires"]
-
-export type DeliveryZone =
-  | { kind: "caba"; barrio: string; dia: Dia }
-  | { kind: "caba-sin-barrio" } // CP de CABA pero sin barrio reconocible en "Localidad"
-  | { kind: "fuera" }           // GBA u otra zona: se coordina por teléfono
-  | { kind: "pendiente" }       // todavía no hay datos suficientes
-
-export function isCabaCp(cp: string) {
-  const n = parseInt(cp)
-  return cp.length >= 4 && n >= 1000 && n <= 1499
-}
-
-export function getDeliveryZone(localidad: string, cp: string): DeliveryZone {
-  const loc = normalize(localidad)
-  const match = loc && BARRIOS.find((b) => loc.includes(b.key))
-  if (match) return { kind: "caba", barrio: match.barrio, dia: match.dia }
-
-  const soloCaba = !loc || CABA_GENERICO.some((g) => loc.replace(/[.,]/g, "").trim() === g)
-  if (!soloCaba) return { kind: "fuera" }
-  if (isCabaCp(cp)) return { kind: "caba-sin-barrio" }
-  if (cp.length >= 4) return { kind: "fuera" }
-  return { kind: "pendiente" }
-}

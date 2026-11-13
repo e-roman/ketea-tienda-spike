@@ -15,6 +15,10 @@
   .cart-item--drawer { gap: var(--space-3); padding: 0; border: 0; border-radius: 0; }
   /* Página: la leyenda de envío ocupa todo el ancho, debajo de una línea */
   .cart-item { flex-wrap: wrap; }
+  .cart-item__chips { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3); }
+  .cart-item__totals { display: flex; flex-direction: column; align-items: flex-end; }
+  .cart-item__was { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-commerce-price-previous); }
+  .cart-item--drawer .cart-item__price { font-size: var(--font-size-lg); line-height: var(--font-line-height-lg); font-weight: var(--font-weight-bold); }
   .cart-item__unit-price { margin-bottom: var(--space-2); }
   .cart-item__body .product-tags { margin-bottom: var(--space-3); }
   .cart-item__note { flex-basis: 100%; margin-top: var(--space-1); padding-top: var(--space-4); border-top: var(--border-width-sm) solid var(--color-border-default); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-primary); }

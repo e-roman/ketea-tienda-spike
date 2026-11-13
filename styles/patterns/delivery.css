@@ -1,0 +1,17 @@
+/* Elección de entrega (Figma: Cart / Delivery options): CP, aviso, envío a domicilio y retiro en local. Compartida por el drawer y el checkout. */
+@layer components {
+  .delivery { display: flex; flex-direction: column; gap: var(--space-5); }
+  .delivery__cp { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-primary); }
+  .delivery__cp > .input { flex: 1 1 0%; min-width: 0; }
+  .delivery__notice { align-items: center; }
+
+  /* Subtotal dentro del drawer, antes de elegir la entrega */
+  .drawer-subtotal { display: flex; align-items: baseline; justify-content: space-between; padding-block: var(--space-3); border-block: var(--border-width-sm) solid var(--color-border-default); font-size: var(--font-size-lg); line-height: var(--font-line-height-lg); }
+  .drawer-subtotal__note { font-size: var(--font-size-sm); font-weight: var(--font-weight-regular); }
+  .drawer-subtotal > strong { font-weight: var(--font-weight-bold); }
+  .drawer-subtotal > span { font-weight: var(--font-weight-medium); }
+
+  /* Secciones del checkout */
+  .form-section__title { margin-bottom: var(--space-5); font-size: var(--font-size-xl); line-height: var(--font-line-height-lg); font-weight: var(--font-weight-bold); color: var(--color-text-primary); }
+  .form-section__stack { display: flex; flex-direction: column; gap: var(--space-5); }
+}

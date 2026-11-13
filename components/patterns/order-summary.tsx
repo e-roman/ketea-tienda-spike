@@ -5,6 +5,7 @@ import { CheckoutCta } from "@/components/patterns/checkout-cta"
 import { CouponField } from "@/components/patterns/coupon-field"
 import { formatPrice } from "@/lib/products"
 import { cn } from "@/lib/utils"
+import { useDelivery } from "@/lib/delivery-context"
 
 const PAYMENT_METHODS = [
   { src: "/cards/visa.svg", alt: "Visa", w: 34, h: 24 },
@@ -27,6 +28,7 @@ interface OrderSummaryProps {
 export function OrderSummary({
   totalItems, subtotal, total, loading, onCheckout, className,
 }: OrderSummaryProps) {
+  const { shippingCost } = useDelivery()
   return (
     <div className={cn("order-summary", className)}>
       <h2 className="order-summary__title">Resumen del pedido</h2>
@@ -36,8 +38,8 @@ export function OrderSummary({
           <span className="order-summary__value">{formatPrice(subtotal)}</span>
         </div>
         <div className="order-summary__row">
-          <span>Envío (CABA)</span>
-          <span className="order-summary__value order-summary__value--free">Gratis</span>
+          <span>Envío</span>
+          <span className={shippingCost === 0 ? "order-summary__value order-summary__value--free" : "order-summary__value"}>{shippingCost === 0 ? "Gratis" : formatPrice(shippingCost)}</span>
         </div>
         <div className="order-summary__row order-summary__row--total">
           <span>Total</span>

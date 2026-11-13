@@ -58,6 +58,8 @@ export interface Product {
   keySpecs: NutritionRow[]
   pickupToday?: boolean
   freeShipping?: boolean
+  /** Solo se retira por el local (ej. cortacésped Automower). */
+  pickupOnly?: boolean
   /** Llega hoy o mañana con Envío Express. */
   arrivesFast?: boolean
   brand: string
@@ -154,6 +156,7 @@ function adapt(p: RawProduct): Product {
     keySpecs,
     pickupToday: p.retiroInmediato,
     freeShipping: p.envioGratis,
+    pickupOnly: /automower/i.test(p.title),
     arrivesFast: p.llegaHoy || p.llegaManana,
     brand: p.Marca,
     drive: p.accionamiento || undefined,

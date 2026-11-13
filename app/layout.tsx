@@ -6,6 +6,7 @@ import "../styles/ketea-theme.css"
 import "./globals.css"
 import { CartProvider } from "@/lib/cart-context"
 import { FavoritesProvider } from "@/lib/favorites-context"
+import { DeliveryProvider } from "@/lib/delivery-context"
 import { QuickViewProvider } from "@/lib/quick-view-context"
 import { QuickViewDrawer } from "@/components/patterns/quick-view"
 import Nav from "@/components/nav"
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <RouteProgressBar />
         </Suspense>
         <CartProvider>
+          <DeliveryProvider>
           <FavoritesProvider>
             <QuickViewProvider>
               <Nav />
@@ -48,6 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Toaster />
             </QuickViewProvider>
           </FavoritesProvider>
+          </DeliveryProvider>
         </CartProvider>
       </body>
     </html>

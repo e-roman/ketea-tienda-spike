@@ -6,11 +6,11 @@ const meta = {
   title: 'Patterns/Drawer footer',
   component: DrawerFooter,
   tags: ['autodocs'],
-  args: { subtotal: 25500, onCheckout: fn(), onNavigate: fn() },
+  args: { total: 25500, onCheckout: fn(), onNavigate: fn() },
   decorators: [(Story) => <div style={{ maxWidth: 420 }}><Story /></div>],
 } satisfies Meta<typeof DrawerFooter>
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const BelowMinimum: Story = {}
-export const Ready: Story = { args: { subtotal: 51000 } }
+export const Default: Story = {}
+export const WithExpress: Story = { args: { total: 51000 } }

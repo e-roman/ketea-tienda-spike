@@ -8,12 +8,13 @@ import { cn } from "@/lib/utils"
 interface OrderReviewProps {
   items: { product: Product; quantity: number }[]
   subtotal: number
+  shippingCost?: number
   total: number
   className?: string
 }
 
 /** Resumen de compra del checkout (Figma: Cart / Order review). Clases de styles/patterns/order-review.css. */
-export function OrderReview({ items, subtotal, total, className }: OrderReviewProps) {
+export function OrderReview({ items, subtotal, shippingCost = 0, total, className }: OrderReviewProps) {
   return (
     <div className={cn("order-review", className)}>
       <h3 className="order-review__title">Resumen de la compra</h3>
@@ -43,7 +44,7 @@ export function OrderReview({ items, subtotal, total, className }: OrderReviewPr
           <span>Subtotal</span><span>{formatPrice(subtotal)}</span>
         </div>
         <div className="order-review__total-row order-review__total-row--free">
-          <span>Envío</span><span>Gratis</span>
+          <span>Envío</span><span>{shippingCost === 0 ? "Gratis" : formatPrice(shippingCost)}</span>
         </div>
         <div className="order-review__total-row order-review__total-row--grand">
           <span>Total</span><span>{formatPrice(total)}</span>
