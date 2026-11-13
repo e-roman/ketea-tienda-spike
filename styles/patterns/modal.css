@@ -23,7 +23,7 @@
   .modal__close { position: absolute; top: var(--space-3); right: var(--space-3); }
   .modal__icon { display: flex; align-items: center; justify-content: center; width: var(--size-control-lg); height: var(--size-control-lg); margin-bottom: var(--space-4); border-radius: var(--radius-full); background-color: var(--color-surface-brand-subtle); color: var(--color-text-brand); }
   .modal__icon > svg { width: var(--space-5); height: var(--space-5); }
-  .modal__title { margin-bottom: var(--space-1); font-size: var(--font-size-lg); line-height: var(--font-line-height-lg); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+  .modal__title { margin-bottom: var(--space-1); font-size: var(--font-size-xl); line-height: var(--font-line-height-lg); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
   .modal__text { margin-bottom: var(--space-6); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-secondary); }
   .modal__text strong { color: var(--color-text-primary); }
   .modal__actions { display: flex; gap: var(--space-3); }

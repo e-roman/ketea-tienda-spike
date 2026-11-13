@@ -1,6 +1,7 @@
 import ProductCard from "@/components/patterns/product-card"
 import Hero from "@/components/hero"
 import { ServiceBlocks, type ServiceBlock } from "@/components/patterns/service-blocks"
+import { BrandsStrip } from "@/components/patterns/brands-strip"
 import { PromoBanner } from "@/components/patterns/promo-banner"
 import { SectionHeader } from "@/components/patterns/section-header"
 import { getFeatured, getProductsByCategory } from "@/lib/products"
@@ -52,6 +53,7 @@ export default function HomePage() {
         </section>
       )}
 
+      <BrandsStrip />
     </div>
   )
 }

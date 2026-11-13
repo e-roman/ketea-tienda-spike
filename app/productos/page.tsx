@@ -89,7 +89,7 @@ function CatalogContent() {
   const showBreadcrumbs = !activeQuery.trim() && (activeNav || activeCategory)
 
   return (
-    <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <div className="max-w-7xl mx-auto px-4 md:px-6 py-6">
       {showBreadcrumbs && (
         <Breadcrumb
           className="mb-6"
@@ -181,7 +181,7 @@ function CatalogContent() {
 export default function ProductosPage() {
   return (
     <Suspense fallback={
-      <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-6">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
           {Array.from({ length: 8 }).map((_, i) => <ProductCardSkeleton key={i} />)}
         </div>

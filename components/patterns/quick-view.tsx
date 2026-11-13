@@ -45,7 +45,7 @@ function QuickViewGallery({ product }: { product: Product }) {
     <div className="quick-view__gallery">
       <div ref={trackRef} onScroll={onScroll} className="quick-view__track">
         {images.map((src, i) => (
-          <div key={src} className="quick-view__slide">
+          <div key={src} className={multiple ? "quick-view__slide" : "quick-view__slide quick-view__slide--single"}>
             <Image src={src} alt={`${product.name} - foto ${i + 1}`} fill sizes="320px" className="quick-view__photo" />
           </div>
         ))}
@@ -114,7 +114,7 @@ function QuickViewContent({ product, onClose }: { product: Product; onClose: () 
 
       <div className="quick-view__buy">
         <Stepper
-          size="md"
+          size="lg"
           min={1}
           unit="unidad"
           value={quantity}
