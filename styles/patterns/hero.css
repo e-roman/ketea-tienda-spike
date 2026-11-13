@@ -4,7 +4,7 @@
 @layer components {
   /* Alto: 480px (space-64 + space-56 + ... ) en mobile, 600px desde md */
   .hero, .hero-height { height: calc(var(--space-64) + var(--space-56)); }
-  @media (min-width: 768px) { .hero, .hero-height { height: calc(var(--space-64) * 2 + var(--space-20) + var(--space-8)); } }
+  @media (min-width: 768px) { .hero, .hero-height { height: calc(var(--space-56) * 2 + var(--space-20) + var(--space-8)); } }
   .hero { position: relative; overflow: hidden; }
   .hero__slide {
     position: absolute;
