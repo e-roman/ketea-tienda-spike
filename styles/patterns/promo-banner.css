@@ -13,7 +13,7 @@
   .promo-banner__image { flex-shrink: 0; object-fit: contain; }
   .promo-banner__body { display: flex; flex: 1 1 0%; flex-direction: column; justify-content: space-between; min-width: 0; }
   .promo-banner__title { font-weight: var(--font-weight-bold); color: var(--color-text-primary); }
-  .promo-banner__eyebrow { margin-bottom: var(--space-3); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-primary); }
+  .promo-banner__eyebrow { margin-bottom: var(--space-3); font-size: var(--font-size-lg); line-height: var(--font-line-height-lg); color: var(--color-text-primary); }
   .promo-banner__text { margin-top: var(--space-2); font-size: var(--font-size-md); line-height: var(--font-line-height-md); color: var(--color-text-secondary); }
   .promo-banner__cta { width: fit-content; padding-inline: var(--space-8); }
 

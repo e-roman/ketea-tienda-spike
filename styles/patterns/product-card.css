@@ -64,7 +64,7 @@
   }
   a:hover > .product-card__title { color: var(--color-text-brand); }
   .product-card__price { display: flex; flex-direction: column; gap: var(--space-1); }
-  .product-card__note { margin-top: 0; }
+  .product-card__note { display: none; }
 
   /* Etiquetas de stock y entrega (también en la vista rápida) */
   .product-tags { display: flex; flex-wrap: wrap; gap: var(--space-2); }
