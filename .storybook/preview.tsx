@@ -1,7 +1,7 @@
 import type { Preview } from '@storybook/nextjs-vite'
 import { Toaster } from '../components/ui/toaster'
 import '@ketea/tokens/tokens.css'        // tokens de Ketea (mismo orden que app/layout.tsx)
-import '../styles/ketea-theme.css'       // capa de compatibilidad: nombres de Orali apuntando a los tokens de Ketea
+import '../styles/ketea-theme.css'       // variables de la tienda apuntando a los tokens de Ketea
 import '../app/globals.css'              // Tailwind + styles/**/*.css
 import { CartProvider } from '../lib/cart-context'
 import { DeliveryProvider } from '../lib/delivery-context'

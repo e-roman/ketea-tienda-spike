@@ -10,5 +10,5 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-/** Carrusel de 3 fotos (cambia cada 5 s). Las imágenes vienen de tiendaorali.com. */
+/** Carrusel de 3 fotos (cambia cada 5 s). Las imágenes están en public/assets/img/banners. */
 export const Default: Story = {}

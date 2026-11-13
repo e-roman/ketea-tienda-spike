@@ -2,7 +2,7 @@
 // PRODUCT DATA — Tienda Ketea (spike)
 // Adaptador mínimo: lee los JSON de la tienda actual de Ketea
 // (src/data/products.json y productDetails.json, copiados en lib/data/)
-// y los expone con la forma que espera la tienda de Orali.
+// y los expone con la forma que usan los componentes de la tienda.
 // No es una capa de datos nueva: es solo una traducción de campos.
 // ============================================================
 import rawProducts from "./data/products.json"
@@ -31,7 +31,7 @@ export interface Product {
   shortName: string
   description: string
   image: string
-  /** Orali vende por pack de 3: en Ketea ambos precios son el de la unidad. */
+  /** En Ketea se vende por unidad: ambos precios son el de la unidad. */
   priceUnit: number
   priceX3: number
   packInfo: string

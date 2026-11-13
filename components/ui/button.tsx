@@ -3,7 +3,7 @@ import { Loader2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 /**
- * Button — clases de styles/components/button.css (tokens `button.*` de @orali/design-tokens).
+ * Button — clases de styles/components/button.css (variables `--button-*` de styles/ketea-theme.css).
  * Este archivo solo arma nombres de clase: .btn .btn--{variant} .btn--{size} .btn--pill .btn--full
  * Para links con estilo de botón: <Link className={buttonClasses({ variant: "primary" })}>
  *

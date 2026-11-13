@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      # Los tokens de Ketea y Orali se instalan desde GitHub (el lockfile los resuelve por SSH): en el runner no hay clave SSH, así que se usa HTTPS.
+      # Los tokens de Ketea se instalan desde GitHub (el lockfile los resuelve por SSH): en el runner no hay clave SSH, así que se usa HTTPS.
       - name: Dependencias de GitHub por HTTPS
         run: git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
       - run: npm ci --legacy-peer-deps
