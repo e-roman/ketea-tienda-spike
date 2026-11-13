@@ -1,14 +1,12 @@
 "use client"
 
-import { useState } from "react"
 import { getProductBySlug, getProductsByCategory } from "@/lib/products"
 import ProductCard from "@/components/patterns/product-card"
 import { notFound } from "next/navigation"
-import { Tabs } from "@/components/ui/tabs"
 import { Breadcrumb } from "@/components/ui/breadcrumb"
 import { ProductGallery } from "@/components/patterns/product-gallery"
 import { ProductInfo } from "@/components/patterns/product-info"
-import { ProductDescription, ProductSpecs } from "@/components/patterns/product-specs"
+import { ProductTabs } from "@/components/patterns/product-tabs"
 import { Heading } from "@/components/ui/text"
 
 export default function PDPPage({ params }: { params: { slug: string } }) {
@@ -16,8 +14,6 @@ export default function PDPPage({ params }: { params: { slug: string } }) {
   const productData = getProductBySlug(slug)
   if (!productData) notFound()
   const product = productData
-
-  const [detailTab, setDetailTab] = useState<"descripcion" | "especificaciones">("descripcion")
 
   const related = getProductsByCategory(product.categories[0])
     .filter((p) => p.id !== product.id)
@@ -44,22 +40,7 @@ export default function PDPPage({ params }: { params: { slug: string } }) {
         <ProductInfo product={product} />
       </div>
 
-      {/* ── DESCRIPCIÓN / ESPECIFICACIONES ──────────────── */}
-      <section id="detalles-producto" className="mb-14 scroll-mt-28 pb-16">
-        <Tabs
-          label="Detalles del producto"
-          className="mb-6"
-          value={detailTab}
-          onChange={setDetailTab}
-          items={[
-            { id: "descripcion", label: "Descripción" },
-            { id: "especificaciones", label: "Especificaciones" },
-          ]}
-        />
-
-        {detailTab === "descripcion" && <ProductDescription product={product} />}
-        {detailTab === "especificaciones" && <ProductSpecs product={product} sku={product.sku} />}
-      </section>
+      <ProductTabs product={product} />
 
       {/* ── RELATED ─────────────────────────────────────── */}
       {related.length > 0 && (

@@ -1,0 +1,54 @@
+/* Pestañas del detalle del producto (Figma: Product detail / Tabs): descripción, especificaciones, preguntas y garantía.
+   La barra de pestañas es .tabs (tabs.css). */
+@layer components {
+  .ptabs { margin-bottom: var(--space-12); scroll-margin-top: var(--space-32); }
+  .ptabs__panel { padding-top: var(--space-6); }
+  .ptabs__stack { display: flex; flex-direction: column; gap: var(--space-6); }
+  .ptabs__heading { margin-bottom: var(--space-3); font-size: var(--font-size-md); line-height: var(--font-line-height-md); font-weight: var(--font-weight-bold); color: var(--color-text-primary); }
+  .ptabs__link { color: var(--color-text-link); text-decoration: underline; }
+  .ptabs__link:hover { color: var(--color-text-link-hover); }
+
+  /* Descripción */
+  .ptabs__prose { display: flex; flex-direction: column; gap: var(--space-3); max-width: calc(var(--space-64) * 3); font-size: var(--font-size-md); line-height: var(--font-line-height-relaxed); color: var(--color-text-primary); }
+  .ptabs__list { display: flex; flex-direction: column; gap: var(--space-2); padding-left: var(--space-5); list-style: disc; font-size: var(--font-size-sm); line-height: var(--font-line-height-relaxed); color: var(--color-text-primary); }
+  .ptabs__sublist { display: flex; flex-direction: column; gap: var(--space-1); margin-top: var(--space-1); padding-left: var(--space-5); list-style: circle; color: var(--color-text-secondary); }
+  .ptabs__box { padding: var(--space-5); border: var(--border-width-sm) solid var(--color-border-default); border-radius: var(--radius-md); background-color: var(--color-surface-default); }
+  .ptabs__box-title { margin-bottom: var(--space-3); font-size: var(--font-size-md); line-height: var(--font-line-height-md); font-weight: var(--font-weight-bold); color: var(--color-text-primary); }
+  .ptabs__checks { display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-primary); }
+  .ptabs__checks > li { display: flex; align-items: flex-start; gap: var(--space-2); }
+  .ptabs__icon { flex-shrink: 0; width: var(--space-4); height: var(--space-4); margin-top: var(--space-0-5); color: var(--color-text-secondary); }
+  .ptabs__icon--ok { color: var(--color-feedback-success-text); }
+  .ptabs__tips { display: flex; flex-direction: column; gap: var(--space-1); margin-top: var(--space-1); padding-left: var(--space-4); list-style: disc; }
+
+  .ptabs__feature { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-5); align-items: center; }
+  .ptabs__feature-text { display: flex; flex-direction: column; gap: var(--space-3); font-size: var(--font-size-md); line-height: var(--font-line-height-relaxed); color: var(--color-text-secondary); }
+  .ptabs__feature-text .ptabs__heading { font-size: var(--font-size-xl); line-height: var(--font-line-height-lg); color: var(--color-text-primary); }
+  .ptabs__feature-media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--radius-lg); background-color: var(--color-surface-subtle); }
+  .ptabs__feature-image { object-fit: cover; }
+  @media (min-width: 768px) {
+    .ptabs__feature { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-10); }
+    .ptabs__feature--flip .ptabs__feature-media { order: -1; }
+  }
+
+  /* Especificaciones: grupos en dos columnas; cada fila con la etiqueta en una celda gris */
+  .ptabs__specs { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
+  @media (min-width: 768px) { .ptabs__specs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-8) var(--space-12); align-items: start; } }
+  .ptabs__table { display: flex; flex-direction: column; }
+  .ptabs__row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border-bottom: var(--border-width-sm) solid var(--color-border-default); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); }
+  .ptabs__row:last-child { border-bottom: 0; }
+  .ptabs__row > dt { padding: var(--space-3) var(--space-4); background-color: var(--color-surface-subtle); color: var(--color-text-secondary); }
+  .ptabs__row > dd { padding: var(--space-3) var(--space-4); color: var(--color-text-primary); }
+
+  /* Preguntas frecuentes */
+  .ptabs__faq { max-width: calc(var(--space-64) * 4); }
+  .ptabs__faq-item { border-bottom: var(--border-width-sm) solid var(--color-border-default); }
+  .ptabs__faq-trigger { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); width: 100%; min-height: var(--size-control-xl); padding-block: var(--space-3); text-align: left; font-size: var(--font-size-md); line-height: var(--font-line-height-md); font-weight: var(--font-weight-medium); color: var(--color-text-primary); }
+  .ptabs__faq-trigger > svg { flex-shrink: 0; width: var(--space-4); height: var(--space-4); }
+  .ptabs__faq-trigger:focus-visible { outline: var(--border-width-focus) solid var(--color-border-focus); outline-offset: calc(-1 * var(--border-width-focus)); }
+  .ptabs__faq-answer { padding-bottom: var(--space-4); font-size: var(--font-size-sm); line-height: var(--font-line-height-relaxed); color: var(--color-text-secondary); }
+
+  /* Garantía y soporte */
+  .ptabs__warranty { display: flex; align-items: flex-start; gap: var(--space-3); max-width: calc(var(--space-64) * 3); font-size: var(--font-size-sm); line-height: var(--font-line-height-relaxed); color: var(--color-text-primary); }
+  .ptabs__warranty > svg { flex-shrink: 0; width: var(--space-6); height: var(--space-6); color: var(--color-icon-brand); }
+  .ptabs__warranty-title { font-size: var(--font-size-md); line-height: var(--font-line-height-md); font-weight: var(--font-weight-bold); color: var(--color-text-primary); }
+}

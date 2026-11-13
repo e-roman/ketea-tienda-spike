@@ -5,8 +5,13 @@
     display: flex;
     gap: var(--space-8);
     border-bottom: var(--border-width-sm) solid var(--color-border-default);
+    overflow-x: auto;
+    scrollbar-width: none;
   }
+  .tabs::-webkit-scrollbar { display: none; }
   .tabs__tab {
+    flex-shrink: 0;
+    white-space: nowrap;
     min-height: var(--size-control-lg);
     padding-inline: var(--space-1);
     margin-bottom: calc(-1 * var(--border-width-sm));
