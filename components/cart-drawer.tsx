@@ -77,7 +77,7 @@ export default function CartDrawer() {
           </EmptyState>
         ) : (
           <>
-            <div className="drawer__body">
+            <div className="drawer__body cart-drawer__body">
               {items.map(({ product, quantity }) => (
                 <CartItem
                   key={product.id}

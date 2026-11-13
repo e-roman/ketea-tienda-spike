@@ -65,9 +65,12 @@ export function CartItem({
   return (
     <div className={cn(VARIANT[variant], className)}>
       {variant === "drawer" && remove}
-      <Link href={href} onClick={onNavigate} className={THUMB[variant]}>
-        <Image src={product.image} alt={product.name} fill />
-      </Link>
+      <div className="cart-item__thumb">
+        {variant === "drawer" && quantity > 1 && <Badge variant="counter" className="cart-item__qty-badge">{quantity}</Badge>}
+        <Link href={href} onClick={onNavigate} className={THUMB[variant]}>
+          <Image src={product.image} alt={product.name} fill />
+        </Link>
+      </div>
 
       <div className="cart-item__body">
         {variant === "page" ? (
