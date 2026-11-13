@@ -13,20 +13,21 @@ export interface MegaMenuCategory {
 }
 
 export const megaMenuData: MegaMenuCategory[] = [
-  {
-    id: "oferta-semana",
-    label: "Ofertas de la semana 🏷️",
-    path: "/productos?nav=ofertas",
-    sections: [],
-    highlight: true
-  },
-  {
-    id: "novedades",
-    label: "Novedades 🔥",
-    path: "/productos",
-    sections: [],
-    highlight: true
-  },
+  // Ofertas y Novedades: ocultos del menú por ahora (están en la barra de navegación del header). Para volver a mostrarlos, descomentar.
+  // {
+  //   id: "oferta-semana",
+  //   label: "Ofertas de la semana 🏷️",
+  //   path: "/productos?nav=ofertas",
+  //   sections: [],
+  //   highlight: true
+  // },
+  // {
+  //   id: "novedades",
+  //   label: "Novedades 🔥",
+  //   path: "/productos",
+  //   sections: [],
+  //   highlight: true
+  // },
 
   {
     id: "piscinas",

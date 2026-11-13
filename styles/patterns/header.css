@@ -3,6 +3,8 @@
    Usa dropdown.* para paneles y menús. Capas con --layer-* / --z-index-*. */
 @layer components {
   .site-header {
+    /* El fondo del menú de categorías mide 100vw (incluye la barra de scroll): se recorta para que no genere scroll horizontal */
+    overflow-x: clip;
     position: sticky;
     top: 0;
     z-index: var(--layer-header);
