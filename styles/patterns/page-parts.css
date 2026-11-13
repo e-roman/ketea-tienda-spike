@@ -8,13 +8,7 @@
   /* ── Utility bar ── */
   .utility-bar__inner { display: flex; align-items: center; justify-content: center; gap: var(--space-4); padding-block: var(--space-2); }
   .utility-bar__message { text-align: center; }
-  .utility-bar__sep { margin-inline: var(--space-1-5); }
-  .utility-bar__links { display: none; flex-shrink: 0; align-items: center; gap: var(--space-4); }
-  @media (min-width: 768px) {
-    .utility-bar__inner { justify-content: space-between; }
-    .utility-bar__message { text-align: left; }
-    .utility-bar__links { display: flex; }
-  }
+  .utility-bar__message .utility-link { display: inline; font-weight: var(--font-weight-semibold); text-decoration-line: underline; }
 
   /* ── Header del checkout ── */
   .checkout-header__row { align-items: center; height: var(--space-14); }

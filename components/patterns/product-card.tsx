@@ -71,7 +71,7 @@ export default function ProductCard({ product, titleAs: Title = "h3" }: { produc
 
         <ProductTags product={product} />
 
-        <Text size="sm" tone="tertiary" className="product-card__note">Pagá fácil y rápido con Mercado Pago o MODO</Text>
+        <Text size="xs" tone="tertiary" className="product-card__note">Pagá fácil y rápido con Mercado Pago o MODO</Text>
       </div>
     </div>
   )

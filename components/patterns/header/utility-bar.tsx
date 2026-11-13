@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { cn } from "@/lib/utils"
 
 /**
@@ -11,16 +10,11 @@ export function UtilityBar({ hiddenOnMobile = false }: { hiddenOnMobile?: boolea
     <section aria-label="Envíos y contacto" className={cn("utility-bar", hiddenOnMobile && "hidden md:block")}>
       <div className="utility-bar__inner max-w-7xl mx-auto px-4 md:px-6">
         <p className="utility-bar__message">
-          Hasta 12 cuotas sin interés
+          Hasta 12 cuotas sin interés y hasta 50% OFF en productos seleccionados.{" "}
+          <a href="https://ketea.emilianoroman.com.ar/Descuentos" target="_blank" rel="noopener noreferrer" className="utility-link">
+            Ver productos
+          </a>
         </p>
-        <div className="utility-bar__links">
-          <Link href="/contacto" className="utility-link">
-            ¿Necesitás ayuda?
-          </Link>
-          <Link href="/como-comprar" className="utility-link">
-            ¿Cómo comprar?
-          </Link>
-        </div>
       </div>
     </section>
   )

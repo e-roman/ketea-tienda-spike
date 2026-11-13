@@ -64,7 +64,7 @@
   }
   a:hover > .product-card__title { color: var(--color-text-brand); }
   .product-card__price { display: flex; flex-direction: column; gap: var(--space-1); }
-  .product-card__note { margin-top: auto; }
+  .product-card__note { margin-top: 0; }
 
   /* Etiquetas de stock y entrega (también en la vista rápida) */
   .product-tags { display: flex; flex-wrap: wrap; gap: var(--space-2); }
@@ -78,7 +78,6 @@
     .product-card__title { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); }
     .product-card .price__current--md { font-size: var(--font-size-lg); line-height: var(--font-line-height-lg); }
     .product-card .price__previous { font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); }
-    .product-card__note { font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); }
     .product-card__quick { padding: var(--space-1-5) var(--space-3); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); }
     .product-card__quick > svg { width: var(--space-4); height: var(--space-4); }
   }

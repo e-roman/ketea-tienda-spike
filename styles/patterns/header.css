@@ -9,6 +9,8 @@
     border-bottom: var(--border-width-sm) solid var(--color-border-default);
     background-color: var(--color-surface-default);
   }
+  /* Íconos del header: el hover es un gris clarito */
+  .site-header .icon-btn--ghost { --icon-btn-bg-h: var(--color-surface-subtle); }
   .site-header__subnav {
     border-top: var(--border-width-sm) solid var(--color-border-default);
     background-color: var(--color-surface-default);

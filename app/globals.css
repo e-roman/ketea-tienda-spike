@@ -49,6 +49,7 @@
 @import "../styles/patterns/brands-strip.css";
 @import "../styles/patterns/product-tabs.css";
 @import "../styles/patterns/account.css";
+@import "../styles/patterns/whatsapp-float.css";
 @import "../styles/patterns/payment-methods.css";
 @import "../styles/patterns/footer.css";
 @import "../styles/patterns/newsletter.css";
@@ -79,14 +80,6 @@ body {
   color: var(--color-text-primary);
   font-family: var(--font-family-sans);
   min-height: 100vh;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb {
-  background: var(--color-border-default);
-  border-radius: 3px;
 }
 
 /* Oculta la scrollbar en carruseles horizontales (mobile) */

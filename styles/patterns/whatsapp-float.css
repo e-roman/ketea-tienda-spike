@@ -1,0 +1,22 @@
+/* Botón flotante de WhatsApp. Verde de éxito de Ketea (no hay un token del verde de la marca WhatsApp). */
+@layer components {
+  .whatsapp-float {
+    position: fixed;
+    right: var(--space-4);
+    bottom: var(--space-4);
+    z-index: var(--layer-sticky);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--space-14);
+    height: var(--space-14);
+    border-radius: var(--radius-full);
+    background-color: var(--color-feedback-success-text);
+    color: var(--color-text-inverse);
+    box-shadow: var(--shadow-md);
+    transition: transform var(--duration-fast) var(--easing-standard);
+  }
+  .whatsapp-float:hover { transform: scale(1.05); }
+  .whatsapp-float:focus-visible { outline: var(--border-width-focus) solid var(--color-border-focus); outline-offset: var(--border-width-lg); }
+  .whatsapp-float > svg { width: var(--space-7); height: var(--space-7); }
+}

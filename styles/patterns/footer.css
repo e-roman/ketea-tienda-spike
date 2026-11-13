@@ -2,7 +2,7 @@
    Cuatro columnas (cuenta, información, contacto, newsletter) y barra inferior con medios de pago y redes. */
 @layer components {
   .footer { background-color: var(--color-surface-default); color: var(--color-text-primary); }
-  .footer--spaced { margin-top: var(--space-12); }
+  .footer--spaced { margin-top: var(--space-2); }
   /* Columnas: 1 en mobile, 2 en tablet; en desktop tres de 2/12 y el newsletter de 5/12, repartidas a lo ancho. */
   /* Hasta 1023 px: una columna con las secciones en acordeón y el newsletter debajo */
   .footer__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; padding-block: var(--space-4) var(--space-8); }
@@ -66,8 +66,8 @@
   .footer__newsletter-input:focus-visible { outline: none; border: 0; box-shadow: none; background-color: transparent; }
 
   /* Barra inferior */
-  .footer__legal { border-top: var(--border-width-sm) solid var(--color-border-default); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-primary); }
-  .footer__legal-row { display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: var(--space-4); padding-block: var(--space-5); }
+  .footer__legal { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-text-primary); }
+  .footer__legal-row { border-top: var(--border-width-sm) solid var(--color-border-default); display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: var(--space-4); padding-block: var(--space-5); }
   @media (min-width: 1024px) { .footer__legal-row { flex-direction: row; } }
   .footer__copy { text-align: center; }
 
