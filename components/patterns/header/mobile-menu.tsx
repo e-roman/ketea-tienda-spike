@@ -1,139 +1,103 @@
 "use client"
 
 import Link from "next/link"
-import { useState, type ReactNode } from "react"
-import {
-  ArrowLeft, ChevronDown, ChevronRight, ChefHat, HelpCircle, Mail, Sandwich, Star, Tag, User, Utensils,
-} from "lucide-react"
-import { linkClasses } from "@/components/ui/link"
-import type { NavKey } from "@/lib/products"
-import { PASTAS_ITEMS, TAPAS_ITEMS, type NavSubItem } from "./nav-items"
+import { useState } from "react"
+import { ArrowLeft, ChevronRight, User, X } from "lucide-react"
+import { iconButtonClasses } from "@/components/ui/icon-button"
+import { megaMenuData, type MegaMenuCategory } from "@/lib/data/mega-menu"
 
 // Mapas literales: Tailwind purga las clases de @layer components que no encuentra escritas.
-const ICON = {
-  brand: "menu-row__icon",
-  neutral: "menu-row__icon menu-row__icon--neutral",
-  promo: "menu-row__icon menu-row__icon--brand",
-} as const
-const LABEL = { default: "menu-row__label", brand: "menu-row__label menu-row__label--brand" } as const
+const CAT = { true: "mobile-cat mobile-cat--strong", false: "mobile-cat" } as const
 
-function RowLabel({ icon, tone = "brand", label = "default", children }: {
-  icon: ReactNode
-  tone?: keyof typeof ICON
-  label?: keyof typeof LABEL
-  children: ReactNode
-}) {
-  return (
-    <span className={LABEL[label]}>
-      <span className={ICON[tone]}>{icon}</span>
-      {children}
-    </span>
-  )
-}
+const itemHref = (item: string) => `/productos?q=${encodeURIComponent(item)}`
 
-function Section({ title, children }: { title: string; children: ReactNode }) {
-  return (
-    <>
-      <p className="menu-section">{title}</p>
-      <div className="divided">{children}</div>
-    </>
-  )
-}
-
-function AccordionRow({ label, icon, items, verTodosKey, onNavigate }: {
-  label: string
-  icon: ReactNode
-  items: NavSubItem[]
-  verTodosKey: NavKey
-  onNavigate: () => void
-}) {
-  const [open, setOpen] = useState(false)
-  return (
-    <div>
-      <button onClick={() => setOpen((v) => !v)} aria-expanded={open} className="accordion__trigger accordion__trigger--compact">
-        <RowLabel icon={icon}>{label}</RowLabel>
-        <ChevronDown className="accordion__chevron" aria-hidden="true" />
-      </button>
-      {open && (
-        <div className="accordion__panel accordion__panel--nested accordion__panel--list">
-          {items.map((item) => (
-            <Link key={item.key} href={`/productos?nav=${item.key}`} onClick={onNavigate} className="menu-sublink">
-              {item.label}
-            </Link>
-          ))}
-          <Link href={`/productos?nav=${verTodosKey}`} onClick={onNavigate} className="menu-sublink menu-sublink--brand">
-            Ver todos
-          </Link>
-        </div>
-      )}
-    </div>
-  )
-}
-
-function LinkRow({ href, icon, tone, label, onNavigate, children }: {
-  href: string
-  icon: ReactNode
-  tone?: keyof typeof ICON
-  label?: keyof typeof LABEL
-  onNavigate: () => void
-  children: ReactNode
-}) {
-  return (
-    <Link href={href} onClick={onNavigate} className="menu-row">
-      <RowLabel icon={icon} tone={tone} label={label}>{children}</RowLabel>
-      <ChevronRight className="menu-row__chevron" aria-hidden="true" />
-    </Link>
-  )
-}
+const MORE_LINKS = [
+  ["¿Cómo comprar?", "/como-comprar"],
+  ["Preguntas frecuentes", "/preguntas-frecuentes"],
+  ["Sucursales", "/contacto"],
+  ["Contacto", "/contacto"],
+]
 
 /**
- * Menú mobile de pantalla completa (Figma: Header / Mobile menu). Se monta solo cuando está abierto,
- * así los acordeones arrancan cerrados cada vez. Clases de styles/patterns/header.css y nav.css.
+ * Menú mobile (Figma: Header / Mobile menu) en dos niveles, como en la tienda online de Ketea:
+ * 1) bienvenida con acceso a la cuenta y lista de categorías; 2) al elegir una, sus secciones y productos, con botón para volver.
+ * Es la única entrada de menú del header mobile: la navegación general va como fila deslizable debajo del header (mobile-nav).
+ * Se monta solo cuando está abierto, así siempre arranca en el primer nivel. Clases de styles/patterns/mobile-menu.css.
  */
 export function MobileMenu({ onClose, onOpenAuth }: { onClose: () => void; onOpenAuth: () => void }) {
-  const icon = "w-4 h-4"
+  const [active, setActive] = useState<MegaMenuCategory | null>(null)
+
   return (
-    <div className="mobile-menu md:hidden">
+    <div className="mobile-menu md:hidden" role="dialog" aria-modal="true" aria-label={active ? active.label : "Menú"}>
       <div className="mobile-menu__bar">
-        <button onClick={onClose} className={linkClasses({ size: "sm", icon: true, className: "mobile-menu__back" })}>
-          <ArrowLeft className="icon-sm" aria-hidden="true" /> Volver
+        {active && (
+          <button type="button" onClick={() => setActive(null)} aria-label="Volver al menú" className={iconButtonClasses({ size: "sm", flush: "start" })}>
+            <ArrowLeft className="icon-md" aria-hidden="true" />
+          </button>
+        )}
+        <h2 className="mobile-menu__title">{active ? active.label : "Menú"}</h2>
+        <button type="button" onClick={onClose} aria-label="Cerrar menú" className={iconButtonClasses({ size: "sm", flush: "end", className: "mobile-menu__close" })}>
+          <X className="icon-md" aria-hidden="true" />
         </button>
       </div>
 
-      <div className="mobile-menu__body">
-        <div className="divided">
-          <AccordionRow label="Equipamiento" icon={<Utensils className={icon} />} items={PASTAS_ITEMS} verTodosKey="piscinas-todos" onNavigate={onClose} />
-          <AccordionRow label="Mantenimiento" icon={<Sandwich className={icon} />} items={TAPAS_ITEMS} verTodosKey="mantenimiento-todos" onNavigate={onClose} />
-          <LinkRow href="/productos?nav=empanadas-rellenas" icon={<ChefHat className={icon} />} onNavigate={onClose}>
-            Empanadas rellenas
-          </LinkRow>
-          <LinkRow href="/productos?nav=especiales" icon={<Star className={icon} />} onNavigate={onClose}>
-            Especiales
-          </LinkRow>
-        </div>
-
-        <Section title="Promociones">
-          <LinkRow href="/ofertas" icon={<Tag className={icon} />} tone="promo" label="brand" onNavigate={onClose}>
-            Ofertas de la semana
-          </LinkRow>
-        </Section>
-
-        <Section title="Mi cuenta">
-          <button onClick={() => { onClose(); onOpenAuth() }} className="menu-row">
-            <RowLabel icon={<User className={icon} />} tone="neutral">Ingresar / Registrarme</RowLabel>
-            <ChevronRight className="menu-row__chevron" aria-hidden="true" />
+      {!active ? (
+        <div className="mobile-menu__body">
+          <button type="button" onClick={() => { onClose(); onOpenAuth() }} className="mobile-welcome">
+            <span className="mobile-welcome__avatar" aria-hidden="true"><User /></span>
+            <span>
+              <span className="mobile-welcome__title">Bienvenido</span>
+              <span className="mobile-welcome__text">Ingresa a tu cuenta para realizar compras</span>
+            </span>
           </button>
-        </Section>
 
-        <Section title="Otros">
-          <LinkRow href="/contacto" icon={<Mail className={icon} />} tone="neutral" onNavigate={onClose}>
-            Contacto
-          </LinkRow>
-          <LinkRow href="/preguntas-frecuentes" icon={<HelpCircle className={icon} />} tone="neutral" onNavigate={onClose}>
-            Preguntas frecuentes
-          </LinkRow>
-        </Section>
-      </div>
+          <section aria-labelledby="mobile-cats-title" className="mobile-menu__section">
+            <h3 id="mobile-cats-title" className="mobile-menu__section-title">Categorías</h3>
+            <ul>
+              {megaMenuData.map((cat) => {
+                const hasSections = cat.sections.length > 0
+                return (
+                  <li key={cat.id}>
+                    {hasSections ? (
+                      <button type="button" onClick={() => setActive(cat)} className={CAT[String(!!cat.highlight) as "true" | "false"]}>
+                        {cat.label}
+                        <ChevronRight aria-hidden="true" />
+                      </button>
+                    ) : (
+                      <Link href={cat.path ?? itemHref(cat.label)} onClick={onClose} className={CAT[String(!!cat.highlight) as "true" | "false"]}>
+                        {cat.label}
+                      </Link>
+                    )}
+                  </li>
+                )
+              })}
+            </ul>
+          </section>
+
+          <section aria-labelledby="mobile-more-title" className="mobile-menu__section">
+            <h3 id="mobile-more-title" className="mobile-menu__section-title">Ayuda</h3>
+            <ul>
+              {MORE_LINKS.map(([label, href]) => (
+                <li key={label}><Link href={href} onClick={onClose} className="mobile-cat mobile-cat--plain">{label}</Link></li>
+              ))}
+            </ul>
+          </section>
+        </div>
+      ) : (
+        <div className="mobile-menu__body">
+          <Link href={itemHref(active.label)} onClick={onClose} className="mobile-sub__all">Ver todo en {active.label}</Link>
+          {active.sections.map((section) => (
+            <section key={section.title} aria-label={section.title} className="mobile-sub">
+              <h3 className="mobile-sub__title">{section.title}</h3>
+              <ul>
+                {section.items.map((item) => (
+                  <li key={item}><Link href={itemHref(item)} onClick={onClose} className="mobile-sub__item">{item}</Link></li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

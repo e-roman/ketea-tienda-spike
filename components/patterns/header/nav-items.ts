@@ -1,21 +1,11 @@
-import type { NavKey } from "@/lib/products"
-
-export type NavSubItem = { key: NavKey; label: string }
-
-// En la tienda de Orali estos grupos se llamaban PASTAS_ITEMS y TAPAS_ITEMS.
-// Se conservan los nombres de las constantes para no tocar los componentes del menú.
-export const PASTAS_ITEMS: NavSubItem[] = [
-  { key: "piscinas-robots",          label: "Robots limpiafondos" },
-  { key: "piscinas-bombas-de-calor", label: "Bombas de calor" },
-  { key: "piscinas-filtros",         label: "Filtros" },
-  { key: "piscinas-valvulas",        label: "Válvulas" },
-]
-
-export const TAPAS_ITEMS: NavSubItem[] = [
-  { key: "mantenimiento-quimicos",   label: "Químicos" },
-  { key: "mantenimiento-cloro",      label: "Cloro" },
-  { key: "mantenimiento-accesorios", label: "Accesorios" },
-]
-
 export const WHATSAPP_URL = "https://api.whatsapp.com/send?phone=5491130655787"
 export const WHATSAPP_LABEL = "(+54) 911 3065-5787"
+
+/** Links de navegación general (sin Home): fila de la barra desktop y fila deslizable del header mobile. */
+export const SECTION_LINKS: [label: string, href: string][] = [
+  ["Novedades", "/productos"],
+  ["Ofertas de la semana", "/productos?nav=ofertas"],
+  ["Más vendido", "/productos"],
+  ["Sucursales", "/contacto"],
+  ["Contacto", "/contacto"],
+]

@@ -1,0 +1,41 @@
+/* Menú mobile de dos niveles y fila de navegación deslizable (Figma: Header / Mobile menu, Mobile nav).
+   El contenedor .mobile-menu y su barra son de header.css. */
+@layer components {
+  .mobile-menu__title { flex: 1 1 0%; font-size: var(--font-size-lg); line-height: var(--font-line-height-lg); font-weight: var(--font-weight-medium); color: var(--color-text-primary); padding-inline: var(--space-2); }
+  .mobile-menu__bar > .mobile-menu__title:first-child { padding-inline: 0; }
+  .mobile-menu__body { padding: 0 0 var(--space-6); }
+
+  /* Bienvenida: cuenta */
+  .mobile-welcome { display: flex; align-items: center; gap: var(--space-3); width: 100%; padding: var(--space-4); background-color: var(--color-action-primary-bg); color: var(--color-text-on-brand); text-align: left; }
+  .mobile-welcome__avatar { display: flex; flex-shrink: 0; align-items: center; justify-content: center; width: var(--space-12); height: var(--space-12); border-radius: var(--radius-full); background-color: var(--color-surface-default); color: var(--color-text-brand); }
+  .mobile-welcome__avatar > svg { width: var(--space-6); height: var(--space-6); }
+  .mobile-welcome__title { display: block; font-size: var(--font-size-xl); line-height: var(--font-line-height-lg); font-weight: var(--font-weight-semibold); }
+  .mobile-welcome__text { display: block; font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); font-weight: var(--font-weight-medium); }
+
+  .mobile-menu__section { padding: var(--space-4) var(--space-4) 0; }
+  .mobile-menu__section-title { margin-bottom: var(--space-2); font-size: var(--font-size-md); line-height: var(--font-line-height-md); font-weight: var(--font-weight-bold); color: var(--color-text-primary); }
+
+  /* Fila de categoría: texto a la izquierda, flecha si abre un nivel */
+  .mobile-cat { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: var(--size-control-xl); font-size: var(--font-size-md); line-height: var(--font-line-height-md); color: var(--color-text-primary); text-align: left; }
+  .mobile-cat > svg { flex-shrink: 0; width: var(--space-5); height: var(--space-5); color: var(--color-icon-default); }
+  .mobile-cat--strong { font-weight: var(--font-weight-bold); }
+  .mobile-cat--plain { color: var(--color-text-secondary); }
+  .mobile-cat:focus-visible { outline: var(--border-width-focus) solid var(--color-border-focus); outline-offset: calc(-1 * var(--border-width-focus)); }
+
+  /* Segundo nivel: secciones y productos de una categoría */
+  .mobile-sub__all { display: block; padding: var(--space-4) var(--space-4) var(--space-2); font-size: var(--font-size-md); line-height: var(--font-line-height-md); font-weight: var(--font-weight-medium); color: var(--color-text-link); }
+  .mobile-sub { padding: var(--space-3) var(--space-4) 0; }
+  .mobile-sub__title { margin-bottom: var(--space-1); font-size: var(--font-size-md); line-height: var(--font-line-height-md); font-weight: var(--font-weight-bold); color: var(--color-text-primary); }
+  .mobile-sub__item { display: flex; align-items: center; min-height: var(--size-control-lg); padding-inline: var(--space-3); border-radius: var(--radius-md); font-size: var(--font-size-md); line-height: var(--font-line-height-md); color: var(--color-text-primary); }
+  .mobile-sub__item:hover,
+  .mobile-sub__item:focus-visible { background-color: var(--color-surface-subtle); }
+
+  /* Navegación general debajo del header: fila que se desliza de costado */
+  .mobile-nav { border-bottom: var(--border-width-sm) solid var(--color-border-default); background-color: var(--color-surface-default); }
+  .mobile-nav__list { display: flex; gap: var(--space-1); overflow-x: auto; padding-inline: var(--space-3); scrollbar-width: none; scroll-snap-type: x proximity; }
+  .mobile-nav__list::-webkit-scrollbar { display: none; }
+  .mobile-nav__list > li { flex-shrink: 0; scroll-snap-align: start; }
+  .mobile-nav__link { display: flex; align-items: center; min-height: var(--size-control-lg); padding-inline: var(--space-3); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); font-weight: var(--font-weight-medium); color: var(--color-text-primary); white-space: nowrap; }
+  .mobile-nav__link:hover { color: var(--color-text-brand); }
+  .mobile-nav__link:focus-visible { outline: var(--border-width-focus) solid var(--color-border-focus); outline-offset: calc(-1 * var(--border-width-focus)); }
+}

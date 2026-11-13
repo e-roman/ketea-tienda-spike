@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { usePathname, useRouter } from "next/navigation"
-import { ShoppingCart, Menu, X, User } from "lucide-react"
+import { ShoppingCart, Menu, User } from "lucide-react"
 import { toast } from "sonner"
 import { useCart } from "@/lib/cart-context"
 import { searchProducts } from "@/lib/products"
@@ -14,6 +14,8 @@ import { UtilityBar } from "@/components/patterns/header/utility-bar"
 import { CheckoutHeader } from "@/components/patterns/header/checkout-header"
 import { CategoriesMenu } from "@/components/patterns/header/categories-menu"
 import { MobileMenu } from "@/components/patterns/header/mobile-menu"
+import { MobileNav } from "@/components/patterns/header/mobile-nav"
+import { SECTION_LINKS } from "@/components/patterns/header/nav-items"
 import { SearchField } from "@/components/patterns/header/search-field"
 import { SearchResultsDropdown, MobileSearchResults } from "@/components/patterns/header/search-results"
 import { Logo } from "@/components/ui/logo"
@@ -120,10 +122,11 @@ export default function Nav() {
             <div className="justify-self-start">
               <button
                 className={iconButtonClasses({ size: "sm", flush: "start" })}
-                onClick={() => (mobileOpen ? closeMobileMenu() : setMobileOpen(true))}
-                aria-label="Menú"
+                onClick={() => setMobileOpen(true)}
+                aria-label="Abrir menú"
+                aria-expanded={mobileOpen}
               >
-                {mobileOpen ? <X className="icon-md" /> : <Menu className="icon-md" />}
+                <Menu className="icon-md" />
               </button>
             </div>
 
@@ -203,11 +206,9 @@ export default function Nav() {
             <div className="header-subnav-group">
               <CategoriesMenu />
               <Link href="/" className="nav-link">Home</Link>
-              <Link href="/productos" className="nav-link">Novedades</Link>
-              <Link href="/productos?nav=ofertas" className="nav-link">Ofertas de la semana</Link>
-              <Link href="/productos" className="nav-link">Más vendido</Link>
-              <Link href="/contacto" className="nav-link">Sucursales</Link>
-              <Link href="/contacto" className="nav-link">Contacto</Link>
+              {SECTION_LINKS.map(([label, href]) => (
+                <Link key={label} href={href} className="nav-link">{label}</Link>
+              ))}
             </div>
 
             <div className="header-subnav-group header-subnav-group--end">
@@ -221,6 +222,8 @@ export default function Nav() {
 
         {mobileOpen && <MobileMenu onClose={closeMobileMenu} onOpenAuth={() => setAuthModalOpen(true)} />}
       </header>
+
+      <MobileNav />
 
       <AuthModal open={authModalOpen} onClose={() => setAuthModalOpen(false)} />
     </>
