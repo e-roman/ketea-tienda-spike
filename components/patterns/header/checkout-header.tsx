@@ -1,12 +1,13 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { linkClasses } from "@/components/ui/link"
 import { Logo } from "@/components/ui/logo"
 import { useCart } from "@/lib/cart-context"
 
-/** Header simplificado del checkout (Figma: Header / Checkout): volver al carrito (o a la tienda si ya no hay carrito), logo, contacto. */
+/** Header simplificado del checkout (Figma: Header / Checkout): volver al carrito (o a la tienda si ya no hay carrito), logo y sello de compra segura. */
 export function CheckoutHeader() {
   const { items } = useCart()
   const hasCart = items.length > 0
@@ -28,10 +29,12 @@ export function CheckoutHeader() {
           <Logo size="checkout" />
         </Link>
 
-        <div className="checkout-header__contact justify-self-end">
-          <Link href="/contacto" className={linkClasses({ variant: "subtle", size: "sm", hoverUnderline: true })}>
-            Contáctanos
-          </Link>
+        <div className="security-seal justify-self-end">
+          <Image src="/assets/img/safe-shopping.svg" alt="" width={28} height={26} className="security-seal__badge" />
+          <span className="security-seal__text">
+            <b className="security-seal__title">Compra segura</b>
+            <span>100% protegido</span>
+          </span>
         </div>
       </div>
     </header>

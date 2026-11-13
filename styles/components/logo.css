@@ -6,5 +6,5 @@
   .logo--md { height: 55px; }
   .logo--lg { height: 50px; }
   .logo--checkout { height: var(--space-8); }
-  @media (min-width: 768px) { .logo--checkout { height: 55px; } }
+  @media (min-width: 768px) { .logo--checkout { height: var(--space-10); } }
 }

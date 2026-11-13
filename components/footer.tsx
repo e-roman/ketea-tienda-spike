@@ -103,7 +103,7 @@ export default function Footer() {
               aria-label="Tu email"
               className="footer__newsletter-input"
             />
-            <Button type="submit" size="sm">Suscribirse</Button>
+            <Button type="submit" size="md">Suscribirse</Button>
           </form>
           <p className="footer__lead">
             Puedes darte de baja en cualquier momento.{" "}

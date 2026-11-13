@@ -12,10 +12,8 @@
 
   /* ── Header del checkout ── */
   .checkout-header__row { align-items: center; height: var(--space-14); }
-  @media (min-width: 768px) { .checkout-header__row { height: var(--space-20); } }
+  @media (min-width: 768px) { .checkout-header__row { height: var(--space-14); } }
   .checkout-header__logo { display: flex; align-items: center; }
-  .checkout-header__contact { display: none; align-items: center; gap: var(--space-4); }
-  @media (min-width: 768px) { .checkout-header__contact { display: flex; } }
 
   /* ── Indicador de pasos ── */
   .step-indicator { display: flex; align-items: center; margin-bottom: var(--space-12); padding-inline: var(--space-2); }
