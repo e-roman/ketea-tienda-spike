@@ -4,10 +4,26 @@
   .footer { background-color: var(--color-surface-default); color: var(--color-text-primary); }
   .footer--spaced { margin-top: var(--space-12); }
   /* Columnas: 1 en mobile, 2 en tablet; en desktop tres de 2/12 y el newsletter de 5/12, repartidas a lo ancho. */
-  .footer__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-8); padding-block: var(--space-10) var(--space-12); }
-  @media (min-width: 640px) { .footer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  /* Hasta 1023 px: una columna con las secciones en acordeón y el newsletter debajo */
+  .footer__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; padding-block: var(--space-4) var(--space-8); }
+  .footer__col--wide { margin-top: var(--space-8); }
+  .footer__acc { border-bottom: var(--border-width-sm) solid var(--color-border-default); }
+  .footer__acc > .footer__heading { margin-bottom: 0; }
+  .footer__toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: var(--size-control-xl); text-align: left; font: inherit; color: inherit; }
+  .footer__toggle > svg { flex-shrink: 0; width: var(--space-5); height: var(--space-5); color: var(--color-icon-default); transition: transform var(--duration-fast) var(--easing-standard); }
+  .footer__toggle[aria-expanded="true"] > svg { transform: rotate(180deg); }
+  .footer__panel { padding-bottom: var(--space-4); }
+  .footer__panel[hidden] { display: none; }
   @media (min-width: 1024px) {
-    .footer__grid { display: flex; justify-content: space-between; gap: var(--space-6); }
+    .footer__grid { display: flex; justify-content: space-between; gap: var(--space-6); padding-block: var(--space-10) var(--space-12); }
+    .footer__col--wide { margin-top: 0; }
+    .footer__acc { border-bottom: 0; }
+    .footer__acc > .footer__heading { margin-bottom: var(--space-4); }
+    /* Escritorio: el título deja de ser un botón y la lista siempre se ve */
+    .footer__toggle { min-height: 0; width: auto; pointer-events: none; cursor: default; }
+    .footer__toggle > svg { display: none; }
+    .footer__panel[hidden] { display: flex; }
+    .footer__panel { padding-bottom: 0; }
     .footer__col { flex: 0 0 calc(100% / 6); }
     .footer__col--wide { flex-basis: calc(100% * 5 / 12); }
   }

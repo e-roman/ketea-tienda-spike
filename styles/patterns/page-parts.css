@@ -87,16 +87,18 @@
 
   /* ── Ficha de producto: sellos y relacionados ── */
   .spec-seals { display: flex; flex-wrap: wrap; gap: var(--space-3); }
-  .snap-row { display: flex; gap: var(--space-4); padding-bottom: var(--space-1); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  /* Mobile: fila que se desliza con ~2 cards a la vista (la tercera asoma); desde 768 px es grilla */
+  .snap-row { display: flex; gap: var(--space-2); padding-bottom: var(--space-1); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
   .snap-row::-webkit-scrollbar { display: none; }
-  .snap-row__item { flex-shrink: 0; flex-basis: 82%; scroll-snap-align: start; }
+  .snap-row__item { flex-shrink: 0; flex-basis: 46%; scroll-snap-align: start; }
   .snap-row__item:last-child { padding-right: var(--space-4); }
-  @media (min-width: 640px) { .snap-row__item { flex-basis: 45%; } }
+  @media (min-width: 640px) { .snap-row__item { flex-basis: 30%; } }
   @media (min-width: 768px) {
-    .snap-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-2); overflow: visible; }
+    .snap-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-2); overflow: visible; }
     .snap-row__item { flex-basis: auto; padding-right: 0; }
     .snap-row__item:last-child { padding-right: 0; }
   }
+  @media (min-width: 1024px) { .snap-row { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
 
   /* ── Formularios ── */
   .input-wrap { position: relative; display: block; }

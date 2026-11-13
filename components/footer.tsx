@@ -4,7 +4,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { usePathname } from "next/navigation"
 import Image from "next/image"
-import { Instagram, Facebook } from "lucide-react"
+import { ChevronDown, Instagram, Facebook } from "lucide-react"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -28,23 +28,43 @@ const INFO_LINKS = [
 
 const CARDS = ["visa", "mastercard", "amex", "argencard", "naranja", "cencosud", "nativa", "cabal"]
 
-function FooterLinks({ title, links }: { title: string; links: string[][] }) {
+/**
+ * Columna del footer: en mobile y tablet es un acordeón (el título abre y cierra la lista);
+ * desde 1024 px el título deja de ser un botón y la lista se ve siempre. Estilos en footer.css.
+ */
+function FooterSection({ id, title, open, onToggle, children }: {
+  id: string
+  title: string
+  open: boolean
+  onToggle: () => void
+  children: React.ReactNode
+}) {
   return (
-    <div className="footer__col">
-      <h2 className="footer__heading">{title}</h2>
-      <ul className="footer__list">
-        {links.map(([label, href]) => (
-          <li key={label}><Link href={href} className="footer__link">{label}</Link></li>
-        ))}
+    <div className="footer__col footer__acc">
+      <h2 className="footer__heading">
+        <button type="button" onClick={onToggle} aria-expanded={open} aria-controls={`footer-${id}`} className="footer__toggle">
+          {title}
+          <ChevronDown aria-hidden="true" />
+        </button>
+      </h2>
+      <ul id={`footer-${id}`} className="footer__list footer__panel" hidden={!open}>
+        {children}
       </ul>
     </div>
   )
 }
 
+const linkItems = (links: string[][]) =>
+  links.map(([label, href]) => (
+    <li key={label}><Link href={href} className="footer__link">{label}</Link></li>
+  ))
+
 /** Footer — clases de styles/patterns/footer.css. Cuatro columnas (cuenta, información, contacto, newsletter) y barra inferior con medios de pago. */
 export default function Footer() {
   const pathname = usePathname()
   const [email, setEmail] = useState("")
+  const [openSection, setOpenSection] = useState<string | null>(null)
+  const toggle = (id: string) => setOpenSection((cur) => (cur === id ? null : id))
   // Checkout tiene fondo gris propio: sin margen, para que no quede una franja blanca
   const flush = pathname?.startsWith("/checkout")
 
@@ -59,17 +79,17 @@ export default function Footer() {
     <footer className={cn("footer", !flush && "footer--spaced")}>
       <BrandsStrip />
       <div className="footer__grid max-w-7xl mx-auto px-4 md:px-6">
-        <FooterLinks title="Mi Cuenta" links={ACCOUNT_LINKS} />
-        <FooterLinks title="Información" links={INFO_LINKS} />
-
-        <div className="footer__col">
-          <h2 className="footer__heading">Contacto</h2>
-          <ul className="footer__list">
-            <li><Link href="/contacto" className="footer__link">Dónde encontrarnos</Link></li>
-            <li><a href="mailto:info@ketea.com.ar" className="footer__link">info@ketea.com.ar</a></li>
-            <li><span className="footer__text">{WHATSAPP_LABEL}</span></li>
-          </ul>
-        </div>
+        <FooterSection id="cuenta" title="Mi Cuenta" open={openSection === "cuenta"} onToggle={() => toggle("cuenta")}>
+          {linkItems(ACCOUNT_LINKS)}
+        </FooterSection>
+        <FooterSection id="info" title="Información" open={openSection === "info"} onToggle={() => toggle("info")}>
+          {linkItems(INFO_LINKS)}
+        </FooterSection>
+        <FooterSection id="contacto" title="Contacto" open={openSection === "contacto"} onToggle={() => toggle("contacto")}>
+          <li><Link href="/contacto" className="footer__link">Dónde encontrarnos</Link></li>
+          <li><a href="mailto:info@ketea.com.ar" className="footer__link">info@ketea.com.ar</a></li>
+          <li><span className="footer__text">{WHATSAPP_LABEL}</span></li>
+        </FooterSection>
 
         <div className="footer__col footer__col--wide">
           <h2 className="footer__heading footer__heading--tight">Subscribite al Newsletter</h2>

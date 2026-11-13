@@ -72,6 +72,18 @@
   .product-tag--success { background-color: var(--color-feedback-success-bg); color: var(--color-feedback-success-text); }
   .product-tag--danger { background-color: var(--color-feedback-error-solid); color: var(--color-text-inverse); }
 
+  /* Pantallas chicas: card más compacta para que quepan dos por fila sin cortar el título */
+  @media (max-width: 639px) {
+    .product-card__info { gap: var(--space-1-5); padding: var(--space-3); }
+    .product-card__title { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); }
+    .product-card__spec { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); }
+    .product-card .price__current--md { font-size: var(--font-size-lg); line-height: var(--font-line-height-lg); }
+    .product-card .price__previous { font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); }
+    .product-card__note { font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); }
+    .product-card__quick { padding: var(--space-1-5) var(--space-3); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); }
+    .product-card__quick > svg { width: var(--space-4); height: var(--space-4); }
+  }
+
   .product-card--skeleton { overflow: hidden; }
   .product-card--skeleton .skeleton-media { aspect-ratio: 4 / 3; border-radius: 0; }
   .skeleton__spaced { margin-top: var(--space-4); }
