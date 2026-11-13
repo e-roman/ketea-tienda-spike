@@ -30,8 +30,6 @@ export const PROVINCES = [
 
 export const HOME_TYPES = ["Casa", "Departamento", "Oficina", "Otro"]
 
-export const SUPPORT_PHONE = "(+54) 911 3065-5787"
-
 const dayFormat = new Intl.DateTimeFormat("es-AR", { weekday: "long", day: "numeric", month: "long" })
 
 /** Suma días hábiles (lunes a viernes). */

@@ -9,7 +9,6 @@ import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { BrandsStrip } from "@/components/patterns/brands-strip"
-import { WHATSAPP_LABEL } from "@/components/patterns/header/nav-items"
 
 const ACCOUNT_LINKS = [
   ["Ingresar", "/cuenta"],
@@ -88,7 +87,6 @@ export default function Footer() {
         <FooterSection id="contacto" title="Contacto" open={openSection === "contacto"} onToggle={() => toggle("contacto")}>
           <li><Link href="/contacto" className="footer__link">Dónde encontrarnos</Link></li>
           <li><a href="mailto:info@ketea.com.ar" className="footer__link">info@ketea.com.ar</a></li>
-          <li><span className="footer__text">{WHATSAPP_LABEL}</span></li>
         </FooterSection>
 
         <div className="footer__col footer__col--wide">

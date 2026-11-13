@@ -6,7 +6,7 @@ import Link from "next/link"
 import { ChevronDown } from "lucide-react"
 import { PageHeader } from "@/components/patterns/page-header"
 
-const WHATSAPP = "https://api.whatsapp.com/send?phone=5491130655787"
+const EMAIL = "mailto:info@ketea.com.ar"
 
 const FAQS: { q: string; a: ReactNode }[] = [
   {
@@ -43,7 +43,7 @@ const FAQS: { q: string; a: ReactNode }[] = [
   },
   {
     q: "¿Cómo sé si un robot es adecuado para mi pileta?",
-    a: <>En la ficha de cada producto ves el tamaño de pileta recomendado y el tipo de limpieza. Si tenés dudas, escribinos por <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={linkClasses()}>WhatsApp</a> y te asesoramos.</>,
+    a: <>En la ficha de cada producto ves el tamaño de pileta recomendado y el tipo de limpieza. Si tenés dudas, escribinos a <a href={EMAIL} className={linkClasses()}>info@ketea.com.ar</a> y te asesoramos.</>,
   },
   {
     q: "¿Puede recibir otra persona mi pedido?",
@@ -59,7 +59,7 @@ const FAQS: { q: string; a: ReactNode }[] = [
   },
   {
     q: "Tengo otra pregunta",
-    a: <>Contactanos de lunes a viernes de 9 a 18 h al <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={linkClasses()}>(+54) 911 3065-5787</a>.</>,
+    a: <>Escribinos a <a href={EMAIL} className={linkClasses()}>info@ketea.com.ar</a> y te respondemos a la brevedad.</>,
   },
 ]
 
@@ -69,15 +69,8 @@ export default function PreguntasFrecuentesPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 md:px-6 py-14">
       <PageHeader eyebrow="Ayuda" title="Preguntas frecuentes">
-        Si no encontrás lo que buscás acá, escribinos por{" "}
-        <a
-          href="https://api.whatsapp.com/send?phone=5491130655787"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={linkClasses()}
-        >
-          WhatsApp
-        </a>{" "}
+        Si no encontrás lo que buscás acá, escribinos a{" "}
+        <a href={EMAIL} className={linkClasses()}>info@ketea.com.ar</a>{" "}
         y te ayudamos.
       </PageHeader>
 

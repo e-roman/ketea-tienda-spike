@@ -44,7 +44,7 @@ export function ShippingCheck({ className }: { className?: string }) {
       )}
       {valid === false && (
         <p role="status" className="shipping-check__result shipping-check__result--no">
-          Zona no cubierta por el momento. Consultanos por WhatsApp.
+          Zona no cubierta por el momento. Consultanos por email.
         </p>
       )}
     </div>

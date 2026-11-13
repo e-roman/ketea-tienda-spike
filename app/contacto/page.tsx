@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Phone, Instagram, Facebook, MapPin, Clock } from "lucide-react"
+import { Mail, Instagram, Facebook, MapPin, Clock } from "lucide-react"
 import { linkClasses } from "@/components/ui/link"
 import { iconButtonClasses } from "@/components/ui/icon-button"
 import { PageHeader } from "@/components/patterns/page-header"
@@ -17,8 +17,8 @@ export default function ContactoPage() {
       </PageHeader>
 
       <div className="space-y-4 mb-14">
-        <FeatureRow variant="card" href="https://api.whatsapp.com/send?phone=5491130655787" icon={<Phone className="icon-md" aria-hidden="true" />} title="WhatsApp">
-          (+54) 911 3065-5787
+        <FeatureRow variant="card" href="mailto:info@ketea.com.ar" icon={<Mail className="icon-md" aria-hidden="true" />} title="Email">
+          info@ketea.com.ar
         </FeatureRow>
         <FeatureRow variant="card" icon={<Clock className="icon-md" aria-hidden="true" />} title="Horario de atención">
           Lunes a viernes de 9 a 18 hs

@@ -6,7 +6,6 @@ import { Check, Download, FileText, Lightbulb, MessageCircle, Minus, Plus, Shiel
 import { Tabs } from "@/components/ui/tabs"
 import { getProductDetails, type Faq, type ProductDetails } from "@/lib/product-details"
 import type { Product } from "@/lib/products"
-import { WHATSAPP_URL } from "@/components/patterns/header/nav-items"
 
 type TabId = "descripcion" | "especificaciones" | "recursos" | "preguntas" | "garantia"
 
@@ -165,9 +164,7 @@ function Warranty({ d }: { d: ProductDetails }) {
         <div>
           <h3 className="ptabs__warranty-title">Soporte postventa</h3>
           <p>
-            ¿Algo no anda como esperabas? Escribinos por{" "}
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="ptabs__link">WhatsApp</a>{" "}
-            o a <a href="mailto:info@ketea.com.ar" className="ptabs__link">info@ketea.com.ar</a> con tu número de pedido.
+            ¿Algo no anda como esperabas? Escribinos a <a href="mailto:info@ketea.com.ar" className="ptabs__link">info@ketea.com.ar</a> con tu número de pedido.
           </p>
         </div>
       </div>

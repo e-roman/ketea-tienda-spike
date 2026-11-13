@@ -20,7 +20,7 @@ export default function QuienesSomosPage() {
     {
       icon: Headset,
       title: "Te acompañamos",
-      desc: "Atención por WhatsApp de lunes a viernes de 9 a 18 h, y retiro en nuestro local de Ramos Mejía.",
+      desc: "Atención de lunes a viernes de 9 a 18 h, y retiro en nuestro local de Ramos Mejía.",
     },
   ]
 

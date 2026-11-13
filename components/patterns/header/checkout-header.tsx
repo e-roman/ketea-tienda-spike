@@ -1,9 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowLeft, Phone } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 import { linkClasses } from "@/components/ui/link"
-import { WHATSAPP_URL, WHATSAPP_LABEL } from "./nav-items"
 import { Logo } from "@/components/ui/logo"
 import { useCart } from "@/lib/cart-context"
 
@@ -30,14 +29,6 @@ export function CheckoutHeader() {
         </Link>
 
         <div className="checkout-header__contact justify-self-end">
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={linkClasses({ variant: "subtle", size: "sm", icon: true })}
-          >
-            <Phone className="icon-xs" aria-hidden="true" /> {WHATSAPP_LABEL}
-          </a>
           <Link href="/contacto" className={linkClasses({ variant: "subtle", size: "sm", hoverUnderline: true })}>
             Contáctanos
           </Link>

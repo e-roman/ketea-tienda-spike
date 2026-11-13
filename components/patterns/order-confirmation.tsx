@@ -12,7 +12,7 @@ import { OrderReview } from "@/components/patterns/order-review"
 import { estimatedDelivery, type DeliveryOption } from "@/lib/delivery"
 import { isPaymentPending, type PaymentSummary } from "@/lib/checkout"
 import { getFeatured, type Product } from "@/lib/products"
-import { WHATSAPP_URL } from "@/components/patterns/header/nav-items"
+import { CONTACT_URL, CONTACT_EMAIL } from "@/components/patterns/header/nav-items"
 import { cn } from "@/lib/utils"
 
 // Mapas literales: Tailwind purga las clases de @layer components que no encuentra escritas.
@@ -146,8 +146,8 @@ export function OrderConfirmation({ orderRef, dateString, customer, address, del
             <Card padding="panel" className="confirmation__help">
               <h2 className="confirmation__section-title">¿Necesitás ayuda?</h2>
               <p className="confirmation__line">Escribinos con tu número de pedido y te respondemos enseguida.</p>
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className={helpCta}>
-                <MessageCircle className="icon-sm" aria-hidden="true" /> Hablar por WhatsApp
+              <a href={CONTACT_URL} className={helpCta}>
+                <MessageCircle className="icon-sm" aria-hidden="true" /> {CONTACT_EMAIL}
               </a>
             </Card>
           </div>

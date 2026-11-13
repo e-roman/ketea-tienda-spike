@@ -1,5 +1,5 @@
-export const WHATSAPP_URL = "https://api.whatsapp.com/send?phone=5491130655787"
-export const WHATSAPP_LABEL = "(+54) 911 3065-5787"
+export const CONTACT_EMAIL = "info@ketea.com.ar"
+export const CONTACT_URL = `mailto:${CONTACT_EMAIL}`
 
 /** Links de navegación general (sin Home): fila de la barra desktop y fila deslizable del header mobile. */
 export const SECTION_LINKS: [label: string, href: string][] = [
