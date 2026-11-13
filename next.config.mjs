@@ -5,13 +5,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'www.tiendaorali.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'pastasorali.com',
+        hostname: 'm.media-amazon.com',
         port: '',
         pathname: '/**',
       },

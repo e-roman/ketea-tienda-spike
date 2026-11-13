@@ -1,7 +1,7 @@
 /* ============================================================
-   TIENDA ORALI
-   Los valores de diseño vienen de @orali/design-tokens
-   (importado en app/layout.tsx). No definir colores acá.
+   TIENDA KETEA
+   Los valores de diseño vienen de @ketea/tokens (importado en app/layout.tsx) y de styles/ketea-theme.css.
+   No definir colores acá.
    ============================================================ */
 @import "../styles/components/button.css";
 @import "../styles/components/switch.css";
