@@ -134,7 +134,7 @@ function CatalogContent() {
           </div>
 
           {isLoading ? (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
               {Array.from({ length: 8 }).map((_, i) => <ProductCardSkeleton key={i} />)}
             </div>
           ) : filtered.length === 0 ? (
@@ -149,7 +149,7 @@ function CatalogContent() {
               </Button>
             </EmptyState>
           ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
               {filtered.map((product) => (
                 <ProductCard key={product.id} product={product} titleAs="h2" />
               ))}
@@ -182,7 +182,7 @@ export default function ProductosPage() {
   return (
     <Suspense fallback={
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
           {Array.from({ length: 8 }).map((_, i) => <ProductCardSkeleton key={i} />)}
         </div>
       </div>

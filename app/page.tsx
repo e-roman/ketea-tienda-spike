@@ -12,8 +12,8 @@ const SERVICES: ServiceBlock[] = [
 ]
 
 export default function HomePage() {
-  const featured = getFeatured().slice(0, 4)
-  const nuevos = getProductsByCategory("Bombas de Calor").slice(0, 4)
+  const featured = getFeatured().slice(0, 5)
+  const nuevos = getProductsByCategory("Bombas de Calor").slice(0, 5)
 
   return (
     <div>
@@ -23,7 +23,7 @@ export default function HomePage() {
 
       <section className="max-w-7xl mx-auto px-4 md:px-6 py-14">
         <SectionHeader title="Productos destacados" href="/productos" />
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-5">
           {featured.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
@@ -44,7 +44,7 @@ export default function HomePage() {
       {nuevos.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 md:px-6 pb-14">
           <SectionHeader title="Bombas de calor" href="/productos?cat=Bombas de Calor" />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-5">
             {nuevos.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

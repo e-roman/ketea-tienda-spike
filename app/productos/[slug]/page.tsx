@@ -21,7 +21,7 @@ export default function PDPPage({ params }: { params: { slug: string } }) {
 
   const related = getProductsByCategory(product.categories[0])
     .filter((p) => p.id !== product.id)
-    .slice(0, 4)
+    .slice(0, 5)
 
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-6 py-6">

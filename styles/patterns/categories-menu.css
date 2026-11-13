@@ -16,12 +16,14 @@
   .categories-menu__panel {
     position: absolute;
     top: 100%;
-    left: 0;
+    left: var(--space-6);
     z-index: var(--layer-header);
     display: flex;
     overflow: hidden;
     border: var(--border-width-sm) solid var(--color-border-default);
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-md);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     background-color: var(--dropdown-bg);
     box-shadow: var(--elevation-dropdown);
   }

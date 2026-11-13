@@ -50,7 +50,7 @@ interface OrderConfirmationProps {
  */
 export function OrderConfirmation({ orderRef, dateString, customer, address, delivery, shippingCost, payment, items, subtotal, total }: OrderConfirmationProps) {
   const [copied, setCopied] = useState(false)
-  const recommendations = getFeatured().slice(0, 4)
+  const recommendations = getFeatured().slice(0, 5)
   const pickup = delivery.group === "pickup"
   const pending = isPaymentPending(payment)
   const eta = estimatedDelivery(delivery.id)
@@ -163,7 +163,7 @@ export function OrderConfirmation({ orderRef, dateString, customer, address, del
         {recommendations.length > 0 && (
           <section className="confirmation__more">
             <Heading size="xl" className="confirmation__more-title">Te puede interesar</Heading>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5">
               {recommendations.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
