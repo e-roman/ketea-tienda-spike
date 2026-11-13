@@ -1,5 +1,4 @@
-/* Buy box de la ficha de producto (Figma: Product Detail / Product / Buy box) y verificación de zona
-   (Figma: _Product / Shipping check). */
+/* Buy box de la ficha de producto (Figma: Product Detail / Product / Buy box). */
 @layer components {
   .buy-box { display: flex; flex-direction: column; gap: var(--space-4); }
   .buy-box__price { display: flex; flex-direction: column; gap: var(--space-2); }
@@ -44,18 +43,4 @@
     .buy-box__bar-actions { display: flex; gap: var(--space-3); }
     .buy-box__bar-actions > .btn { flex: 1 1 0%; }
   }
-
-  .shipping-check {
-    padding: var(--space-4);
-    border: var(--border-width-sm) solid var(--color-border-default);
-    border-radius: var(--radius-lg);
-    background-color: var(--color-surface-default);
-  }
-  .shipping-check__input { flex: 1 1 0%; min-width: 0; }
-  .shipping-check__title { display: block; margin-bottom: var(--space-3); font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); font-weight: var(--font-weight-medium); color: var(--color-text-primary); }
-  .shipping-check__form { display: flex; gap: var(--space-2); }
-  .shipping-check__result { display: flex; align-items: center; gap: var(--space-1); margin-top: var(--space-2); font-size: var(--font-size-xs); line-height: var(--font-line-height-xs); }
-  .shipping-check__result > svg { flex-shrink: 0; width: var(--font-size-sm); height: var(--font-size-sm); }
-  .shipping-check__result--ok { font-weight: var(--font-weight-medium); color: var(--color-feedback-success-text); }
-  .shipping-check__result--no { color: var(--color-text-brand); }
 }

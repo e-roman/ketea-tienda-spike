@@ -6,12 +6,12 @@ const meta = {
   title: 'Patterns/Order summary',
   component: OrderSummary,
   tags: ['autodocs'],
-  args: { totalItems: 2, subtotal: 25500, total: 25500, onCheckout: fn() },
+  args: { totalItems: 2, subtotal: 3385460, total: 3385460, onCheckout: fn() },
   decorators: [(Story) => <div style={{ maxWidth: 400 }}><Story /></div>],
 } satisfies Meta<typeof OrderSummary>
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const BelowMinimum: Story = {}
-export const Ready: Story = { args: { totalItems: 4, subtotal: 51000, total: 51000 } }
-export const Loading: Story = { args: { ...Ready.args, loading: true } }
+export const Default: Story = {}
+export const SeveralProducts: Story = { args: { totalItems: 4, subtotal: 6770920, total: 6770920 } }
+export const Loading: Story = { args: { loading: true } }

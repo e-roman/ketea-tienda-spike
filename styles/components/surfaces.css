@@ -50,7 +50,7 @@
   .icon-badge--control { width: var(--size-control-lg); height: var(--size-control-lg); }
   .icon-badge--subtle { background-color: var(--color-surface-subtle); }
   .icon-badge--brand { border-color: transparent; background-color: var(--color-surface-brand); color: var(--color-text-on-brand); box-shadow: var(--elevation-subtle); }
-  .icon-badge--brand-subtle { border-color: var(--color-border-brand-subtle); background-color: var(--color-surface-brand-subtle); color: var(--color-icon-subtle); }
+  .icon-badge--brand-subtle { border-color: var(--color-border-brand-subtle); background-color: var(--color-surface-brand-subtle); color: var(--color-icon-brand); }
   .icon-badge--square { border-radius: var(--radius-md); }
   .icon-badge--plain { border-color: transparent; }
   .icon-badge--muted { border-color: transparent; background-color: var(--color-surface-muted); color: var(--color-icon-subtle); }

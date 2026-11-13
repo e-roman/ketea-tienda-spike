@@ -7,7 +7,7 @@ const meta = {
   title: 'Patterns/Header/Search results',
   component: SearchResultsDropdown,
   tags: ['autodocs'],
-  args: { query: 'ravioles', results: sampleProducts, onSelect: fn(), onSeeAll: fn() },
+  args: { query: 'robot', results: sampleProducts, onSelect: fn(), onSeeAll: fn() },
   decorators: [(Story) => <div style={{ maxWidth: 480 }}><Story /></div>],
 } satisfies Meta<typeof SearchResultsDropdown>
 export default meta

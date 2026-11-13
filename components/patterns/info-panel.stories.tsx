@@ -5,7 +5,7 @@ const meta = {
   title: 'Patterns/Info panel',
   component: InfoPanel,
   tags: ['autodocs'],
-  args: { title: 'El pack de 3 unidades', children: 'Todos nuestros productos se venden en packs de 3 unidades.' },
+  args: { title: 'Retiro en sucursal', children: 'Retirá tu compra gratis en Ketea Ramos Mejía, de lunes a viernes de 9 a 18 h.' },
   decorators: [(Story) => <div style={{ maxWidth: 480 }}><Story /></div>],
 } satisfies Meta<typeof InfoPanel>
 export default meta

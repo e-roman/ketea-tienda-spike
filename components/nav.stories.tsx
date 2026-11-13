@@ -11,7 +11,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-/** Escribí en el buscador y abrí «Pastas» / «Tapas» para ver los desplegables. */
+/** Escribí en el buscador y abrí «Todas las categorías» para ver los desplegables. */
 export const Desktop: Story = {}
 export const WithItemsInCart: Story = {
   decorators: [(Story) => <SeedCart items={[{ product: sampleProducts[0], quantity: 3 }]}><Story /></SeedCart>],

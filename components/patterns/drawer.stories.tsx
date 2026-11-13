@@ -7,7 +7,7 @@ const meta = {
   component: Drawer,
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen' },
-  args: { open: true, onClose: fn(), title: 'Tu carrito', count: '3 packs', children: <p style={{ padding: 16 }}>Contenido del drawer</p> },
+  args: { open: true, onClose: fn(), title: 'Tu carrito', count: '2 productos', children: <p style={{ padding: 16 }}>Contenido del drawer</p> },
 } satisfies Meta<typeof Drawer>
 export default meta
 type Story = StoryObj<typeof meta>

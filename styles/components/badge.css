@@ -1,4 +1,4 @@
-/* Badge: tokens badge.discount.*, badge.dietary.*, badge.counter.* */
+/* Badge: tokens badge.discount.*, badge.counter.* */
 @layer components {
   .badge { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-1); white-space: nowrap; }
   .badge--discount {
@@ -10,14 +10,6 @@
     font-size: var(--badge-discount-font-size);
     font-weight: var(--badge-discount-font-weight);
     line-height: 1;
-  }
-  .badge--dietary {
-    background-color: var(--badge-dietary-bg);
-    color: var(--badge-dietary-fg);
-    border-radius: var(--badge-dietary-radius);
-    padding: var(--space-0-5) var(--space-2);
-    font-size: var(--badge-dietary-font-size);
-    font-weight: var(--font-weight-medium);
   }
   /* Contador de packs en títulos (carrito, drawer) */
   .badge--outline {

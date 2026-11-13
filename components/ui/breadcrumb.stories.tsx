@@ -9,7 +9,7 @@ const meta = {
     items: [
       { label: 'Inicio', href: '/' },
       { label: 'Productos', href: '/productos' },
-      { label: 'Ravioles de ricota' },
+      { label: 'Robot limpia piscina Dolphin S200' },
     ],
   },
 } satisfies Meta<typeof Breadcrumb>

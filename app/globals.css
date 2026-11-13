@@ -12,7 +12,6 @@
 @import "../styles/components/form-parts.css";
 @import "../styles/components/stepper.css";
 @import "../styles/components/badge.css";
-@import "../styles/components/chip.css";
 @import "../styles/components/icon-button.css";
 @import "../styles/components/link.css";
 @import "../styles/components/tabs.css";
@@ -24,7 +23,6 @@
 @import "../styles/components/toast.css";
 @import "../styles/components/icon.css";
 @import "../styles/components/logo.css";
-@import "../styles/components/progress.css";
 @import "../styles/patterns/cart-item.css";
 @import "../styles/components/callout.css";
 @import "../styles/patterns/header.css";
@@ -33,12 +31,10 @@
 @import "../styles/patterns/page-parts.css";
 @import "../styles/patterns/product-card.css";
 @import "../styles/patterns/buy-box.css";
-@import "../styles/patterns/product-specs.css";
 @import "../styles/patterns/order-review.css";
 @import "../styles/patterns/modal.css";
 @import "../styles/patterns/hero.css";
 @import "../styles/patterns/order-confirmation.css";
-@import "../styles/patterns/how-it-works.css";
 @import "../styles/patterns/promo-banner.css";
 @import "../styles/patterns/service-blocks.css";
 @import "../styles/patterns/quick-view.css";
@@ -53,7 +49,6 @@
 @import "../styles/patterns/security-seal.css";
 @import "../styles/patterns/payment-methods.css";
 @import "../styles/patterns/footer.css";
-@import "../styles/patterns/newsletter.css";
 @import "../styles/patterns/empty-state.css";
 @import "../styles/patterns/product-detail.css";
 @import "../styles/patterns/order-summary.css";
@@ -61,9 +56,7 @@
 @import "../styles/components/product-thumb.css";
 @import "../styles/components/step-indicator.css";
 @import "../styles/components/carousel-dots.css";
-@import "../styles/components/category-card.css";
 @import "../styles/components/accordion.css";
-@import "../styles/components/rating-scale.css";
 
 @tailwind base;
 @tailwind components;

@@ -39,5 +39,5 @@ function Interactive({ variant }: { variant: 'desktop' | 'mobile' }) {
 
 export const Desktop: Story = { render: () => <Interactive variant="desktop" /> }
 export const Mobile: Story = { render: () => <Interactive variant="mobile" /> }
-export const DesktopWithQuery: Story = { args: { value: 'ravioles' } }
-export const MobileWithQuery: Story = { args: { variant: 'mobile', value: 'ravioles' } }
+export const DesktopWithQuery: Story = { args: { value: 'robot' } }
+export const MobileWithQuery: Story = { args: { variant: 'mobile', value: 'robot' } }

@@ -7,5 +7,4 @@
   .price__current--sm { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); }
   .price__current--md { font-size: var(--font-size-xl); line-height: var(--font-line-height-xl); }
   .price__current--lg { font-size: var(--font-size-3xl); line-height: var(--font-line-height-3xl); }
-  .price__unit { font-size: var(--font-size-sm); line-height: var(--font-line-height-sm); color: var(--color-commerce-price-unit); }
 }

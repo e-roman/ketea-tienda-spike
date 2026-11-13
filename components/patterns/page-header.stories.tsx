@@ -5,7 +5,7 @@ const meta = {
   title: 'Patterns/Page header',
   component: PageHeader,
   tags: ['autodocs'],
-  args: { eyebrow: 'Nosotros', title: 'Quiénes somos', children: 'Elaboramos pastas frescas desde hace más de 20 años.' },
+  args: { eyebrow: 'Nosotros', title: 'Quiénes somos', children: 'Todo para tu pileta, en un solo lugar.' },
 } satisfies Meta<typeof PageHeader>
 export default meta
 type Story = StoryObj<typeof meta>

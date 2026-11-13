@@ -7,7 +7,7 @@ const meta = {
   component: ConfirmDeleteModal,
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen' },
-  args: { open: true, productName: 'Ravioles de ricota', onCancel: fn(), onConfirm: fn() },
+  args: { open: true, productName: 'Robot limpia piscina Dolphin Liberty 400', onCancel: fn(), onConfirm: fn() },
 } satisfies Meta<typeof ConfirmDeleteModal>
 export default meta
 type Story = StoryObj<typeof meta>

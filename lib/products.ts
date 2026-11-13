@@ -19,7 +19,7 @@ export const BADGE_STYLES: Record<Badge, { label: string }> = {
   "llega-hoy":    { label: "Llega hoy" },
 }
 
-export interface NutritionRow {
+export interface SpecRow {
   label: string
   value: string
 }
@@ -41,13 +41,6 @@ export interface Product {
   inStock?: boolean
   onSale?: boolean
   originalPriceX3?: number
-  ingredients?: string
-  conservation?: string
-  nutritionTable?: {
-    portion: string
-    rows: NutritionRow[]
-  }
-  legalWarnings?: string[]
   /** Cuotas, ej. "3x $509.973 sin interés". */
   installments?: string
   /** Fotos para la vista rápida (la principal va primero). */
@@ -55,7 +48,7 @@ export interface Product {
   /** Dato técnico destacado bajo el título, ej. "Ciclo: 2,5 horas". */
   highlight?: string
   /** Datos clave para la vista rápida (hasta 5). */
-  keySpecs: NutritionRow[]
+  keySpecs: SpecRow[]
   pickupToday?: boolean
   freeShipping?: boolean
   /** Solo se retira por el local (ej. cortacésped Automower). */
@@ -147,9 +140,6 @@ function adapt(p: RawProduct): Product {
     inStock: p.stock,
     onSale: !!p.discount,
     originalPriceX3: p.oldPrice || undefined,
-    ingredients: d?.shortDescription,
-    conservation: d?.warrantyMonths ? `Garantía oficial de ${d.warrantyMonths} meses.` : undefined,
-    nutritionTable: rows.length ? { portion: "Especificaciones técnicas", rows } : undefined,
     installments: p.installmentsLabel ? `${p.installmentsLabel} sin interés` : undefined,
     images: getProductImages(String(p.id), img(p.image)),
     highlight,

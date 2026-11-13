@@ -14,7 +14,7 @@ type Story = StoryObj<typeof meta>
 export const Empty: Story = {
   decorators: [(Story) => <OpenCart><Story /></OpenCart>],
 }
-export const BelowMinimum: Story = {
+export const WithOneProduct: Story = {
   decorators: [
     (Story) => (
       <SeedCart items={[{ product: sampleProducts[0], quantity: 2 }]}>
@@ -23,10 +23,10 @@ export const BelowMinimum: Story = {
     ),
   ],
 }
-export const MinimumMet: Story = {
+export const WithSeveralProducts: Story = {
   decorators: [
     (Story) => (
-      <SeedCart items={[{ product: sampleProducts[0], quantity: 2 }, { product: sampleProducts[1], quantity: 2 }]}>
+      <SeedCart items={[{ product: sampleProducts[0], quantity: 2 }, { product: sampleProducts[1], quantity: 1 }]}>
         <OpenCart><Story /></OpenCart>
       </SeedCart>
     ),
